@@ -1,0 +1,6 @@
+# Naming Convention
+- Class Names: Pascal Case
+- Public Property: Pascal Case
+- Global Variables: ALL CAPS
+- Local Variables: camelCase
+- Class Memebrs: _camelCase (_ + camelCase)
