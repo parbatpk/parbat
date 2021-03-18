@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ParbatCore</name>
+    </assembly>
+    <members>
+        <member name="T:ParbatCore.Controllers.TestController">
+            <summary>
+            A test controller
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.TestController.Get(ParbatCore.Models.Student)">
+            <summary>
+            A test function
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ParbatCore.Models.TestModel.UniversityId">
+            <summary>
+            University Id
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.TestModel.UniversityName">
+            <summary>
+            Univesity Name
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.TestModel.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Saving the instance
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

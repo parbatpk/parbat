@@ -5,7 +5,18 @@ using System.Text;
 
 namespace Parbat.Data
 {
-    public class Database
+    public interface IDatabase
+    {
+        void SetInstance(DatabaseType databaseType, string connectionString);
+        DbConnection CreateConnection();
+        DbProviderFactory Factory { get; }
+        DbCommand CreateSPCommand(string spName, DbConnection connection);
+        DbCommand CreateCommand(DbConnection connection);
+        DbParameter CreateParameter(DbCommand cmd, string paramName, object value);
+
+    }
+
+    public class Database : IDatabase
     {
         private static Database _instance;
         private DatabaseFactory _factoryCreator;
@@ -17,7 +28,7 @@ namespace Parbat.Data
             
         }
 
-        public static Database Instance
+        public static IDatabase Instance
         {
             get
             {
@@ -49,7 +60,7 @@ namespace Parbat.Data
 
         public DbProviderFactory Factory { get; private set; }
 
-        public DbCommand GetSPCommand(string spName, DbConnection connection)
+        public DbCommand CreateSPCommand(string spName, DbConnection connection)
         {
             DbCommand cmd = Factory.CreateCommand();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -59,12 +70,21 @@ namespace Parbat.Data
             return cmd;
         }
 
-        public DbCommand GetCommand(DbConnection connection)
+        public DbCommand CreateCommand(DbConnection connection)
         {
             DbCommand cmd = Factory.CreateCommand();
             cmd.Connection = connection;
 
             return cmd;
+        }
+
+        public DbParameter CreateParameter(DbCommand cmd, string paramName, object value)
+        {
+            DbParameter parameter =  cmd.CreateParameter();
+            parameter.ParameterName = paramName;
+            parameter.Value = value;
+
+            return parameter;
         }
     }
 }
