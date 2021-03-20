@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using System.Data;
+
 using ParbatCore.Models;
 using Parbat.Data;
 
@@ -13,7 +15,7 @@ namespace ParbatCore.Controllers
     /// <summary>
     /// A test controller
     /// </summary>
-    [Route("api/[controller]")]
+    [Route(GlobalConstants.API_CONTROLLER)]
     [ApiController]
     public class TestController : ControllerBase
     {
@@ -27,8 +29,6 @@ namespace ParbatCore.Controllers
         {
             try
             {
-
-
                 values.Save(Database.Instance);
                 return Ok();
             }
@@ -38,6 +38,13 @@ namespace ParbatCore.Controllers
                 return NotFound(values);
             }
 
+        }
+
+        [HttpGet]
+        [Route("/AllUniversities")]
+        public ActionResult GetAllUniversities([FromQuery] List<TestModel> list)
+        {
+            return Ok();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using System.Data;
 using System.Data.Common;
 using System.ComponentModel.DataAnnotations;
 
@@ -35,6 +36,26 @@ namespace ParbatCore.Models
 
             return x;
             
+        }
+
+        /// <summary>
+        /// Rerturn list of universities
+        /// </summary>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public DataSet GetAllUniversities(IDatabase db)
+        {
+            DbConnection con = db.CreateConnection();
+            con.Open();
+            DbCommand cmd = db.CreateSPCommand("GetAllUniversities", con);
+            DbDataAdapter adapter =  db.Factory.CreateDataAdapter();
+            DataSet result = new DataSet();
+            adapter.SelectCommand = cmd;
+            adapter.Fill(result);
+
+            return result;
+
+
         }
 
         public void SimpleCommand()

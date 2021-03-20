@@ -26,6 +26,13 @@
             Univesity Name
             </summary>
         </member>
+        <member name="M:ParbatCore.Models.TestModel.GetAllUniversities(Parbat.Data.IDatabase)">
+            <summary>
+            Rerturn list of universities
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
         <member name="M:ParbatCore.Models.TestModel.Save(Parbat.Data.IDatabase)">
             <summary>
             Saving the instance
