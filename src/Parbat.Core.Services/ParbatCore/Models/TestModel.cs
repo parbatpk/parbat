@@ -11,7 +11,12 @@ using Parbat.Data;
 
 namespace ParbatCore.Models
 {
-    public class TestModel 
+    /// <summary>
+    /// The inerface to be implemented by each business object
+    /// </summary>
+
+
+    public class TestModel
     {
         /// <summary>
         /// University Id
@@ -23,7 +28,7 @@ namespace ParbatCore.Models
         /// </summary>
         [Required]
         public string UniversityName { get; set; }
-        
+
         public object Test()
         {
             DbConnection con = Database.Instance.CreateConnection();
@@ -35,7 +40,7 @@ namespace ParbatCore.Models
             var x = cmd2.ExecuteScalar();
 
             return x;
-            
+
         }
 
         /// <summary>
@@ -48,7 +53,7 @@ namespace ParbatCore.Models
             DbConnection con = db.CreateConnection();
             con.Open();
             DbCommand cmd = db.CreateSPCommand("GetAllUniversities", con);
-            DbDataAdapter adapter =  db.Factory.CreateDataAdapter();
+            DbDataAdapter adapter = db.Factory.CreateDataAdapter();
             DataSet result = new DataSet();
             adapter.SelectCommand = cmd;
             adapter.Fill(result);
@@ -107,22 +112,59 @@ namespace ParbatCore.Models
         }
     }
 
-    public class Student
+    /// <summary>
+    /// Student Object
+    /// </summary>
+    public class Student : IBussinesObject
     {
+        
+        /// <summary>
+        /// First Name of the student
+        /// </summary>
         [Required]
+        [MaxLength(50)]
         public string FirstName { get; set; }
+        /// <summary>
+        /// Last Name of student
+        /// </summary>
         [Required]
         public string LastName { get; set; }
 
-        public void Save(IDatabase db)
+        public int Delete(IDatabase db)
         {
-            DbConnection con = db.CreateConnection();
-            DbCommand cmd = db.CreateSPCommand("InserStudent", con);
-            cmd.Parameters.Add(db.CreateParameter(cmd, "FName", this.FirstName));
-            cmd.Parameters.Add(db.CreateParameter(cmd, "LName", this.LastName));
+            throw new NotImplementedException();
+        }
 
-            con.Open();
-            cmd.ExecuteNonQuery();
+        public IBussinesObject Find(IDatabase db)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataSet GetAll(IDatabase db)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Saving current object
+        /// </summary>
+        /// <param name="db"></param>
+        public int Save(IDatabase db)
+        {
+            using (DbConnection con = db.CreateConnection())
+            {
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.Student.Insert, con);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "FName", this.FirstName));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "LName", this.LastName));
+
+                con.Open();
+                return (Convert.ToInt32(cmd.ExecuteScalar()));
+            }
+        }
+
+        public int Update(IDatabase db)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -16,6 +16,51 @@
             <param name="values"></param>
             <returns></returns>
         </member>
+        <member name="T:ParbatCore.Models.IBussinesObject">
+            <summary>
+            All business object should implement this interface
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.IBussinesObject.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save the current instances
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.IBussinesObject.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find on the basis of current instances
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.IBussinesObject.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete current instances
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.IBussinesObject.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update current instance
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.IBussinesObject.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            return all records
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Models.TestModel">
+            <summary>
+            The inerface to be implemented by each business object
+            </summary>
+        </member>
         <member name="F:ParbatCore.Models.TestModel.UniversityId">
             <summary>
             University Id
@@ -39,6 +84,27 @@
             </summary>
             <param name="db"></param>
             <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Models.Student">
+            <summary>
+            Student Object
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Student.FirstName">
+            <summary>
+            First Name of the student
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Student.LastName">
+            <summary>
+            Last Name of student
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Student.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Saving current object
+            </summary>
+            <param name="db"></param>
         </member>
     </members>
 </doc>

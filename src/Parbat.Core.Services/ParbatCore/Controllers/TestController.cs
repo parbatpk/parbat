@@ -41,8 +41,8 @@ namespace ParbatCore.Controllers
         }
 
         [HttpGet]
-        [Route("/AllUniversities")]
-        public ActionResult GetAllUniversities([FromQuery] List<TestModel> list)
+        [Route("All")]
+        public ActionResult GetAllUniversities(int id)
         {
             return Ok();
         }
