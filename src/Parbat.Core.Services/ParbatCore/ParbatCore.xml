@@ -4,16 +4,16 @@
         <name>ParbatCore</name>
     </assembly>
     <members>
-        <member name="T:ParbatCore.Controllers.TestController">
+        <member name="T:ParbatCore.Controllers.StudentController">
             <summary>
             A test controller
             </summary>
         </member>
-        <member name="M:ParbatCore.Controllers.TestController.Get(ParbatCore.Models.Student)">
+        <member name="M:ParbatCore.Controllers.StudentController.SaveStudent(ParbatCore.Models.Student)">
             <summary>
             A test function
             </summary>
-            <param name="values"></param>
+            <param name="student"></param>
             <returns></returns>
         </member>
         <member name="T:ParbatCore.Models.IBussinesObject">
@@ -88,6 +88,22 @@
         <member name="T:ParbatCore.Models.Student">
             <summary>
             Student Object
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Student.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Student.#ctor(System.Int32)">
+            <summary>
+            overlaod consturctor
+            </summary>
+            <param name="studentId"></param>
+        </member>
+        <member name="P:ParbatCore.Models.Student.StudentId">
+            <summary>
+            Primary key of the Student table
             </summary>
         </member>
         <member name="P:ParbatCore.Models.Student.FirstName">

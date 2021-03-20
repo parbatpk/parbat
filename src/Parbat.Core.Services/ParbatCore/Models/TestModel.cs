@@ -53,6 +53,9 @@ namespace ParbatCore.Models
             DbConnection con = db.CreateConnection();
             con.Open();
             DbCommand cmd = db.CreateSPCommand("GetAllUniversities", con);
+            DataSet r = db.GetDataSet(cmd);
+            return r;
+
             DbDataAdapter adapter = db.Factory.CreateDataAdapter();
             DataSet result = new DataSet();
             adapter.SelectCommand = cmd;
@@ -117,7 +120,26 @@ namespace ParbatCore.Models
     /// </summary>
     public class Student : IBussinesObject
     {
-        
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Student() { }
+
+        /// <summary>
+        /// overlaod consturctor
+        /// </summary>
+        /// <param name="studentId"></param>
+        public Student(int studentId)
+        {
+            this.StudentId = studentId;
+        }
+
+        /// <summary>
+        /// Primary key of the Student table
+        /// </summary>
+        public int? StudentId { get; set; }
+
         /// <summary>
         /// First Name of the student
         /// </summary>
@@ -135,12 +157,12 @@ namespace ParbatCore.Models
             throw new NotImplementedException();
         }
 
-        public IBussinesObject Find(IDatabase db)
+        public DataTable Find(IDatabase db)
         {
             throw new NotImplementedException();
         }
 
-        public DataSet GetAll(IDatabase db)
+        public DataTable GetAll(IDatabase db)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Parbat.Data
         DbCommand CreateSPCommand(string spName, DbConnection connection);
         DbCommand CreateCommand(DbConnection connection);
         DbParameter CreateParameter(DbCommand cmd, string paramName, object value);
+        DataSet GetDataSet(DbCommand cmd);
 
     }
 
@@ -85,6 +87,16 @@ namespace Parbat.Data
             parameter.Value = value;
 
             return parameter;
+        }
+
+        public DataSet GetDataSet(DbCommand cmd)
+        {
+            DbDataAdapter adapter = Factory.CreateDataAdapter();
+            adapter.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+
+            return ds;
         }
     }
 }

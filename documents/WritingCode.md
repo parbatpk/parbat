@@ -1,4 +1,11 @@
-# Writing Code in * Parbat * 
+# Writing Code in *Parbat*
+
+## Naming Convention
+- Class Names: Pascal Case
+- Public Property: Pascal Case
+- Global Variables: ALL CAPS
+- Local Variables: camelCase
+- Class Memebrs: _camelCase (_ + camelCase)
 
 ## Writing Business Objects
 - All business objects must be created as a separate file in the Model folder
@@ -58,6 +65,25 @@ public class Student : IBussinesObject
             }
 ```
 
+#### Executing Store Proecuders
+```
+         DbCommand cmd = db.CreateSPCommand(ProcedureNames.Student.Insert, con);
+         cmd.Parameters.Add(db.CreateParameter(cmd, "FName", this.FirstName));
+         cmd.Parameters.Add(db.CreateParameter(cmd, "LName", this.LastName));
+		 con.Open();
+         return (Convert.ToInt32(cmd.ExecuteScalar()));
+```
+
+#### Executing SPs for Dataset
+```
+            DbConnection con = db.CreateConnection();
+            con.Open();
+            DbCommand cmd = db.CreateSPCommand("GetAllUniversities", con);
+            DataSet r = db.GetDataSet(cmd);
+            return r;
+
+```
+
 ## Writing Controller
 - Create a controller class
 - Add namespace Parbat.Data
@@ -69,10 +95,123 @@ using Parbat.Data
 [Route(GlobalConstants.API_CONTROLLER)]
 ```
 - Create appropriate methods with respected **VERBS**
--- HttpGet : returns  Ok()  / NotFound()
--- HttPost: returns Created() / BadRequest()
--- HttpPut: NoContent() / NotFound()
--- HttpDelete:NoContent / BadRequest()
+  -- HttpGet : returns  Ok()  / NotFound()
+  -- HttPost: returns Created() / BadRequest()
+  -- HttpPut: NoContent() / NotFound()
+  -- HttpDelete:NoContent / BadRequest()
 - Write code in try/catch
 - Make sure you are receving the data through right method
--- [FromQuery] for 
+  -- [FromBody] for post requests
+  -- [FromQuery] for Get Requests
+
+```
+/// <summary>
+    /// A student controller
+    /// </summary>
+    [Route(GlobalConstants.API_CONTROLLER)]
+    [ApiController]
+    public class StudentController : ControllerBase
+    {
+        /// <summary>
+        /// A test function
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult<Student> SaveStudent([FromBody] Student student)
+        {
+            try
+            {
+                int r = student.Save(Database.Instance);
+                student.StudentId = r;
+                if (student.StudentId > 0)
+                    return Created("GetStudentById", student.StudentId);
+                else
+                    return BadRequest();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// get at student by Id
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        [HttpGet("{studentId}")]
+        public ActionResult<Student> GetStudentById(int studentId)
+        {
+            Student s = new Student(studentId);
+            s = s.Find(Database.Instance) as Student;
+            if (s != null)
+                return Ok(s);
+
+            return NotFound();
+        }
+
+        /// <summary>
+        /// Update a student instance
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public ActionResult<Student> UpdateStudent([FromBody] Student s)
+        {
+            try
+            {
+                s.Update(Database.Instance);
+                return NoContent();
+            }
+            catch(Exception e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Delete a student by Id
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        [HttpDelete("{studentId}")]
+        public ActionResult<Student> DeleteStudentById(int studentId)
+        {
+            try
+            {
+                Student s = new Student(studentId);
+                s.Delete(Database.Instance);
+                return NoContent();
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+   
+
+        /// <summary>
+        /// Return all students
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("all")]
+        public ActionResult GetAllStudent()
+        {
+            try
+            {
+                Student s = new Student();
+                DataSet ds = s.GetAll(Database.Instance);
+
+                return Ok(ds.Tables[0]);
+
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+    }
+```

@@ -25,7 +25,7 @@ namespace ParbatCore.Models
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
-        IBussinesObject Find(IDatabase db);
+        DataTable Find(IDatabase db);
 
         /// <summary>
         /// Delete current instances
@@ -46,6 +46,6 @@ namespace ParbatCore.Models
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
-        DataSet GetAll(IDatabase db);
+        DataTable GetAll(IDatabase db);
     }
 }
