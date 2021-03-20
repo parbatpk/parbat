@@ -10,6 +10,8 @@ namespace Parbat.Data
         {
             public const string Insert = "InsertStudent";
             public const string Update = "UpdateStudent";
+            public const string Search = "SearchStudent";
+                
         }
     }
 }

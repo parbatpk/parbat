@@ -8,7 +8,7 @@ using ParbatCore.Models;
 
 namespace ParbatCore.Controllers
 {
-    [Route("api/[controller]")]
+    [Route(GlobalConstants.API_CONTROLLER)]
     [ApiController]
     public class ValuesController : ControllerBase
     {
