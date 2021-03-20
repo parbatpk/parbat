@@ -6,7 +6,7 @@
     <members>
         <member name="T:ParbatCore.Controllers.StudentController">
             <summary>
-            A test controller
+            A student controller
             </summary>
         </member>
         <member name="M:ParbatCore.Controllers.StudentController.SaveStudent(ParbatCore.Models.Student)">
@@ -14,6 +14,33 @@
             A test function
             </summary>
             <param name="student"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentController.GetStudentById(System.Int32)">
+            <summary>
+            get at student by Id
+            </summary>
+            <param name="studentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentController.UpdateStudent(ParbatCore.Models.Student)">
+            <summary>
+            Update a student instance
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentController.DeleteStudentById(System.Int32)">
+            <summary>
+            Delete a student by Id
+            </summary>
+            <param name="studentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentController.GetAllStudent">
+            <summary>
+            Return all students
+            </summary>
             <returns></returns>
         </member>
         <member name="T:ParbatCore.Models.IBussinesObject">

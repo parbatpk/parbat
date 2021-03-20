@@ -53,9 +53,9 @@ namespace ParbatCore.Controllers
         public ActionResult<Student> GetStudentById(int studentId)
         {
             Student s = new Student(studentId);
-            s = s.Find(Database.Instance) as Student;
-            if (s != null)
-                return Ok(s);
+            DataTable t = s.Find(Database.Instance);
+            if (t != null)
+                return Ok(t);
 
             return NotFound();
         }
@@ -110,9 +110,9 @@ namespace ParbatCore.Controllers
             try
             {
                 Student s = new Student();
-                DataSet ds = s.GetAll(Database.Instance);
+                DataTable ds = s.GetAll(Database.Instance);
 
-                return Ok(ds.Tables[0]);
+                return Ok(ds);
 
             }
             catch(Exception e)
