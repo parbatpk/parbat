@@ -11,6 +11,7 @@
 
 ## Writing Stored Procedures
 - Create a struct with same as name of _Table Name_ in **Parbat.Data.ProceduresNames**
+- All SPs must be saved in the **parbat\database\procds** folder.
 - Create entries for Insert/Update/Delete/Find/List with respective SPs name
 - **Insert:** should return SCOPE_IDENTITY() as the result
 - **Update:** If the record does not exist then raise error
