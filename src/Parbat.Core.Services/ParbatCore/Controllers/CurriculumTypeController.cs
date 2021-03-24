@@ -26,11 +26,13 @@ namespace ParbatCore.Controllers
         [HttpGet("{id}")]
         public ActionResult<CurriculumType> Get(long id)
         {
-            CurriculumType c = new CurriculumType();
-            c.CurriculumTypeID = id;
+            CurriculumType c = new CurriculumType
+            {
+                CurriculumTypeID = id
+            };
             c = c.Find(Database.Instance) as CurriculumType;
 
-            if (c.CurriculumTypeID > 0)
+            if (c != null)
                 return Ok(c);
             else
                 return NotFound();
@@ -57,14 +59,25 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult Update([FromBody]CurriculumType ctype)
         {
+            if (ctype.Find(Database.Instance) == null)
+                return BadRequest();
+
             if (ctype.CurriculumTypeID != null && ctype.CurriculumTypeID > 0)
             {
-                ctype.Update(Database.Instance);
-                return NoContent();
+                try
+                {
+                    ctype.Update(Database.Instance);
+                    return NoContent();
+                }
+                catch
+                {
+
+                    return BadRequest();
+                }
             }
             else
                 return BadRequest();
-                
+
         }
 
         /// <summary>
@@ -77,6 +90,28 @@ namespace ParbatCore.Controllers
         {
             ctype.Save(Database.Instance);
             return Created("Get", ctype);
+        }
+
+        /// <summary>
+        /// Delete instance
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        public ActionResult Delete(long id)
+        {
+            CurriculumType c = new CurriculumType
+            {
+                CurriculumTypeID = id
+            };
+            c = (CurriculumType)c.Find(Database.Instance);
+
+            if (c == null)
+                return BadRequest();
+
+            c.Delete(Database.Instance);
+            return NoContent();
+
         }
     }
 }

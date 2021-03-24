@@ -37,6 +37,13 @@
             <param name="ctype"></param>
             <returns></returns>
         </member>
+        <member name="M:ParbatCore.Controllers.CurriculumTypeController.Delete(System.Int64)">
+            <summary>
+            Delete instance
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Models.CurriculumType">
             <summary>
             Curriculum Type Table

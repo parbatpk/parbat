@@ -58,9 +58,15 @@ namespace ParbatCore.Models
                 DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Find, con);
                 cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
                 string txt = Convert.ToString(cmd.ExecuteScalar());
-                CurriculumType found  = JsonSerializer.Deserialize<CurriculumType>(txt);
-
-                return found;
+                try
+                {
+                    CurriculumType found = JsonSerializer.Deserialize<CurriculumType>(txt);
+                    return found;
+                }
+                catch(JsonException je)
+                {
+                    return null;
+                }
             }
         }
 
