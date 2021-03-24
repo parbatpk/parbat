@@ -39,26 +39,26 @@ public class Student : IBussinesObject
 - Must comment each method/attribute with appropriate documenting.
 ```
 /// <summary>
-        /// First Name of the student
-        /// </summary>
-        [Required]
-        [MaxLength(50)]
-        public string FirstName { get; set; }
-        /// <summary>
-        /// Last Name of student
-        /// </summary>
-        [Required]
-        public string LastName { get; set; }
+/// First Name of the student
+/// </summary>
+[Required]
+[MaxLength(50)]
+public string FirstName { get; set; }
+/// <summary>
+/// Last Name of student
+/// </summary>
+[Required]
+public string LastName { get; set; }
 
-        /// <summary>
-        /// Delete the record from the database
-        /// </summary>
-        /// <param name="db"></param>
-        /// <returns></returns>
-        public int Delete(IDatabase db)
-        {
-            throw new NotImplementedException();
-        }
+/// <summary>
+/// Delete the record from the database
+/// </summary>
+/// <param name="db"></param>
+/// <returns></returns>
+public int Delete(IDatabase db)
+{
+    throw new NotImplementedException();
+}
 ```
 ### Executing database commands
 - Each method must receive a *IDatabase* instance
@@ -67,32 +67,32 @@ public class Student : IBussinesObject
 - We add parameters using *IDatabase.CreateParameter* method
 ```
  using (DbConnection con = db.CreateConnection())
-            {
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.Student.Insert, con);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "FName", this.FirstName));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "LName", this.LastName));
+{
+    DbCommand cmd = db.CreateSPCommand(ProcedureNames.Student.Insert, con);
+    cmd.Parameters.Add(db.CreateParameter(cmd, "@FName", this.FirstName));
+    cmd.Parameters.Add(db.CreateParameter(cmd, "@LName", this.LastName));
 
-                con.Open();
-                return (Convert.ToInt32(cmd.ExecuteScalar()));
-            }
+    con.Open();
+    return (Convert.ToInt32(cmd.ExecuteScalar()));
+}
 ```
 
 #### Executing Store Proecuders
 ```
-         DbCommand cmd = db.CreateSPCommand(ProcedureNames.Student.Insert, con);
-         cmd.Parameters.Add(db.CreateParameter(cmd, "FName", this.FirstName));
-         cmd.Parameters.Add(db.CreateParameter(cmd, "LName", this.LastName));
-		 con.Open();
-         return (Convert.ToInt32(cmd.ExecuteScalar()));
+    DbCommand cmd = db.CreateSPCommand(ProcedureNames.Student.Insert, con);
+    cmd.Parameters.Add(db.CreateParameter(cmd, "@FName", this.FirstName));
+    cmd.Parameters.Add(db.CreateParameter(cmd, "@LName", this.LastName));
+	con.Open();
+    return (Convert.ToInt32(cmd.ExecuteScalar()));
 ```
 
 #### Executing SPs for Dataset
 ```
-            DbConnection con = db.CreateConnection();
-            con.Open();
-            DbCommand cmd = db.CreateSPCommand("GetAllUniversities", con);
-            DataSet r = db.GetDataSet(cmd);
-            return r;
+DbConnection con = db.CreateConnection();
+con.Open();
+DbCommand cmd = db.CreateSPCommand("GetAllUniversities", con);
+DataSet r = db.GetDataSet(cmd);
+return r;
 
 ```
 
