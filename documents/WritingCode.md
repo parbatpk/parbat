@@ -107,8 +107,8 @@ using Parbat.Data
 [Route(GlobalConstants.API_CONTROLLER)]
 ```
 - We create at least following methods
-  -- Get: retruns an object for the Primary Key
-  ```
+  - Get: retruns an object for the Primary Key
+	```
 	[HttpGet("{id}")]
     public ActionResult<CurriculumType> Get(long id)
 	{
@@ -116,13 +116,12 @@ using Parbat.Data
         c.CurriculumTypeID = id;
         c = c.Find(Database.Instance) as CurriculumType;
 
-        if (c.CurriculumTypeID > 0)
 			return Ok(c);
 		else
             return NotFound();
      }
   ```
-  -- List: returns all records
+  - List: returns all records
   ```
 	[HttpGet]
 	public ActionResult List()
@@ -131,7 +130,7 @@ using Parbat.Data
 		return Ok(c.GetAll(Database.Instance));
 	}
   ```
-  -- Update: update on instance of a record
+  - Update: update on instance of a record
   ```
 		[HttpPut]
         public ActionResult Update([FromBody]CurriculumType ctype)
@@ -146,7 +145,7 @@ using Parbat.Data
                 
         }
   ```
-   -- Create: Insert a new record
+  - Create: Insert a new record
    ```
 		[HttpPost]
         public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
@@ -157,12 +156,12 @@ using Parbat.Data
    ```
 
 - We returns following types/results for the respective type (success/fail)
-  -- HttpGet : returns  Ok()  / NotFound()
-  -- HttPost: returns Created() / BadRequest()
-  -- HttpPut: NoContent() / NotFound()
-  -- HttpDelete:NoContent / BadRequest()
+  - HttpGet : returns  Ok()  / NotFound()
+  - HttPost: returns Created() / BadRequest()
+  - HttpPut: NoContent() / NotFound()
+  - HttpDelete:NoContent / BadRequest()
 
 - Make sure you are receving the data through right method
-  -- [FromBody] for post requests
-  -- [FromQuery] for Get Requests
+  - [FromBody] for post requests
+  - [FromQuery] for Get Requests
 
