@@ -16,6 +16,18 @@
 - Update: If the record does not exist then raise error
 - Delete: If the record deos not exist then raise error
 - Find: If the record does not exist then raise error
+  - Must returns a JSON object. This can be acheived by using FOR JSON AUTO (see below example)
+  ```
+	SELECT	TOP 1 * 
+	FROM	CurriculumType 
+	WHERE	CurriculumTypeID = @CurriculumTypeID
+	FOR JSON AUTO, Without_Array_Wrapper;
+  ```
+  - Deserialize this object using JsonSerializer.Deserialize<>
+  ```
+  string txt = Convert.ToString(cmd.ExecuteScalar());
+  CurriculumType found  = JsonSerializer.Deserialize<CurriculumType>(txt);
+  ```
 - List: does not raise error
 
 ## Writing Business Objects
