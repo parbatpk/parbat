@@ -6,6 +6,8 @@
 - Global Variables: ALL CAPS
 - Local Variables: camelCase
 - Class Memebrs: _camelCase (_ + camelCase)
+- Store Procedures (SPs): Pascal Case with prefix "sp" e.g. spPascalCase 
+- SPs parameters: @PascalCase 
 
 ## Writing Business Objects
 - All business objects must be created as a separate file in the Model folder
@@ -21,9 +23,10 @@ using Parbat.Data;
 public class Student : IBussinesObject
 ```
 - Implement all methods of the interface
-- Define **[Required]** attribute for each * Not Null * attributes. 
+- Make sure that all nullable attributes are defined as nullable (e.g. int?)
+- Define **[Required]** attribute for each *Not Null* attributes. 
 - You can define other restriction such as maximum length etc
-- In the following example, *First Name* and *Last Name* are requried 
+- In the following example, *First Name* and *Last Name* are requried
 - Must comment each method/attribute with appropriate documenting.
 ```
 /// <summary>
@@ -94,124 +97,63 @@ using Parbat.Data
 ```
 [Route(GlobalConstants.API_CONTROLLER)]
 ```
-- Create appropriate methods with respected **VERBS**
+- We create at least following methods
+  -- Get: retruns an object for the Primary Key
+  ```
+	[HttpGet("{id}")]
+    public ActionResult<CurriculumType> Get(long id)
+	{
+        CurriculumType c = new CurriculumType();
+        c.CurriculumTypeID = id;
+        c = c.Find(Database.Instance) as CurriculumType;
+
+        if (c.CurriculumTypeID > 0)
+			return Ok(c);
+		else
+            return NotFound();
+     }
+  ```
+  -- List: returns all records
+  ```
+	[HttpGet]
+	public ActionResult List()
+	{
+		CurriculumType c = new CurriculumType();
+		return Ok(c.GetAll(Database.Instance));
+	}
+  ```
+  -- Update: update on instance of a record
+  ```
+		[HttpPut]
+        public ActionResult Update([FromBody]CurriculumType ctype)
+        {
+            if (ctype.CurriculumTypeID != null && ctype.CurriculumTypeID > 0)
+            {
+                ctype.Update(Database.Instance);
+                return NoContent();
+            }
+            else
+                return BadRequest();
+                
+        }
+  ```
+   -- Create: Insert a new record
+   ```
+		[HttpPost]
+        public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
+        {
+            ctype.Save(Database.Instance);
+            return Created("Get", ctype);
+        }
+   ```
+
+- We returns following types/results for the respective type (success/fail)
   -- HttpGet : returns  Ok()  / NotFound()
   -- HttPost: returns Created() / BadRequest()
   -- HttpPut: NoContent() / NotFound()
   -- HttpDelete:NoContent / BadRequest()
-- Write code in try/catch
+
 - Make sure you are receving the data through right method
   -- [FromBody] for post requests
   -- [FromQuery] for Get Requests
 
-```
-/// <summary>
-    /// A student controller
-    /// </summary>
-    [Route(GlobalConstants.API_CONTROLLER)]
-    [ApiController]
-    public class StudentController : ControllerBase
-    {
-        /// <summary>
-        /// A test function
-        /// </summary>
-        /// <param name="student"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public ActionResult<Student> SaveStudent([FromBody] Student student)
-        {
-            try
-            {
-                int r = student.Save(Database.Instance);
-                student.StudentId = r;
-                if (student.StudentId > 0)
-                    return Created("GetStudentById", student.StudentId);
-                else
-                    return BadRequest();
-            }
-            catch (Exception e)
-            {
-
-                return BadRequest(e.Message);
-            }
-
-        }
-
-        /// <summary>
-        /// get at student by Id
-        /// </summary>
-        /// <param name="studentId"></param>
-        /// <returns></returns>
-        [HttpGet("{studentId}")]
-        public ActionResult<Student> GetStudentById(int studentId)
-        {
-            Student s = new Student(studentId);
-            s = s.Find(Database.Instance) as Student;
-            if (s != null)
-                return Ok(s);
-
-            return NotFound();
-        }
-
-        /// <summary>
-        /// Update a student instance
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        [HttpPut]
-        public ActionResult<Student> UpdateStudent([FromBody] Student s)
-        {
-            try
-            {
-                s.Update(Database.Instance);
-                return NoContent();
-            }
-            catch(Exception e)
-            {
-                return NotFound(e.Message);
-            }
-        }
-
-        /// <summary>
-        /// Delete a student by Id
-        /// </summary>
-        /// <param name="studentId"></param>
-        /// <returns></returns>
-        [HttpDelete("{studentId}")]
-        public ActionResult<Student> DeleteStudentById(int studentId)
-        {
-            try
-            {
-                Student s = new Student(studentId);
-                s.Delete(Database.Instance);
-                return NoContent();
-            }
-            catch(Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-   
-
-        /// <summary>
-        /// Return all students
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("all")]
-        public ActionResult GetAllStudent()
-        {
-            try
-            {
-                Student s = new Student();
-                DataSet ds = s.GetAll(Database.Instance);
-
-                return Ok(ds.Tables[0]);
-
-            }
-            catch(Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-    }
-```
