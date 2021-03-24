@@ -18,28 +18,28 @@ namespace ParbatCore.Models
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
-        int Save(IDatabase db);
+        long? Save(IDatabase db);
 
         /// <summary>
         /// Find on the basis of current instances
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
-        DataTable Find(IDatabase db);
+        IBussinesObject Find(IDatabase db);
 
         /// <summary>
         /// Delete current instances
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
-        int Delete(IDatabase db);
+        void Delete(IDatabase db);
 
         /// <summary>
         /// Update current instance
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
-        int Update(IDatabase db);
+        void Update(IDatabase db);
 
         /// <summary>
         /// return all records

@@ -4,44 +4,86 @@
         <name>ParbatCore</name>
     </assembly>
     <members>
-        <member name="T:ParbatCore.Controllers.StudentController">
+        <member name="T:ParbatCore.Controllers.CurriculumTypeController">
             <summary>
-            A student controller
+            Service for Curriculum Type 
             </summary>
         </member>
-        <member name="M:ParbatCore.Controllers.StudentController.SaveStudent(ParbatCore.Models.Student)">
+        <member name="M:ParbatCore.Controllers.CurriculumTypeController.Get(System.Int64)">
             <summary>
-            A test function
+            Get Curriculum Type of given id
             </summary>
-            <param name="student"></param>
+            <param name="id"></param>
+            <returns>Return json object of Curriculum Type</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.CurriculumTypeController.List">
+            <summary>
+            Return all records
+            </summary>
+            <param name="id"></param>
+            <returns>Return a DataTable</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.CurriculumTypeController.Update(ParbatCore.Models.CurriculumType)">
+            <summary>
+            Update Curriculum Type
+            </summary>
+            <param name="ctype"></param>
+            <returns>Returns only http codeds</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.CurriculumTypeController.Create(ParbatCore.Models.CurriculumType)">
+            <summary>
+            Create a new curriculum type
+            </summary>
+            <param name="ctype"></param>
             <returns></returns>
         </member>
-        <member name="M:ParbatCore.Controllers.StudentController.GetStudentById(System.Int32)">
+        <member name="T:ParbatCore.Models.CurriculumType">
             <summary>
-            get at student by Id
+            Curriculum Type Table
             </summary>
-            <param name="studentId"></param>
+        </member>
+        <member name="P:ParbatCore.Models.CurriculumType.CurriculumTypeID">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.CurriculumType.Name">
+            <summary>
+            Curriculum Name
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.CurriculumType.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete curriculum type
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.CurriculumType.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find Curriculum Type
+            </summary>
+            <param name="db"></param>
             <returns></returns>
         </member>
-        <member name="M:ParbatCore.Controllers.StudentController.UpdateStudent(ParbatCore.Models.Student)">
+        <member name="M:ParbatCore.Models.CurriculumType.GetAll(Parbat.Data.IDatabase)">
             <summary>
-            Update a student instance
+            Get All curriculum type
             </summary>
-            <param name="s"></param>
+            <param name="db"></param>
             <returns></returns>
         </member>
-        <member name="M:ParbatCore.Controllers.StudentController.DeleteStudentById(System.Int32)">
+        <member name="M:ParbatCore.Models.CurriculumType.Save(Parbat.Data.IDatabase)">
             <summary>
-            Delete a student by Id
+            Save Curruciulum Type
             </summary>
-            <param name="studentId"></param>
+            <param name="db"></param>
             <returns></returns>
         </member>
-        <member name="M:ParbatCore.Controllers.StudentController.GetAllStudent">
+        <member name="M:ParbatCore.Models.CurriculumType.Update(Parbat.Data.IDatabase)">
             <summary>
-            Return all students
+            Update Curriculum Type
             </summary>
-            <returns></returns>
+            <param name="db"></param>
         </member>
         <member name="T:ParbatCore.Models.IBussinesObject">
             <summary>
@@ -111,43 +153,6 @@
             </summary>
             <param name="db"></param>
             <returns></returns>
-        </member>
-        <member name="T:ParbatCore.Models.Student">
-            <summary>
-            Student Object
-            </summary>
-        </member>
-        <member name="M:ParbatCore.Models.Student.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="M:ParbatCore.Models.Student.#ctor(System.Int32)">
-            <summary>
-            overlaod consturctor
-            </summary>
-            <param name="studentId"></param>
-        </member>
-        <member name="P:ParbatCore.Models.Student.StudentId">
-            <summary>
-            Primary key of the Student table
-            </summary>
-        </member>
-        <member name="P:ParbatCore.Models.Student.FirstName">
-            <summary>
-            First Name of the student
-            </summary>
-        </member>
-        <member name="P:ParbatCore.Models.Student.LastName">
-            <summary>
-            Last Name of student
-            </summary>
-        </member>
-        <member name="M:ParbatCore.Models.Student.Save(Parbat.Data.IDatabase)">
-            <summary>
-            Saving current object
-            </summary>
-            <param name="db"></param>
         </member>
     </members>
 </doc>
