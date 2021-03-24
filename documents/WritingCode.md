@@ -10,12 +10,12 @@
 - SPs parameters: @PascalCase 
 
 ## Writing Stored Procedures
-- Create a struct with same as name of Table Name in Parbat.Data.ProceduresNames
+- Create a struct with same as name of _Table Name_ in **Parbat.Data.ProceduresNames**
 - Create entries for Insert/Update/Delete/Find/List with respective SPs name
-- Insert: should return SCOPE_IDENTITY() as the result
-- Update: If the record does not exist then raise error
-- Delete: If the record deos not exist then raise error
-- Find: If the record does not exist then raise error
+- **Insert:** should return SCOPE_IDENTITY() as the result
+- **Update:** If the record does not exist then raise error
+- **Delete:** If the record deos not exist then raise error
+- **Find:** If the record does not exist then raise error
   - Must returns a JSON object. This can be acheived by using FOR JSON AUTO (see below example)
   ```
 	SELECT	TOP 1 * 
@@ -44,8 +44,9 @@ using Parbat.Data;
 public class Student : IBussinesObject
 ```
 - Implement all methods of the interface
-- Make sure that all nullable attributes are defined as nullable (e.g. int?)
-- Define **[Required]** attribute for each *Not Null* attributes. 
+- Make sure that all _nullable_ attributes are defined as nullable (e.g. int?)
+- Define **[Required]** attribute for each *Not Null* attributes.
+- Do not define Primary Key as required attribute 
 - You can define other restriction such as maximum length etc
 - In the following example, *First Name* and *Last Name* are requried
 - Must comment each method/attribute with appropriate documenting.
@@ -118,62 +119,62 @@ using Parbat.Data
 ```
 [Route(GlobalConstants.API_CONTROLLER)]
 ```
-- We create at least following methods
-  - Get: retruns an object for the Primary Key
-	```
-	[HttpGet("{id}")]
-    public ActionResult<CurriculumType> Get(long id)
-	{
-        CurriculumType c = new CurriculumType();
+
+### We create at least following methods
+- **Get:** retruns an object for the Primary Key
+```
+[HttpGet("{id}")]
+public ActionResult<CurriculumType> Get(long id)
+{
+	CurriculumType c = new CurriculumType();
         c.CurriculumTypeID = id;
         c = c.Find(Database.Instance) as CurriculumType;
-
-			return Ok(c);
-		else
-            return NotFound();
+	if (c.CurriculumTypeID > 0)
+		return Ok(c);
+	else
+        	return NotFound();
      }
-  ```
-  - List: returns all records
-  ```
-	[HttpGet]
-	public ActionResult List()
-	{
-		CurriculumType c = new CurriculumType();
-		return Ok(c.GetAll(Database.Instance));
-	}
-  ```
-  - Update: update on instance of a record
-  ```
-		[HttpPut]
-        public ActionResult Update([FromBody]CurriculumType ctype)
+```
+- **List:** returns all records
+```
+[HttpGet]
+public ActionResult List()
+{
+	CurriculumType c = new CurriculumType();
+	return Ok(c.GetAll(Database.Instance));
+}
+```
+- **Update:** update on instance of a record
+```
+[HttpPut]
+public ActionResult Update([FromBody]CurriculumType ctype)
+{
+	if (ctype.CurriculumTypeID != null && ctype.CurriculumTypeID > 0)
         {
-            if (ctype.CurriculumTypeID != null && ctype.CurriculumTypeID > 0)
-            {
-                ctype.Update(Database.Instance);
+        	ctype.Update(Database.Instance);
                 return NoContent();
-            }
-            else
-                return BadRequest();
-                
         }
-  ```
-  - Create: Insert a new record
-   ```
-		[HttpPost]
-        public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
-        {
-            ctype.Save(Database.Instance);
-            return Created("Get", ctype);
-        }
-   ```
+        else
+        	return BadRequest();                
+}
+```
+- **Create:** Insert a new record
+```
+[HttpPost]
+public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
+{
+  	ctype.Save(Database.Instance);
+        return Created("Get", ctype);
+}
+```
 
 - We returns following types/results for the respective type (success/fail)
-  - HttpGet : returns  Ok()  / NotFound()
-  - HttPost: returns Created() / BadRequest()
-  - HttpPut: NoContent() / NotFound()
-  - HttpDelete:NoContent / BadRequest()
+  - **HttpGet:** returns  Ok()  / NotFound()
+  - **HttPost:** returns Created() / BadRequest()
+  - **HttpPut:** NoContent() / NotFound()
+  - **HttpDelete:** NoContent / BadRequest()
 
 - Make sure you are receving the data through right method
-  - [FromBody] for post requests
-  - [FromQuery] for Get Requests
+  - **[FromBody]** for post requests
+  - **[FromQuery]** for Get Requests
 
