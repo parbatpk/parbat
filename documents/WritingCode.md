@@ -9,6 +9,15 @@
 - Store Procedures (SPs): Pascal Case with prefix "sp" e.g. spPascalCase 
 - SPs parameters: @PascalCase 
 
+## Writing Stored Procedures
+- Create a struct with same as name of Table Name in Parbat.Data.ProceduresNames
+- Create entries for Insert/Update/Delete/Find/List with respective SPs name
+- Insert: should return SCOPE_IDENTITY() as the result
+- Update: If the record does not exist then raise error
+- Delete: If the record deos not exist then raise error
+- Find: If the record does not exist then raise error
+- List: does not raise error
+
 ## Writing Business Objects
 - All business objects must be created as a separate file in the Model folder
 - Include the following name spaces
