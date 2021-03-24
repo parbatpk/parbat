@@ -125,34 +125,5 @@
             <param name="db"></param>
             <returns></returns>
         </member>
-        <member name="T:ParbatCore.Models.TestModel">
-            <summary>
-            The inerface to be implemented by each business object
-            </summary>
-        </member>
-        <member name="F:ParbatCore.Models.TestModel.UniversityId">
-            <summary>
-            University Id
-            </summary>
-        </member>
-        <member name="P:ParbatCore.Models.TestModel.UniversityName">
-            <summary>
-            Univesity Name
-            </summary>
-        </member>
-        <member name="M:ParbatCore.Models.TestModel.GetAllUniversities(Parbat.Data.IDatabase)">
-            <summary>
-            Rerturn list of universities
-            </summary>
-            <param name="db"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ParbatCore.Models.TestModel.Save(Parbat.Data.IDatabase)">
-            <summary>
-            Saving the instance
-            </summary>
-            <param name="db"></param>
-            <returns></returns>
-        </member>
     </members>
 </doc>
