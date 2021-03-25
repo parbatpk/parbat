@@ -10,14 +10,59 @@ The following operations should be referred whenever CRUD-L is defind
 |  POST |[FromBody] BO  | BO | Insert | - | 
 |  PUT |[FromBody] BO  | - | Insert | Returns BadRequest() if record does not exists | 
 
+For Guideline on writing code [see] (/WritingCode.md) 
 
 ## Services
 
 <details>
 <summary> /CurriculumType </summary>
- 
- ### /CurriculumType
-|  Verb | Input | Returns| Description | Implemented |
+
+|  Verb | Input | Returns| Description | Business Rule(s) |
+|  --- | --- | --- | --- | --- |
+|  CRUD-L | - |-  | - | - |
+
+</details>
+
+<details>
+<summary> /ComponentType </summary>
+
+|  Verb | Input | Returns| Description | Business Rule(s) |
+|  --- | --- | --- | --- | --- |
+|  CRUD-L | - |-  | - | - |
+
+</details>
+
+<details>
+<summary> /CourseType </summary>
+
+|  Verb | Input | Returns| Description | Business Rule(s) |
+|  --- | --- | --- | --- | --- |
+|  CRUD-L | - |-  | - | - |
+
+</details>
+
+<details>
+<summary> /StudentStatus </summary>
+
+|  Verb | Input | Returns| Description | Business Rule(s) |
+|  --- | --- | --- | --- | --- |
+|  CRUD-L | - |-  | - | - |
+
+</details>
+
+<details>
+<summary> /OrgUnitType </summary>
+
+|  Verb | Input | Returns| Description | Business Rule(s) |
+|  --- | --- | --- | --- | --- |
+|  CRUD-L | - |-  | - | - |
+
+</details>
+
+<details>
+<summary> /Course </summary>
+
+|  Verb | Input | Returns| Description | Business Rule(s) |
 |  --- | --- | --- | --- | --- |
 |  CRUD-L | - |-  | - | - |
 
