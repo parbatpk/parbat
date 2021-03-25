@@ -49,31 +49,132 @@ public class Student : IBussinesObject
 - Define **[Required]** attribute for each *Not Null* attributes.
 - Do not define Primary Key as required attribute 
 - You can define other restriction such as maximum length etc
-- In the following example, *First Name* and *Last Name* are requried
+- In the following example, *Name* is required but *CurriculumTypeID* is not are requried
 - Must comment each method/attribute with appropriate documenting.
+- Implement the businsess logic as given in Services' document
 ```
-/// <summary>
-/// First Name of the student
-/// </summary>
-[Required]
-[MaxLength(50)]
-public string FirstName { get; set; }
-/// <summary>
-/// Last Name of student
-/// </summary>
-[Required]
-public string LastName { get; set; }
+ /// <summary>
+    /// Curriculum Type Table
+    /// </summary>
+    public class CurriculumType : IBussinesObject
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        public long? CurriculumTypeID { get; set; }
 
-/// <summary>
-/// Delete the record from the database
-/// </summary>
-/// <param name="db"></param>
-/// <returns></returns>
-public int Delete(IDatabase db)
-{
-    throw new NotImplementedException();
-}
-```
+        /// <summary>
+        /// Curriculum Name
+        /// </summary>
+        [Required]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Delete curriculum type
+        /// </summary>
+        /// <param name="db"></param>
+        public void Delete(IDatabase db)
+        {
+            // otherwise create a new entry/record
+            using (DbConnection con = db.CreateConnection())
+            {
+                con.Open();
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Delete,
+                    con);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
+        /// Find Curriculum Type
+        /// </summary>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public IBussinesObject Find(IDatabase db)
+        {
+            // otherwise create a new entry/record
+            using (DbConnection con = db.CreateConnection())
+            {
+                con.Open();
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Find, con);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
+                string txt = Convert.ToString(cmd.ExecuteScalar());
+                try
+                {
+                    CurriculumType found = JsonSerializer.Deserialize<CurriculumType>(txt);
+                    return found;
+                }
+                catch(JsonException je)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get All curriculum type
+        /// </summary>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public DataTable GetAll(IDatabase db)
+        {
+            // otherwise create a new entry/record
+            using (DbConnection con = db.CreateConnection())
+            {
+                con.Open();
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.GetAll, con);
+                DataSet ds = db.GetDataSet(cmd);
+
+                return ds.Tables[0];
+            }
+        }
+
+        /// <summary>
+        /// Save Curruciulum Type
+        /// </summary>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public long? Save(IDatabase db)
+        {
+            // If this is already saved object then just update
+            if (this.CurriculumTypeID > 0)
+            {
+                this.Update(db);
+                return this.CurriculumTypeID;
+            }
+
+            // otherwise create a new entry/record
+            using (DbConnection con = db.CreateConnection())
+            {
+                con.Open();
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Insert,
+                    con);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@Name", this.Name));
+                this.CurriculumTypeID = Convert.ToInt64(cmd.ExecuteScalar());
+
+                return this.CurriculumTypeID;
+            }
+
+
+        }
+
+        /// <summary>
+        /// Update Curriculum Type
+        /// </summary>
+        /// <param name="db"></param>
+        public void Update(IDatabase db)
+        {
+            using (DbConnection con = db.CreateConnection())
+            {
+                con.Open();
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Update, con);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@Name", this.Name));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }```
 ### Executing database commands
 - Each method must receive a *IDatabase* instance
 - We must first create a connection using *IDatabase.CraeteConnection* method
@@ -168,7 +269,6 @@ public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
         return Created("Get", ctype);
 }
 ```
-
 - We returns following types/results for the respective type (success/fail)
   - **HttpGet:** returns  Ok()  / NotFound()
   - **HttPost:** returns Created() / BadRequest()
@@ -179,3 +279,14 @@ public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
   - **[FromBody]** for post requests
   - **[FromQuery]** for Get Requests
 
+## CRUD-L Template
+The following operations should be referred whenever CRUD-L is defind
+- BO = Business Object, PK = Primary Key
+
+|  Verb | Input | Returns| Description | Business Rule(s) | 
+|  --- | --- | --- | --- | --- | 
+|  GET |  |DataTable / Array | List | - | 
+|  GET(long) | PK | BO | Find | Returns NotFound() if record does not exist | 
+|  Delete(long) | PK | - | Delete | Returns BadRequest() if record does not exists | 
+|  POST |[FromBody] BO  | BO | Insert | - | 
+|  PUT |[FromBody] BO  | - | Insert | Returns BadRequest() if record does not exists | 
