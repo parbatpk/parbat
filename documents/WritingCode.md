@@ -174,7 +174,8 @@ public class Student : IBussinesObject
                 cmd.ExecuteNonQuery();
             }
         }
-    }```
+    }
+ ```
 ### Executing database commands
 - Each method must receive a *IDatabase* instance
 - We must first create a connection using *IDatabase.CraeteConnection* method
@@ -282,6 +283,7 @@ public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
 ## CRUD-L Template
 The following operations should be referred whenever CRUD-L is defind
 - BO = Business Object, PK = Primary Key
+
 
 |  Verb | Input | Returns| Description | Business Rule(s) | 
 |  --- | --- | --- | --- | --- | 
