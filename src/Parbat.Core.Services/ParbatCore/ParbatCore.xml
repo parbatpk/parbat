@@ -4,6 +4,46 @@
         <name>ParbatCore</name>
     </assembly>
     <members>
+        <member name="T:ParbatCore.Controllers.ComponentTypeController">
+            <summary>
+            Service for  Component Type 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentTypeController.Get(System.Int64)">
+            <summary>
+            Get  Component Type of given id
+            </summary>
+            <param name="id"></param>
+            <returns>Return json object of  Component Type</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentTypeController.List">
+            <summary>
+            Return all records
+            </summary>
+            <param name="id"></param>
+            <returns>Return a DataTable</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentTypeController.Update(ParbatCore.Models.ComponentType)">
+            <summary>
+            Update  Component Type
+            </summary>
+            <param name="ctype"></param>
+            <returns>Returns only http codeds</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentTypeController.Create(ParbatCore.Models.ComponentType)">
+            <summary>
+            Create a new  Component Type
+            </summary>
+            <param name="ctype"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentTypeController.Delete(System.Int64)">
+            <summary>
+            Delete instance
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Controllers.CurriculumTypeController">
             <summary>
             Service for Curriculum Type 
@@ -43,6 +83,59 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Models.ComponentType">
+            <summary>
+            Component Type Table
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentType.ComponentTypeID">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentType.Name">
+            <summary>
+            Component Name
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentType.IsRequired">
+            <summary>
+            Component IsRequired
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentType.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete Component Type
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentType.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find Component Type
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentType.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get All Component Type
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentType.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save Component Type
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentType.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update Component Type
+            </summary>
+            <param name="db"></param>
         </member>
         <member name="T:ParbatCore.Models.CurriculumType">
             <summary>
