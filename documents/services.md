@@ -62,9 +62,13 @@ For Guideline on writing code [see] (/WritingCode.md)
 <details>
 <summary> /Course </summary>
 
-|  Verb | Input | Returns| Description | Business Rule(s) |
-|  --- | --- | --- | --- | --- |
-|  CRUD-L | - |-  | - | - |
+|  Verb | Input | Returns| Description | Business Rule(s) | 
+|  --- | --- | --- | --- | --- | 
+|  GET |  |DataTable / Array | List | - | 
+|  GET(long) | PK | BO | Find | Returns NotFound() if record does not exist | 
+|  Delete(long) | PK | - | Delete | Returns BadRequest() if record does not exists | 
+|  POST |[FromBody] BO  | BO | Insert | In BO: Make sure that there is not another record with the same name | 
+|  PUT |[FromBody] BO  | - | Insert | Returns BadRequest() if record does not exists | 
 
 </details>
 
