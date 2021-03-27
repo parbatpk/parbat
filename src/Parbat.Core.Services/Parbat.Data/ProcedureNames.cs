@@ -28,5 +28,15 @@ namespace Parbat.Data
             public const string Find = "spFindComponentType";
             public const string GetAll = "spGetAllComponentType";
         }
+        
+        public struct CourseType
+        {
+            public const string Insert = "spInsertCourseType";
+            public const string Update = "spUpdateCourseType";
+            public const string Delete = "spDeleteCourseType";
+            public const string Find = "spFindCourseType";
+            public const string GetAll = "spGetAllCourses";
+        }
+
     }
 }
