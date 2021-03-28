@@ -25,7 +25,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@main
       - uses: actions/setup-dotnet@v1
-       with:
+        with:
           dotnet-version: '2.1.x' # SDK Version to use; x will use the latest version of the 3.1 channel
 
       # Runs a single command using the runners shell
