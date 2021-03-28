@@ -42,8 +42,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          dotnet build src/Parbat.Core.Services/ParbatCore/ --configuration Release
-          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
+          dotnet build src/Parbat.Core.Services/ --configuration Release
+          #dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
       
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
