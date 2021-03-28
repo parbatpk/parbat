@@ -37,4 +37,4 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          dotnet build parbat/src/Parbat.Core.Services/ParbatCore/
+          dotnet build src/Parbat.Core.Services/ParbatCore/
