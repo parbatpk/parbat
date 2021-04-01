@@ -56,7 +56,6 @@ namespace Parbat.Data
         {
             DbConnection con = Factory.CreateConnection();
             con.ConnectionString = _connectionString;
-
             return con;
         }
 
