@@ -11,12 +11,13 @@ using ParbatCore.Models;
 
 namespace ParbatCore.Controllers
 {
+
     /// <summary>
     /// Service for Curriculum Type 
     /// </summary>
     [Route(GlobalConstants.API_CONTROLLER)]
     [ApiController]
-    public class CurriculumTypeController : ControllerBase
+    public class CourseTypeController : ControllerBase
     {
         /// <summary>
         /// Get Curriculum Type of given id
@@ -24,13 +25,13 @@ namespace ParbatCore.Controllers
         /// <param name="id"></param>
         /// <returns>Return json object of Curriculum Type</returns>
         [HttpGet("{id}")]
-        public ActionResult<CurriculumType> Get(long id)
+        public ActionResult<CourseType> Get(long id)
         {
-            CurriculumType c = new CurriculumType
+            CourseType c = new CourseType
             {
-                CurriculumTypeID = id
+                CourseTypeID = id
             };
-            c = c.Find(Database.Instance) as CurriculumType;
+            c = c.Find(Database.Instance) as CourseType;
 
             if (c != null)
                 return Ok(c);
@@ -41,12 +42,12 @@ namespace ParbatCore.Controllers
         /// <summary>
         /// Return all records
         /// </summary>
-        /// <param name="izd"></param>
+        /// <param name="id"></param>
         /// <returns>Return a DataTable</returns>
         [HttpGet]
         public ActionResult List()
         {
-            CurriculumType c = new CurriculumType();
+            CourseType c = new CourseType();
             return Ok(c.GetAll(Database.Instance));
 
         }
@@ -57,12 +58,12 @@ namespace ParbatCore.Controllers
         /// <param name="ctype"></param>
         /// <returns>Returns only http codeds</returns>
         [HttpPut]
-        public ActionResult Update([FromBody]CurriculumType ctype)
+        public ActionResult Update([FromBody]CourseType ctype)
         {
             if (ctype.Find(Database.Instance) == null)
                 return BadRequest();
 
-            if (ctype.CurriculumTypeID != null && ctype.CurriculumTypeID > 0)
+            if (ctype.CourseTypeID != null && ctype.CourseTypeID > 0)
             {
                 try
                 {
@@ -86,7 +87,7 @@ namespace ParbatCore.Controllers
         /// <param name="ctype"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
+        public ActionResult<CourseType> Create([FromBody]CourseType ctype)
         {
             ctype.Save(Database.Instance);
             return Created("Get", ctype);
@@ -100,11 +101,11 @@ namespace ParbatCore.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {
-            CurriculumType c = new CurriculumType
+            CourseType c = new CourseType
             {
-                CurriculumTypeID = id
+                CourseTypeID = id
             };
-            c = (CurriculumType)c.Find(Database.Instance);
+            c = (CourseType)c.Find(Database.Instance);
 
             if (c == null)
                 return BadRequest();
