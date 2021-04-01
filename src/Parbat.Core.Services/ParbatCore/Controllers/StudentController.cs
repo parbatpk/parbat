@@ -30,18 +30,19 @@ namespace ParbatCore.Controllers
         /// <summary>
         /// Find the STD from the Student Class
         /// </summary>
-        /// <param name="StudentID"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult<Student> Find(long StudentID)
+        [HttpGet("{id}")]
+        public ActionResult<Student> Find(long id)
         {
-            Student ss = new Student()
+            Student s = new Student()
             {
-                StudentID = StudentID
+                StudentID = id
             };
-            ss = ss.Find(Database.Instance) as Student;
-            if (ss != null)
-                return ss;
+            s = s.Find(Database.Instance) as Student;
+            if (s != null)
+                return s;
+
             return NotFound();
         }
 
@@ -50,12 +51,12 @@ namespace ParbatCore.Controllers
         /// </summary>
         /// <param name="StudentID"></param>
         /// <returns></returns>
-        [HttpDelete]
-        public ActionResult Delete(long StudentID)
+        [HttpDelete("{id}")]
+        public ActionResult Delete(long id)
         {
             Student ss = new Student
             {
-                StudentID = StudentID
+                StudentID = id
             };
             ss = ss.Find(Database.Instance) as Student;
             if (ss == null)

@@ -35,12 +35,12 @@ namespace ParbatCore.Controllers
         /// </summary>
         /// <param name="StudentStatusID"></param>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult<StudentStatus> Find(long StudentStatusID)
+        [HttpGet("{id}")]
+        public ActionResult<StudentStatus> Find(long id)
         {
             StudentStatus ss = new StudentStatus
             {
-                StudentStatusID = StudentStatusID
+                StudentStatusID = id
             };
             ss = ss.Find(Database.Instance) as StudentStatus;
             if (ss != null)
@@ -53,12 +53,12 @@ namespace ParbatCore.Controllers
         /// </summary>
         /// <param name="StudentSatusID"></param>
         /// <returns></returns>
-        [HttpDelete]
-        public ActionResult Delete(long StudentSatusID)
+        [HttpDelete("{id}")]
+        public ActionResult Delete(long id)
         {
             StudentStatus ss = new StudentStatus
             {
-                StudentStatusID = StudentSatusID
+                StudentStatusID = id
             };
             ss = ss.Find(Database.Instance) as StudentStatus;
             if (ss == null)
