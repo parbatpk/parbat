@@ -197,7 +197,7 @@ CREATE TABLE [dbo].[Curriculum](
 	[CurriculumID] [bigint] IDENTITY(1,1) NOT NULL,
 	[ShortName] [nvarchar](10) NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
-	[OwnerUnit] [bigint] NOT NULL,
+	[OwnerUnitID] [bigint] NOT NULL,
 	[TotalCourses] [int] NOT NULL,
 	[TotalCreditHrs] [int] NOT NULL,
 	[IsLimitCreditHrs] [bit] NOT NULL,
@@ -372,7 +372,7 @@ SET IDENTITY_INSERT [dbo].[CourseType] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Curriculum] ON 
 GO
-INSERT [dbo].[Curriculum] ([CurriculumID], [ShortName], [Name], [OwnerUnit], [TotalCourses], [TotalCreditHrs], [IsLimitCreditHrs], [IsLimitCourses], [CurriculumTypeID]) VALUES (2, N'BS(CS)-21', N'BS (Computer Science)', 2, 0, 130, 1, 0, 1)
+INSERT [dbo].[Curriculum] ([CurriculumID], [ShortName], [Name], [OwnerUnitID], [TotalCourses], [TotalCreditHrs], [IsLimitCreditHrs], [IsLimitCourses], [CurriculumTypeID]) VALUES (2, N'BS(CS)-21', N'BS (Computer Science)', 2, 0, 130, 1, 0, 1)
 GO
 SET IDENTITY_INSERT [dbo].[Curriculum] OFF
 GO
@@ -560,7 +560,7 @@ REFERENCES [dbo].[CurriculumType] ([CurriculumTypeID])
 GO
 ALTER TABLE [dbo].[Curriculum] CHECK CONSTRAINT [FK_Curriculum_CurriculumType]
 GO
-ALTER TABLE [dbo].[Curriculum]  WITH CHECK ADD  CONSTRAINT [FK_Curriculum_OrgUnit] FOREIGN KEY([OwnerUnit])
+ALTER TABLE [dbo].[Curriculum]  WITH CHECK ADD  CONSTRAINT [FK_Curriculum_OrgUnit] FOREIGN KEY([OwnerUnitID])
 REFERENCES [dbo].[OrgUnit] ([OrgUnitID])
 GO
 ALTER TABLE [dbo].[Curriculum] CHECK CONSTRAINT [FK_Curriculum_OrgUnit]
