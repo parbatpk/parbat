@@ -72,3 +72,18 @@ For Guideline on writing code [see] (/WritingCode.md)
 
 </details>
 
+
+<details>
+  <summary>/Curriculum</summary>
+  
+  |  Verb | Input | Returns| Description | Business Rule(s) | 
+|  --- | --- | --- | --- | --- | 
+|  GET |  |DataTable / Array | List | **R1*** | 
+|  GET(long) | PK | BO | Find | Returns NotFound() if record does not exist + **R1***  
+|  GET(OwnerUnit/long) | OwnerUnitID | DataTable/Array | List all curriculums having given OwnerUnitID | - | 
+|  GET(CurriculumType/long) | CurriculumTypeID | DataTable/Array | List all curriculums having given CurriculumTypeID | - | 
+|  Delete(long) | PK | - | Delete | Returns BadRequest() if record does not exists  | 
+|  POST |[FromBody] BO  | BO | Insert | + **R2*** | 
+|  PUT |[FromBody] BO  | - | Insert | Returns BadRequest() if record does not exists + **R3*** +**R4*** | 
+
+</details>
