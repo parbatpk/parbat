@@ -178,7 +178,7 @@
             <summary>
             Find the STD from the Student Class
             </summary>
-            <param name="StudentID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentController.Delete(System.Int64)">
@@ -200,6 +200,45 @@
             Update the STD in the Student Class
             </summary>
             <param name="std"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Controllers.StudentStatusController">
+            <summary>
+            This is the Control of STD Status Class 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentStatusController.List">
+            <summary>
+            Return the the StudentStatus from the StudentStatus Class
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentStatusController.Find(System.Int64)">
+            <summary>
+            Find the Current StudentStatus from the Studentstatus Class
+            </summary>
+            <param name="StudentStatusID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentStatusController.Delete(System.Int64)">
+            <summary>
+            Delete the StudentSatus from the StudentSatus Class
+            </summary>
+            <param name="StudentSatusID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentStatusController.Save(ParbatCore.Models.StudentStatus)">
+            <summary>
+            Save the StudentSatus in the Student Status Class
+            </summary>
+            <param name="studentStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentStatusController.Update(ParbatCore.Models.StudentStatus)">
+            <summary>
+            Update the studentstatus in the studentstatus class
+            </summary>
+            <param name="studentStatus"></param>
             <returns></returns>
         </member>
         <member name="T:ParbatCore.Models.ComponentType">
@@ -501,6 +540,54 @@
             </summary>
             <param name="db"></param>
             <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Models.StudentStatus">
+            <summary>
+            This is the Student Status Business Class 
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.StudentStatus.StudentStatusID">
+            <summary>
+            This is the primary key in the StudentStatus Table
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.StudentStatus.Name">
+            <summary>
+            Name Attribute in the StudentStatus Table
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.StudentStatus.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the exist STDstaus from the StudentStatus table
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.StudentStatus.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find the STD from the StudentStatus Class
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.StudentStatus.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get All the STD from the StudentStatus Table
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.StudentStatus.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save the StudentStatus in the StudentStatus Table
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.StudentStatus.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update the StudentStatus in the StudentStatus Table
+            </summary>
+            <param name="db"></param>
         </member>
     </members>
 </doc>
