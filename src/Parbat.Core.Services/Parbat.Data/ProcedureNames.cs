@@ -6,12 +6,6 @@ namespace Parbat.Data
 {
     public class ProcedureNames
     {
-        public struct Student
-        {
-            public const string Insert = "InsertStudent";
-            public const string Update = "UpdateStudent";
-        }
-
         public struct CurriculumType
         {
             public const string Insert = "spInsertCurriculumType";
@@ -35,7 +29,34 @@ namespace Parbat.Data
             public const string Update = "spUpdateCourseType";
             public const string Delete = "spDeleteCourseType";
             public const string Find = "spFindCourseType";
-            public const string GetAll = "spGetAllCourses";
+            public const string GetAll = "spGetAllCourseType";
+        }
+
+        public struct OrgUnitType
+        {
+            public const string Insert = "spInsertOrgUnitType";
+            public const string Update = "spUpdateOrgUnitType";
+            public const string Delete = "spDeleteOrgUnitType";
+            public const string Find = "spFindOrgUnitType";
+            public const string GetAll = "spGetAllOrgUnitType";
+        }
+
+        public struct Student
+        {
+            public const string Insert = "spInsertStudent";
+            public const string Update = "spUpdateStudent";
+            public const string Delete = "spDeleteStudent";
+            public const string Find = "spFindStudent";
+            public const string GetAll = "spGetAllStudent";
+        }
+
+        public struct StudentStatus
+        {
+            public const string Insert = "spInsertStudentStatus";
+            public const string Update = "spUpdateStudentStatus";
+            public const string Delete = "spDeleteStudentStatus";
+            public const string Find = "spFindStudentStatus";
+            public const string GetAll = "spGetAllStudentStatus";
         }
 
     }

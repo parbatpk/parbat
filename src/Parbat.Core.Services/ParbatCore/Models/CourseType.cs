@@ -61,8 +61,9 @@ namespace ParbatCore.Models
                     CourseType found = JsonSerializer.Deserialize<CourseType>(txt);
                     return found;
                 }
-                catch (JsonException e)
+                catch (JsonException ex)
                 {
+                    Console.WriteLine(ex);
                     return null;
                 }
             }

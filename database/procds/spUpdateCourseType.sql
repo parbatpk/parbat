@@ -13,8 +13,7 @@ IF EXISTS (
 GO
 
 CREATE PROCEDURE dbo.apUpdateCourseType
-	@CourseTypeID bigint,
-	@Name nvarchar(50)
+	@CourseTypeID bigint
 AS
 	UPDATE CourseType
 	set [Name] = @Name

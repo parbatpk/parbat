@@ -13,8 +13,7 @@ IF EXISTS (
 GO
 
 CREATE PROCEDURE dbo.spDeleteCourseType
-	@CourseTypeID bigint, 
-	@Name nvarchar(50) = 0
+	@CourseTypeID bigint
 AS
 	DELETE from CourseType where CourseTypeID=@CourseTypeID
 GO

@@ -13,8 +13,10 @@ IF EXISTS (
 GO
 
 CREATE PROCEDURE dbo.spFindCourseType	
-	@CourseTypeID bigint,
-	@Name nvarchar(50)
+	@CourseTypeID bigint
 AS
-	SELECT [Name] from CourseType where courseTypeID=@CourseTypeID
+	SELECT TOP 1 *
+	FROM CourseType
+	WHERE CourseTypeID = @CourseTypeID
+	FOR JSON AUTO, Without_Array_Wrapper;
 GO

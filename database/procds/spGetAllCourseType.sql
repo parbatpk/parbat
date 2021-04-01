@@ -13,8 +13,7 @@ IF EXISTS (
 GO
 
 CREATE PROCEDURE dbo.spGetAllCourseType
-	@Name nvarchar(50)
 AS
-	SELECT *from  dbo.CourseType 
+	SELECT * from  dbo.CourseType 
 GO
 

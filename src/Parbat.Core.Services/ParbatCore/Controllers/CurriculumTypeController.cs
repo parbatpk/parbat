@@ -41,7 +41,7 @@ namespace ParbatCore.Controllers
         /// <summary>
         /// Return all records
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="izd"></param>
         /// <returns>Return a DataTable</returns>
         [HttpGet]
         public ActionResult List()
