@@ -37,14 +37,14 @@ namespace ParbatCore
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Parbat API",
-                    Description = "Web API for Parbat Core Services",
-                    // TermsOfService = new Uri("https://example.com/terms"),
+                    Title = "ToDo API",
+                    Description = "A simple example ASP.NET Core Web API",
+                    TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {
-                        Name = "Muhammad Qasim Pasta",
-                        Email = "qasim.pasta(dot)ieee(dot)org",
-                        Url = new Uri("https://twitter.com/mqpasta"),
+                        Name = "Shayne Boyer",
+                        Email = string.Empty,
+                        Url = new Uri("https://twitter.com/spboyer"),
                     },
                     License = new OpenApiLicense
                     {
@@ -59,33 +59,12 @@ namespace ParbatCore
                 c.IncludeXmlComments(xmlPath);
             });
 
-            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
-            {
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader();
-            }));
-
-            services.AddMvc().
-                SetCompatibilityVersion(CompatibilityVersion.Version_2_1).
-                AddJsonOptions(o =>
-                {
-                    if (o.SerializerSettings.ContractResolver != null)
-                    {
-                        var castedResolver = o.SerializerSettings.ContractResolver
-                            as DefaultContractResolver;
-                        castedResolver.NamingStrategy = null;
-                    }
-                });
-
-
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseCors("MyPolicy");
-
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
