@@ -87,19 +87,16 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult Update([FromBody] StudentStatus studentStatus)
         {
-            if (studentStatus.Find(Database.Instance) == null)
-                return BadRequest();
             if (studentStatus.StudentStatusID > 0)
             {
                 try
                 {
                     studentStatus.Update(Database.Instance);
-                    return NotFound();
+                    return NoContent();
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
-                    Console.WriteLine(ex);
-                    return BadRequest();
+                    return BadRequest(e.Message);
                 }
             }
             else

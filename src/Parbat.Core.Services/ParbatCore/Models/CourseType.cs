@@ -32,6 +32,10 @@ namespace ParbatCore.Models
         /// <param name="db"></param>
         public void Delete(IDatabase db)
         {
+            if (this.Find(db) == null)
+            {
+                throw new BOException("Record not found");
+            }
             // otherwise create a new entry/record
             using (DbConnection con = db.CreateConnection())
             {
@@ -120,6 +124,10 @@ namespace ParbatCore.Models
         /// <param name="db"></param>
         public void Update(IDatabase db)
         {
+            if (this.Find(db) == null)
+            {
+                throw new BOException("Record not found");
+            }
             using (DbConnection con = db.CreateConnection())
             {
                 con.Open();

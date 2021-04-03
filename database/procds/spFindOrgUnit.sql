@@ -7,20 +7,22 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spInsertCurriculumType' 
+     AND SPECIFIC_NAME = N'spFindOrgUnit' 
 )
-   DROP PROCEDURE dbo.spInsertCurriculumType
+   DROP PROCEDURE dbo.spFindOrgUnit
 GO
 
-CREATE PROCEDURE dbo.spInsertCurriculumType
-	@Name nvarchar(50) = 0
+CREATE PROCEDURE dbo.spFindOrgUnit
+	@OrgUnitID bigint 
 AS
-	Insert Into CurriculumType values(@Name)
-	Select SCOPE_IDENTITY()
+	Select top 1* 
+	From OrgUnit
+	where OrgUnitID=@OrgUnitID
+	For json Auto, Without_Array_Wrapper;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spInsertCurriculumType 'NewType'
+--EXECUTE dbo.spFindOrgUnit 1, 2
 --GO

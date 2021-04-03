@@ -44,6 +44,46 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:ParbatCore.Controllers.CourseController">
+            <summary>
+            Service for Course 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.CourseController.Get(System.Int64)">
+            <summary>
+            Get Course of given id
+            </summary>
+            <param name="id"></param>
+            <returns>Return json object of Course</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.CourseController.List">
+            <summary>
+            Return all records
+            </summary>
+            <param name="id"></param>
+            <returns>Return a DataTable</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.CourseController.Update(ParbatCore.Models.Course)">
+            <summary>
+            Update Course
+            </summary>
+            <param name="ctype"></param>
+            <returns>Returns only http codeds</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.CourseController.Create(ParbatCore.Models.Course)">
+            <summary>
+            Create a new Course
+            </summary>
+            <param name="ctype"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.CourseController.Delete(System.Int64)">
+            <summary>
+            Delete instance
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Controllers.CourseTypeController">
             <summary>
             Service for Curriculum Type 
@@ -118,6 +158,53 @@
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.CurriculumTypeController.Delete(System.Int64)">
+            <summary>
+            Delete instance
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Controllers.OrgUnitController">
+            <summary>
+            Service for OrgUnit Type 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.OrgUnitController.Get(System.Int64)">
+            <summary>
+            Get OrgUnit Type of given id
+            </summary>
+            <param name="id"></param>
+            <returns>Return json object of OrgUnit Type</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.OrgUnitController.GetParent(System.Int64)">
+            <summary>
+            Get All OrgUnit record against ParentID
+            </summary>
+            <param name="id"></param>
+            <returns>Return json object of OrgUnit Type</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.OrgUnitController.List">
+            <summary>
+            Return all records
+            </summary>
+            <param name="id"></param>
+            <returns>Return a DataTable</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.OrgUnitController.Update(ParbatCore.Models.OrgUnit)">
+            <summary>
+            Update OrgUnit Type
+            </summary>
+            <param name="ctype"></param>
+            <returns>Returns only http codeds</returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.OrgUnitController.Create(ParbatCore.Models.OrgUnit)">
+            <summary>
+            Create a new OrgUnit type
+            </summary>
+            <param name="ctype"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.OrgUnitController.Delete(System.Int64)">
             <summary>
             Delete instance
             </summary>
@@ -241,6 +328,84 @@
             <param name="studentStatus"></param>
             <returns></returns>
         </member>
+        <member name="T:ParbatCore.Models.ComponentCourse">
+            <summary>
+            ComponentCourse Table
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentCourse.ComponentCourseID">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentCourse.Name">
+            <summary>
+            ComponentCourse Name
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentCourse.ShortName">
+            <summary>
+            ComponentCourse ShortName
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentCourse.OwnerID">
+            <summary>
+            ComponentCourse OwnerID
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentCourse.TheoryCredit">
+            <summary>
+            ComponentCourse TheoryCredit
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentCourse.LabCredit">
+            <summary>
+            ComponentCourse LabCredit
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentCourse.Code">
+            <summary>
+            ComponentCourse Code
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.ComponentCourse.ComponentCourseTypeID">
+            <summary>
+            ComponentCourse ComponentCourseTypeID
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentCourse.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete ComponentCourse
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentCourse.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find ComponentCourse
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentCourse.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get All ComponentCourse
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentCourse.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save Curruciulum Type
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.ComponentCourse.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update ComponentCourse
+            </summary>
+            <param name="db"></param>
+        </member>
         <member name="T:ParbatCore.Models.ComponentType">
             <summary>
             Component Type Table
@@ -291,6 +456,98 @@
         <member name="M:ParbatCore.Models.ComponentType.Update(Parbat.Data.IDatabase)">
             <summary>
             Update Component Type
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="T:ParbatCore.Models.Course">
+            <summary>
+            Course Table
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Course.CourseID">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Course.Name">
+            <summary>
+            Course Name
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Course.ShortName">
+            <summary>
+            Course ShortName
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Course.OwnerID">
+            <summary>
+            Course OwnerID
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Course.TheoryCredit">
+            <summary>
+            Course TheoryCredit
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Course.LabCredit">
+            <summary>
+            Course LabCredit
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Course.Code">
+            <summary>
+            Course Code
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.Course.CourseTypeID">
+            <summary>
+            Course CourseTypeID
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Course.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete Course
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Course.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find Course
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Course.GetCourseName(Parbat.Data.IDatabase)">
+            <summary>
+            Find Course Name
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Course.FindCourseID(Parbat.Data.IDatabase)">
+            <summary>
+            Find Course ID
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Course.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get All Course
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Course.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save Curruciulum Type
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Course.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update Course
             </summary>
             <param name="db"></param>
         </member>
@@ -429,6 +686,81 @@
             </summary>
             <param name="db"></param>
             <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Models.OrgUnit">
+            <summary>
+            OrgUnit Table
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.OrgUnit.OrgUnitID">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.OrgUnit.OrgUnitTypeID">
+            <summary>
+            Forign Key of OrgUnitTypeID
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.OrgUnit.Name">
+            <summary>
+            OrgUnit Name
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.OrgUnit.ShortName">
+            <summary>
+            OrgUnit ShortName
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.OrgUnit.ParentUnitID">
+            <summary>
+            OrgUnit ParentID
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.OrgUnit.IsAllowAdmission">
+            <summary>
+            OrgUnit Name
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.OrgUnit.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete OrgUnit
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.OrgUnit.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find OrgUnit
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.OrgUnit.FindParent(Parbat.Data.IDatabase)">
+            <summary>
+            Find OrgUnit against ParentUnitID
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.OrgUnit.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get All OrgUnit
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.OrgUnit.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save Curruciulum Type
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.OrgUnit.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update OrgUnit
+            </summary>
+            <param name="db"></param>
         </member>
         <member name="T:ParbatCore.Models.OrgUnitType">
             <summary>

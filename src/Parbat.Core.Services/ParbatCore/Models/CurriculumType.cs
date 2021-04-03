@@ -70,6 +70,7 @@ namespace ParbatCore.Models
             }
         }
 
+
         /// <summary>
         /// Get All curriculum type
         /// </summary>

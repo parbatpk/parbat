@@ -58,6 +58,32 @@ namespace Parbat.Data
             public const string Find = "spFindStudentStatus";
             public const string GetAll = "spGetAllStudentStatus";
         }
-
+        public struct OrgUnit
+        {
+            public const string Insert = "spInsertOrgUnit";
+            public const string Update = "spUpdateOrgUnit";
+            public const string Delete = "spDeleteOrgUnit";
+            public const string Find = "spFindOrgUnit";
+            public const string GetAll = "spGetAllOrgUnit";
+            public const string FindParent = "spFindParentOrgUnit";
+        }
+        public struct Course
+        {
+            public const string Insert = "spInsertCourse";
+            public const string Update = "spUpdateCourse";
+            public const string Delete = "spDeleteCourse";
+            public const string Find = "spFindCourse";
+            public const string GetAll = "spGetAllCourse";
+            public const string GetCourseName = "spGetCourseName";
+            public const string FindCourseID = "spFindCourseIDComponentCourse";
+        }
+        public struct ComponentCourse
+        {
+            public const string Insert = "spInsertComponentCourse";
+            public const string Update = "spUpdateComponentCourse";
+            public const string Delete = "spDeleteComponentCourse";
+            public const string Find = "spFindComponentCourse";
+            public const string GetAll = "spGetAllComponentCourse";
+        }
     }
 }
