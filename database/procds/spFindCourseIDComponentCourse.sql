@@ -23,5 +23,5 @@ GO
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spFindCourseIDComponent 1, 2
+--EXECUTE dbo.spFindCourseIDComponentCourse 1
 --GO

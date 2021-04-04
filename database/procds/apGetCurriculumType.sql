@@ -7,20 +7,19 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spComponentTotalCourseCreditHrs' 
+     AND SPECIFIC_NAME = N'spGetCurriculumType' 
 )
-   DROP PROCEDURE dbo.spComponentTotalCourseCreditHrs
+   DROP PROCEDURE dbo.spGetCurriculumType
 GO
 
-CREATE PROCEDURE dbo.spComponentTotalCourseCreditHrs
-	@CurriculumID bigint
+CREATE PROCEDURE dbo.spGetCurriculumType
+	@CurriculumTypeID bigint
 AS
-	SELECT count(ComponentID) as NumberofComponent, sum(TotalCourses) as TotalCourses,sum(TotalCredit) as TotalCredit
-	from Component where CurriculumID=@CurriculumID
+	SELECT * from Curriculum where CurriculumTypeID=@CurriculumTypeID
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spTotalCreditCourse 1, 2
+--EXECUTE dbo.spGetCurriculumType 1, 2
 --GO

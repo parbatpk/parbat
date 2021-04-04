@@ -16,7 +16,7 @@ CREATE PROCEDURE dbo.spComponentTotalCourseCreditHrs
 	@CurriculumID bigint
 AS
 	SELECT count(ComponentID) as NumberofComponent, sum(TotalCourses) as TotalCourses,sum(TotalCredit) as TotalCredit
-	from Component where CurriculumID=@CurriculumID
+	from Component where CurriculumID=@CurriculumID   
 GO
 
 -- =============================================

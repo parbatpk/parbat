@@ -66,10 +66,10 @@ namespace ParbatCore.Controllers
                    ctype.Update(Database.Instance);
                    return NoContent();
                 }
-                catch
+                catch(Exception e)
                 {
 
-                    return BadRequest();
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -92,10 +92,10 @@ namespace ParbatCore.Controllers
                     ctype.Save(Database.Instance);
                     return Created("Get",ctype);
                 }
-                catch
+                catch(Exception e)
                 {
 
-                    return BadRequest();
+                    return BadRequest(e.Message);
                 }
             }
             else

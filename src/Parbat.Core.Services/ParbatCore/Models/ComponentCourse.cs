@@ -25,37 +25,12 @@ namespace ParbatCore.Models
         /// ComponentCourse Name
         /// </summary>
         [Required]
-        public string Name { get; set; }
+        public long ComponentID { get; set; }
         /// <summary>
         /// ComponentCourse ShortName
         /// </summary>
         [Required]
-        public string ShortName { get; set; }
-        /// <summary>
-        /// ComponentCourse OwnerID
-        /// </summary>
-        [Required]
-        public long OwnerID { get; set; }
-        /// <summary>
-        /// ComponentCourse TheoryCredit
-        /// </summary>
-        [Required]
-        public int TheoryCredit { get; set; }
-        /// <summary>
-        /// ComponentCourse LabCredit
-        /// </summary>
-        [Required]
-        public int LabCredit { get; set; }
-        /// <summary>
-        /// ComponentCourse Code
-        /// </summary>
-        public string Code { get; set; }
-        /// <summary>
-        /// ComponentCourse ComponentCourseTypeID
-        /// </summary>
-        [Required]
-        public long ComponentCourseTypeID { get; set; }
-
+        public long CourseID { get; set; }
         /// <summary>
         /// Delete ComponentCourse
         /// </summary>
@@ -141,13 +116,8 @@ namespace ParbatCore.Models
                 con.Open();
                 DbCommand cmd = db.CreateSPCommand(ProcedureNames.ComponentCourse.Insert,
                     con);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@Name", this.Name));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@ShortName", this.ShortName));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@OwnerID", this.OwnerID));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@TheoryCredit", this.TheoryCredit));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@LabCredit", this.LabCredit));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@Code", this.Code));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentCourseTypeID", this.ComponentCourseTypeID));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentID", this.ComponentID));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@CourseID", this.CourseID));
                 this.ComponentCourseID = Convert.ToInt64(cmd.ExecuteScalar());
 
                 return this.ComponentCourseID;
@@ -171,13 +141,8 @@ namespace ParbatCore.Models
                 con.Open();
                 DbCommand cmd = db.CreateSPCommand(ProcedureNames.ComponentCourse.Update, con);
                 cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentCourseID", this.ComponentCourseID));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@Name", this.Name));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@ShortName", this.ShortName));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@OwnerID", this.OwnerID));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@TheoryCredit", this.TheoryCredit));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@LabCredit", this.LabCredit));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@Code", this.Code));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentCourseTypeID", this.ComponentCourseTypeID));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentID", this.ComponentID));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@CourseID", this.CourseID));
                 cmd.ExecuteNonQuery();
             }
         }

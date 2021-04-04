@@ -12,25 +12,25 @@ using ParbatCore.Models;
 namespace ParbatCore.Controllers
 {
     /// <summary>
-    /// Service for ComponentCourse 
+    /// Service for Curriculum 
     /// </summary>
     [Route(GlobalConstants.API_CONTROLLER)]
     [ApiController]
-    public class ComponentCourseController : ControllerBase
+    public class CurriculumController : ControllerBase
     {
         /// <summary>
-        /// Get ComponentCourse of given id
+        /// Get Curriculum of given id
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Return json object of ComponentCourse</returns>
+        /// <returns>Return json object of Curriculum</returns>
         [HttpGet("{id}")]
-        public ActionResult<ComponentCourse> Get(long id)
+        public ActionResult<Curriculum> Get(long id)
         {
-            ComponentCourse c = new ComponentCourse
+            Curriculum c = new Curriculum
             {
-                ComponentCourseID = id
+                CurriculumID = id
             };
-            c = c.Find(Database.Instance) as ComponentCourse;
+            c = c.Find(Database.Instance) as Curriculum;
 
             if (c != null)
                 return Ok(c);
@@ -46,20 +46,49 @@ namespace ParbatCore.Controllers
         [HttpGet]
         public ActionResult List()
         {
-            ComponentCourse c = new ComponentCourse();
+            Curriculum c = new Curriculum();
             return Ok(c.GetAll(Database.Instance));
 
         }
-
         /// <summary>
-        /// Update ComponentCourse
+        /// Return all records
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Return a DataTable</returns>
+        [HttpGet("OwnerUnit/{id}")]
+        public ActionResult GetOwnerUnit(long id)
+        {
+            Curriculum c = new Curriculum
+            {
+                OwnerUnitID = id
+            };
+            return Ok(c.GetOwnerUnit(Database.Instance));
+
+        }
+        /// <summary>
+        /// Return all records
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Return a DataTable</returns>
+        [HttpGet("CurriculumType/{id}")]
+        public ActionResult GetCurriculumType(long id)
+        {
+            Curriculum c = new Curriculum
+            {
+                CurriculumTypeID = id
+            };
+            return Ok(c.GetCurriculumType(Database.Instance));
+
+        }
+        /// <summary>
+        /// Update Curriculum
         /// </summary>
         /// <param name="ctype"></param>
         /// <returns>Returns only http codeds</returns>
         [HttpPut]
-        public ActionResult Update([FromBody]ComponentCourse ctype)
+        public ActionResult Update([FromBody]Curriculum ctype)
         {
-            if (ctype.ComponentCourseID != null && ctype.ComponentCourseID > 0)
+            if (ctype.CurriculumID != null && ctype.CurriculumID > 0 && ctype.TotalCourses > 0 && ctype.TotalCreditHrs > 0)
             {
                 try
                 {
@@ -78,13 +107,15 @@ namespace ParbatCore.Controllers
         }
 
         /// <summary>
-        /// Create a new ComponentCourse
+        /// Create a new Curriculum
         /// </summary>
         /// <param name="ctype"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<ComponentCourse> Create([FromBody]ComponentCourse ctype)
+        public ActionResult<Curriculum> Create([FromBody]Curriculum ctype)
         {
+            if (ctype.TotalCourses > 0 && ctype.TotalCreditHrs > 0)
+            {
                 try
                 {
                     ctype.Save(Database.Instance);
@@ -95,6 +126,9 @@ namespace ParbatCore.Controllers
 
                     return BadRequest(e.Message);
                 }
+            }
+            else
+                return BadRequest();
         }
 
         /// <summary>
@@ -105,9 +139,9 @@ namespace ParbatCore.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {
-            ComponentCourse c = new ComponentCourse
+            Curriculum c = new Curriculum
             {
-                ComponentCourseID = id
+                CurriculumID = id
             };
             try
             {

@@ -7,12 +7,12 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'apUpdateCurriculum' 
+     AND SPECIFIC_NAME = N'spUpdateCurriculum' 
 )
-   DROP PROCEDURE dbo.apUpdateCurriculum
+   DROP PROCEDURE dbo.spUpdateCurriculum
 GO
 
-CREATE PROCEDURE dbo.apUpdateCurriculum
+CREATE PROCEDURE dbo.spUpdateCurriculum
 	@CurriculumID bigint,
 	@ShortName nvarchar(50),
 	@Name nvarchar(50),
