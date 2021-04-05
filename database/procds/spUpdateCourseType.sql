@@ -7,12 +7,12 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'apUpdateCourseType' 
+     AND SPECIFIC_NAME = N'spUpdateCourseType' 
 )
-   DROP PROCEDURE dbo.apUpdateCourseType
+   DROP PROCEDURE dbo.spUpdateCourseType
 GO
 
-CREATE PROCEDURE dbo.apUpdateCourseType
+CREATE PROCEDURE dbo.spUpdateCourseType
 	@CourseTypeID bigint,
 	@Name nvarchar(50)
 AS
