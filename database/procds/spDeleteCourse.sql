@@ -7,20 +7,20 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spInsertCurriculumType' 
+     AND SPECIFIC_NAME = N'spDeleteCourse' 
 )
-   DROP PROCEDURE dbo.spInsertCurriculumType
+   DROP PROCEDURE dbo.spDeleteCourse
 GO
 
-CREATE PROCEDURE dbo.spInsertCurriculumType
-	@Name nvarchar(50) = 0
+CREATE PROCEDURE dbo.spDeleteCourse
+	@CourseID bigint
 AS
-	Insert Into CurriculumType values(@Name)
-	Select SCOPE_IDENTITY()
+	Delete from Course
+	where CourseID=@CourseID
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spInsertCurriculumType 'NewType'
+--EXECUTE dbo.spDeleteCourse 1, 2
 --GO

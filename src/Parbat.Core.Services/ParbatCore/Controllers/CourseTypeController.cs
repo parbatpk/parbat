@@ -60,9 +60,6 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult Update([FromBody]CourseType ctype)
         {
-            if (ctype.Find(Database.Instance) == null)
-                return BadRequest();
-
             if (ctype.CourseTypeID != null && ctype.CourseTypeID > 0)
             {
                 try
@@ -70,10 +67,10 @@ namespace ParbatCore.Controllers
                     ctype.Update(Database.Instance);
                     return NoContent();
                 }
-                catch
+                catch(Exception e)
                 {
 
-                    return BadRequest();
+                    return BadRequest(e.Message);
                 }
             }
             else
@@ -105,13 +102,15 @@ namespace ParbatCore.Controllers
             {
                 CourseTypeID = id
             };
-            c = (CourseType)c.Find(Database.Instance);
-
-            if (c == null)
-                return BadRequest();
-
-            c.Delete(Database.Instance);
-            return NoContent();
+            try
+            {
+                c.Delete(Database.Instance);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
 
         }
     }

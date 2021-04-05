@@ -7,20 +7,19 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spInsertCurriculumType' 
+     AND SPECIFIC_NAME = N'spGetAllComponentCourse' 
 )
-   DROP PROCEDURE dbo.spInsertCurriculumType
+   DROP PROCEDURE dbo.spGetAllComponentCourse
 GO
 
-CREATE PROCEDURE dbo.spInsertCurriculumType
-	@Name nvarchar(50) = 0
+CREATE PROCEDURE dbo.spGetAllComponentCourse
+
 AS
-	Insert Into CurriculumType values(@Name)
-	Select SCOPE_IDENTITY()
+	SELECT * from ComponentCourse
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spInsertCurriculumType 'NewType'
+--EXECUTE dbo.spGetAllComponentCourse 1, 2
 --GO

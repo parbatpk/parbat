@@ -24,5 +24,5 @@ GO
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spFindCurriculumType 1
+--EXECUTE dbo.spFindCurriculumType 1
 --GO

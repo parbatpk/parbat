@@ -12,40 +12,48 @@ using System.ComponentModel.DataAnnotations;
 namespace ParbatCore.Models
 {
     /// <summary>
-    /// Curriculum Type Table
+    /// ComponentCourse Table
     /// </summary>
-    public class CurriculumType : IBussinesObject
+    public class ComponentCourse : IBussinesObject
     {
         /// <summary>
         /// Primary Key
         /// </summary>
-        public long? CurriculumTypeID { get; set; }
+        public long? ComponentCourseID { get; set; }
 
         /// <summary>
-        /// Curriculum Name
+        /// ComponentCourse Name
         /// </summary>
         [Required]
-        public string Name { get; set; }
-
+        public long ComponentID { get; set; }
         /// <summary>
-        /// Delete curriculum type
+        /// ComponentCourse ShortName
+        /// </summary>
+        [Required]
+        public long CourseID { get; set; }
+        /// <summary>
+        /// Delete ComponentCourse
         /// </summary>
         /// <param name="db"></param>
         public void Delete(IDatabase db)
         {
+            if (this.Find(db) == null)
+            {
+                throw new BOException("Record not found");
+            }
             // otherwise create a new entry/record
             using (DbConnection con = db.CreateConnection())
             {
                 con.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Delete,
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.ComponentCourse.Delete,
                     con);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentCourseID", this.ComponentCourseID));
                 cmd.ExecuteNonQuery();
             }
         }
 
         /// <summary>
-        /// Find Curriculum Type
+        /// Find ComponentCourse
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
@@ -55,24 +63,23 @@ namespace ParbatCore.Models
             using (DbConnection con = db.CreateConnection())
             {
                 con.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Find, con);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.ComponentCourse.Find, con);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentCourseID", this.ComponentCourseID));
                 string txt = Convert.ToString(cmd.ExecuteScalar());
                 try
                 {
-                    CurriculumType found = JsonSerializer.Deserialize<CurriculumType>(txt);
+                    ComponentCourse found = JsonSerializer.Deserialize<ComponentCourse>(txt);
                     return found;
                 }
-                catch(JsonException je)
+                catch (JsonException je)
                 {
                     return null;
                 }
             }
         }
 
-
         /// <summary>
-        /// Get All curriculum type
+        /// Get All ComponentCourse
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
@@ -82,7 +89,7 @@ namespace ParbatCore.Models
             using (DbConnection con = db.CreateConnection())
             {
                 con.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.GetAll, con);
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.ComponentCourse.GetAll, con);
                 DataSet ds = db.GetDataSet(cmd);
 
                 return ds.Tables[0];
@@ -97,39 +104,45 @@ namespace ParbatCore.Models
         public long? Save(IDatabase db)
         {
             // If this is already saved object then just update
-            if (this.CurriculumTypeID > 0)
+            if (this.ComponentCourseID > 0)
             {
                 this.Update(db);
-                return this.CurriculumTypeID;
+                return this.ComponentCourseID;
             }
 
             // otherwise create a new entry/record
             using (DbConnection con = db.CreateConnection())
             {
                 con.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Insert,
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.ComponentCourse.Insert,
                     con);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@Name", this.Name));
-                this.CurriculumTypeID = Convert.ToInt64(cmd.ExecuteScalar());
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentID", this.ComponentID));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@CourseID", this.CourseID));
+                this.ComponentCourseID = Convert.ToInt64(cmd.ExecuteScalar());
 
-                return this.CurriculumTypeID;
+                return this.ComponentCourseID;
             }
 
 
         }
 
         /// <summary>
-        /// Update Curriculum Type
+        /// Update ComponentCourse
         /// </summary>
         /// <param name="db"></param>
         public void Update(IDatabase db)
         {
+            if (this.Find(db) == null)
+            {
+                throw new BOException("Record not found");
+            }
             using (DbConnection con = db.CreateConnection())
             {
                 con.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Update, con);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@Name", this.Name));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.ComponentCourse.Update, con);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentCourseID", this.ComponentCourseID));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@ComponentID", this.ComponentID));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "@CourseID", this.CourseID));
                 cmd.ExecuteNonQuery();
             }
         }

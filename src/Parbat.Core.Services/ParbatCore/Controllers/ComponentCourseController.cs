@@ -4,31 +4,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using System.Data.Common;
 using Parbat.Data;
 using ParbatCore.Models;
 
 namespace ParbatCore.Controllers
 {
     /// <summary>
-    /// Service for  Component Type 
+    /// Service for ComponentCourse 
     /// </summary>
     [Route(GlobalConstants.API_CONTROLLER)]
     [ApiController]
-    public class ComponentTypeController : ControllerBase
+    public class ComponentCourseController : ControllerBase
     {
         /// <summary>
-        /// Get  Component Type of given id
+        /// Get ComponentCourse of given id
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Return json object of  Component Type</returns>
+        /// <returns>Return json object of ComponentCourse</returns>
         [HttpGet("{id}")]
-        public ActionResult<ComponentType> Get(long id)
+        public ActionResult<ComponentCourse> Get(long id)
         {
-            ComponentType c = new ComponentType
+            ComponentCourse c = new ComponentCourse
             {
-                ComponentTypeID = id
+                ComponentCourseID = id
             };
-            c = c.Find(Database.Instance) as ComponentType;
+            c = c.Find(Database.Instance) as ComponentCourse;
 
             if (c != null)
                 return Ok(c);
@@ -44,20 +46,20 @@ namespace ParbatCore.Controllers
         [HttpGet]
         public ActionResult List()
         {
-            ComponentType c = new ComponentType();
+            ComponentCourse c = new ComponentCourse();
             return Ok(c.GetAll(Database.Instance));
 
         }
 
         /// <summary>
-        /// Update  Component Type
+        /// Update ComponentCourse
         /// </summary>
         /// <param name="ctype"></param>
         /// <returns>Returns only http codeds</returns>
         [HttpPut]
-        public ActionResult Update([FromBody]ComponentType ctype)
+        public ActionResult Update([FromBody]ComponentCourse ctype)
         {
-            if (ctype.ComponentTypeID != null && ctype.ComponentTypeID > 0)
+            if (ctype.ComponentCourseID != null && ctype.ComponentCourseID > 0)
             {
                 try
                 {
@@ -76,15 +78,23 @@ namespace ParbatCore.Controllers
         }
 
         /// <summary>
-        /// Create a new  Component Type
+        /// Create a new ComponentCourse
         /// </summary>
         /// <param name="ctype"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<ComponentType> Create([FromBody]ComponentType ctype)
+        public ActionResult<ComponentCourse> Create([FromBody]ComponentCourse ctype)
         {
-            ctype.Save(Database.Instance);
-            return Created("Get", ctype);
+                try
+                {
+                    ctype.Save(Database.Instance);
+                    return Created("Get", ctype);
+                }
+                catch(Exception e)
+                {
+
+                    return BadRequest(e.Message);
+                }
         }
 
         /// <summary>
@@ -95,9 +105,9 @@ namespace ParbatCore.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {
-            ComponentType c = new ComponentType
+            ComponentCourse c = new ComponentCourse
             {
-                ComponentTypeID = id
+                ComponentCourseID = id
             };
             try
             {

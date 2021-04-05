@@ -4,38 +4,57 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using System.Data.Common;
 using Parbat.Data;
 using ParbatCore.Models;
 
 namespace ParbatCore.Controllers
 {
     /// <summary>
-    /// Service for  Component Type 
+    /// Service for OrgUnit Type 
     /// </summary>
     [Route(GlobalConstants.API_CONTROLLER)]
     [ApiController]
-    public class ComponentTypeController : ControllerBase
+    public class OrgUnitController : ControllerBase
     {
         /// <summary>
-        /// Get  Component Type of given id
+        /// Get OrgUnit Type of given id
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Return json object of  Component Type</returns>
+        /// <returns>Return json object of OrgUnit Type</returns>
         [HttpGet("{id}")]
-        public ActionResult<ComponentType> Get(long id)
+        public ActionResult<OrgUnit> Get(long id)
         {
-            ComponentType c = new ComponentType
+            OrgUnit c = new OrgUnit
             {
-                ComponentTypeID = id
+                OrgUnitID = id
             };
-            c = c.Find(Database.Instance) as ComponentType;
+            c = c.Find(Database.Instance) as OrgUnit;
 
             if (c != null)
                 return Ok(c);
             else
                 return NotFound();
         }
-
+        /// <summary>
+        /// Get All OrgUnit record against ParentID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Return json object of OrgUnit Type</returns>
+        [HttpGet("Parent/{id}")]
+        public ActionResult<OrgUnit> GetParent(long id)
+        {
+            OrgUnit c = new OrgUnit
+            {
+                ParentUnitID = id
+            };
+            
+            if (c.FindParent(Database.Instance) != null)
+                return Ok(c.FindParent(Database.Instance));
+            else
+                return NotFound();
+        }
         /// <summary>
         /// Return all records
         /// </summary>
@@ -44,20 +63,25 @@ namespace ParbatCore.Controllers
         [HttpGet]
         public ActionResult List()
         {
-            ComponentType c = new ComponentType();
-            return Ok(c.GetAll(Database.Instance));
+            OrgUnit c = new OrgUnit();
+            if(c.GetAll(Database.Instance) != null)
+                return Ok(c.GetAll(Database.Instance));
+            return NotFound();
 
         }
 
         /// <summary>
-        /// Update  Component Type
+        /// Update OrgUnit Type
         /// </summary>
         /// <param name="ctype"></param>
         /// <returns>Returns only http codeds</returns>
         [HttpPut]
-        public ActionResult Update([FromBody]ComponentType ctype)
+        public ActionResult Update([FromBody]OrgUnit ctype)
         {
-            if (ctype.ComponentTypeID != null && ctype.ComponentTypeID > 0)
+            if (ctype.Find(Database.Instance) == null)
+                return BadRequest();
+
+            if (ctype.OrgUnitID != null && ctype.OrgUnitID > 0)
             {
                 try
                 {
@@ -76,12 +100,12 @@ namespace ParbatCore.Controllers
         }
 
         /// <summary>
-        /// Create a new  Component Type
+        /// Create a new OrgUnit type
         /// </summary>
         /// <param name="ctype"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<ComponentType> Create([FromBody]ComponentType ctype)
+        public ActionResult<OrgUnit> Create([FromBody]OrgUnit ctype)
         {
             ctype.Save(Database.Instance);
             return Created("Get", ctype);
@@ -95,19 +119,18 @@ namespace ParbatCore.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {
-            ComponentType c = new ComponentType
+            OrgUnit c = new OrgUnit
             {
-                ComponentTypeID = id
+                OrgUnitID = id
             };
-            try
-            {
-                c.Delete(Database.Instance);
-                return NoContent();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            c = (OrgUnit)c.Find(Database.Instance);
+
+            if (c == null)
+                return BadRequest();
+
+            c.Delete(Database.Instance);
+            return NoContent();
+
         }
     }
 }

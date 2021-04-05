@@ -120,6 +120,10 @@ namespace ParbatCore.Models
         /// <param name="db"></param>
         public void Update(IDatabase db)
         {
+            if (this.Find(db) == null)
+            {
+                throw new BOException("Record not found");
+            }
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
