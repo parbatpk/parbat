@@ -59,25 +59,15 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult Update([FromBody]CurriculumType ctype)
         {
-            if (ctype.Find(Database.Instance) == null)
-                return BadRequest();
-
-            if (ctype.CurriculumTypeID != null && ctype.CurriculumTypeID > 0)
+            try
             {
-                try
-                {
-                    ctype.Update(Database.Instance);
-                    return NoContent();
-                }
-                catch
-                {
-
-                    return BadRequest();
-                }
+                ctype.Update(Database.Instance);
+                return Ok();
             }
-            else
-                return BadRequest();
-
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         /// <summary>
@@ -88,8 +78,16 @@ namespace ParbatCore.Controllers
         [HttpPost]
         public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
         {
-            ctype.Save(Database.Instance);
-            return Created("Get", ctype);
+            try
+            {
+                ctype.Save(Database.Instance);
+                return Created("Get", ctype);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         /// <summary>
@@ -100,17 +98,25 @@ namespace ParbatCore.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {
+            // create object with given ID
             CurriculumType c = new CurriculumType
             {
                 CurriculumTypeID = id
             };
-            c = (CurriculumType)c.Find(Database.Instance);
 
-            if (c == null)
-                return BadRequest();
+            try
+            {
+                // call delete 
+                c.Delete(Database.Instance);
+                return Ok();
+            }
+            catch(Exception e)
+            {
+                // if business logic fails or any other issue
+                return BadRequest(e.Message);
+            }
 
-            c.Delete(Database.Instance);
-            return NoContent();
+           
 
         }
     }
