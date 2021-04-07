@@ -73,7 +73,7 @@ namespace ParbatCore.Controllers
         /// <summary>
         /// Create a new curriculum type
         /// </summary>
-        /// <param name="ctype"></param>
+        /// <param name="ctype">Object that needs to be updated</param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
@@ -93,7 +93,7 @@ namespace ParbatCore.Controllers
         /// <summary>
         /// Delete instance
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">primary key</param>
         /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
