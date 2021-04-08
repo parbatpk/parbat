@@ -26,16 +26,19 @@ namespace ParbatCore.Controllers
         [HttpGet("{id}")]
         public ActionResult<CurriculumType> Get(long id)
         {
-            CurriculumType c = new CurriculumType
+            try
             {
-                CurriculumTypeID = id
-            };
-            c = c.Find(Database.Instance) as CurriculumType;
-
-            if (c != null)
+                CurriculumType c = new CurriculumType
+                {
+                    CurriculumTypeID = id
+                };
+                c = c.Find(Database.Instance) as CurriculumType;
                 return Ok(c);
-            else
-                return NotFound();
+            }
+            catch(Exception e)
+            {
+                return NotFound(e.Message);
+            }
         }
 
         /// <summary>

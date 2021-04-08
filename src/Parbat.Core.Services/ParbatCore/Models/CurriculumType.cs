@@ -68,9 +68,9 @@ namespace ParbatCore.Models
                     CurriculumType found = JsonSerializer.Deserialize<CurriculumType>(txt);
                     return found;
                 }
-                catch (JsonException je)
+                catch (Exception e)
                 {
-                    return null;
+                    throw new BOException("record not found");
                 }
             }
         }
