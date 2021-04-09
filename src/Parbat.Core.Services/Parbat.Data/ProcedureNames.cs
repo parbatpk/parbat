@@ -14,6 +14,7 @@ namespace Parbat.Data
             public const string Find = "spFindCurriculumType";
             public const string GetAll = "spGetAllCurriculumType";
         }
+
         public struct ComponentType
         {
             public const string Insert = "spInsertComponentType";
@@ -22,7 +23,7 @@ namespace Parbat.Data
             public const string Find = "spFindComponentType";
             public const string GetAll = "spGetAllComponentType";
         }
-        
+
         public struct CourseType
         {
             public const string Insert = "spInsertCourseType";
@@ -58,6 +59,7 @@ namespace Parbat.Data
             public const string Find = "spFindStudentStatus";
             public const string GetAll = "spGetAllStudentStatus";
         }
+
         public struct OrgUnit
         {
             public const string Insert = "spInsertOrgUnit";
@@ -67,6 +69,7 @@ namespace Parbat.Data
             public const string GetAll = "spGetAllOrgUnit";
             public const string FindParent = "spFindParentOrgUnit";
         }
+
         public struct Course
         {
             public const string Insert = "spInsertCourse";
@@ -77,6 +80,7 @@ namespace Parbat.Data
             public const string GetCourseName = "spGetCourseName";
             public const string FindCourseID = "spFindCourseIDComponentCourse";
         }
+
         public struct ComponentCourse
         {
             public const string Insert = "spInsertComponentCourse";
@@ -85,6 +89,7 @@ namespace Parbat.Data
             public const string Find = "spFindComponentCourse";
             public const string GetAll = "spGetAllComponentCourse";
         }
+
         public struct Curriculum
         {
             public const string Insert = "spInsertCurriculum";
@@ -96,5 +101,57 @@ namespace Parbat.Data
             public const string GetOwnerUnit = "spGetOwnerUnit";
             public const string GetCurriculumType = "spGetCurriculumType";
         }
+
+        public struct Faculty
+        {
+            public const string Insert = "spInsertFaculty";
+            public const string Update = "spUpdateFaculty";
+            public const string Delete = "spDeleteFaculty";
+            public const string Find = "spFindFaculty";
+            public const string GetAll = "spGetAllFaculty";
+
+            public struct Params
+            {
+                public const string FacultyID = "@FacultyID";
+                public const string FirstName = "@FirstName";
+                public const string LastName = "@LastName";
+            }
+        }
+
+        public struct RegisterStatus
+        {
+            public const string Insert = "spInsertRegisterStatus";
+
+            public const string Update = "spUpdateRegisterStatus";
+            public const string Delete = "spDeleteRegisterStatus";
+            public const string GetAll = "spGetAllRegisterStatus";
+            public const string Find = "spFindRegisterStatus";
+
+            public struct Params
+            {
+                public const string RegisterStatusID = "@RegisterStatusID";
+                public const string ShortName = "@ShortName";
+            }
+        }
+
+        public struct ClassModule
+        {
+            public const string Insert = "spInsertClassModule";
+            public const string Update = "spUpdateClassModule";
+            public const string Delete = "spDeleteClassModule";
+            public const string GetAll = "spGetAllClassModule";
+            public const string Find = "spFindClassModule";
+
+            public struct Params
+            {
+                public const string ClassModuleID = "@ClassModuleID";
+                public const string FacultyID = "@FacultyID";
+                public const string ShortName = "@ShortName";
+                public const string TheoryCredit = "@TheoryCredit";
+                public const string LabCredit = "@LabCredit";
+            }
+        }
+
+
     }
 }
