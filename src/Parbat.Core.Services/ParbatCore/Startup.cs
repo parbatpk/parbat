@@ -56,7 +56,7 @@ namespace ParbatCore
 
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, "ParbatCore.xml");
                 Console.WriteLine(xmlPath);
                 c.IncludeXmlComments(xmlPath);
             });
