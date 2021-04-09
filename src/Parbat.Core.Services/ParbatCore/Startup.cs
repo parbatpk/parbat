@@ -58,7 +58,7 @@ namespace ParbatCore
                 //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 //c.IncludeXmlComments(xmlPath);
-                if(File.Exists("ParbatCore.xml"))
+                if(File.Exists("ParbatCore/ParbatCore.xml"))
                 {
                     Console.WriteLine("exists");
                 }
