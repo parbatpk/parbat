@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/src/Parbat.Core.Services/ParbatCore/Properties/PublishProfiles/parbat - Web Deploy.pubxml
+/src/Parbat.Core.Services/ParbatCore/Properties/PublishProfiles/FolderProfile.pubxml
