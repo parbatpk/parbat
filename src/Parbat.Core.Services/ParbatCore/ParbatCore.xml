@@ -4,6 +4,45 @@
         <name>ParbatCore</name>
     </assembly>
     <members>
+        <member name="T:ParbatCore.Controllers.ComponentController">
+            <summary>
+            Component Controller 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.List">
+            <summary>
+            Return all the components from the Component Business Model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Find(System.Int64)">
+            <summary>
+            Return the Component from the Component Business Model If available
+            </summary>
+            <param name="ComponentID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Delete(System.Int32)">
+            <summary>
+            Delete the Component From the Component Business Model
+            </summary>
+            <param name="ComponentID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Save(ParbatCore.Models.Component)">
+            <summary>
+            Save the New Component In the Component Business Model OR Update it
+            </summary>
+            <param name="cc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Update(ParbatCore.Models.Component)">
+            <summary>
+            Update the Component in the Component Business Model
+            </summary>
+            <param name="cc"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Controllers.ComponentCourseController">
             <summary>
             Service for ComponentCourse 
@@ -449,6 +488,94 @@
             </summary>
             <param name="errorMessage"></param>
             <param name="innerException"></param>
+        </member>
+        <member name="T:ParbatCore.Models.Component">
+            <summary>
+            Business Class for the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.ComponentID">
+            <summary>
+            Primary key of Component Table
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.ShortName">
+            <summary>
+            Short Name of the Component For example University = Uni
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.Name">
+            <summary>
+            Name of the component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.CurriculumID">
+            <summary>
+            Forign in the table of Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.TotalCredit">
+            <summary>
+            No. of Credit Hours of the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.TotalCourses">
+            <summary>
+            No. of Couses in the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.IsLimitCourses">
+            <summary>
+            Limits of courses in the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.IsLimitCreditHrs">
+            <summary>
+            No. of CreditHrs in Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.ComponentTypeID">
+            <summary>
+            Forign key in the table of Component
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Use to save the Component
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Use to Find the Component
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the component From DB
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Use to Update the Component
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Component.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get all the Component from the DB Component
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Component.VerifyComponent(Parbat.Data.IDatabase,System.Int64)">
+            <summary>
+            Get the TotalCreditHrs and TotalCourses
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ParbatCore.Models.ComponentCourse">
             <summary>

@@ -107,5 +107,14 @@ namespace Parbat.Data
             public const string GetOwnerUnit = "spGetOwnerUnit";
             public const string GetCurriculumType = "spGetCurriculumType";
         }
+
+        public struct Batch
+        {
+            public const string Insert = "spInsertBatch";
+            public const string Update = "spUpdateBatch";
+            public const string Delete = "spDeleteBatch";
+            public const string Find = "spFindBatch";
+            public const string GetAll = "spGetAllBatch";
+        }
     }
 }
