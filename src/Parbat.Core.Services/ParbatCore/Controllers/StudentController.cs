@@ -49,7 +49,7 @@ namespace ParbatCore.Controllers
         /// <summary>
         /// Delete the STD from the Student Class
         /// </summary>
-        /// <param name="StudentID"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
@@ -58,11 +58,15 @@ namespace ParbatCore.Controllers
             {
                 StudentID = id
             };
-            ss = ss.Find(Database.Instance) as Student;
-            if (ss == null)
-                return BadRequest();
-            ss.Delete(Database.Instance);
-            return NotFound();
+            try
+            {
+                ss.Delete(Database.Instance);
+                return NotFound();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
         }
 
@@ -86,8 +90,6 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult Update([FromBody] Student std)
         {
-            if (std.Find(Database.Instance) == null)
-                return BadRequest();
             if(std.StudentID > 0)
             {
                 try
@@ -97,8 +99,7 @@ namespace ParbatCore.Controllers
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine(ex);
-                    return BadRequest();
+                    return BadRequest(ex.Message);
                 }
             }
             else

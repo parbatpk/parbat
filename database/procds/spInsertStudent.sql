@@ -7,24 +7,21 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spInsertOrgUnitType' 
+     AND SPECIFIC_NAME = N'spInsertStudent' 
 )
-   DROP PROCEDURE dbo.spInsertOrgUnitType
+   DROP PROCEDURE dbo.spInsertStudent
 GO
 
-CREATE PROCEDURE dbo.spInsertOrgUnitType
-	@ShortName nvarchar(10) = 0, 
-	@Name nvarchar(50) = 0
+CREATE PROCEDURE dbo.spInsertStudent
+	@Identifier nvarchar(50), 
+	@FirstName nvarchar(50),
+	@LastName nvarchar(50)
 AS
-	Insert into OrgUnitType (ShortName, [Name]) values(@ShortName, @Name)
-	select SCOPE_IDENTITY();
+	Insert into Student (Identifier, [Name], LastName) values(@Identifier, @FirstName, @LastName)
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spInsertOrgUnitType 'Tea', 'Teacher'
+EXECUTE dbo.spInsertStudent '17b-012-cs','Maaz','Khan'
 GO
-
-
-select *from OrgUnitType
