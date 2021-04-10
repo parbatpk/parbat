@@ -366,7 +366,7 @@
             <summary>
             Delete the STD from the Student Class
             </summary>
-            <param name="StudentID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentController.Save(ParbatCore.Models.Student)">
@@ -398,14 +398,14 @@
             <summary>
             Find the Current StudentStatus from the Studentstatus Class
             </summary>
-            <param name="StudentStatusID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentStatusController.Delete(System.Int64)">
             <summary>
             Delete the StudentSatus from the StudentSatus Class
             </summary>
-            <param name="StudentSatusID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentStatusController.Save(ParbatCore.Models.StudentStatus)">
@@ -421,6 +421,34 @@
             </summary>
             <param name="studentStatus"></param>
             <returns></returns>
+        </member>
+        <member name="T:ParbatCore.GlobalConstants">
+            <summary>
+            This is controller constant Route
+            </summary>
+        </member>
+        <member name="F:ParbatCore.GlobalConstants.API_CONTROLLER">
+            <summary>
+            Route Constant variable
+            </summary>
+        </member>
+        <member name="T:ParbatCore.Models.BOException">
+            <summary>
+            Our BOException Class 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.BOException.#ctor(System.String)">
+            <summary>
+            Constractor
+            </summary>
+            <param name="errorMessage"></param>
+        </member>
+        <member name="M:ParbatCore.Models.BOException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constractor
+            </summary>
+            <param name="errorMessage"></param>
+            <param name="innerException"></param>
         </member>
         <member name="T:ParbatCore.Models.ComponentCourse">
             <summary>
