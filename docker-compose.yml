@@ -1,5 +1,8 @@
 version: '3.4'
 
+networks:
+  parbat-network:
+
 services:
   parbatapp:
     image: parbatimage
@@ -8,6 +11,8 @@ services:
       dockerfile: ParbatCore/Dockerfile
     ports:
     - "9080:80"
+    networks:
+      - parbat-network
     depends_on:
     - db
   db:
@@ -17,6 +22,8 @@ services:
       dockerfile: database/Dockerfile
       #ports:
       #  - "1433:1433"
+    networks:
+      - parbat-network
     volumes:
       - mssqldata:/var/opt/mssql
 
