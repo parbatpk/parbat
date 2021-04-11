@@ -7,6 +7,14 @@ namespace ParbatCore
 {
     public class GlobalConstants
     {
+        /// <summary>
+        ///  API Version
+        /// </summary>
+        public const string API_VER = "v1";
+
+        /// <summary>
+        /// Default Route prefix
+        /// </summary>
         public const string API_CONTROLLER = "api/v1/[controller]";
     }
 }
