@@ -1,4 +1,4 @@
-from mcr.microsoft.com/dotnet/core/aspnet:2.1 as base
+from mcr.microsoft.com/dotnet/core/aspnet:2.1-alpine as base
 workdir /app
 expose 80
 expose 443
