@@ -55,7 +55,7 @@ namespace ParbatCore.Controllers
         /// <param name="ComponentID"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public ActionResult<Component> Delete(int ComponentID)
+        public ActionResult<Component> Delete(long ComponentID)
         {
             Component cc = new Component
             {
@@ -64,7 +64,7 @@ namespace ParbatCore.Controllers
             try
             {
                 cc.Delete(Database.Instance);
-                return NotFound();
+                return NoContent();
             }
             catch(Exception ex)
             {
