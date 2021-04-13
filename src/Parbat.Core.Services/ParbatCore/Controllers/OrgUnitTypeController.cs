@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+//My lib
 using Parbat.Data;
 using ParbatCore.Models;
 
@@ -28,8 +28,8 @@ namespace ParbatCore.Controllers
             OrgUnitType OUT = new OrgUnitType();
             return Ok(OUT.GetAll(Database.Instance));
         }
-
-        /// <summary>
+                
+            /// <summary>
         /// Find the OrgUnitType if Exit else NotFound Error 
         /// </summary>
         /// <param name="ID"></param>
@@ -43,9 +43,9 @@ namespace ParbatCore.Controllers
             };
             OUT = OUT.Find(Database.Instance) as OrgUnitType;
             if (OUT != null)
-                return OUT;
+                return Ok(OUT);
             else
-                return NotFound();
+                return NotFound("Resut not found!");
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace ParbatCore.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest("Result Not Found!"+ex.Message);
             }
         }
 
@@ -98,14 +98,14 @@ namespace ParbatCore.Controllers
                     orgType.Update(Database.Instance);
                     return NoContent();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return BadRequest();
+                    throw new BOException("Result not Found!" + ex.Message);
                 }
             }
             else
             {
-                return BadRequest();
+                return NotFound("Result not Found!");
             }
         }
 

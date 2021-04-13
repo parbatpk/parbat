@@ -15,11 +15,14 @@ GO
 CREATE PROCEDURE dbo.spFindOrgUnitType
 	@OrgUnitTypeID bigint
 AS
-	SELECT [Name], ShortName from OrgUnitType where OrgUnitTypeID = @OrgUnitTypeID;
+	SELECT top 1*
+	from OrgUnitType 
+	where OrgUnitTypeID = @OrgUnitTypeID
+	For json Auto, Without_Array_Wrapper;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spFindOrgUnitType 1
-GO
+-- EXECUTE dbo.spFindOrgUnitType 1
+-- GO

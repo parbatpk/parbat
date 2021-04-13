@@ -11,6 +11,7 @@ namespace ParbatCore
     public class GlobalConstants
     {
         /// <summary>
+        /// Route Constant variable
         ///  API Version
         /// </summary>
         public const string API_VER = "v1";

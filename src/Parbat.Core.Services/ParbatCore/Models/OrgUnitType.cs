@@ -69,8 +69,7 @@ namespace ParbatCore.Models
             {
                 connection.Open();
                 DbCommand cmd = db.CreateSPCommand(ProcedureNames.OrgUnitType.Find, connection);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "ShortName", this.ShortName));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "OrgUnitTypeID", this.OrgUnitTypeID));
                 string txt = cmd.ExecuteScalar().ToString();
                 connection.Close();
                 try
@@ -80,8 +79,7 @@ namespace ParbatCore.Models
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine(ex);
-                    return null;
+                    throw new  BOException("Not Found" + ex.Message);
                 }
             }
         }
