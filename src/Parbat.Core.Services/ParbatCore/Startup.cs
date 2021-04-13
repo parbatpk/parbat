@@ -19,32 +19,45 @@ using Newtonsoft.Json.Serialization;
 
 namespace ParbatCore
 {
+    /// <summary>
+    /// Defult startup class
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
 
         }
 
+        /// <summary>
+        /// Configuration instance
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
+                c.SwaggerDoc(GlobalConstants.API_VER, new OpenApiInfo
                 {
-                    Version = "v1",
-                    Title = "ToDo API",
-                    Description = "A simple example ASP.NET Core Web API",
-                    TermsOfService = new Uri("https://example.com/terms"),
+                    Version = GlobalConstants.API_VER,
+                    Title = "Parbat",
+                    Description = "An open source ERP for Universities",
+                    TermsOfService = new Uri("https://parbat.irada.pk/terms"),
                     Contact = new OpenApiContact
                     {
-                        Name = "Shayne Boyer",
-                        Email = string.Empty,
-                        Url = new Uri("https://twitter.com/spboyer"),
+                        Name = "Dr. Muhammad Qasim Pasta",
+                        Email = "mqpasta@irada.pk",
+                        Url = new Uri("https://twitter.com/mqpasta"),
                     },
                     License = new OpenApiLicense
                     {
@@ -62,7 +75,11 @@ namespace ParbatCore
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             // Enable middleware to serve generated Swagger as a JSON endpoint.
@@ -98,11 +115,18 @@ namespace ParbatCore
 
     }
 
+    /// <summary>
+    /// To avoid naming convention in json objects
+    /// </summary>
     public class MyTransparentJsonNamingPolicy : JsonNamingPolicy
     {
-        // You can came up any custom transformation here, so instead just transparently
-        // pass through the original C# class property name, it is possible to explicit
-        // convert to PascalCase, etc:
+        /// <summary>
+        /// You can came up any custom transformation here, so instead just transparently
+        /// pass through the original C# class property name, it is possible to explicit
+        /// convert to PascalCase, etc:
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public override string ConvertName(string name)
         {
             return name;
