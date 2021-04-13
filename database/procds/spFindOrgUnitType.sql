@@ -24,5 +24,5 @@ GO
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spFindOrgUnitType 1
-GO
+-- EXECUTE dbo.spFindOrgUnitType 1
+-- GO
