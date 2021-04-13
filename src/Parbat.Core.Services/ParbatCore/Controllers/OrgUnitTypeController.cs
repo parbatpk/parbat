@@ -60,11 +60,15 @@ namespace ParbatCore.Controllers
             {
                 OrgUnitTypeID = ID
             };
-            OUT = OUT.Find(Database.Instance) as OrgUnitType;
-            if (OUT == null)
-                return BadRequest();
-            OUT.Delete(Database.Instance);
-            return NotFound();
+            try
+            {
+                OUT.Delete(Database.Instance);
+                return NotFound();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         /// <summary>
@@ -87,8 +91,6 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult<OrgUnitType> Update([FromBody]OrgUnitType orgType)
         {
-            if (orgType.Find(Database.Instance) == null)
-                return BadRequest();
             if (orgType.OrgUnitTypeID > 0)
             {
                 try
@@ -102,7 +104,9 @@ namespace ParbatCore.Controllers
                 }
             }
             else
+            {
                 return BadRequest();
+            }
         }
 
     }
