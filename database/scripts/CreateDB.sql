@@ -13,11 +13,6 @@ USE [master]
 GO
 /****** Object:  Database [ParbatDB]    Script Date: 3/26/2021 5:54:10 PM ******/
 CREATE DATABASE [ParbatDB]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'ParbatDB', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\ParbatDB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'ParbatDB_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\ParbatDB_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin

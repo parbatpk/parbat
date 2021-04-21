@@ -59,7 +59,17 @@ namespace ParbatCore
                 c.IncludeXmlComments(xmlPath);
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+               .AddJsonOptions(o =>
+               {
+                   if (o.SerializerSettings.ContractResolver != null)
+                   {
+                       var castedResolver = o.SerializerSettings.ContractResolver
+                           as DefaultContractResolver;
+                       castedResolver.NamingStrategy = null;
+                   }
+               });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

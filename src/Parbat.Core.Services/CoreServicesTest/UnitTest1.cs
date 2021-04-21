@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Hosting;
 
 using ParbatCore.Models;
 
-
 namespace CoreServicesTest
 {
     [TestClass]
@@ -24,12 +23,13 @@ namespace CoreServicesTest
             var server = new TestServer(new WebHostBuilder()
                 .ConfigureAppConfiguration((context, config) =>
                {
-                   config.AddJsonFile("appsettings.json");
+                   config.AddJsonFile("appsettings.Test.json");
                })
                 .UseEnvironment("Development")
                 .UseStartup<ParbatCore.Startup>()
                 );
             _client = server.CreateClient();
+            
 
         }
         [TestMethod]
@@ -57,7 +57,7 @@ namespace CoreServicesTest
             var response = await _client.SendAsync(request);
 
             //response.EnsureSuccessStatusCode();
-            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
 
         }
     }
