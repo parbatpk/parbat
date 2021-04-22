@@ -820,6 +820,59 @@
             </summary>
             <param name="db"></param>
         </member>
+        <member name="T:ParbatCore.Models.Faculty">
+            <summary>
+            Business Model of Faculty
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Faculty.FacultyID">
+            <summary>
+            Primary key
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Faculty.FirstName">
+            <summary>
+            Firstname 
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Faculty.LastName">
+            <summary>
+            Lastname
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Faculty.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the Faculty member
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Faculty.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find the faculty member
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Faculty.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get all the faculty members
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Faculty.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save the new Faculty member if exist
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Faculty.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update the Faculty memeber if exist
+            </summary>
+            <param name="db"></param>
+        </member>
         <member name="T:ParbatCore.Models.IBussinesObject">
             <summary>
             All business object should implement this interface
