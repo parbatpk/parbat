@@ -116,6 +116,7 @@ namespace ParbatCore.Models
             {
                 connection.Open();
                 DbCommand cmd = db.CreateSPCommand(ProcedureNames.OrgUnitType.Update,connection);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "OrgUnitType", this.OrgUnitTypeID));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "ShortName", this.ShortName));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
                 cmd.ExecuteNonQuery();
