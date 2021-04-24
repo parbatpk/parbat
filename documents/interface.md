@@ -26,18 +26,17 @@
 
 # Student Group
 - [CRUD-L] /StudentGroup
-- [GET] /StudentGroup/{GroupID}/Student : list all students belong to the given GroupId
-- [GET] /StudentGroup/{GropuID}/Student(StudentGroupSearch) : list all students that can fulfill the criteria given in the object but should not be part of the given group
-- [POST] /StudentGruop/{GroupID}/Student (List<long>) : add these students for the group
-- [DELETE] /StudentGruop/{GroupID}/Student (List<long>) : delete these students for the group
+- [GET] /StudentGroup/\{GroupID\}/Student : list all students belong to the given GroupId
+- [GET] /StudentGroup/\{GropuID\}/Student(StudentGroupSearch) : list all students that can fulfill the criteria given in the object but should not be part of the given group
+- [POST] /StudentGruop/\{GroupID\}/Student (List<long>) : add these students for the group
+- [DELETE] /StudentGruop/\{GroupID\}/Student (List<long>) : delete these students for the group
 
 # Term
 - [CRUD-L] /Term
-- [GET] /Term/{TermID}/Course: list all courses already offered for the given term
-- [DELETE] /Term/{TermID}/Course/List<OfferingID> : delete these courses for the given term
-- [POST] /Term/{TermID}/Course/List<Offering> : add these Offering's objects into the database
+- [GET] /Term/\{TermID\}/Course: list all courses already offered for the given term
+- [DELETE] /Term/\{TermID\}/Course/List<OfferingID> : delete these courses for the given term
+- [POST] /Term/\{TermID\}/Course/List<Offering> : add these Offering's objects into the database
 - [GET] /OrgUnit/GET
-- [GET] /Semester/{TermID}: List all semester for the given Term ID
+- [GET] /Semester/\{TermID\}: List all semester for the given Term ID
 - [GET] /OrgUnit/{OrgUnitID}/Course: List all courses defined for the given or parent OrgUnitID
-
 
