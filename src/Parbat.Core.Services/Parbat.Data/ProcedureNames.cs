@@ -151,7 +151,56 @@ namespace Parbat.Data
                 public const string LabCredit = "@LabCredit";
             }
         }
+        public struct Class
+        {
+            public const string Insert = "spInsertClass";
+            public const string Update = "spUpdateClass";
+            public const string Delete = "spDeleteClass";
+            public const string GetAll = "spGetAllClass";
+            public const string Find = "spFindClass";
 
+            public struct Params
+            {
+                public const string ClassID = "@ClassID";
+                public const string Name = "@Name";
+                public const string ShortName = "@ShortName";
+                public const string Capacity = "@Capacity";
+            }
+        }
+        public struct StudentGroup
+        {
+            public const string Insert = "spInsertStudentGroup";
+            public const string Update = "spUpdateStudentGroup";
+            public const string Delete = "spDeleteStudentGroup";
+            public const string GetAll = "spGetAllStudentGroup";
+            public const string Find = "spFindStudentGroup";
+
+            public struct Params
+            {
+                public const string StudentGroupID = "@StudentGroupID";
+                public const string Name = "@Name";
+                public const string ShortName = "@ShortName";
+                public const string IsActive = "@IsActive";
+            }
+        }
+        public struct Term
+        {
+            public const string Insert = "spInsertTerm";
+            public const string Update = "spUpdateTerm";
+            public const string Delete = "spDeleteTerm";
+            public const string GetAll = "spGetAllTerm";
+            public const string Find = "spFindTerm";
+
+            public struct Params
+            {
+                public const string TermID = "@TermID";
+                public const string Name = "@Name";
+                public const string ShortName = "@ShortName";
+                public const string IsActive = "@IsActive";
+                public const string StartDate = "@StartDate";
+                public const string EndDate = "@EndDate";
+            }
+        }
 
     }
 }

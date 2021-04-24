@@ -7,20 +7,22 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spComponentTotalCourseCreditHrs' 
+     AND SPECIFIC_NAME = N'spFindTerm' 
 )
-   DROP PROCEDURE dbo.spComponentTotalCourseCreditHrs
+   DROP PROCEDURE dbo.spFindTerm
 GO
 
-CREATE PROCEDURE dbo.spComponentTotalCourseCreditHrs
-	@CurriculumID bigint
+CREATE PROCEDURE dbo.spFindTerm
+	@TermID bigint
 AS
-	SELECT count(ComponentID) as NumberofComponent, sum(TotalCourses) as TotalCourses,sum(TotalCredit) as TotalCredit
-	from Component where CurriculumID=@CurriculumID
+	SELECT top 1 *
+	from Term
+	where TermID=@TermID
+	For json Auto, Without_Array_Wrapper;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spTotalCreditCourse 1, 2
+--EXECUTE dbo.spFindTerm 1, 2
 --GO
