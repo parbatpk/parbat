@@ -2,7 +2,7 @@
 - [GET] /OrgUnit/Type : returns all OrgUnitType 
 - [GET] /OrgUnit/ :  returns Top most org unit with only its children
 - [GET] /OrgUnit/Children/(id) :  returns children of given org unit
-- [CRUD] /OrgUnit
+- [CRUD-L] /OrgUnit
 
 # Course
 - [CRUD-L] /Course
