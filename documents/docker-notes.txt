@@ -1,0 +1,6 @@
+Multiple projects: https://www.softwaredeveloper.blog/multi-project-dotnet-core-solution-in-docker-image
+
+Compose with sql server: https://dotnetthoughts.net/docker-compose-asp-net-core-application/
+running script for database creation: https://www.abhith.net/blog/create-sql-server-database-from-a-script-in-docker-compose/
+
+deploy on heroku: https://dev.to/alrobilliard/deploying-net-core-to-heroku-1lfe
