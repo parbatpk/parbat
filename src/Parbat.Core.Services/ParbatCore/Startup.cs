@@ -102,6 +102,7 @@ namespace ParbatCore
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors("MyPolicy");
+            app.MaintainCorsHeadersOnError();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
