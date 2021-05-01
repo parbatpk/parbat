@@ -35,13 +35,12 @@ namespace CoreServicesTest
 
             // arrange
             long max = 0;
-            DbConnection con = instance.CreateConnection();
-            DbCommand cmd = instance.CreateCommand(con);
+            DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.CommandText = "Select max(CurriculumTypeID) from CurriculumType";
 
-            con.Open();
+            cmd.Connection.Open();
             max = Convert.ToInt64(cmd.ExecuteScalar());
-            con.Close();
+            cmd.Connection.Close();
             return max;
         }
 
@@ -52,16 +51,14 @@ namespace CoreServicesTest
         /// <returns></returns>
         private long Insert(string name)
         {
-            IDatabase instance = Database.Instance;
-            // arrange
-            DbConnection con = instance.CreateConnection();
-            con.Open();
-            DbCommand cmd = instance.CreateCommand(con);
+            // arrange   
+            DbCommand cmd = DatabaseHelper.GetCommand();
+            cmd.Connection.Open();
             cmd.CommandText = string.Format(
                 "Insert into CurriculumType (Name) Values('{0}'); select scope_identity()"
                 , name);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
-            con.Close();
+            cmd.Connection.Close();
             return id;
         }
 
@@ -103,8 +100,8 @@ namespace CoreServicesTest
         public async Task CurriculumType_Get_Valid()
         {
             // arrange
-            IDatabase instance = Database.Instance;
             DbCommand cmd = DatabaseHelper.GetCommand();
+            cmd.Connection.Open();
             cmd.CommandText = "Select count(1) from CurriculumType";
             long count = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
