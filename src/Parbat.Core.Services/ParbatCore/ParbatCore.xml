@@ -4,6 +4,45 @@
         <name>ParbatCore</name>
     </assembly>
     <members>
+        <member name="T:ParbatCore.Controllers.ComponentController">
+            <summary>
+            Component Controller 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.List">
+            <summary>
+            Return all the components from the Component Business Model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Find(System.Int64)">
+            <summary>
+            Return the Component from the Component Business Model If available
+            </summary>
+            <param name="ComponentID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Delete(System.Int32)">
+            <summary>
+            Delete the Component From the Component Business Model
+            </summary>
+            <param name="ComponentID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Save(ParbatCore.Models.Component)">
+            <summary>
+            Save the New Component In the Component Business Model OR Update it
+            </summary>
+            <param name="cc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Update(ParbatCore.Models.Component)">
+            <summary>
+            Update the Component in the Component Business Model
+            </summary>
+            <param name="cc"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Controllers.ComponentCourseController">
             <summary>
             Service for ComponentCourse 
@@ -248,14 +287,14 @@
             <summary>
             Create a new curriculum type
             </summary>
-            <param name="ctype"></param>
+            <param name="ctype">Object that needs to be updated</param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.CurriculumTypeController.Delete(System.Int64)">
             <summary>
             Delete instance
             </summary>
-            <param name="id"></param>
+            <param name="id">primary key</param>
             <returns></returns>
         </member>
         <member name="T:ParbatCore.Controllers.OrgUnitController">
@@ -366,7 +405,7 @@
             <summary>
             Delete the STD from the Student Class
             </summary>
-            <param name="StudentID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentController.Save(ParbatCore.Models.Student)">
@@ -398,14 +437,14 @@
             <summary>
             Find the Current StudentStatus from the Studentstatus Class
             </summary>
-            <param name="StudentStatusID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentStatusController.Delete(System.Int64)">
             <summary>
             Delete the StudentSatus from the StudentSatus Class
             </summary>
-            <param name="StudentSatusID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentStatusController.Save(ParbatCore.Models.StudentStatus)">
@@ -420,6 +459,122 @@
             Update the studentstatus in the studentstatus class
             </summary>
             <param name="studentStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ParbatCore.GlobalConstants.API_VER">
+            <summary>
+             API Version
+            </summary>
+        </member>
+        <member name="F:ParbatCore.GlobalConstants.API_CONTROLLER">
+            <summary>
+            Route Constant variable
+            </summary>
+        </member>
+        <member name="T:ParbatCore.Models.BOException">
+            <summary>
+            Our BOException Class 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.BOException.#ctor(System.String)">
+            <summary>
+            Constractor
+            </summary>
+            <param name="errorMessage"></param>
+        </member>
+        <member name="M:ParbatCore.Models.BOException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constractor
+            </summary>
+            <param name="errorMessage"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:ParbatCore.Models.Component">
+            <summary>
+            Business Class for the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.ComponentID">
+            <summary>
+            Primary key of Component Table
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.ShortName">
+            <summary>
+            Short Name of the Component For example University = Uni
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.Name">
+            <summary>
+            Name of the component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.CurriculumID">
+            <summary>
+            Forign in the table of Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.TotalCredit">
+            <summary>
+            No. of Credit Hours of the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.TotalCourses">
+            <summary>
+            No. of Couses in the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.IsLimitCourses">
+            <summary>
+            Limits of courses in the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.IsLimitCreditHrs">
+            <summary>
+            No. of CreditHrs in Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.ComponentTypeID">
+            <summary>
+            Forign key in the table of Component
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Use to save the Component
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Use to Find the Component
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the component From DB
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Use to Update the Component
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Component.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get all the Component from the DB Component
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Component.VerifyComponent(Parbat.Data.IDatabase,System.Int64)">
+            <summary>
+            Get the TotalCreditHrs and TotalCourses
+            </summary>
             <returns></returns>
         </member>
         <member name="T:ParbatCore.Models.ComponentCourse">
@@ -1161,6 +1316,49 @@
             Update the Term is exist
             </summary>
             <param name="db"></param>
+        </member>
+        <member name="T:ParbatCore.Startup">
+            <summary>
+            Defult startup class
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:ParbatCore.Startup.Configuration">
+            <summary>
+            Configuration instance
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ParbatCore.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:ParbatCore.MyTransparentJsonNamingPolicy">
+            <summary>
+            To avoid naming convention in json objects
+            </summary>
+        </member>
+        <member name="M:ParbatCore.MyTransparentJsonNamingPolicy.ConvertName(System.String)">
+            <summary>
+            You can came up any custom transformation here, so instead just transparently
+            pass through the original C# class property name, it is possible to explicit
+            convert to PascalCase, etc:
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

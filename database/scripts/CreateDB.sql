@@ -1,6 +1,13 @@
+IF EXISTS(select 1 from sys.databases where [name]='ParbatDB')
+	DROP DATABASE [ParbatDB]
+GO
+USE [master]
+CREATE DATABASE [ParbatDB]
+GO
+
 USE [ParbatDB]
 GO
-/****** Object:  Table [dbo].[Batch]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Batch]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -19,7 +26,7 @@ CREATE TABLE [dbo].[Batch](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Class]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Class]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,7 +42,7 @@ CREATE TABLE [dbo].[Class](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ClassMapping]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[ClassMapping]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -50,7 +57,7 @@ CREATE TABLE [dbo].[ClassMapping](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ClassModule]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[ClassModule]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -68,7 +75,7 @@ CREATE TABLE [dbo].[ClassModule](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Component]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Component]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -89,7 +96,7 @@ CREATE TABLE [dbo].[Component](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ComponentCourse]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[ComponentCourse]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -104,7 +111,7 @@ CREATE TABLE [dbo].[ComponentCourse](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ComponentType]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[ComponentType]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -119,7 +126,7 @@ CREATE TABLE [dbo].[ComponentType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Course]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Course]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -139,7 +146,7 @@ CREATE TABLE [dbo].[Course](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CourseType]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[CourseType]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +160,7 @@ CREATE TABLE [dbo].[CourseType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Curriculum]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Curriculum]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,7 +181,7 @@ CREATE TABLE [dbo].[Curriculum](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CurriculumType]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[CurriculumType]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -188,7 +195,7 @@ CREATE TABLE [dbo].[CurriculumType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Faculty]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Faculty]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -203,7 +210,7 @@ CREATE TABLE [dbo].[Faculty](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Offering]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Offering]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -220,7 +227,7 @@ CREATE TABLE [dbo].[Offering](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrgUnit]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[OrgUnit]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -238,7 +245,7 @@ CREATE TABLE [dbo].[OrgUnit](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrgUnitType]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[OrgUnitType]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -253,24 +260,7 @@ CREATE TABLE [dbo].[OrgUnitType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Registeration]    Script Date: 4/9/2021 12:33:40 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Registeration](
-	[RegistrationID] [bigint] IDENTITY(1,1) NOT NULL,
-	[RegisterDate] [datetime] NOT NULL,
-	[StudentID] [bigint] NOT NULL,
-	[ClassID] [bigint] NOT NULL,
-	[RegisterStatusID] [bigint] NOT NULL,
- CONSTRAINT [PK_Registeration] PRIMARY KEY CLUSTERED 
-(
-	[RegistrationID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[RegisterStatus]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[RegisterStatus]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -284,7 +274,24 @@ CREATE TABLE [dbo].[RegisterStatus](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Semester]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Registration]    Script Date: 4/24/2021 5:53:53 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Registration](
+	[RegistrationID] [bigint] IDENTITY(1,1) NOT NULL,
+	[RegisterDate] [datetime] NOT NULL,
+	[StudentProgramID] [bigint] NOT NULL,
+	[ClassID] [bigint] NOT NULL,
+	[RegisterStatusID] [bigint] NOT NULL,
+ CONSTRAINT [PK_Registeration] PRIMARY KEY CLUSTERED 
+(
+	[RegistrationID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Semester]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -301,7 +308,7 @@ CREATE TABLE [dbo].[Semester](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -318,7 +325,7 @@ CREATE TABLE [dbo].[Student](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[StudentGroup]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[StudentGroup]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -334,7 +341,7 @@ CREATE TABLE [dbo].[StudentGroup](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[StudentProgram]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[StudentProgram]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -348,13 +355,14 @@ CREATE TABLE [dbo].[StudentProgram](
 	[StudentStatusID] [bigint] NOT NULL,
 	[OverrideCurriculumID] [bigint] NULL,
 	[MinorCurriculumID] [bigint] NULL,
+	[StudentGroupID] [bigint] NULL,
  CONSTRAINT [PK_StudentProgram] PRIMARY KEY CLUSTERED 
 (
 	[StudentProgramID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[StudentStatus]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[StudentStatus]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -368,7 +376,7 @@ CREATE TABLE [dbo].[StudentStatus](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Term]    Script Date: 4/9/2021 12:33:40 PM ******/
+/****** Object:  Table [dbo].[Term]    Script Date: 4/24/2021 5:53:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -530,7 +538,7 @@ SET IDENTITY_INSERT [dbo].[Student] OFF
 GO
 SET IDENTITY_INSERT [dbo].[StudentProgram] ON 
 GO
-INSERT [dbo].[StudentProgram] ([StudentProgramID], [StudentID], [BatchID], [StartDate], [EndDate], [StudentStatusID], [OverrideCurriculumID], [MinorCurriculumID]) VALUES (1, 2, 1, CAST(N'2021-01-01' AS Date), NULL, 1, 2, NULL)
+INSERT [dbo].[StudentProgram] ([StudentProgramID], [StudentID], [BatchID], [StartDate], [EndDate], [StudentStatusID], [OverrideCurriculumID], [MinorCurriculumID], [StudentGroupID]) VALUES (1, 2, 1, CAST(N'2021-01-01' AS Date), NULL, 1, 2, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[StudentProgram] OFF
 GO
@@ -548,14 +556,14 @@ INSERT [dbo].[StudentStatus] ([StudentStatusID], [Name]) VALUES (5, N'Alumni')
 GO
 SET IDENTITY_INSERT [dbo].[StudentStatus] OFF
 GO
-/****** Object:  Index [IX_ClassMapping]    Script Date: 4/9/2021 12:33:41 PM ******/
+/****** Object:  Index [IX_ClassMapping]    Script Date: 4/24/2021 5:53:53 PM ******/
 ALTER TABLE [dbo].[ClassMapping] ADD  CONSTRAINT [IX_ClassMapping] UNIQUE NONCLUSTERED 
 (
 	[ClassID] ASC,
 	[OfferingID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ComponentCourse]    Script Date: 4/9/2021 12:33:41 PM ******/
+/****** Object:  Index [IX_ComponentCourse]    Script Date: 4/24/2021 5:53:53 PM ******/
 ALTER TABLE [dbo].[ComponentCourse] ADD  CONSTRAINT [IX_ComponentCourse] UNIQUE NONCLUSTERED 
 (
 	[ComponentID] ASC,
@@ -564,13 +572,13 @@ ALTER TABLE [dbo].[ComponentCourse] ADD  CONSTRAINT [IX_ComponentCourse] UNIQUE 
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [Code_Unique_Course]    Script Date: 4/9/2021 12:33:41 PM ******/
+/****** Object:  Index [Code_Unique_Course]    Script Date: 4/24/2021 5:53:53 PM ******/
 ALTER TABLE [dbo].[Course] ADD  CONSTRAINT [Code_Unique_Course] UNIQUE NONCLUSTERED 
 (
 	[Code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Offering]    Script Date: 4/9/2021 12:33:41 PM ******/
+/****** Object:  Index [IX_Offering]    Script Date: 4/24/2021 5:53:53 PM ******/
 ALTER TABLE [dbo].[Offering] ADD  CONSTRAINT [IX_Offering] UNIQUE NONCLUSTERED 
 (
 	[CousreID] ASC,
@@ -580,7 +588,7 @@ ALTER TABLE [dbo].[Offering] ADD  CONSTRAINT [IX_Offering] UNIQUE NONCLUSTERED
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [ShortName_Unique_OrgUnit]    Script Date: 4/9/2021 12:33:41 PM ******/
+/****** Object:  Index [ShortName_Unique_OrgUnit]    Script Date: 4/24/2021 5:53:53 PM ******/
 ALTER TABLE [dbo].[OrgUnit] ADD  CONSTRAINT [ShortName_Unique_OrgUnit] UNIQUE NONCLUSTERED 
 (
 	[ShortName] ASC
@@ -588,22 +596,22 @@ ALTER TABLE [dbo].[OrgUnit] ADD  CONSTRAINT [ShortName_Unique_OrgUnit] UNIQUE NO
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [ShortName_OrgUnitType_OrgUnitType]    Script Date: 4/9/2021 12:33:41 PM ******/
+/****** Object:  Index [ShortName_OrgUnitType_OrgUnitType]    Script Date: 4/24/2021 5:53:53 PM ******/
 ALTER TABLE [dbo].[OrgUnitType] ADD  CONSTRAINT [ShortName_OrgUnitType_OrgUnitType] UNIQUE NONCLUSTERED 
 (
 	[ShortName] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Registeration]    Script Date: 4/9/2021 12:33:41 PM ******/
-ALTER TABLE [dbo].[Registeration] ADD  CONSTRAINT [IX_Registeration] UNIQUE NONCLUSTERED 
+/****** Object:  Index [IX_Registeration]    Script Date: 4/24/2021 5:53:53 PM ******/
+ALTER TABLE [dbo].[Registration] ADD  CONSTRAINT [IX_Registeration] UNIQUE NONCLUSTERED 
 (
 	[ClassID] ASC,
-	[StudentID] ASC
+	[StudentProgramID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [Unique_Identifier_Student]    Script Date: 4/9/2021 12:33:41 PM ******/
+/****** Object:  Index [Unique_Identifier_Student]    Script Date: 4/24/2021 5:53:53 PM ******/
 ALTER TABLE [dbo].[Student] ADD  CONSTRAINT [Unique_Identifier_Student] UNIQUE NONCLUSTERED 
 (
 	[Identifier] ASC
@@ -611,7 +619,7 @@ ALTER TABLE [dbo].[Student] ADD  CONSTRAINT [Unique_Identifier_Student] UNIQUE N
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_StudentGroup]    Script Date: 4/9/2021 12:33:41 PM ******/
+/****** Object:  Index [IX_StudentGroup]    Script Date: 4/24/2021 5:53:53 PM ******/
 ALTER TABLE [dbo].[StudentGroup] ADD  CONSTRAINT [IX_StudentGroup] UNIQUE NONCLUSTERED 
 (
 	[ShortName] ASC
@@ -639,7 +647,7 @@ ALTER TABLE [dbo].[Curriculum] ADD  CONSTRAINT [DF_Curriculum_TotalCreditHrs]  D
 GO
 ALTER TABLE [dbo].[OrgUnit] ADD  CONSTRAINT [DF_OrgUnit_IsAdmssion]  DEFAULT ((0)) FOR [IsAllowAdmission]
 GO
-ALTER TABLE [dbo].[Registeration] ADD  CONSTRAINT [DF_Registeration_RegisterDate]  DEFAULT (getdate()) FOR [RegisterDate]
+ALTER TABLE [dbo].[Registration] ADD  CONSTRAINT [DF_Registeration_RegisterDate]  DEFAULT (getdate()) FOR [RegisterDate]
 GO
 ALTER TABLE [dbo].[Term] ADD  CONSTRAINT [DF_Term_IsActive]  DEFAULT ((0)) FOR [IsActive]
 GO
@@ -743,20 +751,20 @@ REFERENCES [dbo].[OrgUnitType] ([OrgUnitTypeID])
 GO
 ALTER TABLE [dbo].[OrgUnit] CHECK CONSTRAINT [FK_OrgUnit_OrgUnitType]
 GO
-ALTER TABLE [dbo].[Registeration]  WITH CHECK ADD  CONSTRAINT [FK_Registeration_Class] FOREIGN KEY([ClassID])
+ALTER TABLE [dbo].[Registration]  WITH CHECK ADD  CONSTRAINT [FK_Registeration_Class] FOREIGN KEY([ClassID])
 REFERENCES [dbo].[Class] ([ClassID])
 GO
-ALTER TABLE [dbo].[Registeration] CHECK CONSTRAINT [FK_Registeration_Class]
+ALTER TABLE [dbo].[Registration] CHECK CONSTRAINT [FK_Registeration_Class]
 GO
-ALTER TABLE [dbo].[Registeration]  WITH CHECK ADD  CONSTRAINT [FK_Registeration_RegisterStatus] FOREIGN KEY([RegisterStatusID])
+ALTER TABLE [dbo].[Registration]  WITH CHECK ADD  CONSTRAINT [FK_Registeration_RegisterStatus] FOREIGN KEY([RegisterStatusID])
 REFERENCES [dbo].[RegisterStatus] ([RegisterStatusID])
 GO
-ALTER TABLE [dbo].[Registeration] CHECK CONSTRAINT [FK_Registeration_RegisterStatus]
+ALTER TABLE [dbo].[Registration] CHECK CONSTRAINT [FK_Registeration_RegisterStatus]
 GO
-ALTER TABLE [dbo].[Registeration]  WITH CHECK ADD  CONSTRAINT [FK_Registeration_Student] FOREIGN KEY([StudentID])
-REFERENCES [dbo].[Student] ([StudentID])
+ALTER TABLE [dbo].[Registration]  WITH CHECK ADD  CONSTRAINT [FK_Registeration_StudentProgram] FOREIGN KEY([StudentProgramID])
+REFERENCES [dbo].[StudentProgram] ([StudentProgramID])
 GO
-ALTER TABLE [dbo].[Registeration] CHECK CONSTRAINT [FK_Registeration_Student]
+ALTER TABLE [dbo].[Registration] CHECK CONSTRAINT [FK_Registeration_StudentProgram]
 GO
 ALTER TABLE [dbo].[Semester]  WITH CHECK ADD  CONSTRAINT [FK_Semester_StudentGroup] FOREIGN KEY([StudentGroupID])
 REFERENCES [dbo].[StudentGroup] ([StudentGroupID])
@@ -767,11 +775,6 @@ ALTER TABLE [dbo].[Semester]  WITH CHECK ADD  CONSTRAINT [FK_Semester_Term] FORE
 REFERENCES [dbo].[Term] ([TermID])
 GO
 ALTER TABLE [dbo].[Semester] CHECK CONSTRAINT [FK_Semester_Term]
-GO
-ALTER TABLE [dbo].[Student]  WITH CHECK ADD  CONSTRAINT [FK_Student_StudentGroup] FOREIGN KEY([StudetGroupID])
-REFERENCES [dbo].[StudentGroup] ([StudentGroupID])
-GO
-ALTER TABLE [dbo].[Student] CHECK CONSTRAINT [FK_Student_StudentGroup]
 GO
 ALTER TABLE [dbo].[StudentProgram]  WITH CHECK ADD  CONSTRAINT [FK_StudentProgram_Batch] FOREIGN KEY([BatchID])
 REFERENCES [dbo].[Batch] ([BatchID])
@@ -792,6 +795,11 @@ ALTER TABLE [dbo].[StudentProgram]  WITH CHECK ADD  CONSTRAINT [FK_StudentProgra
 REFERENCES [dbo].[Student] ([StudentID])
 GO
 ALTER TABLE [dbo].[StudentProgram] CHECK CONSTRAINT [FK_StudentProgram_Student]
+GO
+ALTER TABLE [dbo].[StudentProgram]  WITH CHECK ADD  CONSTRAINT [FK_StudentProgram_StudentGroup] FOREIGN KEY([StudentGroupID])
+REFERENCES [dbo].[StudentGroup] ([StudentGroupID])
+GO
+ALTER TABLE [dbo].[StudentProgram] CHECK CONSTRAINT [FK_StudentProgram_StudentGroup]
 GO
 ALTER TABLE [dbo].[StudentProgram]  WITH CHECK ADD  CONSTRAINT [FK_StudentProgram_StudentStatus] FOREIGN KEY([StudentStatusID])
 REFERENCES [dbo].[StudentStatus] ([StudentStatusID])

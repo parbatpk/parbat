@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+//My lib
 using Parbat.Data;
 using ParbatCore.Models;
 
@@ -28,8 +28,8 @@ namespace ParbatCore.Controllers
             OrgUnitType OUT = new OrgUnitType();
             return Ok(OUT.GetAll(Database.Instance));
         }
-
-        /// <summary>
+                
+            /// <summary>
         /// Find the OrgUnitType if Exit else NotFound Error 
         /// </summary>
         /// <param name="ID"></param>
@@ -43,9 +43,9 @@ namespace ParbatCore.Controllers
             };
             OUT = OUT.Find(Database.Instance) as OrgUnitType;
             if (OUT != null)
-                return OUT;
+                return Ok(OUT);
             else
-                return NotFound();
+                return NotFound("Resut not found!");
         }
 
         /// <summary>
@@ -60,11 +60,15 @@ namespace ParbatCore.Controllers
             {
                 OrgUnitTypeID = ID
             };
-            OUT = OUT.Find(Database.Instance) as OrgUnitType;
-            if (OUT == null)
-                return BadRequest();
-            OUT.Delete(Database.Instance);
-            return NotFound();
+            try
+            {
+                OUT.Delete(Database.Instance);
+                return NotFound();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest("Result Not Found!"+ex.Message);
+            }
         }
 
         /// <summary>
@@ -87,8 +91,6 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult<OrgUnitType> Update([FromBody]OrgUnitType orgType)
         {
-            if (orgType.Find(Database.Instance) == null)
-                return BadRequest();
             if (orgType.OrgUnitTypeID > 0)
             {
                 try
@@ -96,13 +98,15 @@ namespace ParbatCore.Controllers
                     orgType.Update(Database.Instance);
                     return NoContent();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return BadRequest();
+                    throw new BOException("Result not Found!" + ex.Message);
                 }
             }
             else
-                return BadRequest();
+            {
+                return NotFound("Result not Found!");
+            }
         }
 
     }
