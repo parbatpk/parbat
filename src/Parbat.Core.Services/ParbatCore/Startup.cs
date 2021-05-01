@@ -19,6 +19,9 @@ using Newtonsoft.Json.Serialization;
 
 namespace ParbatCore
 {
+    /// <summary>
+    /// Start
+    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)
