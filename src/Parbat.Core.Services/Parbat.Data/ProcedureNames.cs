@@ -15,6 +15,16 @@ namespace Parbat.Data
             public const string GetAll = "spGetAllCurriculumType";
         }
 
+        public struct Component
+        {
+            public const string Insert = "spInsertComponent";
+            public const string Update = "spUpdateComponent";
+            public const string Delete = "spDeleteComponent";
+            public const string Find = "spFindComponent";
+            public const string GetAll = "spGetAllComponent";
+            public const string GetComponentSummary = "spGetComponentSummary";
+        }
+
         public struct ComponentType
         {
             public const string Insert = "spInsertComponentType";

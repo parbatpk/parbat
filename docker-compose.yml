@@ -1,0 +1,31 @@
+version: '3.4'
+
+networks:
+  parbat-network:
+
+services:
+  parbatapp:
+    image: mqpasta/parbatcore:webapi
+    build:
+      context: src/Parbat.Core.Services/
+      dockerfile: ParbatCore/Dockerfile
+    ports:
+    - "9080:80"
+    networks:
+      - parbat-network
+    depends_on:
+    - db
+  db:
+    image: mqpasta/parbatcore:db
+    build:
+      context: .
+      dockerfile: database/Dockerfile
+      #ports:
+      #  - "1433:1433"
+    networks:
+      - parbat-network
+    volumes:
+      - mssqldata:/var/opt/mssql
+
+volumes:
+    mssqldata:

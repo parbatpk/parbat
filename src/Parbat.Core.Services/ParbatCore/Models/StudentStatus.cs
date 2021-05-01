@@ -34,6 +34,10 @@ namespace ParbatCore.Models
         /// <param name="db"></param>
         public void Delete(IDatabase db)
         {
+            if(this.Find(db) == null)
+            {
+                throw new BOException("Record Not Found");
+            }
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
