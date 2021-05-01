@@ -20,7 +20,6 @@ namespace CoreServicesTest
     [TestClass]
     public class CurriculumTypeTest : BaseTest
     {
-
         public CurriculumTypeTest()
         {
             _serviceUri = base.GetUrl("/CurriculumType/");
