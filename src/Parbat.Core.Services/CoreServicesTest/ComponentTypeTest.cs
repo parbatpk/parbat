@@ -37,5 +37,25 @@ namespace CoreServicesTest
             return max;
         }
 
+        /// <summary>
+        /// Insert and return the primary key
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private long Insert(string name)
+        {
+            IDatabase db = Database.Instance;
+            DbConnection con = db.CreateConnection();
+            con.Open();
+            DbCommand cmd = db.CreateCommand(con);
+            cmd.CommandText = string.Format(
+                "Insert into ComponentType (Name) values('{0}'); select scope_identity()"
+                , name);
+            long id = Convert.ToInt64(cmd.ExecuteScalar());
+            con.Close();
+            return id;
+
+        }
+
     }
 }
