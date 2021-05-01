@@ -7,23 +7,22 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindOrgUnitType' 
+     AND SPECIFIC_NAME = N'spFindFaculty' 
 )
-   DROP PROCEDURE dbo.spFindOrgUnitType
+   DROP PROCEDURE dbo.spFindFaculty
 GO
 
-CREATE PROCEDURE dbo.spFindOrgUnitType
-	@OrgUnitTypeID bigint
+CREATE PROCEDURE dbo.spFindFaculty
+	@FacultyID bigint
 AS
-	SELECT top 1*
-	from OrgUnitType 
-	where OrgUnitTypeID = @OrgUnitTypeID
+	SELECT Top 1 *
+	from Faculty
+	where FacultyID = @FacultyID
 	For json Auto, Without_Array_Wrapper;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-
--- EXECUTE dbo.spFindOrgUnitType 1
--- GO
+--EXECUTE dbo.spFindClasModule 1, 2
+--GO

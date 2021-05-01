@@ -7,23 +7,22 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindOrgUnitType' 
+     AND SPECIFIC_NAME = N'spUpdateRegisterStatus' 
 )
-   DROP PROCEDURE dbo.spFindOrgUnitType
+   DROP PROCEDURE dbo.spUpdateRegisterStatus
 GO
 
-CREATE PROCEDURE dbo.spFindOrgUnitType
-	@OrgUnitTypeID bigint
+CREATE PROCEDURE dbo.spUpdateRegisterStatus
+	@RegisterStatusID bigint,
+	@ShortName nvarchar(50)
 AS
-	SELECT top 1*
-	from OrgUnitType 
-	where OrgUnitTypeID = @OrgUnitTypeID
-	For json Auto, Without_Array_Wrapper;
+	Update	RegisterStatus
+	SET		ShortName = @ShortName
+	WHERE	RegisterStatusID = @RegisterStatusID
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-
--- EXECUTE dbo.spFindOrgUnitType 1
--- GO
+--EXECUTE dbo.spUpdateRegisterStatus 1, 2
+--GO

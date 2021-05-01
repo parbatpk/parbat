@@ -7,23 +7,19 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindOrgUnitType' 
+     AND SPECIFIC_NAME = N'spGetAllClass' 
 )
-   DROP PROCEDURE dbo.spFindOrgUnitType
+   DROP PROCEDURE dbo.spGetAllClass
 GO
 
-CREATE PROCEDURE dbo.spFindOrgUnitType
-	@OrgUnitTypeID bigint
+CREATE PROCEDURE dbo.spGetAllClass
+
 AS
-	SELECT top 1*
-	from OrgUnitType 
-	where OrgUnitTypeID = @OrgUnitTypeID
-	For json Auto, Without_Array_Wrapper;
+	SELECT * from Class
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-
--- EXECUTE dbo.spFindOrgUnitType 1
--- GO
+--EXECUTE dbo.spGetAllClass 1, 2
+--GO

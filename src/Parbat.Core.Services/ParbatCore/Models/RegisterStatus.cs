@@ -1,65 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 using Parbat.Data;
-using System.ComponentModel.DataAnnotations;
+using System.Data.Common;
 using System.Text.Json;
 using System.Data;
 
 namespace ParbatCore.Models
 {
     /// <summary>
-    /// Busniess class of OrgUnitType
+    /// Business Model Class of RegisterStatus
     /// </summary>
-    public class OrgUnitType: IBussinesObject
+    public class RegisterStatus:IBussinesObject
     {
         /// <summary>
-        /// This is the primary key
+        /// Primary key of RegSatus
         /// </summary>
-        public long OrgUnitTypeID;
-
+        public long RegisterStatusID;
         /// <summary>
-        /// ShortName  of OrgUnitType
+        /// ShortName of RegStatus
         /// </summary>
-        [Required]
         public string ShortName;
-        /// <summary>
-        /// FullName of OrgUnitType
-        /// </summary>
-        [Required]
-        public string Name;
-
 
         /// <summary>
-        /// To save the New OrgUnitType or If Exit than Update it
+        /// Save the RegisterStatus if not Exist else update
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
         public long? Save(IDatabase db)
         {
-            if(this.OrgUnitTypeID > 0)
+            if(this.RegisterStatusID >= 0)
             {
                 this.Update(db);
-                return this.OrgUnitTypeID;
+                return this.RegisterStatusID;
             }
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.OrgUnitType.Insert, connection);
-                cmd.Parameters.Add(db.CreateParameter(cmd,"ShortName",this.ShortName));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
-                this.OrgUnitTypeID = Convert.ToInt32(cmd.ExecuteScalar());
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.RegisterStatus.Insert,connection);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "RegisterStatusID", this.RegisterStatusID));
+                cmd.Parameters.Add(db.CreateParameter(cmd, "ShortName", this.ShortName));
+                this.RegisterStatusID = Convert.ToInt64(cmd.ExecuteScalar());
                 connection.Close();
-                return this.OrgUnitTypeID;
+                return this.RegisterStatusID;
             }
+
         }
 
-
         /// <summary>
-        /// For finding some OrgUnitType 
+        /// FinD regStatus
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
@@ -68,26 +60,27 @@ namespace ParbatCore.Models
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.OrgUnitType.Find, connection);
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.RegisterStatus.Find, connection);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "RegisterStatusID", this.RegisterStatusID));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "ShortName", this.ShortName));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
                 string txt = cmd.ExecuteScalar().ToString();
                 connection.Close();
                 try
                 {
-                    OrgUnitType found = JsonSerializer.Deserialize<OrgUnitType>(txt);
+                    RegisterStatus found = JsonSerializer.Deserialize<RegisterStatus>(txt);
                     return found;
                 }
-                catch(Exception ex)
+                catch
                 {
                     return null;
                 }
             }
+
         }
 
-        
+
         /// <summary>
-        /// For deleting the Exit OrgUnitType
+        /// Delete the RegStatus
         /// </summary>
         /// <param name="db"></param>
         public void Delete(IDatabase db)
@@ -95,18 +88,17 @@ namespace ParbatCore.Models
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.OrgUnitType.Delete, connection);
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.RegisterStatus.Delete, connection);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "RegisterStatusID", this.RegisterStatusID));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "ShortName", this.ShortName));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
-
+            
         }
 
-        
         /// <summary>
-        /// Update the OrgUnitType 
+        /// Update the RegStatus if exists
         /// </summary>
         /// <param name="db"></param>
         public void Update(IDatabase db)
@@ -114,37 +106,31 @@ namespace ParbatCore.Models
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.OrgUnitType.Update,connection);
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.RegisterStatus.Update, connection);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "RegisterStatusID", this.RegisterStatusID));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "ShortName", this.ShortName));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
-
         }
 
-
+        
         /// <summary>
-        /// Get the all OrgUnitType
+        /// Get All the RegStatus
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
         public DataTable GetAll(IDatabase db)
         {
-            using(DbConnection connection = db.CreateConnection())
+            using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.OrgUnitType.GetAll,connection);
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.RegisterStatus.GetAll, connection);
                 DataSet ds = db.GetDataSet(cmd);
                 connection.Close();
-
                 return ds.Tables[0];
             }
 
-
         }
-
-
-
     }
 }

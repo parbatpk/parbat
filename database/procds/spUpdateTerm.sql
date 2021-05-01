@@ -7,23 +7,27 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindOrgUnitType' 
+     AND SPECIFIC_NAME = N'spUpdateTerm' 
 )
-   DROP PROCEDURE dbo.spFindOrgUnitType
+   DROP PROCEDURE dbo.spUpdateTerm
 GO
 
-CREATE PROCEDURE dbo.spFindOrgUnitType
-	@OrgUnitTypeID bigint
+CREATE PROCEDURE dbo.spUpdateTerm
+	@TermID		bigint,
+	@ShortName	nvarchar(50),
+	@Name		nvarchar(250),
+	@StartDate	date ='0',
+	@EndDate	date='0',
+	@IsActive	bit
+
 AS
-	SELECT top 1*
-	from OrgUnitType 
-	where OrgUnitTypeID = @OrgUnitTypeID
-	For json Auto, Without_Array_Wrapper;
+	Update Term 
+	set ShortName=@ShortName,[Name]=@Name,StartDate=@StartDate,EndDate=@EndDate,IsActive=@IsActive
+	where TermID=@TermID
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-
--- EXECUTE dbo.spFindOrgUnitType 1
--- GO
+--EXECUTE dbo.spUpdateTerm 1, 2
+--GO

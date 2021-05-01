@@ -1206,6 +1206,32 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'spDeleteClassModule' 
+)
+   DROP PROCEDURE dbo.spDeleteClassModule
+GO
+
+CREATE PROCEDURE dbo.spDeleteClassModule
+	@ClassModuleID bigint
+AS
+	DELETE	ClassModule 
+	WHERE	ClassModuleID = @ClassModuleID
+GO
+
+-- =============================================
+-- Example to execute the stored procedure
+-- =============================================
+--EXECUTE dbo.spDeleteClassModule 1, 2
+--GO
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spDeleteComponentCourse' 
 )
    DROP PROCEDURE dbo.spDeleteComponentCourse
@@ -1352,6 +1378,31 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'spDeleteFaculty' 
+)
+   DROP PROCEDURE dbo.spDeleteFaculty
+GO
+
+CREATE PROCEDURE dbo.spDeleteFaculty
+	@FacultyID bigint
+AS
+	DELETE Faculty WHERE FacultyID = @FacultyID
+GO
+
+-- =============================================
+-- Example to execute the stored procedure
+-- =============================================
+--EXECUTE dbo.spInsertFaculty 1, 2
+--GO
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spDeleteOrgUnit' 
 )
    DROP PROCEDURE dbo.spDeleteOrgUnit
@@ -1379,24 +1430,23 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spDeleteOrgUnitType' 
+     AND SPECIFIC_NAME = N'spDeleteRegisterStatus' 
 )
-   DROP PROCEDURE dbo.spDeleteOrgUnitType
+   DROP PROCEDURE dbo.spDeleteRegisterStatus
 GO
 
-CREATE PROCEDURE dbo.spDeleteOrgUnitType
-	@OrgUnitTypeID bigint
+CREATE PROCEDURE dbo.spDeleteRegisterStatus
+	@RegisterStatusID bigint
 AS
-	DELETE FROM OrgUnitType where OrgUnitTypeID = @OrgUnitTypeID
+	DELETE RegisterStatus
+	WHERE	RegisterStatusID = @RegisterStatusID
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spDeleteOrgUnitType 8
-GO
-
-
+--EXECUTE dbo.spDeleteRegisterStatus 1, 2
+--GO
 -- =============================================
 -- Create basic stored procedure template
 -- =============================================
@@ -1406,47 +1456,25 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spDeleteStudent' 
+     AND SPECIFIC_NAME = N'spFindClassModule' 
 )
-   DROP PROCEDURE dbo.spDeleteStudent
+   DROP PROCEDURE dbo.spFindClassModule
 GO
 
-CREATE PROCEDURE dbo.spDeleteStudent
-	@StudentID bigint
+CREATE PROCEDURE dbo.spFindClassModule
+	@ClassModuleID bigint
 AS
-	DELETE from Student where StudentID = @StudentID
+	SELECT Top 1 *
+	from ClassModule
+	where ClassModuleID = @ClassModuleID
+	For json Auto, Without_Array_Wrapper;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spDeleteStudent 3
-GO
--- =============================================
--- Create basic stored procedure template
--- =============================================
-
--- Drop stored procedure if it already exists
-IF EXISTS (
-  SELECT * 
-    FROM INFORMATION_SCHEMA.ROUTINES 
-   WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spDeleteStudent' 
-)
-   DROP PROCEDURE dbo.spDeleteStudent
-GO
-
-CREATE PROCEDURE dbo.spDeleteStudent
-	@StudentStatusID bigint 
-AS
-	DELETE from StudentStatus where StudentStatusID = @StudentStatusID
-GO
-
--- =============================================
--- Example to execute the stored procedure
--- =============================================
-EXECUTE dbo.spDeleteStudent 6
-GO
+--EXECUTE dbo.spFindClassModule 1, 2
+--GO
 -- =============================================
 -- Create basic stored procedure template
 -- =============================================
@@ -1644,6 +1672,34 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'spFindFaculty' 
+)
+   DROP PROCEDURE dbo.spFindFaculty
+GO
+
+CREATE PROCEDURE dbo.spFindFaculty
+	@FacultyID bigint
+AS
+	SELECT Top 1 *
+	from Faculty
+	where FacultyID = @FacultyID
+	For json Auto, Without_Array_Wrapper;
+GO
+
+-- =============================================
+-- Example to execute the stored procedure
+-- =============================================
+--EXECUTE dbo.spFindClasModule 1, 2
+--GO
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spFindOrgUnit' 
 )
    DROP PROCEDURE dbo.spFindOrgUnit
@@ -1663,31 +1719,6 @@ GO
 -- =============================================
 --EXECUTE dbo.spFindOrgUnit 1, 2
 --GO
--- =============================================
--- Create basic stored procedure template
--- =============================================
-
--- Drop stored procedure if it already exists
-IF EXISTS (
-  SELECT * 
-    FROM INFORMATION_SCHEMA.ROUTINES 
-   WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindOrgUnitType' 
-)
-   DROP PROCEDURE dbo.spFindOrgUnitType
-GO
-
-CREATE PROCEDURE dbo.spFindOrgUnitType
-	@OrgUnitTypeID bigint
-AS
-	SELECT [Name], ShortName from OrgUnitType where OrgUnitTypeID = @OrgUnitTypeID;
-GO
-
--- =============================================
--- Example to execute the stored procedure
--- =============================================
-EXECUTE dbo.spFindOrgUnitType 1
-GO
 -- =============================================
 -- Create basic stored procedure template
 -- =============================================
@@ -1723,22 +1754,25 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindStudent' 
+     AND SPECIFIC_NAME = N'spFindRegisterStatus' 
 )
-   DROP PROCEDURE dbo.spFindStudent
+   DROP PROCEDURE dbo.spFindRegisterStatus
 GO
 
-CREATE PROCEDURE dbo.spFindStudent
-	@StudentID bigint 
+CREATE PROCEDURE dbo.spFindRegisterStatus
+	@RegisterStatusID bigint
 AS
-	SELECT Identifier, [Name], lastName from Student where StudentID = @StudentID
+	SELECT top 1 *
+	from RegisterStatus
+	where RegisterStatusID = @RegisterStatusID
+	For json Auto, Without_Array_Wrapper;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spFindStudent 1
-GO
+--EXECUTE dbo.spFindRegisterStatus 1, 2
+--GO
 -- =============================================
 -- Create basic stored procedure template
 -- =============================================
@@ -1748,22 +1782,30 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindStudentStatus' 
+     AND SPECIFIC_NAME = N'spGetAllClassModule' 
 )
-   DROP PROCEDURE dbo.spFindStudentStatus
+   DROP PROCEDURE dbo.spGetAllClassModule
 GO
 
-CREATE PROCEDURE dbo.spFindStudentStatus
-	@StudentStatusID bigint
+CREATE PROCEDURE dbo.spGetAllClassModule
 AS
-	SELECT [Name] from StudentStatus where StudentStatusID = @StudentStatusID
+	SELECT	DISTINCT CM.*, F.FirstName, F.LastName, C.ShortName as Class_ShortName, 
+			T.TermID, T.ShortName as Term_ShortName
+	FROM ClassModule CM 
+			Inner Join Faculty F ON CM.FacultyID = F.FacultyID
+			Inner Join Class C ON C.ClassID = CM.ClassID
+			Inner Join ClassMapping CMP ON C.ClassID = CMP.ClassID
+			Inner Join Offering OFR ON OFR.OfferingID = CMP.OfferingID
+			Inner Join Term T ON T.TermID = OFR.TermID
+
+
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spFindStudentStatus 5
-GO
+--EXECUTE dbo.spGetAllClassModule 1, 2
+--GO
 -- =============================================
 -- Create basic stored procedure template
 -- =============================================
@@ -1916,6 +1958,30 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'spGetAllFaculty' 
+)
+   DROP PROCEDURE dbo.spGetAllFaculty
+GO
+
+CREATE PROCEDURE dbo.spGetAllFaculty
+AS
+	SELECT	* FROM Faculty
+GO
+
+-- =============================================
+-- Example to execute the stored procedure
+-- =============================================
+--EXECUTE dbo.spGetAllFaculty 1, 2
+--GO
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spGetAllOrgUnit' 
 )
    DROP PROCEDURE dbo.spGetAllOrgUnit
@@ -1942,70 +2008,21 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spGetAllOrgUnitType' 
+     AND SPECIFIC_NAME = N'spGetAllRegisterStatus' 
 )
-   DROP PROCEDURE dbo.spGetAllOrgUnitType
+   DROP PROCEDURE dbo.spGetAllRegisterStatus
 GO
 
-CREATE PROCEDURE dbo.spGetAllOrgUnitType	
+CREATE PROCEDURE dbo.spGetAllRegisterStatus
 AS
-	SELECT *From OrgUnitType
+	SELECT * FROM RegisterStatus
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spGetAllOrgUnitType 
-GO
--- =============================================
--- Create basic stored procedure template
--- =============================================
-
--- Drop stored procedure if it already exists
-IF EXISTS (
-  SELECT * 
-    FROM INFORMATION_SCHEMA.ROUTINES 
-   WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spGetAllStudent' 
-)
-   DROP PROCEDURE dbo.spGetAllStudent
-GO
-
-CREATE PROCEDURE dbo.spGetAllStudent
-AS
-	SELECT *from Student
-GO
-
--- =============================================
--- Example to execute the stored procedure
--- =============================================
-EXECUTE dbo.spGetAllStudent 
-GO
--- =============================================
--- Create basic stored procedure template
--- =============================================
-
--- Drop stored procedure if it already exists
-IF EXISTS (
-  SELECT * 
-    FROM INFORMATION_SCHEMA.ROUTINES 
-   WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spGetAllStudentStatus' 
-)
-   DROP PROCEDURE dbo.spGetAllStudentStatus
-GO
-
-CREATE PROCEDURE dbo.spGetAllStudentStatus
-
-AS
-	SELECT *from StudentStatus
-GO
-
--- =============================================
--- Example to execute the stored procedure
--- =============================================
-EXECUTE dbo.spGetAllStudentStatus
-GO
+--EXECUTE dbo.spGetAllRegisterStatus 1, 2
+--GO
 -- =============================================
 -- Create basic stored procedure template
 -- =============================================
@@ -2056,6 +2073,41 @@ GO
 -- Example to execute the stored procedure
 -- =============================================
 --EXECUTE dbo.spGetOwnerUnit 1, 2
+--GO
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'spInsertClassModule' 
+)
+   DROP PROCEDURE dbo.spInsertClassModule
+GO
+
+CREATE PROCEDURE dbo.spInsertClassModule
+	@FacultyID bigint,
+	@ShortName nvarchar(50),
+	@TheoryCredit int,
+	@LabCredit int
+AS
+	INSERT INTO ClassModule (FacultyID, ShortName, TheoryCredit, LabCredit)
+	VALUES 
+           (@FacultyID
+           ,@ShortName
+           ,@TheoryCredit
+           ,@LabCredit)
+
+	SELECT SCOPE_IDENTITY()
+GO
+
+-- =============================================
+-- Example to execute the stored procedure
+-- =============================================
+--EXECUTE dbo.spInsertClassModule 1, 2
 --GO
 -- =============================================
 -- Create basic stored procedure template
@@ -2233,6 +2285,33 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'spInsertFaculty' 
+)
+   DROP PROCEDURE dbo.spInsertFaculty
+GO
+
+CREATE PROCEDURE dbo.spInsertFaculty
+	@FirstName nvarchar(50),
+	@LastName nvarchar(max)
+AS
+	Insert Into Faculty Values(@FirstName, @LastName)
+	SELECT SCOPE_IDENTITY()
+GO
+
+-- =============================================
+-- Example to execute the stored procedure
+-- =============================================
+--EXECUTE dbo.spInsertFaculty 1, 2
+--GO
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spInsertOrgUnit' 
 )
    DROP PROCEDURE dbo.spInsertOrgUnit
@@ -2264,53 +2343,23 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spInsertOrgUnitType' 
+     AND SPECIFIC_NAME = N'spInsertRegisterStatus' 
 )
-   DROP PROCEDURE dbo.spInsertOrgUnitType
+   DROP PROCEDURE dbo.spInsertRegisterStatus
 GO
 
-CREATE PROCEDURE dbo.spInsertOrgUnitType
-	@ShortName nvarchar(10) = 0, 
-	@Name nvarchar(50) = 0
+CREATE PROCEDURE dbo.spInsertRegisterStatus
+	@ShortName nvarchar(50)
 AS
-	Insert into OrgUnitType (ShortName, [Name]) values(@ShortName, @Name)
-	select SCOPE_IDENTITY();
+	INSERT INTO RegisterStatus VALUES(@ShortName)
+	SELECT SCOPE_IDENTITY()
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spInsertOrgUnitType 'Tea', 'Teacher'
-GO
-
-
-select *from OrgUnitType-- =============================================
--- Create basic stored procedure template
--- =============================================
-
--- Drop stored procedure if it already exists
-IF EXISTS (
-  SELECT * 
-    FROM INFORMATION_SCHEMA.ROUTINES 
-   WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spInsertStudent' 
-)
-   DROP PROCEDURE dbo.spInsertStudent
-GO
-
-CREATE PROCEDURE dbo.spInsertStudent
-	@Identifier nvarchar(50), 
-	@FirstName nvarchar(50),
-	@LastName nvarchar(50)
-AS
-	Insert into Student (Identifier, [Name], LastName) values(@Identifier, @FirstName, @LastName)
-GO
-
--- =============================================
--- Example to execute the stored procedure
--- =============================================
-EXECUTE dbo.spInsertStudent '17b-012-cs','Maaz','Khan'
-GO
+--EXECUTE dbo.spInsertRegisterStatus 1, 2
+--GO
 -- =============================================
 -- Create basic stored procedure template
 -- =============================================
@@ -2320,22 +2369,31 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spInsertStudentStatus' 
+     AND SPECIFIC_NAME = N'spUpdateClassModule' 
 )
-   DROP PROCEDURE dbo.spInsertStudentStatus
+   DROP PROCEDURE dbo.spUpdateClassModule
 GO
 
-CREATE PROCEDURE dbo.spInsertStudentStatus
-	@Name nvarchar(50)
+CREATE PROCEDURE dbo.spUpdateClassModule
+	@ClassModuleID bigint,
+	@FacultyID bigint,
+	@ShortName nvarchar(50),
+	@TheoryCredit int,
+	@LabCredit int
 AS
-	INSERT into StudentStatus([Name]) values(@Name)
+	UPDATE ClassModule 
+	SET		FacultyID = @FacultyID,
+            ShortName = @ShortName,
+           TheoryCredit =  @TheoryCredit,
+           LabCredit = @LabCredit
+	WHERE	ClassModuleID = @ClassModuleID
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spInsertStudentStatus 'Pending'
-GO
+--EXECUTE dbo.spUpdateClassModule 1, 2
+--GO
 -- =============================================
 -- Create basic stored procedure template
 -- =============================================
@@ -2525,6 +2583,36 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'spUpdateFaculty' 
+)
+   DROP PROCEDURE dbo.spUpdateFaculty
+GO
+
+CREATE PROCEDURE dbo.spUpdateFaculty
+	@FacultyID bigint, 
+	@FirstName nvarchar(50),
+	@LastName nvarchar(max)
+AS
+	Update	Faculty 
+	SET		FirstName = @FirstName,
+			LastName = @LastName
+	WHERE	FacultyID = @FacultyID
+GO
+
+-- =============================================
+-- Example to execute the stored procedure
+-- =============================================
+--EXECUTE dbo.spUpdateFaculty
+--GO
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spUpdateOrgUnit' 
 )
    DROP PROCEDURE dbo.spUpdateOrgUnit
@@ -2557,79 +2645,22 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spUpdateOrgUnitType' 
+     AND SPECIFIC_NAME = N'spUpdateRegisterStatus' 
 )
-   DROP PROCEDURE dbo.spUpdateOrgUnitType
+   DROP PROCEDURE dbo.spUpdateRegisterStatus
 GO
 
-CREATE PROCEDURE dbo.spUpdateOrgUnitType
-	@OrgUnitTypeID bigint,
-	@ShortName nvarchar(10) = 0, 
-	@Name nvarchar(50) = 0
+CREATE PROCEDURE dbo.spUpdateRegisterStatus
+	@RegisterStatusID bigint,
+	@ShortName nvarchar(50)
 AS
-	UPDATE OrgUnitType SET ShortName = @ShortName, [Name] = @Name where OrgUnitTypeID = @OrgUnitTypeID
+	Update	RegisterStatus
+	SET		ShortName = @ShortName
+	WHERE	RegisterStatusID = @RegisterStatusID
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spUpdateOrgUnitType 8, 'Mk', 'MaazKhan'
-GO
-
--- =============================================
--- Create basic stored procedure template
--- =============================================
-
--- Drop stored procedure if it already exists
-IF EXISTS (
-  SELECT * 
-    FROM INFORMATION_SCHEMA.ROUTINES 
-   WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spUpdateStudent' 
-)
-   DROP PROCEDURE dbo.spUpdateStudent
-GO
-
-CREATE PROCEDURE dbo.spUpdateStudent
-	@StudentID bigint, 
-	@Identifier nvarchar(50),
-	@FirstName nvarchar(50),
-	@LastName nvarchar(50)
-AS
-	UPDATE Student SET Identifier = @Identifier, [Name] = @FirstName, LastName = @LastName
-	where StudentID = @StudentID
-GO
-
--- =============================================
--- Example to execute the stored procedure
--- =============================================
-EXECUTE dbo.spUpdateStudent 3,'17b-50-cs','Ahsan','Khan' 
-GO
-
-
--- =============================================
--- Create basic stored procedure template
--- =============================================
-
--- Drop stored procedure if it already exists
-IF EXISTS (
-  SELECT * 
-    FROM INFORMATION_SCHEMA.ROUTINES 
-   WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spUpdateStudentStatus' 
-)
-   DROP PROCEDURE dbo.spUpdateStudentStatus
-GO
-
-CREATE PROCEDURE dbo.spUpdateStudentStatus
-	@StudentStatusID bigint,
-	@Name nvarchar(50)
-AS
-	UPDATE StudentStatus SET [Name] = @Name where StudentStatusID = @StudentStatusID; 
-GO
-
--- =============================================
--- Example to execute the stored procedure
--- =============================================
-EXECUTE dbo.spUpdateStudentStatus 6, 'Inprogress'
-GO
+--EXECUTE dbo.spUpdateRegisterStatus 1, 2
+--GO
