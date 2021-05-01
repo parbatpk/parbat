@@ -24,6 +24,10 @@ namespace ParbatCore
     /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// mysra
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
