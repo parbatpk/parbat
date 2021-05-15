@@ -1,66 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Data.Common;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Net;
-using System.Collections;
-using System.Net.Http;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ParbatCore.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace CoreServicesTest
 {
     [TestClass]
-    class ComponentTypeTest:BaseTest
+    class ComponentCourseTest:BaseTest
     {
-        public ComponentTypeTest()
+        public ComponentCourseTest()
         {
-            _serviceUri = base.GetUrl("/ComponentType/");
+            _serviceUri = base.GetUrl("/ComponentCourse/");
         }
 
-        /// <summary>
-        /// always return the MAX primary key from ComponentType Table 
-        /// </summary>
-        /// <returns></returns>
         private long GetMax()
         {
             long max = 0;
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
-            cmd.CommandText = "Select max(ComponenttypeID) from ComponentType";
+            cmd.CommandText = "Select max(ComponentCourseID) from ComponentCourse";
             max = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
             return max;
         }
 
-        /// <summary>
-        /// Insert and return the primary key
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        private long Insert(string name)
+        private long Insert(int ComponentID, int CourseID)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Insert into ComponentType (Name) values('{0}'); select scope_identity()"
-                , name);
+                "Insert into ComponentCourse (ComponentID), CourseID values('{0}','{1}'); select scope_identity()"
+                , ComponentID, CourseID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
             return id;
         }
 
-        /// <summary>
-        /// Check the entery is valid
-        /// </summary>
-        /// <returns></returns>
-        private async Task ComponentType_Find_Valid()
+        private async Task ComponentCourse_Find_Valid()
         {
-            long id = Insert("dummyCT");
+            //Few question ??
+            long id = Insert(1,1);
 
             //act
             var request = base.CreateGetMessage(_serviceUri + id);
@@ -70,17 +56,16 @@ namespace CoreServicesTest
             //assert
             respones.EnsureSuccessStatusCode();
             string context = await respones.Content.ReadAsStringAsync();
-            ComponentType resp = JsonSerializer.Deserialize<ComponentType>(context);
+            ComponentCourse resp = JsonSerializer.Deserialize<ComponentCourse>(context);
 
-            Assert.AreEqual(resp.Name, "dummyCT");
+
+            Assert.AreEqual(resp.ComponentID, 1);
+            Assert.AreEqual(resp.CourseID, 1);
         }
 
-        /// <summary>
-        /// Check the entery is not valid
-        /// </summary>
-        /// <returns></returns>
+
         [TestMethod]
-        public async Task ComponentType_Find_Invalid()
+        public async Task ComponentCourse_Find_Invalid()
         {
             long max = GetMax();
 
@@ -94,12 +79,13 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
         }
 
+
         [TestMethod]
         public async Task ComponentType_Get_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
-            cmd.CommandText = "Select count(1) from ComponentType";
+            cmd.CommandText = "Select count(1) from ComponentCourse";
             cmd.Connection.Open();
             long count = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
@@ -112,25 +98,28 @@ namespace CoreServicesTest
             var content = await response.Content.ReadAsStringAsync();
 
             response.EnsureSuccessStatusCode();
+
             // assert
             List<Hashtable> data = JsonSerializer.Deserialize<List<Hashtable>>(content);
             Assert.IsTrue(data.Count == count);
         }
 
+
         [TestMethod]
-        public async Task ComponentType_Post_Valid()
+        public async Task ComponentCourse_Post_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
-            ComponentType ctype = new ComponentType()
+            ComponentCourse cc = new ComponentCourse()
             {
-                ComponentTypeID = null,
-                Name = "Insertion Test"
+                ComponentCourseID = null,
+                ComponentID = 1,
+                CourseID = 1
             };
 
             // act
             string url = _serviceUri;
-            var rawdata = JsonSerializer.Serialize<object>(ctype);
+            var rawdata = JsonSerializer.Serialize<object>(cc);
             var inputData = new StringContent(rawdata, Encoding.Default, "application/json");
             var response = await AppServer.Instance.CreateClient().PostAsync(url, inputData);
 
@@ -138,16 +127,19 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
 
-            ComponentType res = JsonSerializer.Deserialize<ComponentType>(content);
-            Assert.IsTrue(res.Name == ctype.Name);
+            ComponentCourse res = JsonSerializer.Deserialize<ComponentCourse>(content);
+            Assert.IsTrue(res.ComponentID == cc.ComponentID);
+            Assert.IsTrue(res.CourseID == cc.CourseID);
 
         }
 
+
+
         [TestMethod]
-        public async Task ComponentType_Delete_Valid()
+        public async Task ComponentCourse_Delete_Valid()
         {
             // arrange
-            long id = Insert("to delete");
+            long id = Insert(1,1);
 
             //act
             var client = AppServer.Instance.CreateClient();
@@ -157,9 +149,8 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
         }
 
-
         [TestMethod]
-        public async Task ComponentType_Delete_Invalid()
+        public async Task ComponentCourse_Delete_Invalid()
         {
             //arrange
             long max = GetMax();
