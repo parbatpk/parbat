@@ -13,45 +13,41 @@ using System.Threading.Tasks;
 namespace CoreServicesTest
 {
     [TestClass]
-    class CourseTest:BaseTest
+    class CourseTypeTest:BaseTest
     {
-        public CourseTest()
+        public CourseTypeTest()
         {
-            _serviceUri = base.GetUrl("/Course/");
+            _serviceUri = base.GetUrl("/CourseType/");
         }
-
 
         private long GetMax()
         {
             long max = 0;
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
-            cmd.CommandText = "Select max(CourseID) from Course";
+            cmd.CommandText = "Select max(CourseTypeID) from CourseType";
             max = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
             return max;
         }
 
-
-        private long Insert(string name, string ShortName, long OwnerID, 
-                                int TheoryID, int LabCredit, string Code, long CourseTypeID)
+        private long Insert(string Name)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Insert into Course (Name), (ShortName), (OwnerID), (TheoryCredit), (LabCredit), " +
-                "(Code), (CourseTypeID) " +
-                "values('{0}, {1}, {2}, {3}, {4}, {5}, {6}'); select scope_identity()"
-                , name, ShortName, OwnerID, TheoryID, LabCredit, Code, CourseTypeID);
+                "Insert into CourseType (Name) values('{0}'); select scope_identity()"
+                , Name);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
             return id;
         }
 
+
         [TestMethod]
-        private async Task Course_Find_Valid()
+        private async Task CourseType_Find_Valid()
         {
-            long id = Insert("dummyC","dmC",1,1,1,"dmy",1);
+            long id = Insert("dummyCourse");
 
             //act
             var request = base.CreateGetMessage(_serviceUri + id);
@@ -61,20 +57,13 @@ namespace CoreServicesTest
             //assert
             respones.EnsureSuccessStatusCode();
             string context = await respones.Content.ReadAsStringAsync();
-            Course resp = JsonSerializer.Deserialize<Course>(context);
+            CourseType resp = JsonSerializer.Deserialize<CourseType>(context);
 
-            Assert.AreEqual(resp.Name, "dummyC");
-            Assert.AreEqual(resp.ShortName, "dmC");
-            Assert.AreEqual(resp.OwnerID, 1);
-            Assert.AreEqual(resp.TheoryCredit, 1);
-            Assert.AreEqual(resp.LabCredit, 1);
-            Assert.AreEqual(resp.Code, "dmy");
-            Assert.AreEqual(resp.CourseTypeID, 1);
+            Assert.AreEqual(resp.Name, "dummyCourse");
         }
 
-
         [TestMethod]
-        public async Task Course_Find_Invalid()
+        public async Task CourseType_Find_Invalid()
         {
             long max = GetMax();
 
@@ -89,11 +78,11 @@ namespace CoreServicesTest
         }
 
         [TestMethod]
-        public async Task Course_Get_Valid()
+        public async Task CourseType_Get_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
-            cmd.CommandText = "Select count(1) from Course";
+            cmd.CommandText = "Select count(1) from CourseType";
             cmd.Connection.Open();
             long count = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
@@ -113,14 +102,14 @@ namespace CoreServicesTest
 
 
         [TestMethod]
-        public async Task Course_Post_Valid()
+        public async Task CourseType_Post_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
-            Course c = new Course()
+            CourseType c = new CourseType()
             {
-                CourseID = null,
-                Name = "Insertion Test",
+                CourseTypeID = null,
+                Name = "Test_Name",
             };
 
             // act
@@ -133,16 +122,16 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
 
-            Course res = JsonSerializer.Deserialize<Course>(content);
+            CourseType res = JsonSerializer.Deserialize<CourseType>(content);
             Assert.IsTrue(res.Name == c.Name);
 
         }
 
         [TestMethod]
-        public async Task Course_Delete_Valid()
+        public async Task CourseType_Delete_Valid()
         {
             // arrange
-            long id = Insert("Delete","d",1,1,1,"c",1);
+            long id = Insert("FakeDeleteData");
 
             //act
             var client = AppServer.Instance.CreateClient();
@@ -152,9 +141,8 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
         }
 
-
         [TestMethod]
-        public async Task Course_Delete_Invalid()
+        public async Task CourseType_Delete_Invalid()
         {
             //arrange
             long max = GetMax();
@@ -166,7 +154,6 @@ namespace CoreServicesTest
             //assert
             Assert.IsTrue(response.StatusCode == HttpStatusCode.BadRequest);
         }
-
 
 
     }
