@@ -39,8 +39,7 @@ namespace CoreServicesTest
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Insert into Course (Name), (ShortName), (OwnerID), (TheoryCredit), (LabCredit), " +
-                "(Code), (CourseTypeID) " +
+                "Insert into Course (Name, ShortName, OwnerID, TheoryCredit, LabCredit, Code, CourseTypeID) " +
                 "values('{0}, {1}, {2}, {3}, {4}, {5}, {6}'); select scope_identity()"
                 , name, ShortName, OwnerID, TheoryID, LabCredit, Code, CourseTypeID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());

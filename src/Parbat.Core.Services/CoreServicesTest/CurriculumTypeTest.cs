@@ -59,6 +59,7 @@ namespace CoreServicesTest
                 , name);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
+
             return id;
         }
 
@@ -114,6 +115,7 @@ namespace CoreServicesTest
             var content = await response.Content.ReadAsStringAsync();
 
             response.EnsureSuccessStatusCode();
+            
             // assert
             List<Hashtable> data = JsonSerializer.Deserialize<List<Hashtable>>(content);
             Assert.IsTrue(data.Count == count);
@@ -144,7 +146,6 @@ namespace CoreServicesTest
 
             CurriculumType res = JsonSerializer.Deserialize<CurriculumType>(content);
             Assert.IsTrue(res.Name == ctype.Name);
-
         }
 
         [TestMethod]

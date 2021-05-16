@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Text.Json;
 using ParbatCore.Models;
 using System.Net;
@@ -14,39 +13,36 @@ using System.Net.Http;
 namespace CoreServicesTest
 {
     [TestClass]
-    class CurriculumTest:BaseTest
+    class OrgUnitTest:BaseTest
     {
-        public CurriculumTest()
+        public OrgUnitTest()
         {
-            _serviceUri = base.GetUrl("/Curriculum/");
+            _serviceUri = base.GetUrl("/OrgUnitTest/");
         }
 
-        private long GetMax()
+        public long GetMax()
         {
             long max = 0;
 
             DbCommand cmd = DatabaseHelper.GetCommand();
-            cmd.CommandText = "Select max(CurriculumID) from Curriculum";
-
             cmd.Connection.Open();
+            cmd.CommandText = string.Format(
+                "Select max(OrgUnitID) from OrgUnit");
             max = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
-
 
             return max;
         }
 
-        private long Insert(string Name, string ShortName, long OwnerUnitID, int TotalCourses, int TotalCreditHrs,
-                                bool IslimitCourses, bool IslimitCreditHrs, long CurriculumTypeID)
+        public long Insert(string Name, string ShortName, long ParentUnitID,
+                                bool IsAllowPermission, long OrgUnitTypeID)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Insert into Curriculum (Name, ShortName, OwnerUnitID, TotalCourses, TotalCreditHrs, IsLimitCourses, IslimitCoursesHrs, CurriculumTypeID)" +
-                "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'); select scope_identity()",
-                Name, ShortName, OwnerUnitID, TotalCourses, TotalCreditHrs, IslimitCourses, IslimitCreditHrs,
-                CurriculumTypeID);
-
+                "insert into OrgUnit (Name, ShortName, ParentUnitID, IsAllowPermission, OrgUnitTypeID)" +
+                "values('{0}', '{1}', '{2}', '{3}', '{4}'); select scope_identity()",
+                Name, ShortName, ParentUnitID, IsAllowPermission, OrgUnitTypeID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
@@ -54,48 +50,45 @@ namespace CoreServicesTest
         }
 
         [TestMethod]
-        public async Task Curriculum_Find_Valid()
+        public async Task OrgUnit_Find_Valid()
         {
-            long id = Insert("DumName", "DN", 1, 1, 1, false, false, 1);
+            long id = Insert("Insert Dummy", "ID", 1, false, 1);
 
             //act
-            var request = base.CreateGetMessage(_serviceUri+id);
             var client = AppServer.Instance.CreateClient();
+            var request = base.CreateGetMessage(_serviceUri + id);
             var respones = await client.SendAsync(request);
+
 
             //assert
             respones.EnsureSuccessStatusCode();
-
             string content = await respones.Content.ReadAsStringAsync();
-            Curriculum resp = JsonSerializer.Deserialize<Curriculum>(content);
+            OrgUnit resp = JsonSerializer.Deserialize<OrgUnit>(content);
 
-            Assert.AreEqual(resp.Name, "DumName");
-
+            Assert.AreEqual(resp.Name, "Insert Dummy");
         }
 
         [TestMethod]
-        public async Task Curriculum_Find_Invalid()
+        public async Task OrgUnit_Find_Invalid()
         {
-            long id = GetMax();
+            long max = GetMax();
 
-            //act 
+            //act
             var client = AppServer.Instance.CreateClient();
-            var request = base.CreateGetMessage((_serviceUri) + (id + 1));
+            var request = base.CreateGetMessage((_serviceUri)+(max+1));
             var respones = await client.SendAsync(request);
 
-            //
-            respones.EnsureSuccessStatusCode();
+            //assert
             Assert.AreEqual(HttpStatusCode.NotFound, respones.StatusCode);
         }
 
         [TestMethod]
-        public async Task Curriculum_Get_Valid()
+        public async Task OrgUnit_Get_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
-            cmd.CommandText = string.Format(
-                "Select count(1) from Curriculum");
+            cmd.CommandText = "Select count(1) from OrgUnit";
             long count = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
@@ -105,36 +98,28 @@ namespace CoreServicesTest
             var response = await client.SendAsync(request);
 
             var content = await response.Content.ReadAsStringAsync();
-
             response.EnsureSuccessStatusCode();
+
             // assert
             List<Hashtable> data = JsonSerializer.Deserialize<List<Hashtable>>(content);
             Assert.IsTrue(data.Count == count);
         }
 
         [TestMethod]
-        public async Task Curriculum_Post_Valid()
+        public async Task OrgUnit_Post_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
 
-            Curriculum c = new Curriculum()
+            OrgUnit Ounit = new OrgUnit()
             {
-                CurriculumID = null,
-                Name = "Insertion Test",
-                ShortName = "ShortName Insert Test",
-                OwnerUnitID = 1,
-                TotalCourses = 1,
-                TotalCreditHrs = 1,
-                IsLimitCourses =  false,
-                IsLimitCreditHrs = false,
-                CurriculumTypeID = 1
-
+                OrgUnitID = null,
+                Name = "Insert "
             };
 
             // act
             string url = _serviceUri;
-            var rawdata = JsonSerializer.Serialize<object>(c);
+            var rawdata = JsonSerializer.Serialize<object>(Ounit);
             var inputData = new StringContent(rawdata, Encoding.Default, "application/json");
             var response = await AppServer.Instance.CreateClient().PostAsync(url, inputData);
 
@@ -142,41 +127,38 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
 
-
-            Curriculum res = JsonSerializer.Deserialize<Curriculum>(content);
-            Assert.IsTrue(res.Name == c.Name);
-
+            OrgUnit res = JsonSerializer.Deserialize<OrgUnit>(content);
+            Assert.IsTrue(res.Name == Ounit.Name);
         }
 
         [TestMethod]
-        public async Task Curriculum_Delete_Valid()
+        public async Task OrgUnit_Delete_Valid()
         {
-            // arrange
-            long id = Insert("to delete", "t d", 1, 1, 1, false, false, 1);
+            long id = Insert("Delete", "d", 1, false, 1);
 
-            //act
+            //act 
             var client = AppServer.Instance.CreateClient();
-            var response = await client.DeleteAsync(_serviceUri + id);
+            var respones = await client.DeleteAsync(_serviceUri+id);
 
             //assert
-            response.EnsureSuccessStatusCode();
+            respones.EnsureSuccessStatusCode();
         }
 
 
-
         [TestMethod]
-        public async Task CurriculumType_Delete_Invalid()
+        public async Task OrgUnit_Delete_Invalid()
         {
-            //arrange
             long max = GetMax();
 
-            // act
+            //act 
             var client = AppServer.Instance.CreateClient();
-            var response = await client.DeleteAsync(_serviceUri + (max + 1));
+            var respones = await client.DeleteAsync((_serviceUri) + (max + 1));
 
             //assert
-            Assert.IsTrue(response.StatusCode == HttpStatusCode.BadRequest);
+            Assert.IsTrue(respones.StatusCode == HttpStatusCode.BadRequest);
+
         }
+
 
     }
 }

@@ -23,11 +23,14 @@ namespace CoreServicesTest
         private long GetMax()
         {
             long max = 0;
+
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
-            cmd.CommandText = "Select max(ComponentCourseID) from ComponentCourse";
+            cmd.CommandText = string.Format(
+                "Select max(ComponentCourseID) from ComponentCourse");
             max = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
+
             return max;
         }
 
@@ -36,7 +39,8 @@ namespace CoreServicesTest
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Insert into ComponentCourse (ComponentID), CourseID values('{0}','{1}'); select scope_identity()"
+                "Insert into ComponentCourse (ComponentID, CourseID)" +
+                "values('{0}','{1}'); select scope_identity()"
                 , ComponentID, CourseID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
