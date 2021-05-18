@@ -13,12 +13,13 @@ using System.Threading.Tasks;
 namespace CoreServicesTest
 {
     [TestClass]
-    class StudentStatusTest:BaseTest
+    public class OrgUnitTypeTest : BaseTest
     {
-        public StudentStatusTest()
+        public OrgUnitTypeTest()
         {
-            _serviceUri = base.GetUrl("/StudentStatusTest/");
+            _serviceUri = base.GetUrl("/OrgUnitTypeTest");
         }
+
         public long GetMax()
         {
             long max = 0;
@@ -26,20 +27,20 @@ namespace CoreServicesTest
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Select max(StudentStatusID) from StudentStatus");
+                "Select max(OrgUnitTypeID) from OrgUnitType");
             max = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
             return max;
         }
 
-        public long Insert(string Name)
+        public long Insert(string Name, string ShortName)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "insert into StudentStatus (Name) values('{0}'); select scope_identity()",
-                Name);
+                "insert into OrgUnitType (Name, ShortName) values('{0}', '{1}'); select scope_identity()",
+                Name, ShortName);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
@@ -47,9 +48,9 @@ namespace CoreServicesTest
         }
 
         [TestMethod]
-        public async Task StudentStatus_Find_Valid()
+        public async Task OrgUnitType_Find_Valid()
         {
-            long id = Insert("Insert Dummy");
+            long id = Insert("Insert Dummy", "ID");
 
             //act
             var client = AppServer.Instance.CreateClient();
@@ -60,14 +61,14 @@ namespace CoreServicesTest
             //assert
             respones.EnsureSuccessStatusCode();
             string content = await respones.Content.ReadAsStringAsync();
-            StudentStatus resp = JsonSerializer.Deserialize<StudentStatus>(content);
+            OrgUnitType resp = JsonSerializer.Deserialize<OrgUnitType>(content);
 
             Assert.AreEqual(resp.Name, "Insert Dummy");
         }
 
 
         [TestMethod]
-        public async Task StudentStatus_Find_Invalid()
+        public async Task OrgUnitType_Find_Invalid()
         {
             long max = GetMax();
 
@@ -81,12 +82,12 @@ namespace CoreServicesTest
         }
 
         [TestMethod]
-        public async Task StudentStatus_Get_Valid()
+        public async Task OrgUnitType_Get_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
-            cmd.CommandText = "Select count(1) from StudentSatus";
+            cmd.CommandText = "Select count(1) from OrgUnitType";
             long count = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
@@ -104,20 +105,20 @@ namespace CoreServicesTest
         }
 
         [TestMethod]
-        public async Task StudentStatus_Post_Valid()
+        public async Task OrgUnitType_Post_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
 
-            StudentStatus SS = new StudentStatus()
+            OrgUnitType OType = new OrgUnitType()
             {
-                StudentStatusID = null,
+                OrgUnitTypeID = null,
                 Name = "Insert "
             };
 
             // act
             string url = _serviceUri;
-            var rawdata = JsonSerializer.Serialize<object>(SS);
+            var rawdata = JsonSerializer.Serialize<object>(OType);
             var inputData = new StringContent(rawdata, Encoding.Default, "application/json");
             var response = await AppServer.Instance.CreateClient().PostAsync(url, inputData);
 
@@ -125,15 +126,15 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
 
-            StudentStatus res = JsonSerializer.Deserialize<StudentStatus>(content);
-            Assert.IsTrue(res.Name == SS.Name);
+            OrgUnitType res = JsonSerializer.Deserialize<OrgUnitType>(content);
+            Assert.IsTrue(res.Name == OType.Name);
         }
 
 
         [TestMethod]
-        public async Task StudentStatus_Delete_Valid()
+        public async Task OrgUnitType_Delete_Valid()
         {
-            long id = Insert("Delete");
+            long id = Insert("Delete", "d");
 
             //act 
             var client = AppServer.Instance.CreateClient();
@@ -145,7 +146,7 @@ namespace CoreServicesTest
 
 
         [TestMethod]
-        public async Task StudentStatus_Delete_Invalid()
+        public async Task OrgUnitType_Delete_Invalid()
         {
             long max = GetMax();
 

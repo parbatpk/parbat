@@ -55,7 +55,7 @@ namespace CoreServicesTest
             server.ConnectionContext.ExecuteNonQuery(createDb);
 
             string cmdDBSelect = "USE ParbatTestDB\nGo\n";
-            string combinedSPs =  cmdDBSelect + File.OpenText("combine_sps.sql").ReadToEnd();
+            string combinedSPs = cmdDBSelect + File.OpenText("combine_sps.sql").ReadToEnd();
             server.ConnectionContext.ExecuteNonQuery(combinedSPs);
         }
 

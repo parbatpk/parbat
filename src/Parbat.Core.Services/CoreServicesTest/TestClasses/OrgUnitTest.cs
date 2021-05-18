@@ -1,23 +1,23 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ParbatCore.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
-using System.Net;
-using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
+using System.Text.Json;
+using ParbatCore.Models;
+using System.Net;
+using System.Collections;
+using System.Net.Http;
 
 namespace CoreServicesTest
 {
     [TestClass]
-    class StudentTest:BaseTest
+    public class OrgUnitTest : BaseTest
     {
-        public StudentTest()
+        public OrgUnitTest()
         {
-            _serviceUri = base.GetUrl("/StudentTest/");
+            _serviceUri = base.GetUrl("/OrgUnitTest/");
         }
 
         public long GetMax()
@@ -27,20 +27,22 @@ namespace CoreServicesTest
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Select max(StudentID) from Student");
+                "Select max(OrgUnitID) from OrgUnit");
             max = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
             return max;
         }
 
-        public long Insert(string Identifier, string FirstName, string ShortName)
+        public long Insert(string Name, string ShortName, long ParentUnitID,
+                                bool IsAllowPermission, long OrgUnitTypeID)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "insert into Student (Identifier, Name, ShortName) values('{0}', '{1}', '{2}'); select scope_identity()",
-                Identifier, FirstName, ShortName);
+                "insert into OrgUnit (Name, ShortName, ParentUnitID, IsAllowPermission, OrgUnitTypeID)" +
+                "values('{0}', '{1}', '{2}', '{3}', '{4}'); select scope_identity()",
+                Name, ShortName, ParentUnitID, IsAllowPermission, OrgUnitTypeID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
@@ -48,9 +50,9 @@ namespace CoreServicesTest
         }
 
         [TestMethod]
-        public async Task Student_Find_Valid()
+        public async Task OrgUnit_Find_Valid()
         {
-            long id = Insert("D","Insert Dummy", "ID");
+            long id = Insert("Insert Dummy", "ID", 1, false, 1);
 
             //act
             var client = AppServer.Instance.CreateClient();
@@ -61,14 +63,13 @@ namespace CoreServicesTest
             //assert
             respones.EnsureSuccessStatusCode();
             string content = await respones.Content.ReadAsStringAsync();
-            Student resp = JsonSerializer.Deserialize<Student>(content);
+            OrgUnit resp = JsonSerializer.Deserialize<OrgUnit>(content);
 
-            Assert.AreEqual(resp.FirstName, "Insert Dummy");
+            Assert.AreEqual(resp.Name, "Insert Dummy");
         }
 
-
         [TestMethod]
-        public async Task Student_Find_Invalid()
+        public async Task OrgUnit_Find_Invalid()
         {
             long max = GetMax();
 
@@ -82,12 +83,12 @@ namespace CoreServicesTest
         }
 
         [TestMethod]
-        public async Task Student_Get_Valid()
+        public async Task OrgUnit_Get_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
-            cmd.CommandText = "Select count(1) from Student";
+            cmd.CommandText = "Select count(1) from OrgUnit";
             long count = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
@@ -105,20 +106,20 @@ namespace CoreServicesTest
         }
 
         [TestMethod]
-        public async Task Student_Post_Valid()
+        public async Task OrgUnit_Post_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
 
-            Student ss = new Student()
+            OrgUnit Ounit = new OrgUnit()
             {
-                StudentID = null,
-                FirstName = "Insert "
+                OrgUnitID = null,
+                Name = "Insert "
             };
 
             // act
             string url = _serviceUri;
-            var rawdata = JsonSerializer.Serialize<object>(ss);
+            var rawdata = JsonSerializer.Serialize<object>(Ounit);
             var inputData = new StringContent(rawdata, Encoding.Default, "application/json");
             var response = await AppServer.Instance.CreateClient().PostAsync(url, inputData);
 
@@ -126,15 +127,14 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
 
-            Student res = JsonSerializer.Deserialize<Student>(content);
-            Assert.IsTrue(res.FirstName == ss.FirstName);
+            OrgUnit res = JsonSerializer.Deserialize<OrgUnit>(content);
+            Assert.IsTrue(res.Name == Ounit.Name);
         }
 
-
         [TestMethod]
-        public async Task Student_Delete_Valid()
+        public async Task OrgUnit_Delete_Valid()
         {
-            long id = Insert("DD","Delete", "d");
+            long id = Insert("Delete", "d", 1, false, 1);
 
             //act 
             var client = AppServer.Instance.CreateClient();
@@ -146,7 +146,7 @@ namespace CoreServicesTest
 
 
         [TestMethod]
-        public async Task Student_Delete_Invalid()
+        public async Task OrgUnit_Delete_Invalid()
         {
             long max = GetMax();
 
@@ -159,6 +159,6 @@ namespace CoreServicesTest
 
         }
 
+
     }
 }
-

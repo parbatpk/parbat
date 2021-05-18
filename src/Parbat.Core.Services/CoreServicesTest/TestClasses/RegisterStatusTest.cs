@@ -1,10 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Net;
 using System.Text;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text.Json;
+using System.Data.Common;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace CoreServicesTest
 {
@@ -13,11 +15,11 @@ namespace CoreServicesTest
     //2-RegisterStatus_Post_Valid
 
     [TestClass]
-    class TermTest:BaseTest
+    public class RegisterStatusTest : BaseTest
     {
-        public TermTest()
+        public RegisterStatusTest()
         {
-            _serviceUri = base.GetUrl("/TermTest/");
+            _serviceUri = base.GetUrl("/RegisterStatusTest/");
         }
 
         public long GetMax()
@@ -27,33 +29,31 @@ namespace CoreServicesTest
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "select max(TermID) from Term");
+                "select max(RegisterStatusID) from RegisterStatus");
             max = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
             return max;
         }
 
-        public long Insert(string Name, string ShortName, bool IsActive, DateTime StartDate, 
-                                DateTime EndDate)
+        public long Insert(string ShortName)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "insert into Term(Name, ShortName, IsActive, StartDate, EndDate) " +
-                "values('{0}','{1}','{2}','{3}','{4}'); select scope_identity()",
-                Name, ShortName, IsActive, StartDate, EndDate);
+                "insert into RegisterStatus(ShortName) values('{0}'); select scope_identity()",
+                ShortName);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
+
 
             return id;
         }
 
-
         [TestMethod]
-        public async Task Term_Find_Valid()
+        public async Task RegisterStatus_Find_Valid()
         {
-            long id = Insert("Dummy","d", false, DateTime.Now, DateTime.Now);
+            long id = Insert("Dummy");
 
             //act
             var client = AppServer.Instance.CreateClient();
@@ -67,9 +67,8 @@ namespace CoreServicesTest
             //requried Model Class  for assert 
         }
 
-
         [TestMethod]
-        public async Task Term_Find_Invalid()
+        public async Task RegisterStatus_Find_Invalid()
         {
             long max = GetMax();
 
@@ -84,9 +83,9 @@ namespace CoreServicesTest
 
 
         [TestMethod]
-        public async Task Term_Delete_Valid()
+        public async Task RegisterStatus_Delete_Valid()
         {
-            long id = Insert("Delete", "d", false,DateTime.Now, DateTime.Now);
+            long id = Insert("Delete");
 
             //act
             var client = AppServer.Instance.CreateClient();
@@ -97,7 +96,7 @@ namespace CoreServicesTest
         }
 
         [TestMethod]
-        public async Task Term_Delete_Invalid()
+        public async Task RegisterStatus_Delete_Invalid()
         {
             long max = GetMax();
 

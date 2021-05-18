@@ -13,90 +13,94 @@ using System.Threading.Tasks;
 namespace CoreServicesTest
 {
     [TestClass]
-    class OrgUnitTypeTest:BaseTest
+    public class ComponentCourseTest:BaseTest
     {
-        public OrgUnitTypeTest()
+        public ComponentCourseTest()
         {
-            _serviceUri = base.GetUrl("/OrgUnitTypeTest");
+            _serviceUri = base.GetUrl("/ComponentCourse/");
         }
 
-        public long GetMax()
+        private long GetMax()
         {
             long max = 0;
 
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Select max(OrgUnitTypeID) from OrgUnitType");
+                "Select max(ComponentCourseID) from ComponentCourse");
             max = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
             return max;
         }
 
-        public long Insert(string Name, string ShortName)
+        private long Insert(int ComponentID, int CourseID)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "insert into OrgUnitType (Name, ShortName) values('{0}', '{1}'); select scope_identity()",
-                Name, ShortName);
+                "Insert into ComponentCourse (ComponentID, CourseID)" +
+                "values('{0}','{1}'); select scope_identity()"
+                , ComponentID, CourseID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
-
             return id;
         }
 
-        [TestMethod]
-        public async Task OrgUnitType_Find_Valid()
+        private async Task ComponentCourse_Find_Valid()
         {
-            long id = Insert("Insert Dummy", "ID");
+            //Few question ??
+            long id = Insert(1,1);
 
             //act
-            var client = AppServer.Instance.CreateClient();
             var request = base.CreateGetMessage(_serviceUri + id);
+            var client = AppServer.Instance.CreateClient();
             var respones = await client.SendAsync(request);
-
 
             //assert
             respones.EnsureSuccessStatusCode();
-            string content = await respones.Content.ReadAsStringAsync();
-            OrgUnitType resp = JsonSerializer.Deserialize<OrgUnitType>(content);
+            string context = await respones.Content.ReadAsStringAsync();
+            ComponentCourse resp = JsonSerializer.Deserialize<ComponentCourse>(context);
 
-            Assert.AreEqual(resp.Name, "Insert Dummy");
+
+            Assert.AreEqual(resp.ComponentID, 1);
+            Assert.AreEqual(resp.CourseID, 1);
         }
 
 
         [TestMethod]
-        public async Task OrgUnitType_Find_Invalid()
+        public async Task ComponentCourse_Find_Invalid()
         {
             long max = GetMax();
 
-            //act
+            // act
             var client = AppServer.Instance.CreateClient();
-            var request = base.CreateGetMessage((_serviceUri) + (max + 1));
-            var respones = await client.SendAsync(request);
+            string url = _serviceUri + (max + 1);
+            var request = base.CreateGetMessage(url);
+            var response = await client.SendAsync(request);
 
-            //assert
-            Assert.AreEqual(HttpStatusCode.NotFound, respones.StatusCode);
+            // assert
+            Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
         }
 
+
         [TestMethod]
-        public async Task OrgUnitType_Get_Valid()
+        public async Task ComponentType_Get_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
+            cmd.CommandText = "Select count(1) from ComponentCourse";
             cmd.Connection.Open();
-            cmd.CommandText = "Select count(1) from OrgUnitType";
             long count = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
             // act
-            var client = AppServer.Instance.CreateClient();
             var request = base.CreateGetMessage(_serviceUri);
+            var client = AppServer.Instance.CreateClient();
             var response = await client.SendAsync(request);
 
             var content = await response.Content.ReadAsStringAsync();
+
             response.EnsureSuccessStatusCode();
 
             // assert
@@ -104,21 +108,22 @@ namespace CoreServicesTest
             Assert.IsTrue(data.Count == count);
         }
 
+
         [TestMethod]
-        public async Task OrgUnitType_Post_Valid()
+        public async Task ComponentCourse_Post_Valid()
         {
             // arrange
             DbCommand cmd = DatabaseHelper.GetCommand();
-
-            OrgUnitType OType = new OrgUnitType()
+            ComponentCourse cc = new ComponentCourse()
             {
-                OrgUnitTypeID = null,
-                Name = "Insert "
+                ComponentCourseID = null,
+                ComponentID = 1,
+                CourseID = 1
             };
 
             // act
             string url = _serviceUri;
-            var rawdata = JsonSerializer.Serialize<object>(OType);
+            var rawdata = JsonSerializer.Serialize<object>(cc);
             var inputData = new StringContent(rawdata, Encoding.Default, "application/json");
             var response = await AppServer.Instance.CreateClient().PostAsync(url, inputData);
 
@@ -126,37 +131,40 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
 
-            OrgUnitType res = JsonSerializer.Deserialize<OrgUnitType>(content);
-            Assert.IsTrue(res.Name == OType.Name);
+            ComponentCourse res = JsonSerializer.Deserialize<ComponentCourse>(content);
+            Assert.IsTrue(res.ComponentID == cc.ComponentID);
+            Assert.IsTrue(res.CourseID == cc.CourseID);
+
         }
 
 
-        [TestMethod]
-        public async Task OrgUnitType_Delete_Valid()
-        {
-            long id = Insert("Delete", "d");
 
-            //act 
+        [TestMethod]
+        public async Task ComponentCourse_Delete_Valid()
+        {
+            // arrange
+            long id = Insert(1,1);
+
+            //act
             var client = AppServer.Instance.CreateClient();
-            var respones = await client.DeleteAsync(_serviceUri + id);
+            var response = await client.DeleteAsync(_serviceUri + id);
 
             //assert
-            respones.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
-
         [TestMethod]
-        public async Task OrgUnitType_Delete_Invalid()
+        public async Task ComponentCourse_Delete_Invalid()
         {
+            //arrange
             long max = GetMax();
 
-            //act 
+            // act
             var client = AppServer.Instance.CreateClient();
-            var respones = await client.DeleteAsync((_serviceUri) + (max + 1));
+            var response = await client.DeleteAsync(_serviceUri + (max + 1));
 
             //assert
-            Assert.IsTrue(respones.StatusCode == HttpStatusCode.BadRequest);
-
+            Assert.IsTrue(response.StatusCode == HttpStatusCode.BadRequest);
         }
 
     }

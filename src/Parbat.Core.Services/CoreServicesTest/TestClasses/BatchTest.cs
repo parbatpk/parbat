@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Text.Json;
-using System.Data.Common;
-using System.Threading.Tasks;
 using System.Net;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CoreServicesTest
 {
@@ -15,12 +13,13 @@ namespace CoreServicesTest
     //2-RegisterStatus_Post_Valid
 
     [TestClass]
-    class RegisterStatusTest:BaseTest
+    public class BatchTest : BaseTest
     {
-        public RegisterStatusTest()
+        public BatchTest()
         {
-            _serviceUri = base.GetUrl("/RegisterStatusTest/");
+            _serviceUri = base.GetUrl("/Batch/");
         }
+
 
         public long GetMax()
         {
@@ -29,84 +28,87 @@ namespace CoreServicesTest
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "select max(RegisterStatusID) from RegisterStatus");
+                "select max(BatchID) from Batch");
             max = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
             return max;
         }
 
-        public long Insert(string ShortName)
+        public long Insert(string Name, string ShortName, int AdmissionYear, int GraduationYear,
+                                long OrgUnitID, long CurriculumID)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "insert into RegisterStatus(ShortName) values('{0}'); select scope_identity()",
-                ShortName);
+                "insert into Batch(Name, ShortName, AdmissionYear, GraduationYear, OrgUnitID, CurriculumID)" +
+                "values('{0}','{1}','{2}','{3}','{4}','{5}'); select scope_identity()",
+                Name, ShortName, AdmissionYear, GraduationYear, OrgUnitID, CurriculumID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
-
 
             return id;
         }
 
         [TestMethod]
-        public async Task RegisterStatus_Find_Valid()
+        public async Task Batch_Find_Valid()
         {
-            long id = Insert("Dummy");
-            
+            long id = Insert("Find", "F", 1, 1, 1, 1);
+
             //act
             var client = AppServer.Instance.CreateClient();
-            var request = base.CreateGetMessage(_serviceUri+id);
+            var request = base.CreateGetMessage(_serviceUri + id);
             var respones = await client.SendAsync(request);
 
-            //assert 
+            //assert
             respones.EnsureSuccessStatusCode();
-            string content = await respones.Content.ReadAsStringAsync();
+            string context = await respones.Content.ReadAsStringAsync();
 
-            //requried Model Class  for assert 
+            //Required Model Class For Assert
         }
 
         [TestMethod]
-        public async Task RegisterStatus_Find_Invalid()
+        public async Task Batch_Find_Invalid()
         {
             long max = GetMax();
 
             //act 
             var client = AppServer.Instance.CreateClient();
-            var request = base.CreateGetMessage((_serviceUri)+(max+1));
+            var request = base.CreateGetMessage((_serviceUri) + (max + 1));
             var respones = await client.SendAsync(request);
 
             //assert
+            respones.EnsureSuccessStatusCode();
             Assert.AreEqual(HttpStatusCode.NotFound, respones.StatusCode);
         }
 
 
         [TestMethod]
-        public async Task RegisterStatus_Delete_Valid()
+        public async Task Batch_Delete_Valid()
         {
-            long id = Insert("Delete");
+            long id = Insert("Delete", "D", 1, 1, 1, 1);
 
             //act
             var client = AppServer.Instance.CreateClient();
-            var respones = await client.DeleteAsync(_serviceUri+id);
+            var respones = await client.DeleteAsync(_serviceUri + id);
 
-            //assert
+            //assert 
             respones.EnsureSuccessStatusCode();
         }
 
         [TestMethod]
-        public async Task RegisterStatus_Delete_Invalid()
+        public async Task Batch_Delete_Invalid()
         {
             long max = GetMax();
 
-            //act
+            //act 
             var client = AppServer.Instance.CreateClient();
             var respones = await client.DeleteAsync((_serviceUri) + (max + 1));
 
             //assert
-            Assert.IsTrue(HttpStatusCode.BadRequest == respones.StatusCode);
+            Assert.IsTrue(HttpStatusCode.NotFound == respones.StatusCode);
 
         }
+
     }
 }

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace CoreServicesTest
 {
     [TestClass]
-    class CourseTypeTest:BaseTest
+    public class CourseTypeTest : BaseTest
     {
         public CourseTypeTest()
         {
