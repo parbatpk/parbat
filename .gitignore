@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 /src/Parbat.Core.Services/ParbatCore/Properties/PublishProfiles/parbat - Web Deploy.pubxml
 /src/Parbat.Core.Services/ParbatCore/Properties/PublishProfiles/FolderProfile.pubxml
+/src/Parbat.Core.Services/ParbatCore/ParbatCore.xml
