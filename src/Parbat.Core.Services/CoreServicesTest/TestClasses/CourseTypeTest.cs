@@ -15,11 +15,18 @@ namespace CoreServicesTest
     [TestClass]
     public class CourseTypeTest : BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public CourseTypeTest()
         {
             _serviceUri = base.GetUrl("/CourseType/");
         }
 
+        /// <summary>
+        /// Request to get MAX ID from CourseTypeTable
+        /// </summary>
+        /// <returns></returns>
         private long GetMax()
         {
             long max = 0;
@@ -31,6 +38,11 @@ namespace CoreServicesTest
             return max;
         }
 
+        /// <summary>
+        /// Request to Insert into CourseTypeTable
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         private long Insert(string Name)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
@@ -44,6 +56,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Find Valid CourseType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         private async Task CourseType_Find_Valid()
         {
@@ -62,6 +78,11 @@ namespace CoreServicesTest
             Assert.AreEqual(resp.Name, "dummyCourse");
         }
 
+
+        /// <summary>
+        /// Request to Find Invalid CourseType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CourseType_Find_Invalid()
         {
@@ -77,6 +98,11 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
         }
 
+
+        /// <summary>
+        /// Request to Get ALL CourseType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CourseType_Get_Valid()
         {
@@ -101,6 +127,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to ???
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CourseType_Post_Valid()
         {
@@ -127,6 +157,10 @@ namespace CoreServicesTest
 
         }
 
+        /// <summary>
+        /// Request to Delete Valid CourseType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CourseType_Delete_Valid()
         {
@@ -141,6 +175,11 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
         }
 
+
+        /// <summary>
+        /// Request to Delete Invalid CourseType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CourseType_Delete_Invalid()
         {

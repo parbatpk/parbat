@@ -15,11 +15,19 @@ namespace CoreServicesTest
     [TestClass]
     public class ComponentCourseTest:BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ComponentCourseTest()
         {
             _serviceUri = base.GetUrl("/ComponentCourse/");
         }
 
+
+        /// <summary>
+        /// Get the Max ID from ComponentCourseTable
+        /// </summary>
+        /// <returns></returns>
         private long GetMax()
         {
             long max = 0;
@@ -34,6 +42,12 @@ namespace CoreServicesTest
             return max;
         }
 
+        /// <summary>
+        /// Request to Insert into ComponentCourse
+        /// </summary>
+        /// <param name="ComponentID"></param>
+        /// <param name="CourseID"></param>
+        /// <returns></returns>
         private long Insert(int ComponentID, int CourseID)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
@@ -47,6 +61,59 @@ namespace CoreServicesTest
             return id;
         }
 
+        /// <summary>
+        /// Reqeuest to Insert into CourseTable
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="ShortName"></param>
+        /// <param name="OwnerID"></param>
+        /// <param name="TheoryID"></param>
+        /// <param name="LabCredit"></param>
+        /// <param name="Code"></param>
+        /// <param name="CourseTypeID"></param>
+        /// <returns></returns>
+        private long Insert(string name, string ShortName, long OwnerID,
+                                int TheoryID, int LabCredit, string Code, long CourseTypeID)
+        {
+            DbCommand cmd = DatabaseHelper.GetCommand();
+            cmd.Connection.Open();
+            cmd.CommandText = string.Format(
+                "Insert into Course ([Name], ShortName, OwnerID, TheoryCredit, LabCredit, Code, CourseTypeID) " +
+                "values('Delete', 'd', 1, 1, 1, 'c', 1); " +
+                "select scope_identity()"
+                , name, ShortName, OwnerID, TheoryID, LabCredit, Code, CourseTypeID);
+            long id = Convert.ToInt64(cmd.ExecuteScalar());
+            cmd.Connection.Close();
+            return id;
+        }
+
+        /// <summary>
+        /// Request to Insert into Component
+        /// </summary>
+        /// <param name="ShortName"></param>
+        /// <param name="Name"></param>
+        /// <param name="CurriculumID"></param>
+        /// <param name="TotalCredit"></param>
+        /// <param name="TotalCourses"></param>
+        /// <param name="IsLimitCourses"></param>
+        /// <param name="IsLimitCreditHrs"></param>
+        /// <param name="ComponentTypeID"></param>
+        /// <returns></returns>
+        public long Insert(string ShortName, string Name, long CurriculumID, int TotalCredit, 
+                            int TotalCourses, bool IsLimitCourses, bool IsLimitCreditHrs, long ComponentTypeID )
+        {
+
+
+            return CurriculumID;
+        }
+
+
+
+        /// <summary>
+        ///  Request to Find the valid CourseComponent
+        /// </summary>
+        /// <returns></returns>
+        [TestMethod]
         private async Task ComponentCourse_Find_Valid()
         {
             //Few question ??
@@ -68,6 +135,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Reqeuest to Find the Invalid CourseComponent
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task ComponentCourse_Find_Invalid()
         {
@@ -84,6 +155,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Get all record of ComponentCourse
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task ComponentType_Get_Valid()
         {
@@ -109,6 +184,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// ???
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task ComponentCourse_Post_Valid()
         {
@@ -138,11 +217,18 @@ namespace CoreServicesTest
         }
 
 
-
+        /// <summary>
+        /// Request to Delete Record from ComponentCourse
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task ComponentCourse_Delete_Valid()
         {
             // arrange
+            //before insert voiting duplicate key in object so firstly
+            //insert in Component, Course
+            //than on Insert dummy record in ComponentCourse
+
             long id = Insert(1,1);
 
             //act
@@ -153,6 +239,10 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
         }
 
+        /// <summary>
+        /// Request to Delete Invalid From ComponentCourse
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task ComponentCourse_Delete_Invalid()
         {

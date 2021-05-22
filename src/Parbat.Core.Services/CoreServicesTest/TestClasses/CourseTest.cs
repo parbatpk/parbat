@@ -15,12 +15,18 @@ namespace CoreServicesTest
     [TestClass]
     public class CourseTest:BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public CourseTest()
         {
             _serviceUri = base.GetUrl("/Course/");
         }
 
-
+        /// <summary>
+        /// Request to get MAX Id from CourseTable
+        /// </summary>
+        /// <returns></returns>
         private long GetMax()
         {
             long max = 0;
@@ -33,20 +39,37 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Insert into CourseTable
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="ShortName"></param>
+        /// <param name="OwnerID"></param>
+        /// <param name="TheoryID"></param>
+        /// <param name="LabCredit"></param>
+        /// <param name="Code"></param>
+        /// <param name="CourseTypeID"></param>
+        /// <returns></returns>
         private long Insert(string name, string ShortName, long OwnerID, 
                                 int TheoryID, int LabCredit, string Code, long CourseTypeID)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Insert into Course (Name, ShortName, OwnerID, TheoryCredit, LabCredit, Code, CourseTypeID) " +
-                "values('{0}, {1}, {2}, {3}, {4}, {5}, {6}'); select scope_identity()"
+                "Insert into Course ([Name], ShortName, OwnerID, TheoryCredit, LabCredit, Code, CourseTypeID) " +
+                "values('Delete', 'd', 1, 1, 1, 'c', 1); " +
+                "select scope_identity()"
                 , name, ShortName, OwnerID, TheoryID, LabCredit, Code, CourseTypeID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
             return id;
         }
 
+
+        /// <summary>
+        /// Request to Find Valid Course
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         private async Task Course_Find_Valid()
         {
@@ -72,6 +95,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Find Invalid Course
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Course_Find_Invalid()
         {
@@ -87,6 +114,11 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
         }
 
+
+        /// <summary>
+        /// Request to Get All Courses 
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Course_Get_Valid()
         {
@@ -111,6 +143,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// ???
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Course_Post_Valid()
         {
@@ -137,6 +173,11 @@ namespace CoreServicesTest
 
         }
 
+
+        /// <summary>
+        /// Request to Delete Course
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Course_Delete_Valid()
         {
@@ -151,7 +192,11 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
         }
 
-
+        
+        /// <summary>
+        /// Request to Delete Invalid Course
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Course_Delete_Invalid()
         {

@@ -15,12 +15,19 @@ namespace CoreServicesTest
     [TestClass]
     public class BatchTest : BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public BatchTest()
         {
             _serviceUri = base.GetUrl("/Batch/");
         }
 
 
+        /// <summary>
+        /// Request to get MAX ID from BatachTable
+        /// </summary>
+        /// <returns></returns>
         public long GetMax()
         {
             long max = 0;
@@ -35,6 +42,17 @@ namespace CoreServicesTest
             return max;
         }
 
+
+        /// <summary>
+        /// Request to Insert into BatacTable
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="ShortName"></param>
+        /// <param name="AdmissionYear"></param>
+        /// <param name="GraduationYear"></param>
+        /// <param name="OrgUnitID"></param>
+        /// <param name="CurriculumID"></param>
+        /// <returns></returns>
         public long Insert(string Name, string ShortName, int AdmissionYear, int GraduationYear,
                                 long OrgUnitID, long CurriculumID)
         {
@@ -50,6 +68,11 @@ namespace CoreServicesTest
             return id;
         }
 
+
+        /// <summary>
+        /// Request to Find Valid Batch
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Batch_Find_Valid()
         {
@@ -67,6 +90,11 @@ namespace CoreServicesTest
             //Required Model Class For Assert
         }
 
+
+        /// <summary>
+        /// Request to Find Invalid Batch
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Batch_Find_Invalid()
         {
@@ -83,6 +111,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Delete Valid Batch
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Batch_Delete_Valid()
         {
@@ -96,6 +128,11 @@ namespace CoreServicesTest
             respones.EnsureSuccessStatusCode();
         }
 
+
+        /// <summary>
+        /// Request to Delete Invalid Batch
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Batch_Delete_Invalid()
         {

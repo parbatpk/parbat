@@ -17,13 +17,16 @@ namespace CoreServicesTest
     [TestClass]
     public class ComponentTypeTest:BaseTest
     {
+        /// <summary>
+        /// Consturctor
+        /// </summary>
         public ComponentTypeTest()
         {
             _serviceUri = base.GetUrl("/ComponentType/");
         }
 
         /// <summary>
-        /// always return the MAX primary key from ComponentType Table 
+        /// Request to get MAX ID from ComponentTypeTable
         /// </summary>
         /// <returns></returns>
         private long GetMax()
@@ -38,7 +41,7 @@ namespace CoreServicesTest
         }
 
         /// <summary>
-        /// Insert and return the primary key
+        /// Request to Insert into ComponentTypeTable
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -55,9 +58,10 @@ namespace CoreServicesTest
         }
 
         /// <summary>
-        /// Check the entery is valid
+        /// Request to Find Valid ComponentType
         /// </summary>
         /// <returns></returns>
+        [TestMethod]
         private async Task ComponentType_Find_Valid()
         {
             long id = Insert("dummyCT");
@@ -76,7 +80,7 @@ namespace CoreServicesTest
         }
 
         /// <summary>
-        /// Check the entery is not valid
+        /// Request to Find Invalid ComponentType
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -94,6 +98,10 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
         }
 
+        /// <summary>
+        /// Request to Get All ComponentType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task ComponentType_Get_Valid()
         {
@@ -117,6 +125,10 @@ namespace CoreServicesTest
             Assert.IsTrue(data.Count == count);
         }
 
+        /// <summary>
+        /// Request to ???
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task ComponentType_Post_Valid()
         {
@@ -143,6 +155,10 @@ namespace CoreServicesTest
 
         }
 
+        /// <summary>
+        /// Request to Delete Valid ComponentType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task ComponentType_Delete_Valid()
         {
@@ -158,6 +174,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Delete Invalid ComponentType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task ComponentType_Delete_Invalid()
         {
