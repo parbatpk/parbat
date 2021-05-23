@@ -197,7 +197,7 @@ namespace CoreServicesTest
             {
                 ComponentCourseID = null,
                 ComponentID = 1,
-                CourseID = 1
+                CourseID = 3
             };
 
             // act
@@ -229,7 +229,7 @@ namespace CoreServicesTest
             //insert in Component, Course
             //than on Insert dummy record in ComponentCourse
 
-            long id = Insert(1,1);
+            long id = Insert(1,3);
 
             //act
             var client = AppServer.Instance.CreateClient();

@@ -51,7 +51,7 @@ namespace CoreServicesTest
         /// <param name="CourseTypeID"></param>
         /// <returns></returns>
         private long Insert(string name, string ShortName, long OwnerID, 
-                                int TheoryID, int LabCredit, string Code, long CourseTypeID)
+                                int TheoryCredit, int LabCredit, string Code, long CourseTypeID)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
@@ -59,7 +59,7 @@ namespace CoreServicesTest
                 "Insert into Course ([Name], ShortName, OwnerID, TheoryCredit, LabCredit, Code, CourseTypeID) " +
                 "values('Delete', 'd', 1, 1, 1, 'c', 1); " +
                 "select scope_identity()"
-                , name, ShortName, OwnerID, TheoryID, LabCredit, Code, CourseTypeID);
+                , name, ShortName, OwnerID, TheoryCredit, LabCredit, Code, CourseTypeID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
             return id;
@@ -155,7 +155,13 @@ namespace CoreServicesTest
             Course c = new Course()
             {
                 CourseID = null,
-                Name = "Insertion Test",
+                OwnerID = 2,
+                Name = "Insert Post Valid",
+                ShortName = "IPV",
+                TheoryCredit = 3,
+                LabCredit = 0,
+                Code = "Fake",
+                CourseTypeID = 1
             };
 
             // act
@@ -165,7 +171,7 @@ namespace CoreServicesTest
             var response = await AppServer.Instance.CreateClient().PostAsync(url, inputData);
 
             // assert
-            response.EnsureSuccessStatusCode();
+            //response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
 
             Course res = JsonSerializer.Deserialize<Course>(content);
@@ -182,7 +188,7 @@ namespace CoreServicesTest
         public async Task Course_Delete_Valid()
         {
             // arrange
-            long id = Insert("Delete","d",1,1,1,"c",1);
+            long id = Insert("Delete","d",2,3,0,"c",1);
 
             //act
             var client = AppServer.Instance.CreateClient();

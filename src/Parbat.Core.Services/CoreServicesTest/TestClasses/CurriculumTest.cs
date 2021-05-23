@@ -62,7 +62,7 @@ namespace CoreServicesTest
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "Insert into Curriculum (Name, ShortName, OwnerUnitID, TotalCourses, TotalCreditHrs, IsLimitCourses, IslimitCoursesHrs, CurriculumTypeID)" +
+                "Insert into Curriculum (Name, ShortName, OwnerUnitID, TotalCourses, TotalCreditHrs, IsLimitCourses, IsLimitCreditHrs, CurriculumTypeID)" +
                 "values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'); select scope_identity()",
                 Name, ShortName, OwnerUnitID, TotalCourses, TotalCreditHrs, IslimitCourses, IslimitCreditHrs,
                 CurriculumTypeID);
@@ -113,7 +113,7 @@ namespace CoreServicesTest
             var respones = await client.SendAsync(request);
 
             //
-            respones.EnsureSuccessStatusCode();
+            //respones.EnsureSuccessStatusCode();
             Assert.AreEqual(HttpStatusCode.NotFound, respones.StatusCode);
         }
 
@@ -195,7 +195,7 @@ namespace CoreServicesTest
         public async Task Curriculum_Delete_Valid()
         {
             // arrange
-            long id = Insert("to delete", "t d", 1, 1, 1, false, false, 1);
+            long id = Insert("to delete", "t d", 2, 0, 130, true, false, 1);
 
             //act
             var client = AppServer.Instance.CreateClient();
