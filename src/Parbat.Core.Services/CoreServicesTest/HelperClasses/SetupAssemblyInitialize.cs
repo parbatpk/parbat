@@ -30,34 +30,34 @@ namespace CoreServicesTest
         /// <summary>
         /// Create and load database
         /// </summary>
-        static void CreateTestDatabase()
-        {
-            // combine all sps
-            string basedirectory = AppContext.BaseDirectory;
-            ProcessStartInfo proc = new ProcessStartInfo("combine_sps.bat");
-            Process p = Process.Start(proc);
-            p.Close();
+        //static void CreateTestDatabase()
+        //{
+        //    // combine all sps
+        //    string basedirectory = AppContext.BaseDirectory;
+        //    ProcessStartInfo proc = new ProcessStartInfo("combine_sps.bat");
+        //    Process p = Process.Start(proc);
+        //    p.Close();
 
-            // in order to allow the above process to close peacefully 
-            // so we can get access to script file 
-            Thread.Sleep(5000);
+        //    // in order to allow the above process to close peacefully 
+        //    // so we can get access to script file 
+        //    Thread.Sleep(5000);
 
-            // read db creation script
-            string createDb = File.OpenText("CreateDB.sql").ReadToEnd();
-            createDb = createDb.Replace("ParbatDB", "ParbatTestDB");
+        //    // read db creation script
+        //    string createDb = File.OpenText("CreateDB.sql").ReadToEnd();
+        //    createDb = createDb.Replace("ParbatDB", "ParbatTestDB");
 
-            createDb = "IF EXISTS (SELECT 1 from sysdatabases where name='ParbatTestDB')\nDROP DATABASE ParbatTestDB\nGo\n" +
-                createDb;
+        //    createDb = "IF EXISTS (SELECT 1 from sysdatabases where name='ParbatTestDB')\nDROP DATABASE ParbatTestDB\nGo\n" +
+        //        createDb;
 
-            SqlConnection con = new SqlConnection(SetupConnectionString);
-            ServerConnection scon = new ServerConnection(con);
-            Server server = new Server(scon);
-            server.ConnectionContext.ExecuteNonQuery(createDb);
+        //    SqlConnection con = new SqlConnection(SetupConnectionString);
+        //    ServerConnection scon = new ServerConnection(con);
+        //    Server server = new Server(scon);
+        //    server.ConnectionContext.ExecuteNonQuery(createDb);
 
-            string cmdDBSelect = "USE ParbatTestDB\nGo\n";
-            string combinedSPs = cmdDBSelect + File.OpenText("combine_sps.sql").ReadToEnd();
-            server.ConnectionContext.ExecuteNonQuery(combinedSPs);
-        }
+        //    string cmdDBSelect = "USE ParbatTestDB\nGo\n";
+        //    string combinedSPs = cmdDBSelect + File.OpenText("combine_sps.sql").ReadToEnd();
+        //    server.ConnectionContext.ExecuteNonQuery(combinedSPs);
+        //}
 
         /// <summary>
         /// Run the code to setup test database and all SPs
@@ -73,7 +73,7 @@ namespace CoreServicesTest
             SetupConnectionString = Configuration["ConnectionStrings:setup"];
             BaseUrl = Configuration["BaseUrl"];
 
-            CreateTestDatabase();
+            //CreateTestDatabase();
 
             Parbat.Data.Database.Instance.SetInstance(DatabaseType.SQL, ConnectionString);
 

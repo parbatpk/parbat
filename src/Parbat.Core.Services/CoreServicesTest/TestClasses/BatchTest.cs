@@ -118,7 +118,7 @@ namespace CoreServicesTest
         [TestMethod]
         public async Task Batch_Delete_Valid()
         {
-            long id = Insert("Delete", "D", 1, 1, 1, 1);
+            long id = Insert("Delete", "D", 1, 1, 1, 2);
 
             //act
             var client = AppServer.Instance.CreateClient();
@@ -126,6 +126,7 @@ namespace CoreServicesTest
 
             //assert 
             respones.EnsureSuccessStatusCode();
+            
         }
 
 
