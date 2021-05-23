@@ -17,11 +17,19 @@ namespace CoreServicesTest
     [TestClass]
     public class RegisterStatusTest : BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public RegisterStatusTest()
         {
             _serviceUri = base.GetUrl("/RegisterStatusTest/");
         }
 
+
+        /// <summary>
+        /// Request to get MAX ID from RegisterStatus
+        /// </summary>
+        /// <returns></returns>
         public long GetMax()
         {
             long max = 0;
@@ -36,6 +44,12 @@ namespace CoreServicesTest
             return max;
         }
 
+
+        /// <summary>
+        /// Request to Insert into RegisterStatus
+        /// </summary>
+        /// <param name="ShortName"></param>
+        /// <returns></returns>
         public long Insert(string ShortName)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
@@ -50,6 +64,10 @@ namespace CoreServicesTest
             return id;
         }
 
+        /// <summary>
+        /// Request to Find Valid RegisterStatus
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task RegisterStatus_Find_Valid()
         {
@@ -67,6 +85,10 @@ namespace CoreServicesTest
             //requried Model Class  for assert 
         }
 
+        /// <summary>
+        /// Request to Find Invalid RegisterStatus
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task RegisterStatus_Find_Invalid()
         {
@@ -82,6 +104,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Delete Valid RegisterStatus
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task RegisterStatus_Delete_Valid()
         {
@@ -95,6 +121,11 @@ namespace CoreServicesTest
             respones.EnsureSuccessStatusCode();
         }
 
+
+        /// <summary>
+        /// Request to Delete Invalid RegisterStatus
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task RegisterStatus_Delete_Invalid()
         {

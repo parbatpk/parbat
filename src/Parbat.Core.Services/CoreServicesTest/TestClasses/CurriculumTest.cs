@@ -16,11 +16,19 @@ namespace CoreServicesTest
     [TestClass]
     public class CurriculumTest : BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public CurriculumTest()
         {
             _serviceUri = base.GetUrl("/Curriculum/");
         }
 
+
+        /// <summary>
+        /// Request to get MAX ID from CurriculumTable
+        /// </summary>
+        /// <returns></returns>
         private long GetMax()
         {
             long max = 0;
@@ -36,6 +44,18 @@ namespace CoreServicesTest
             return max;
         }
 
+        /// <summary>
+        /// Request to Insert into CurriculumTable
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="ShortName"></param>
+        /// <param name="OwnerUnitID"></param>
+        /// <param name="TotalCourses"></param>
+        /// <param name="TotalCreditHrs"></param>
+        /// <param name="IslimitCourses"></param>
+        /// <param name="IslimitCreditHrs"></param>
+        /// <param name="CurriculumTypeID"></param>
+        /// <returns></returns>
         private long Insert(string Name, string ShortName, long OwnerUnitID, int TotalCourses, int TotalCreditHrs,
                                 bool IslimitCourses, bool IslimitCreditHrs, long CurriculumTypeID)
         {
@@ -53,6 +73,11 @@ namespace CoreServicesTest
             return id;
         }
 
+
+        /// <summary>
+        /// Request to Find Valid Curriculum
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Curriculum_Find_Valid()
         {
@@ -73,6 +98,10 @@ namespace CoreServicesTest
 
         }
 
+        /// <summary>
+        /// Request to Find Invalid Curriculum
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Curriculum_Find_Invalid()
         {
@@ -88,6 +117,11 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, respones.StatusCode);
         }
 
+
+        /// <summary>
+        /// Request to Get ALL Curriculum
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Curriculum_Get_Valid()
         {
@@ -112,6 +146,10 @@ namespace CoreServicesTest
             Assert.IsTrue(data.Count == count);
         }
 
+        /// <summary>
+        /// Request to ??
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Curriculum_Post_Valid()
         {
@@ -148,6 +186,11 @@ namespace CoreServicesTest
 
         }
 
+
+        /// <summary>
+        /// Request to Delete Valid Curriculum
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Curriculum_Delete_Valid()
         {
@@ -163,7 +206,10 @@ namespace CoreServicesTest
         }
 
 
-
+        /// <summary>
+        /// Request to Delete Invalid Curriculum
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CurriculumType_Delete_Invalid()
         {

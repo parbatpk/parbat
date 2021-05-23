@@ -15,11 +15,18 @@ namespace CoreServicesTest
     [TestClass]
     public class OrgUnitTest : BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public OrgUnitTest()
         {
             _serviceUri = base.GetUrl("/OrgUnitTest/");
         }
 
+        /// <summary>
+        /// Request to get MAX ID from OrgUnit
+        /// </summary>
+        /// <returns></returns>
         public long GetMax()
         {
             long max = 0;
@@ -34,6 +41,15 @@ namespace CoreServicesTest
             return max;
         }
 
+        /// <summary>
+        /// Request to Insert into OrgUnit
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="ShortName"></param>
+        /// <param name="ParentUnitID"></param>
+        /// <param name="IsAllowPermission"></param>
+        /// <param name="OrgUnitTypeID"></param>
+        /// <returns></returns>
         public long Insert(string Name, string ShortName, long ParentUnitID,
                                 bool IsAllowPermission, long OrgUnitTypeID)
         {
@@ -49,6 +65,11 @@ namespace CoreServicesTest
             return id;
         }
 
+
+        /// <summary>
+        /// Request to Find Invalid OrgUnit
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnit_Find_Valid()
         {
@@ -68,6 +89,11 @@ namespace CoreServicesTest
             Assert.AreEqual(resp.Name, "Insert Dummy");
         }
 
+
+        /// <summary>
+        /// Request to Find Invalid OrgUnit 
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnit_Find_Invalid()
         {
@@ -82,6 +108,11 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, respones.StatusCode);
         }
 
+
+        /// <summary>
+        /// Request to Get ALl OrgUnit
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnit_Get_Valid()
         {
@@ -105,6 +136,11 @@ namespace CoreServicesTest
             Assert.IsTrue(data.Count == count);
         }
 
+
+        /// <summary>
+        /// Request to???
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnit_Post_Valid()
         {
@@ -131,6 +167,11 @@ namespace CoreServicesTest
             Assert.IsTrue(res.Name == Ounit.Name);
         }
 
+
+        /// <summary>
+        /// Request to Delete Valid OrgUnit
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnit_Delete_Valid()
         {
@@ -144,7 +185,10 @@ namespace CoreServicesTest
             respones.EnsureSuccessStatusCode();
         }
 
-
+        /// <summary>
+        /// Request to Delete Invalid OrgUnit
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnit_Delete_Invalid()
         {

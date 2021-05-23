@@ -15,11 +15,18 @@ namespace CoreServicesTest
     [TestClass]
     public class TermTest : BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public TermTest()
         {
             _serviceUri = base.GetUrl("/TermTest/");
         }
 
+        /// <summary>
+        /// Request to get MAX ID from TermTable
+        /// </summary>
+        /// <returns></returns>
         public long GetMax()
         {
             long max = 0;
@@ -34,6 +41,15 @@ namespace CoreServicesTest
             return max;
         }
 
+        /// <summary>
+        /// Request to Insert into TermTable
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="ShortName"></param>
+        /// <param name="IsActive"></param>
+        /// <param name="StartDate"></param>
+        /// <param name="EndDate"></param>
+        /// <returns></returns>
         public long Insert(string Name, string ShortName, bool IsActive, DateTime StartDate,
                                 DateTime EndDate)
         {
@@ -50,6 +66,11 @@ namespace CoreServicesTest
         }
 
 
+
+        /// <summary>
+        /// Request to Find Valid Term
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Term_Find_Valid()
         {
@@ -67,7 +88,10 @@ namespace CoreServicesTest
             //requried Model Class  for assert 
         }
 
-
+        /// <summary>
+        /// Request to Find Invalid Term
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Term_Find_Invalid()
         {
@@ -82,7 +106,10 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, respones.StatusCode);
         }
 
-
+        /// <summary>
+        /// Request to Delete Valid Term
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Term_Delete_Valid()
         {
@@ -96,6 +123,10 @@ namespace CoreServicesTest
             respones.EnsureSuccessStatusCode();
         }
 
+        /// <summary>
+        /// Request to Delete Invalid Term
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Term_Delete_Invalid()
         {

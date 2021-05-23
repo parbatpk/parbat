@@ -15,11 +15,19 @@ namespace CoreServicesTest
     [TestClass]
     public class StudentTest : BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public StudentTest()
         {
             _serviceUri = base.GetUrl("/StudentTest/");
         }
 
+
+        /// <summary>
+        /// Request to get MAX ID from StudentTable
+        /// </summary>
+        /// <returns></returns>
         public long GetMax()
         {
             long max = 0;
@@ -34,6 +42,13 @@ namespace CoreServicesTest
             return max;
         }
 
+        /// <summary>
+        /// Request to Insert into StudentTable
+        /// </summary>
+        /// <param name="Identifier"></param>
+        /// <param name="FirstName"></param>
+        /// <param name="ShortName"></param>
+        /// <returns></returns>
         public long Insert(string Identifier, string FirstName, string ShortName)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
@@ -47,6 +62,11 @@ namespace CoreServicesTest
             return id;
         }
 
+
+        /// <summary>
+        /// Request to Find Valid Student
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Student_Find_Valid()
         {
@@ -67,6 +87,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Find Invalid Student
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Student_Find_Invalid()
         {
@@ -81,6 +105,11 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, respones.StatusCode);
         }
 
+
+        /// <summary>
+        /// Request to Get ALL Student
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Student_Get_Valid()
         {
@@ -104,6 +133,11 @@ namespace CoreServicesTest
             Assert.IsTrue(data.Count == count);
         }
 
+
+        /// <summary>
+        /// Request to ??
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Student_Post_Valid()
         {
@@ -130,7 +164,10 @@ namespace CoreServicesTest
             Assert.IsTrue(res.FirstName == ss.FirstName);
         }
 
-
+        /// <summary>
+        /// Request to Delete Valid Student
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Student_Delete_Valid()
         {
@@ -145,6 +182,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Delete Invalid Student
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Student_Delete_Invalid()
         {

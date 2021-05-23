@@ -15,11 +15,18 @@ namespace CoreServicesTest
     [TestClass]
     public class OrgUnitTypeTest : BaseTest
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public OrgUnitTypeTest()
         {
             _serviceUri = base.GetUrl("/OrgUnitTypeTest");
         }
 
+        /// <summary>
+        /// Request to get MAX ID from OrgUnitType
+        /// </summary>
+        /// <returns></returns>
         public long GetMax()
         {
             long max = 0;
@@ -34,6 +41,13 @@ namespace CoreServicesTest
             return max;
         }
 
+
+        /// <summary>
+        /// Request to Insert into OrgUnitType
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="ShortName"></param>
+        /// <returns></returns>
         public long Insert(string Name, string ShortName)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
@@ -47,6 +61,11 @@ namespace CoreServicesTest
             return id;
         }
 
+
+        /// <summary>
+        /// Request to Find Valid OrgUnitType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnitType_Find_Valid()
         {
@@ -67,6 +86,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Find Invalid OrgUnitType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnitType_Find_Invalid()
         {
@@ -81,6 +104,11 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, respones.StatusCode);
         }
 
+
+        /// <summary>
+        /// Request to Get ALL OrgUnitType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnitType_Get_Valid()
         {
@@ -104,6 +132,11 @@ namespace CoreServicesTest
             Assert.IsTrue(data.Count == count);
         }
 
+
+        /// <summary>
+        /// Request to??
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnitType_Post_Valid()
         {
@@ -131,6 +164,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Delete Valid OrgUnitType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnitType_Delete_Valid()
         {
@@ -145,6 +182,10 @@ namespace CoreServicesTest
         }
 
 
+        /// <summary>
+        /// Request to Delete Invalid OrgUnitType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task OrgUnitType_Delete_Invalid()
         {
