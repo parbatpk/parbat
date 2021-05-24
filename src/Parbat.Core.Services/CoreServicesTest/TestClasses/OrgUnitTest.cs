@@ -51,14 +51,14 @@ namespace CoreServicesTest
         /// <param name="OrgUnitTypeID"></param>
         /// <returns></returns>
         public long Insert(string Name, string ShortName, long ParentUnitID,
-                                bool IsAllowPermission, long OrgUnitTypeID)
+                                bool IsAllowAdmission, long OrgUnitTypeID)
         {
             DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.Connection.Open();
             cmd.CommandText = string.Format(
-                "insert into OrgUnit (Name, ShortName, ParentUnitID, IsAllowPermission, OrgUnitTypeID)" +
+                "insert into OrgUnit ([Name], ShortName, ParentUnitID, IsAllowAdmission, OrgUnitTypeID)" +
                 "values('{0}', '{1}', '{2}', '{3}', '{4}'); select scope_identity()",
-                Name, ShortName, ParentUnitID, IsAllowPermission, OrgUnitTypeID);
+                Name, ShortName, ParentUnitID, IsAllowAdmission, OrgUnitTypeID);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
 
@@ -73,7 +73,7 @@ namespace CoreServicesTest
         [TestMethod]
         public async Task OrgUnit_Find_Valid()
         {
-            long id = Insert("Insert Dummy", "ID", 1, false, 1);
+            long id = Insert("Insert Dummy", "ID", 4, false, 5);
 
             //act
             var client = AppServer.Instance.CreateClient();
@@ -175,7 +175,7 @@ namespace CoreServicesTest
         [TestMethod]
         public async Task OrgUnit_Delete_Valid()
         {
-            long id = Insert("Delete", "d", 1, false, 1);
+            long id = Insert("Delete Institute", "d", 1, false, 5);
 
             //act 
             var client = AppServer.Instance.CreateClient();
@@ -196,7 +196,7 @@ namespace CoreServicesTest
 
             //act 
             var client = AppServer.Instance.CreateClient();
-            var respones = await client.DeleteAsync((_serviceUri) + (max + 1));
+            var respones = await client.DeleteAsync(_serviceUri + (max + 1));
 
             //assert
             Assert.IsTrue(respones.StatusCode == HttpStatusCode.BadRequest);
