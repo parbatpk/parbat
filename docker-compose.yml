@@ -10,7 +10,7 @@ services:
       context: src/Parbat.Core.Services/
       dockerfile: ParbatCore/Dockerfile
     ports:
-    - "9080:80"
+    - "80:80"
     networks:
       - parbat-network
     depends_on:
