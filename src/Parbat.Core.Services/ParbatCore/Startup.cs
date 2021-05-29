@@ -45,6 +45,7 @@ namespace ParbatCore
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(GlobalConstants.API_VER, new OpenApiInfo
@@ -70,6 +71,7 @@ namespace ParbatCore
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
             });
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
