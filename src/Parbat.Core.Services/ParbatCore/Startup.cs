@@ -129,10 +129,10 @@ namespace ParbatCore
             app.UseMvc();
 
 
-            //var connectionString = Configuration["ConnectionStrings:db"];
-            //DatabaseType dbType = (DatabaseType)Enum.Parse(typeof(DatabaseType),
-            //    Configuration["database:type"], true);
-            //Database.Instance.SetInstance(dbType, connectionString);
+            var connectionString = Configuration["ConnectionStrings:db"];
+            DatabaseType dbType = (DatabaseType)Enum.Parse(typeof(DatabaseType),
+                Configuration["database:type"], true);
+            Database.Instance.SetInstance(dbType, connectionString);
 
         }
 
