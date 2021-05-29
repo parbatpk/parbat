@@ -26,22 +26,25 @@ namespace ParbatCore.Controllers
         [HttpGet("{id}")]
         public ActionResult<CurriculumType> Get(long id)
         {
-            CurriculumType c = new CurriculumType
+            try
             {
-                CurriculumTypeID = id
-            };
-            c = c.Find(Database.Instance) as CurriculumType;
-
-            if (c != null)
+                CurriculumType c = new CurriculumType
+                {
+                    CurriculumTypeID = id
+                };
+                c = c.Find(Database.Instance) as CurriculumType;
                 return Ok(c);
-            else
-                return NotFound();
+            }
+            catch(Exception e)
+            {
+                return NotFound(e.Message);
+            }
         }
 
         /// <summary>
         /// Return all records
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="izd"></param>
         /// <returns>Return a DataTable</returns>
         [HttpGet]
         public ActionResult List()
@@ -59,58 +62,64 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult Update([FromBody]CurriculumType ctype)
         {
-            if (ctype.Find(Database.Instance) == null)
-                return BadRequest();
-
-            if (ctype.CurriculumTypeID != null && ctype.CurriculumTypeID > 0)
+            try
             {
-                try
-                {
-                    ctype.Update(Database.Instance);
-                    return NoContent();
-                }
-                catch
-                {
-
-                    return BadRequest();
-                }
+                ctype.Update(Database.Instance);
+                return Ok();
             }
-            else
-                return BadRequest();
-
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         /// <summary>
         /// Create a new curriculum type
         /// </summary>
-        /// <param name="ctype"></param>
+        /// <param name="ctype">Object that needs to be updated</param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult<CurriculumType> Create([FromBody]CurriculumType ctype)
         {
-            ctype.Save(Database.Instance);
-            return Created("Get", ctype);
+            try
+            {
+                ctype.Save(Database.Instance);
+                return Created("Get", ctype);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         /// <summary>
         /// Delete instance
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">primary key</param>
         /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {
+            // create object with given ID
             CurriculumType c = new CurriculumType
             {
                 CurriculumTypeID = id
             };
-            c = (CurriculumType)c.Find(Database.Instance);
 
-            if (c == null)
-                return BadRequest();
+            try
+            {
+                // call delete 
+                c.Delete(Database.Instance);
+                return Ok();
+            }
+            catch(Exception e)
+            {
+                // if business logic fails or any other issue
+                return BadRequest(e.Message);
+            }
 
-            c.Delete(Database.Instance);
-            return NoContent();
+           
 
         }
     }

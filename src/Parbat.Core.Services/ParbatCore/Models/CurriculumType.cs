@@ -33,12 +33,17 @@ namespace ParbatCore.Models
         /// <param name="db"></param>
         public void Delete(IDatabase db)
         {
+
+            CurriculumType c = (CurriculumType)this.Find(db);
+
+            if (c == null)
+                throw new BOException("unable to find the record");
+
             // otherwise create a new entry/record
             using (DbConnection con = db.CreateConnection())
             {
                 con.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Delete,
-                    con);
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Delete, con);
                 cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
                 cmd.ExecuteNonQuery();
             }
@@ -63,12 +68,13 @@ namespace ParbatCore.Models
                     CurriculumType found = JsonSerializer.Deserialize<CurriculumType>(txt);
                     return found;
                 }
-                catch(JsonException je)
+                catch (Exception e)
                 {
-                    return null;
+                    throw new BOException("record not found");
                 }
             }
         }
+
 
         /// <summary>
         /// Get All curriculum type
@@ -123,14 +129,24 @@ namespace ParbatCore.Models
         /// <param name="db"></param>
         public void Update(IDatabase db)
         {
-            using (DbConnection con = db.CreateConnection())
+            if (this.Find(db) == null)
+                throw new Exception("record not found");
+
+            if (this.CurriculumTypeID != null && this.CurriculumTypeID > 0)
             {
-                con.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Update, con);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@Name", this.Name));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
-                cmd.ExecuteNonQuery();
+                using (DbConnection con = db.CreateConnection())
+                {
+                    con.Open();
+                    DbCommand cmd = db.CreateSPCommand(ProcedureNames.CurriculumType.Update, con);
+                    cmd.Parameters.Add(db.CreateParameter(cmd, "@Name", this.Name));
+                    cmd.Parameters.Add(db.CreateParameter(cmd, "@CurriculumTypeID", this.CurriculumTypeID));
+                    cmd.ExecuteNonQuery();
+                }
             }
+            else
+                throw new Exception("unable to updated");
+
+
         }
     }
 }

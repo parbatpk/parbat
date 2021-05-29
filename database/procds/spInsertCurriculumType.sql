@@ -22,5 +22,5 @@ GO
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spInsertCurriculumType 'NewType'
+--EXECUTE dbo.spInsertCurriculumType 'NewType'
 --GO
