@@ -1,83 +1,72 @@
-﻿using System;
+﻿using Parbat.Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Parbat.Data;
 
 namespace ParbatCore.Models
 {
     /// <summary>
-    /// This is the Business Model Classs interAct with the DB
+    /// Handling all the business logic of Student group
     /// </summary>
-    public class Batch:IBussinesObject
+    public class StudentGroup:IBussinesObject
     {
         /// <summary>
-        /// Primary key in Batch Table
+        /// Primary key of StudenGroup Table
         /// </summary>
-        public long BatchID;
+        public long StudenGroupID;
+
         /// <summary>
-        /// Short name of the Batch
+        /// ShortName of StudentGroup
         /// </summary>
         public string ShortName;
 
+
         /// <summary>
-        /// Name of the batch
+        /// Name of StudentGroup
         /// </summary>
         public string Name;
 
+        
         /// <summary>
-        /// Year of the admission
+        /// Is StudentGroup Active or Not
         /// </summary>
-        public int AdmissionYear;
+        public bool IsActive;
+
 
         /// <summary>
-        /// Passing year
-        /// </summary>
-        public int GraduationYear;
-
-        /// <summary>
-        /// Forign key in the BatchTable
-        /// </summary>
-        public long OrgUnitID;
-
-        /// <summary>
-        /// Forign key in the BatchTable
-        /// </summary>
-        public long CurriculumID;
-
-        /// <summary>
-        /// Save the New batch if not Exist
+        /// Save the StudentGroup in StudentGroup Table
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
         public long? Save(IDatabase db)
         {
-            if(this.Find(db)!=null)
+            if (this.Find(db) != null)
             {
                 this.Update(db);
-                return this.BatchID;
+                return this.StudenGroupID;
             }
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.Batch.Insert, connection);
-                cmd.Parameters.Add(db.CreateParameter(cmd,"ShortName" ,this.ShortName));
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.StudentGroup.Insert, connection);
+
+                cmd.Parameters.Add(db.CreateParameter(cmd, "ShortName", this.ShortName));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "AdmissionYear", this.AdmissionYear));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "GraduationYear", this.GraduationYear));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "OrgUnitID", this.OrgUnitID));
-                cmd.Parameters.Add(db.CreateParameter(cmd, "CurriculumID", this.CurriculumID));
-                this.BatchID = Convert.ToInt64(cmd.ExecuteScalar());
+                cmd.Parameters.Add(db.CreateParameter(cmd, "IsActive", this.IsActive));
+
+                this.StudenGroupID = Convert.ToInt64(cmd.ExecuteScalar());
                 connection.Close();
-                return this.CurriculumID;
+
+                return this.StudenGroupID;
             }
         }
 
         /// <summary>
-        /// Find the batch if it exist
+        /// Find the StudentGroup
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
@@ -86,13 +75,13 @@ namespace ParbatCore.Models
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.Batch.Find, connection);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "BatchID", this.BatchID));
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.StudentGroup.Find, connection);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "StudentGroupID", this.StudenGroupID));
                 string txt = cmd.ExecuteScalar().ToString();
                 connection.Close();
                 try
                 {
-                    Batch found = JsonSerializer.Deserialize<Batch>(txt);
+                    StudentGroup found = JsonSerializer.Deserialize<StudentGroup>(txt);
                     return found;
                 }
                 catch (JsonException ex)
@@ -104,7 +93,7 @@ namespace ParbatCore.Models
         }
 
         /// <summary>
-        /// Delete the Batch if exist
+        /// Delete the StudentGroup
         /// </summary>
         /// <param name="db"></param>
         public void Delete(IDatabase db)
@@ -116,8 +105,8 @@ namespace ParbatCore.Models
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.Batch.Delete, connection);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "BatchID", this.BatchID));
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.StudentGroup.Delete, connection);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "StudentGroupID", this.StudenGroupID));
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
@@ -125,7 +114,7 @@ namespace ParbatCore.Models
 
 
         /// <summary>
-        /// Update the batch if exist
+        /// Update the StudentGoup
         /// </summary>
         /// <param name="db"></param>
         public void Update(IDatabase db)
@@ -136,15 +125,17 @@ namespace ParbatCore.Models
             }
             using (DbConnection connection = db.CreateConnection())
             {
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.Batch.Update, connection);
-                cmd.Parameters.Add(db.CreateParameter(cmd, "BatchID", this.BatchID));
+                connection.Open();
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.StudentGroup.Update, connection);
+                cmd.Parameters.Add(db.CreateParameter(cmd, "StudentGroupID", this.StudenGroupID));
                 cmd.ExecuteNonQuery();
+                connection.Close();
             }
 
         }
 
         /// <summary>
-        /// getAll the Batch 
+        /// Return all the students
         /// </summary>
         /// <param name="db"></param>
         /// <returns></returns>
@@ -153,13 +144,11 @@ namespace ParbatCore.Models
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
-                DbCommand cmd = db.CreateSPCommand(ProcedureNames.Batch.GetAll, connection);
+                DbCommand cmd = db.CreateSPCommand(ProcedureNames.StudentGroup.GetAll, connection);
                 DataSet ds = db.GetDataSet(cmd);
                 connection.Close();
                 return ds.Tables[0];
             }
         }
-
-
     }
 }
