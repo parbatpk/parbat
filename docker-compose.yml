@@ -7,7 +7,7 @@ services:
   parbatapp:
     image: mqpasta/parbatcore:webapi
     build:
-      context: src/Parbat.Core.Services/
+      context: .
       dockerfile: ParbatCore/Dockerfile
     ports:
     - "80:80"
