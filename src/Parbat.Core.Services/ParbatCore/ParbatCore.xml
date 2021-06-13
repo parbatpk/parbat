@@ -500,6 +500,45 @@
             <param name="std"></param>
             <returns></returns>
         </member>
+        <member name="T:ParbatCore.Controllers.StudentGroupController">
+            <summary>
+            This controller is handling all the API of Student Group
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.List">
+            <summary>
+            Return the list of the StudentGroups
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.Find(System.Int64)">
+            <summary>
+            Return the Studen Group Through the Student ID
+            </summary>
+            <param name="StudentGroupID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.Delete(System.Int64)">
+            <summary>
+            Delete the StudentGroup
+            </summary>
+            <param name="StudentGroupID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.Save(ParbatCore.Models.StudentGroup)">
+            <summary>
+            Save the StudentGroup
+            </summary>
+            <param name="SG"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.Update(ParbatCore.Models.StudentGroup)">
+            <summary>
+            update the StudentGroup
+            </summary>
+            <param name="SG"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Controllers.StudentStatusController">
             <summary>
             This is the Control of STD Status Class 
@@ -1441,6 +1480,64 @@
         <member name="M:ParbatCore.Models.Student.GetAll(Parbat.Data.IDatabase)">
             <summary>
             Get All the STD from Student Table
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Models.StudentGroup">
+            <summary>
+            Handling all the business logic of Student group
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.StudentGroup.StudentGroupID">
+            <summary>
+            Primary key of StudenGroup Table
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.StudentGroup.ShortName">
+            <summary>
+            ShortName of StudentGroup
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.StudentGroup.Name">
+            <summary>
+            Name of StudentGroup
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.StudentGroup.IsActive">
+            <summary>
+            Is StudentGroup Active or Not
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save the StudentGroup in StudentGroup Table
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find the StudentGroup
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the StudentGroup
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update the StudentGoup
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Return all the students
             </summary>
             <param name="db"></param>
             <returns></returns>
