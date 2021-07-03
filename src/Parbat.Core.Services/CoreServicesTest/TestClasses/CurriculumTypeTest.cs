@@ -20,14 +20,13 @@ namespace CoreServicesTest
     [TestClass]
     public class CurriculumTypeTest : BaseTest
     {
-
         public CurriculumTypeTest()
         {
             _serviceUri = base.GetUrl("/CurriculumType/");
         }
 
         /// <summary>
-        /// Max value of primary key
+        /// Request to get MAX ID from CurriculumTypeTable
         /// </summary>
         /// <returns></returns>
         private long GetMax()
@@ -36,36 +35,38 @@ namespace CoreServicesTest
 
             // arrange
             long max = 0;
-            DbConnection con = instance.CreateConnection();
-            DbCommand cmd = instance.CreateCommand(con);
+            DbCommand cmd = DatabaseHelper.GetCommand();
             cmd.CommandText = "Select max(CurriculumTypeID) from CurriculumType";
 
-            con.Open();
+            cmd.Connection.Open();
             max = Convert.ToInt64(cmd.ExecuteScalar());
-            con.Close();
+            cmd.Connection.Close();
             return max;
         }
 
         /// <summary>
-        /// insert a new record
+        /// Request to Insert into CurriculumTypeTable
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         private long Insert(string name)
         {
-            IDatabase instance = Database.Instance;
-            // arrange
-            DbConnection con = instance.CreateConnection();
-            con.Open();
-            DbCommand cmd = instance.CreateCommand(con);
+            // arrange   
+            DbCommand cmd = DatabaseHelper.GetCommand();
+            cmd.Connection.Open();
             cmd.CommandText = string.Format(
                 "Insert into CurriculumType (Name) Values('{0}'); select scope_identity()"
                 , name);
             long id = Convert.ToInt64(cmd.ExecuteScalar());
-            con.Close();
+            cmd.Connection.Close();
+
             return id;
         }
 
+        /// <summary>
+        /// Request to Find Valid CurriculumType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CurriculumType_Find_Valid()
         {
@@ -85,6 +86,10 @@ namespace CoreServicesTest
 
         }
 
+        /// <summary>
+        /// Request to Find Invalid CurriculumType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CurriculumType_Find_Invalid()
         {
@@ -100,12 +105,17 @@ namespace CoreServicesTest
             Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
         }
 
+
+        /// <summary>
+        /// Request to Get ALL CurriculumType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CurriculumType_Get_Valid()
         {
             // arrange
-            IDatabase instance = Database.Instance;
             DbCommand cmd = DatabaseHelper.GetCommand();
+            cmd.Connection.Open();
             cmd.CommandText = "Select count(1) from CurriculumType";
             long count = Convert.ToInt64(cmd.ExecuteScalar());
             cmd.Connection.Close();
@@ -118,11 +128,16 @@ namespace CoreServicesTest
             var content = await response.Content.ReadAsStringAsync();
 
             response.EnsureSuccessStatusCode();
+
             // assert
             List<Hashtable> data = JsonSerializer.Deserialize<List<Hashtable>>(content);
             Assert.IsTrue(data.Count == count);
         }
 
+        /// <summary>
+        /// Request to ????
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CurriculumType_Post_Valid()
         {
@@ -148,9 +163,13 @@ namespace CoreServicesTest
 
             CurriculumType res = JsonSerializer.Deserialize<CurriculumType>(content);
             Assert.IsTrue(res.Name == ctype.Name);
-
         }
 
+
+        /// <summary>
+        /// Request to Delete Valid CurriculumType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CurriculumType_Delete_Valid()
         {
@@ -165,6 +184,10 @@ namespace CoreServicesTest
             response.EnsureSuccessStatusCode();
         }
 
+        /// <summary>
+        /// Request to Delete Invalid CurriculumType
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CurriculumType_Delete_Invalid()
         {

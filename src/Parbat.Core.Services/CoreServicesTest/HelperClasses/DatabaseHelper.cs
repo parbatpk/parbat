@@ -14,7 +14,6 @@ namespace CoreServicesTest
         {
             IDatabase instance = Database.Instance;
             DbConnection con = instance.CreateConnection();
-            con.Open();
             DbCommand cmd = instance.CreateCommand(con);
 
             return cmd;
