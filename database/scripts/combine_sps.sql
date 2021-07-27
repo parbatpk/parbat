@@ -2614,37 +2614,6 @@ IF EXISTS (
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spUpdateOrgUnit' 
-)
-   DROP PROCEDURE dbo.spUpdateOrgUnit
-GO
-
-CREATE PROCEDURE dbo.spUpdateOrgUnit
-	@OrgUnitID bigint,
-	@OrgUnitTypeId bigint,
-	@Name nvarchar(50),
-	@ShortName nvarchar(50),
-	@ParentUnitID bigint = 0,
-	@IsAllowAdmission bit
-AS
-	Update OrgUnit
-	set [Name] = @Name, OrgUnitTypeId=@OrgUnitTypeId, ShortName = @ShortName, ParentUnitID=@ParentUnitID, IsAllowAdmission=@IsAllowAdmission
-	where OrgUnitID =@OrgUnitID
-GO
-
--- =============================================
--- Example to execute the stored procedure
--- =============================================
---EXECUTE dbo.spUpdateOrgUnit 1, 2
---GO
--- =============================================
--- Create basic stored procedure template
--- =============================================
-
--- Drop stored procedure if it already exists
-IF EXISTS (
-  SELECT * 
-    FROM INFORMATION_SCHEMA.ROUTINES 
-   WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spUpdateRegisterStatus' 
 )
    DROP PROCEDURE dbo.spUpdateRegisterStatus
@@ -4888,26 +4857,27 @@ IF EXISTS (
    WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spUpdateStudent' 
 )
-   DROP PROCEDURE dbo.spUpdateStudent
+   DROP PROCEDURE dbo.spUpdateOrgUnit
 GO
 
-CREATE PROCEDURE dbo.spUpdateStudent
-	@StudentID bigint, 
-	@Identifier nvarchar(50),
-	@FirstName nvarchar(50),
-	@LastName nvarchar(50)
+CREATE PROCEDURE dbo.spUpdateOrgUnit
+	@OrgUnitID bigint,
+	@OrgUnitTypeId bigint,
+	@Name nvarchar(50),
+	@ShortName nvarchar(50),
+	@ParentUnitID bigint = 0,
+	@IsAllowAdmission bit
 AS
-	UPDATE Student SET Identifier = @Identifier, [Name] = @FirstName, LastName = @LastName
-	where StudentID = @StudentID
+	Update OrgUnit
+	set [Name] = @Name, OrgUnitTypeId=@OrgUnitTypeId, ShortName = @ShortName, ParentUnitID=@ParentUnitID, IsAllowAdmission=@IsAllowAdmission
+	where OrgUnitID =@OrgUnitID
 GO
 
--- =============================================
+-=====================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spUpdateStudent 3,'17b-50-cs','Ahsan','Khan' 
-GO
-
-
+--EXECUTE dbo.spUpdateOrgUnit 1, 2
+--GO
 -- =============================================
 -- Create basic stored procedure template
 -- =============================================
@@ -4950,14 +4920,16 @@ IF EXISTS (
    WHERE SPECIFIC_SCHEMA = N'dbo'
      AND SPECIFIC_NAME = N'spUpdateStudentStatus' 
 )
-   DROP PROCEDURE dbo.spUpdateStudentStatus
+   DROP PROCEDURE dbo.spUpdateRegisterStatus
 GO
 
-CREATE PROCEDURE dbo.spUpdateStudentStatus
-	@StudentStatusID bigint,
-	@Name nvarchar(50)
+CREATE PROCEDURE dbo.spUpdateRegisterStatus
+	@RegisterStatusID bigint,
+	@ShortName nvarchar(50)
 AS
-	UPDATE StudentStatus SET [Name] = @Name where StudentStatusID = @StudentStatusID; 
+	Update	RegisterStatus
+	SET		ShortName = @ShortName
+	WHERE	RegisterStatusID = @RegisterStatusID
 GO
 
 -- =============================================
