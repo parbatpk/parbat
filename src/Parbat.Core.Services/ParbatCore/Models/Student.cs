@@ -21,7 +21,7 @@ namespace ParbatCore.Models
         /// <summary>
         /// This is the Primary key of the Sdt table
         /// </summary>
-        public long StudentID;
+        public long? StudentID;
 
         /// <summary>
         /// Std Identity

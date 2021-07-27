@@ -1,0 +1,1 @@
+for /R %%f in (..\..\..\..\..\..\database\procds\*.sql) do type "%%f" >> combine_sps.sql

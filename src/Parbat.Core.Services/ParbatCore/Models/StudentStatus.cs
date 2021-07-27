@@ -20,7 +20,7 @@ namespace ParbatCore.Models
         /// <summary>
         /// This is the primary key in the StudentStatus Table
         /// </summary>
-        public long StudentStatusID;
+        public long? StudentStatusID;
 
         /// <summary>
         /// Name Attribute in the StudentStatus Table

@@ -92,8 +92,6 @@ namespace ParbatCore
                         castedResolver.NamingStrategy = null;
                     }
                 });
-
-
         }
 
         /// <summary>

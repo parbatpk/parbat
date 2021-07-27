@@ -19,7 +19,7 @@ namespace ParbatCore.Models
         /// <summary>
         /// This is the primary key
         /// </summary>
-        public long OrgUnitTypeID;
+        public long? OrgUnitTypeID;
 
         /// <summary>
         /// ShortName  of OrgUnitType
