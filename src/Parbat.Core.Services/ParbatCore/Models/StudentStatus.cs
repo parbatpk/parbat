@@ -58,6 +58,7 @@ namespace ParbatCore.Models
         {
             using (DbConnection connection = db.CreateConnection())
             {
+                connection.Open();
                 DbCommand cmd = db.CreateSPCommand(ProcedureNames.StudentStatus.Find, connection);
                 cmd.Parameters.Add(db.CreateParameter(cmd, "StudentStatusID", this.StudentStatusID));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
