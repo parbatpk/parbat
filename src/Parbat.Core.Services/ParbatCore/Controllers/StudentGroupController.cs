@@ -32,12 +32,12 @@ namespace ParbatCore.Controllers
         /// </summary>
         /// <param name="StudentGroupID"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{StudentGroupID}")]
         public ActionResult<Student> Find(long StudentGroupID)
         {
             StudentGroup SG = new StudentGroup
             {
-                StudenGroupID = StudentGroupID
+                StudentGroupID = StudentGroupID
             };
             SG.Find(Database.Instance);
             if (SG != null)
@@ -50,18 +50,18 @@ namespace ParbatCore.Controllers
        /// </summary>
        /// <param name="StudentGroupID"></param>
        /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{StudentGroupID}")]
         public ActionResult Delete(long StudentGroupID)
         {
             StudentGroup SG = new StudentGroup
             {
-                StudenGroupID = StudentGroupID
+                StudentGroupID = StudentGroupID
             };
 
             try
             {
                 SG.Delete(Database.Instance);
-                return NoContent();
+                return NotFound();
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace ParbatCore.Controllers
         public ActionResult<StudentGroup> Save([FromBody] StudentGroup SG)
         {
             SG.Save(Database.Instance);
-            return Created("Get", SG.StudenGroupID);
+            return Created("Get", SG.StudentGroupID);
         }
 
     
@@ -91,7 +91,8 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult<StudentGroup> Update([FromBody] StudentGroup SG)
         {
-            if (SG.StudenGroupID > 0)
+
+            if (SG.StudentGroupID > 0)
             {
                 try
                 {
