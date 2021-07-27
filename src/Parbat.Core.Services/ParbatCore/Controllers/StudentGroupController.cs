@@ -91,6 +91,7 @@ namespace ParbatCore.Controllers
         [HttpPut]
         public ActionResult<StudentGroup> Update([FromBody] StudentGroup SG)
         {
+
             if (SG.StudentGroupID > 0)
             {
                 try

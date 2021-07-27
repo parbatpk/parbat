@@ -19,26 +19,20 @@ namespace ParbatCore.Models
         /// Primary key of StudenGroup Table
         /// </summary>
         public long? StudentGroupID { get; set; }
-
         /// <summary>
         /// ShortName of StudentGroup
         /// </summary>
         [Required]
         public string ShortName { get; set; }
-
-
         /// <summary>
         /// Name of StudentGroup
         /// </summary>
         [Required]
         public string Name { get; set; }
-
-
         /// <summary>
         /// Is StudentGroup Active or Not
         /// </summary>
         public bool IsActive { get; set; }
-
 
         /// <summary>
         /// Save the StudentGroup in StudentGroup Table
@@ -55,16 +49,17 @@ namespace ParbatCore.Models
                     return this.StudentGroupID;
                 }
                 connection.Open();
-
                 DbCommand cmd = db.CreateSPCommand(ProcedureNames.StudentGroup.Insert, connection);
                 cmd.Parameters.Add(db.CreateParameter(cmd, "ShortName", this.ShortName));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "IsActive", this.IsActive));
 
+
                 this.StudentGroupID = Convert.ToInt64(cmd.ExecuteScalar());
                 connection.Close();
 
                 return this.StudentGroupID;
+
             }
         }
 
@@ -134,7 +129,6 @@ namespace ParbatCore.Models
                 cmd.Parameters.Add(db.CreateParameter(cmd, "StudentGroupID", this.StudentGroupID));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "ShortName", this.ShortName));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));
-
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }

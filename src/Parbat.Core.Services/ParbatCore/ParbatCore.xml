@@ -652,6 +652,8 @@
             <summary>
             Name of the batch
             </summary>
+            <param name="db"></param>
+            <returns></returns>
         </member>
         <member name="F:ParbatCore.Models.Batch.AdmissionYear">
             <summary>
