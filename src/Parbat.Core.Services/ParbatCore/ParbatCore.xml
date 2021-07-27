@@ -4,6 +4,84 @@
         <name>ParbatCore</name>
     </assembly>
     <members>
+        <member name="T:ParbatCore.Controllers.BatchController">
+            <summary>
+            This is the controller class of Batch Business Model
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.BatchController.List">
+            <summary>
+            Return the list of the Batch
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.BatchController.Find(System.Int64)">
+            <summary>
+            Return the Requried Batch
+            </summary>
+            <param name="BatchID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.BatchController.Delete(System.Int64)">
+            <summary>
+            Delete the Batch 
+            </summary>
+            <param name="BatchID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.BatchController.Save(ParbatCore.Models.Batch)">
+            <summary>
+            Save the New Batch In the batch Business Model OR Update it
+            </summary>
+            <param name="bb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.BatchController.Update(ParbatCore.Models.Batch)">
+            <summary>
+            Update the Batch
+            </summary>
+            <param name="bb"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Controllers.ComponentController">
+            <summary>
+            Component Controller 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.List">
+            <summary>
+            Return all the components from the Component Business Model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Find(System.Int64)">
+            <summary>
+            Return the Component from the Component Business Model If available
+            </summary>
+            <param name="ComponentID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Delete(System.Int64)">
+            <summary>
+            Delete the Component From the Component Business Model
+            </summary>
+            <param name="ComponentID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Save(ParbatCore.Models.Component)">
+            <summary>
+            Save the New Component In the Component Business Model OR Update it
+            </summary>
+            <param name="cc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.ComponentController.Update(ParbatCore.Models.Component)">
+            <summary>
+            Update the Component in the Component Business Model
+            </summary>
+            <param name="cc"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Controllers.ComponentCourseController">
             <summary>
             Service for ComponentCourse 
@@ -344,6 +422,45 @@
             <param name="orgType"></param>
             <returns></returns>
         </member>
+        <member name="T:ParbatCore.Controllers.RegisterStatusController">
+            <summary>
+            RegisterStatus controller for handling Http req
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.RegisterStatusController.List">
+            <summary>
+            Get all the RegStatus
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.RegisterStatusController.Find(System.Int64)">
+            <summary>
+            Find the RegStatus
+            </summary>
+            <param name="ID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.RegisterStatusController.Delete(System.Int64)">
+            <summary>
+            Delete the RegStatus
+            </summary>
+            <param name="ID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.RegisterStatusController.Save(ParbatCore.Models.RegisterStatus)">
+            <summary>
+            Save the New RegsStatus
+            </summary>
+            <param name="regstatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.RegisterStatusController.Update(ParbatCore.Models.RegisterStatus)">
+            <summary>
+            Update the exist regStatus
+            </summary>
+            <param name="regstatus"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Controllers.StudentController">
             <summary>
             Controller of Student Business Class
@@ -366,7 +483,7 @@
             <summary>
             Delete the STD from the Student Class
             </summary>
-            <param name="StudentID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentController.Save(ParbatCore.Models.Student)">
@@ -381,6 +498,45 @@
             Update the STD in the Student Class
             </summary>
             <param name="std"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Controllers.StudentGroupController">
+            <summary>
+            This controller is handling all the API of Student Group
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.List">
+            <summary>
+            Return the list of the StudentGroups
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.Find(System.Int64)">
+            <summary>
+            Return the Studen Group Through the Student ID
+            </summary>
+            <param name="StudentGroupID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.Delete(System.Int64)">
+            <summary>
+            Delete the StudentGroup
+            </summary>
+            <param name="StudentGroupID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.Save(ParbatCore.Models.StudentGroup)">
+            <summary>
+            Save the StudentGroup
+            </summary>
+            <param name="SG"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.StudentGroupController.Update(ParbatCore.Models.StudentGroup)">
+            <summary>
+            update the StudentGroup
+            </summary>
+            <param name="SG"></param>
             <returns></returns>
         </member>
         <member name="T:ParbatCore.Controllers.StudentStatusController">
@@ -398,14 +554,14 @@
             <summary>
             Find the Current StudentStatus from the Studentstatus Class
             </summary>
-            <param name="StudentStatusID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentStatusController.Delete(System.Int64)">
             <summary>
             Delete the StudentSatus from the StudentSatus Class
             </summary>
-            <param name="StudentSatusID"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:ParbatCore.Controllers.StudentStatusController.Save(ParbatCore.Models.StudentStatus)">
@@ -420,6 +576,242 @@
             Update the studentstatus in the studentstatus class
             </summary>
             <param name="studentStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Controllers.TermController">
+            <summary>
+            Handling all http req of term
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Controllers.TermController.Get(System.Int64)">
+            <summary>
+            Find the terms
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.TermController.List">
+            <summary>
+            Get all the terms
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.TermController.Update(ParbatCore.Models.Term)">
+            <summary>
+            Update the term
+            </summary>
+            <param name="term"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.TermController.Create(ParbatCore.Models.Term)">
+            <summary>
+            Create a new term
+            </summary>
+            <param name="term"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Controllers.TermController.Delete(System.Int64)">
+            <summary>
+            Delelet the term 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ParbatCore.GlobalConstants">
+            <summary>
+            This is controller constant Route
+            </summary>
+        </member>
+        <member name="F:ParbatCore.GlobalConstants.API_VER">
+            <summary>
+            Route Constant variable
+             API Version
+            </summary>
+        </member>
+        <member name="F:ParbatCore.GlobalConstants.API_CONTROLLER">
+            <summary>
+            Default Route prefix
+            </summary>
+        </member>
+        <member name="T:ParbatCore.Models.Batch">
+            <summary>
+            This is the Business Model Classs interAct with the DB
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Batch.BatchID">
+            <summary>
+            Primary key in Batch Table
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Batch.ShortName">
+            <summary>
+            Short name of the Batch
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Batch.Name">
+            <summary>
+            Name of the batch
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ParbatCore.Models.Batch.AdmissionYear">
+            <summary>
+            Year of the admission
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Batch.GraduationYear">
+            <summary>
+            Passing year
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Batch.OrgUnitID">
+            <summary>
+            Forign key in the BatchTable
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Batch.CurriculumID">
+            <summary>
+            Forign key in the BatchTable
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Batch.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save the New batch if not Exist
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Batch.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find the batch if it exist
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Batch.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the Batch if exist
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Batch.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update the batch if exist
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Batch.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            getAll the Batch 
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ParbatCore.Models.BOException">
+            <summary>
+            Our BOException Class 
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.BOException.#ctor(System.String)">
+            <summary>
+            Constractor
+            </summary>
+            <param name="errorMessage"></param>
+        </member>
+        <member name="M:ParbatCore.Models.BOException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constractor
+            </summary>
+            <param name="errorMessage"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:ParbatCore.Models.Component">
+            <summary>
+            Business Class for the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.ComponentID">
+            <summary>
+            Primary key of Component Table
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.ShortName">
+            <summary>
+            Short Name of the Component For example University = Uni
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.Name">
+            <summary>
+            Name of the component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.CurriculumID">
+            <summary>
+            Forign in the table of Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.TotalCredit">
+            <summary>
+            No. of Credit Hours of the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.TotalCourses">
+            <summary>
+            No. of Couses in the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.IsLimitCourses">
+            <summary>
+            Limits of courses in the Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.IsLimitCreditHrs">
+            <summary>
+            No. of CreditHrs in Component
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Component.ComponentTypeID">
+            <summary>
+            Forign key in the table of Component
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Use to save the Component
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Use to Find the Component
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the component From DB
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Component.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Use to Update the Component
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Component.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get all the Component from the DB Component
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Component.VerifyComponent(Parbat.Data.IDatabase,System.Int64)">
+            <summary>
+            Get the TotalCreditHrs and TotalCourses
+            </summary>
             <returns></returns>
         </member>
         <member name="T:ParbatCore.Models.ComponentCourse">
@@ -988,6 +1380,54 @@
             <param name="db"></param>
             <returns></returns>
         </member>
+        <member name="T:ParbatCore.Models.RegisterStatus">
+            <summary>
+            Business Model Class of RegisterStatus
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.RegisterStatus.RegisterStatusID">
+            <summary>
+            Primary key of RegSatus
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.RegisterStatus.ShortName">
+            <summary>
+            ShortName of RegStatus
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.RegisterStatus.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save the RegisterStatus if not Exist else update
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.RegisterStatus.Find(Parbat.Data.IDatabase)">
+            <summary>
+            FinD regStatus
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.RegisterStatus.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the RegStatus
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.RegisterStatus.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update the RegStatus if exists
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.RegisterStatus.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get All the RegStatus
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Models.Student">
             <summary>
             Business Class of Student
@@ -1046,6 +1486,64 @@
             <param name="db"></param>
             <returns></returns>
         </member>
+        <member name="T:ParbatCore.Models.StudentGroup">
+            <summary>
+            Handling all the business logic of Student group
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.StudentGroup.StudentGroupID">
+            <summary>
+            Primary key of StudenGroup Table
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.StudentGroup.ShortName">
+            <summary>
+            ShortName of StudentGroup
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.StudentGroup.Name">
+            <summary>
+            Name of StudentGroup
+            </summary>
+        </member>
+        <member name="P:ParbatCore.Models.StudentGroup.IsActive">
+            <summary>
+            Is StudentGroup Active or Not
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.Save(Parbat.Data.IDatabase)">
+            <summary>
+            Save the StudentGroup in StudentGroup Table
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find the StudentGroup
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the StudentGroup
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update the StudentGoup
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.StudentGroup.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Return all the students
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Models.StudentStatus">
             <summary>
             This is the Student Status Business Class 
@@ -1093,6 +1591,103 @@
             Update the StudentStatus in the StudentStatus Table
             </summary>
             <param name="db"></param>
+        </member>
+        <member name="T:ParbatCore.Models.Term">
+            <summary>
+            Business Model Of Term
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Term.TermID">
+            <summary>
+            Primary kery 
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Term.Name">
+            <summary>
+            term name
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Term.ShortName">
+            <summary>
+            Nick name for example Maaz Khan == MK
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Term.IsActive">
+            <summary>
+            Term is active status
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Term.StartDate">
+            <summary>
+            Start date of the term
+            </summary>
+        </member>
+        <member name="F:ParbatCore.Models.Term.EndDate">
+            <summary>
+            end date of the term
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Models.Term.Delete(Parbat.Data.IDatabase)">
+            <summary>
+            Delete the term if Exsit
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:ParbatCore.Models.Term.Find(Parbat.Data.IDatabase)">
+            <summary>
+            Find the Term
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Term.GetAll(Parbat.Data.IDatabase)">
+            <summary>
+            Get all the term
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Term.Save(Parbat.Data.IDatabase)">
+            <summary>
+            save the new term if not exist 
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ParbatCore.Models.Term.Update(Parbat.Data.IDatabase)">
+            <summary>
+            Update the Term is exist
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="T:ParbatCore.Startup">
+            <summary>
+            Defult startup class
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:ParbatCore.Startup.Configuration">
+            <summary>
+            Configuration instance
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ParbatCore.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
     </members>
 </doc>

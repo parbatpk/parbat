@@ -80,7 +80,6 @@ namespace ParbatCore.Models
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine(ex);
                     return null;
                 }
             }
