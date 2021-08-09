@@ -10,11 +10,11 @@ from mcr.microsoft.com/dotnet/core/sdk:2.1 as build
 workdir /app
 
 copy . ./
-run dotnet publish ParbatCore -c release -o out
+run dotnet publish src/Parbat.Core.Services/ParbatCore -c release -o out
 
 from base as final
 workdir /app
-copy --from=build /app/ParbatCore/out .
+copy --from=build /app/src/Parbat.Core.Services/ParbatCore/out .
 
 entrypoint ["dotnet","ParbatCore.dll"]
 
