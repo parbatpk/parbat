@@ -55,7 +55,7 @@ jobs:
     - name: "Activate namespace"
       uses: okteto/namespace@master
       with:
-        name: mqpasta
+        name: parbat-mqpasta
         
     - name: "Create deployment"
       uses: okteto/apply@master
