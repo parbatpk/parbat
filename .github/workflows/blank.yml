@@ -36,6 +36,5 @@ jobs:
     - name: "Okteto"
       uses: okteto/pipeline@master
       with:
-        name: pr-${{ github.event.number }}
         timeout: 8m
         skipIfExists: true
