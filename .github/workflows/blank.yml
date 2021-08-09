@@ -36,6 +36,7 @@ jobs:
     - name: "Okteto"
       uses: okteto/deploy-stack@master
       with:
-        timeout: 8m
+        namespace: parbat-mqpasta
+        build: "true"
         skipIfExists: true
 
