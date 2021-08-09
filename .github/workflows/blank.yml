@@ -34,7 +34,8 @@ jobs:
         name: parbat-mqpasta
         
     - name: "Okteto"
-      uses: okteto/pipeline@master
+      uses: okteto/deploy-stack@master
       with:
         timeout: 8m
         skipIfExists: true
+
