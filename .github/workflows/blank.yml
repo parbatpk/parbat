@@ -36,6 +36,6 @@ jobs:
     - name: "Create deployment"
       uses: okteto/apply@master
       with:
-        manifest: deployment.yml
+        manifest: docker-compose.yml
         
       
