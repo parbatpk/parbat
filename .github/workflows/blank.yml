@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
-      uses: action/checkout@master
+      uses: action/checkout@V2
     
     - uses: okteto/login@master
       with: 
