@@ -33,9 +33,9 @@ jobs:
       with:
         name: parbat-mqpasta
         
-    - name: "Create deployment"
-      uses: okteto/apply@master
+    - name: "Okteto"
+      uses: okteto/pipline@master
       with:
-        manifest: docker-compose.yml
-        
-      
+        name: pr-${{ github.event.number }}
+        timeout: 8m
+        skipIfExists: true
