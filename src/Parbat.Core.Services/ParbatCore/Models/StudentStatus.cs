@@ -20,7 +20,7 @@ namespace ParbatCore.Models
         /// <summary>
         /// This is the primary key in the StudentStatus Table
         /// </summary>
-        public long StudentStatusID;
+        public long? StudentStatusID;
 
         /// <summary>
         /// Name Attribute in the StudentStatus Table
@@ -34,6 +34,10 @@ namespace ParbatCore.Models
         /// <param name="db"></param>
         public void Delete(IDatabase db)
         {
+            if(this.Find(db) == null)
+            {
+                throw new BOException("Record Not Found");
+            }
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
@@ -54,6 +58,7 @@ namespace ParbatCore.Models
         {
             using (DbConnection connection = db.CreateConnection())
             {
+                connection.Open();
                 DbCommand cmd = db.CreateSPCommand(ProcedureNames.StudentStatus.Find, connection);
                 cmd.Parameters.Add(db.CreateParameter(cmd, "StudentStatusID", this.StudentStatusID));
                 cmd.Parameters.Add(db.CreateParameter(cmd, "Name", this.Name));

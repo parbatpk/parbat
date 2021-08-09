@@ -33,7 +33,7 @@ namespace ParbatCore.Controllers
         /// <summary>
         /// Find the Current StudentStatus from the Studentstatus Class
         /// </summary>
-        /// <param name="StudentStatusID"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public ActionResult<StudentStatus> Find(long id)
@@ -51,7 +51,7 @@ namespace ParbatCore.Controllers
         /// <summary>
         /// Delete the StudentSatus from the StudentSatus Class
         /// </summary>
-        /// <param name="StudentSatusID"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
@@ -60,11 +60,16 @@ namespace ParbatCore.Controllers
             {
                 StudentStatusID = id
             };
-            ss = ss.Find(Database.Instance) as StudentStatus;
-            if (ss == null)
-                return BadRequest();
-            ss.Delete(Database.Instance);
-            return NotFound();
+            try
+            {
+                ss.Delete(Database.Instance);
+                return NotFound();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         /// <summary>
@@ -100,7 +105,9 @@ namespace ParbatCore.Controllers
                 }
             }
             else
+            {
                 return BadRequest();
+            }
 
         }
     }

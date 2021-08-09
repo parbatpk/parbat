@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 
 namespace ParbatCore
 {
+    /// <summary>
+    /// This is controller constant Route
+    /// </summary>
     public class GlobalConstants
     {
         /// <summary>
+        /// Route Constant variable
         ///  API Version
         /// </summary>
         public const string API_VER = "v1";

@@ -45,6 +45,7 @@ namespace ParbatCore
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(GlobalConstants.API_VER, new OpenApiInfo
@@ -61,8 +62,8 @@ namespace ParbatCore
                     },
                     License = new OpenApiLicense
                     {
-                        Name = "Use under LICX",
-                        Url = new Uri("https://example.com/license"),
+                        Name = "The MIT License (MIT)",
+                        Url = new Uri("http://opensource.org/licenses/mit-license.php"),
                     }
                 });
 
@@ -70,9 +71,27 @@ namespace ParbatCore
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
+            services.AddMvc().
+                SetCompatibilityVersion(CompatibilityVersion.Version_2_1).
+                AddJsonOptions(o =>
+                {
+                    if (o.SerializerSettings.ContractResolver != null)
+                    {
+                        var castedResolver = o.SerializerSettings.ContractResolver
+                            as DefaultContractResolver;
+                        castedResolver.NamingStrategy = null;
+                    }
+                });
         }
 
         /// <summary>
@@ -82,6 +101,9 @@ namespace ParbatCore
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors("MyPolicy");
+            app.MaintainCorsHeadersOnError();
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -112,8 +134,6 @@ namespace ParbatCore
 
         }
 
-
-    }
 
     /// <summary>
     /// To avoid naming convention in json objects

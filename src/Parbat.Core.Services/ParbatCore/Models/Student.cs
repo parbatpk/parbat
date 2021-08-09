@@ -21,7 +21,7 @@ namespace ParbatCore.Models
         /// <summary>
         /// This is the Primary key of the Sdt table
         /// </summary>
-        public long StudentID;
+        public long? StudentID;
 
         /// <summary>
         /// Std Identity
@@ -99,6 +99,10 @@ namespace ParbatCore.Models
         /// <param name="db"></param>
         public void Delete(IDatabase db)
         {
+            if(this.Find(db)== null)
+            {
+                throw new BOException("Result Not Found!");
+            }
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
@@ -116,6 +120,10 @@ namespace ParbatCore.Models
         /// <param name="db"></param>
         public void Update(IDatabase db)
         {
+            if(this.Find(db) == null)
+            {
+                throw new BOException("Result Not Found!");
+            }
             using (DbConnection connection = db.CreateConnection())
             {
                 connection.Open();
