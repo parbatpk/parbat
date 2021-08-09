@@ -34,7 +34,7 @@ jobs:
         name: parbat-mqpasta
         
     - name: "Okteto"
-      uses: okteto/pipline@master
+      uses: okteto/pipeline@master
       with:
         name: pr-${{ github.event.number }}
         timeout: 8m
