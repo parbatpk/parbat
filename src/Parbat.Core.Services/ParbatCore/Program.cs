@@ -15,9 +15,8 @@ namespace ParbatCore
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args)
-                .UseKestrel()
-                //.UseUrls("http://0.0.0.0:" + Environment.GetEnvironmentVariable("PORT"))
-                .Build().Run();
+               .UseKestrel()
+               .Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

@@ -50,14 +50,14 @@ namespace ParbatCore
             {
                 c.SwaggerDoc(GlobalConstants.API_VER, new OpenApiInfo
                 {
-                    Version = "v1",
-                    Title = "Parbat Core Web API",
-                    Description = "open source ERP for universities",
-                    TermsOfService = new Uri("https://example.com/terms"),
+                    Version = GlobalConstants.API_VER,
+                    Title = "Parbat",
+                    Description = "An open source ERP for Universities",
+                    TermsOfService = new Uri("https://parbat.irada.pk/terms"),
                     Contact = new OpenApiContact
                     {
-                        Name = "Muhammad Qasim Pasta",
-                        Email = string.Empty,
+                        Name = "Dr. Muhammad Qasim Pasta",
+                        Email = "mqpasta@irada.pk",
                         Url = new Uri("https://twitter.com/mqpasta"),
                     },
                     License = new OpenApiLicense
@@ -135,5 +135,21 @@ namespace ParbatCore
         }
 
 
+    /// <summary>
+    /// To avoid naming convention in json objects
+    /// </summary>
+    public class MyTransparentJsonNamingPolicy : JsonNamingPolicy
+    {
+        /// <summary>
+        /// You can came up any custom transformation here, so instead just transparently
+        /// pass through the original C# class property name, it is possible to explicit
+        /// convert to PascalCase, etc:
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public override string ConvertName(string name)
+        {
+            return name;
+        }
     }
 }
