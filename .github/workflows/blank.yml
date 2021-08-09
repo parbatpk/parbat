@@ -14,8 +14,6 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: parbat    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '2.1.x'           # set this to the dot net version to use
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -27,10 +25,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@main
       - uses: actions/setup-dotnet@v1
@@ -47,12 +41,4 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           dotnet build src/Parbat.Core.Services/ --configuration Release
-          dotnet publish src/Parbat.Core.Services/ParbatCore/Parbat.Core.Services.sln -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/parbat'
-      
-      # Deploy to Azure Web apps
-      - name: 'Run Azure webapp deploy action using publish profile credentials'
-        uses: azure/webapps-deploy@v2
-        with: 
-          app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/parbat'
+  
