@@ -60,6 +60,6 @@ jobs:
     - name: "Create deployment"
       uses: okteto/apply@master
       with:
-        mainfest: docker-compose.yml
+        mainfest: deployment.yml
         
       
