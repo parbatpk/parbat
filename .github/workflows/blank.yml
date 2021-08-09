@@ -60,6 +60,6 @@ jobs:
     - name: "Create deployment"
       uses: okteto/apply@master
       with:
-        mainfest: deployment.yml
+        manifest: deployment.yml
         
       
