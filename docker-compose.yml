@@ -25,7 +25,7 @@ services:
     networks:
       - parbat-network
     volumes:
-      - mssqldata:/var/opt/mssql
+      - parbat-mssqldata:/var/opt/mssql
 
 volumes:
-    mssqldata:
+    parbat-mssqldata:
