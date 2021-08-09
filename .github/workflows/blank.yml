@@ -18,6 +18,30 @@ env:
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@main
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.1.x' # SDK Version to use; x will use the latest version of the 3.1 channel
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          dotnet build src/Parbat.Core.Services/ --configuration Release
+    
   devflow:
     runs-on: ubuntu-latest
     steps:
@@ -33,10 +57,9 @@ jobs:
       with:
         name: parbat-mqpasta
         
-    - name: "Okteto"
-      uses: okteto/deploy-stack@master
+    - name: "Create deployment"
+      uses: okteto/apply@master
       with:
-        namespace: parbat-mqpasta
-        build: "true"
-        skipIfExists: true
-
+        manifest: deployment.yml
+        
+      
