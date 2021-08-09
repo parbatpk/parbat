@@ -5,50 +5,37 @@ name: Test Workflow
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  #push:
+  push:
+    branches: [ mqp-docker ]
+  #pull_request:
   #  branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: parbat    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '2.1.x'           # set this to the dot net version to use
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  devflow:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@main
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '2.1.x' # SDK Version to use; x will use the latest version of the 3.1 channel
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-          dotnet build src/Parbat.Core.Services/ --configuration Release
-          #dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
+    - name: checkout
+      uses: actions/checkout@master
+    
+    - uses: okteto/login@master
+      with: 
+        token: ${{secrets.OKTETO_TOKEN}}
+          
+    - name: "Activate namespace"
+      uses: okteto/namespace@master
+      with:
+        name: parbat-mqpasta
+        
+    - name: "Create deployment"
+      uses: okteto/apply@master
+      with:
+        manifest: deployment.yml
+        
       
-      # Deploy to Azure Web apps
-      - name: 'Run Azure webapp deploy action using publish profile credentials'
-        uses: azure/webapps-deploy@v2
-        with: 
-          app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/parbat'
