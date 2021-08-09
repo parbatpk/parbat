@@ -633,6 +633,18 @@
             Default Route prefix
             </summary>
         </member>
+        <member name="T:ParbatCore.MaintainCorsExtension">
+            <summary>
+            To handle CORS issue in case of exception
+            </summary>
+        </member>
+        <member name="M:ParbatCore.MaintainCorsExtension.MaintainCorsHeadersOnError(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Method to be called in Startup 
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
         <member name="T:ParbatCore.Models.Batch">
             <summary>
             This is the Business Model Classs interAct with the DB
@@ -652,8 +664,6 @@
             <summary>
             Name of the batch
             </summary>
-            <param name="db"></param>
-            <returns></returns>
         </member>
         <member name="F:ParbatCore.Models.Batch.AdmissionYear">
             <summary>
@@ -1688,6 +1698,20 @@
             </summary>
             <param name="app"></param>
             <param name="env"></param>
+        </member>
+        <member name="T:ParbatCore.Startup.MyTransparentJsonNamingPolicy">
+            <summary>
+            To avoid naming convention in json objects
+            </summary>
+        </member>
+        <member name="M:ParbatCore.Startup.MyTransparentJsonNamingPolicy.ConvertName(System.String)">
+            <summary>
+            You can came up any custom transformation here, so instead just transparently
+            pass through the original C# class property name, it is possible to explicit
+            convert to PascalCase, etc:
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

@@ -135,21 +135,22 @@ namespace ParbatCore
         }
 
 
-    /// <summary>
-    /// To avoid naming convention in json objects
-    /// </summary>
-    public class MyTransparentJsonNamingPolicy : JsonNamingPolicy
-    {
         /// <summary>
-        /// You can came up any custom transformation here, so instead just transparently
-        /// pass through the original C# class property name, it is possible to explicit
-        /// convert to PascalCase, etc:
+        /// To avoid naming convention in json objects
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public override string ConvertName(string name)
+        public class MyTransparentJsonNamingPolicy : JsonNamingPolicy
         {
-            return name;
+            /// <summary>
+            /// You can came up any custom transformation here, so instead just transparently
+            /// pass through the original C# class property name, it is possible to explicit
+            /// convert to PascalCase, etc:
+            /// </summary>
+            /// <param name="name"></param>
+            /// <returns></returns>
+            public override string ConvertName(string name)
+            {
+                return name;
+            }
         }
     }
 }
