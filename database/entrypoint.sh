@@ -14,6 +14,6 @@ if [ ! -f tmp/app-initialized ]; then
   initialize_app_database &
 fi
 
-# /run-script.sh & /opt/mssql/bin/sqlservr 
+/run-script.sh & /opt/mssql/bin/sqlservr 
 
 exec "$@"
