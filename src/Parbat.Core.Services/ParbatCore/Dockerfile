@@ -1,9 +1,9 @@
-from microsoft/dotnet:2.1-aspnetcore-runtime AS base
+from mcr.microsoft.com/dotnet/aspnet:2.1 AS base
 workdir /app
 expose 80
 expose 443
 
-from microsoft/dotnet:2.1-sdk AS build
+from mcr.microsoft.com/dotnet/sdk:2.1 AS build
 workdir /app
 
 copy . ./
