@@ -23,5 +23,5 @@ GO
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spInsertStudent '17b-012-cs','Maaz','Khan'
-GO
+--EXECUTE dbo.spInsertStudent '17b-012-cs','Maaz','Khan'
+--GO
