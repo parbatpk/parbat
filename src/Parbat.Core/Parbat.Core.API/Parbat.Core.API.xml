@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Parbat.Core.API</name>
+    </assembly>
+    <members>
+        <member name="T:Parbat.Core.API.Global">
+            <summary>
+            Global constatns
+            </summary>
+        </member>
+        <member name="F:Parbat.Core.API.Global.API_VER">
+            <summary>
+            Route Constant variable
+             API Version
+            </summary>
+        </member>
+        <member name="F:Parbat.Core.API.Global.API_CONTROLLER">
+            <summary>
+            Default Route prefix
+            </summary>
+        </member>
+        <member name="T:Parbat.Core.API.MaintainCorsExtension">
+            <summary>
+            To handle CORS issue in case of exception
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.MaintainCorsExtension.MaintainCorsHeadersOnError(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Method to be called in Startup 
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Program">
+            <summary>
+            Main Program
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Program.Main(System.String[])">
+            <summary>
+            Main method
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Parbat.Core.API.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            startup building
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Startup">
+            <summary>
+            Startup class
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Startup constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Parbat.Core.API.Startup.Configuration">
+            <summary>
+            /Configuration property
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Parbat.Core.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
