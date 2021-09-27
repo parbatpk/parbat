@@ -16,6 +16,7 @@ CREATE PROCEDURE dbo.spGetAllCourse
 AS
 	SELECT *
 	From Course
+	For json Auto;
 GO
 
 -- =============================================

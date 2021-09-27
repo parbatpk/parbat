@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Parbat.Core.BaseRepository\Parbat.Core.BaseRepository.csproj" />
+    <ProjectReference Include="..\Parbat.Core.DataObjects\Parbat.Core.DataObjects.csproj" />
+    <ProjectReference Include="..\Parbat.Core.Services\Parbat.Core.Services.csproj" />
+    <ProjectReference Include="..\Parbat.Core.SqlRepository\Parbat.Core.DBRepository.csproj" />
+  </ItemGroup>
+
+</Project>
