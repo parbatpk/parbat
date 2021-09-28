@@ -10,24 +10,38 @@ using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
+    /// <summary>
+    /// Course Controller class
+    /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
     public class CourseController : Controller
     {
-        IRepositoryFactory _factory;
 
+        CourseService _service;
+
+        /// <summary>
+        /// Constructor 
+        /// </summary>
+        /// <param name="f">IRepositoryFactory</param>
         public CourseController(IRepositoryFactory f)
         {
-            _factory = f;
+
+            _service = new CourseService(f);
         }
 
+        /// <summary>
+        /// Get a record
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public ActionResult<Course> Get(long id)
         {
             try
             {
-                CourseService s = new(_factory);
-                Course found = s.FindByID(id);
+
+                Course found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -37,13 +51,16 @@ namespace Parbat.Core.API.Controllers
             }
         }
 
+        /// <summary>
+        /// List all courses
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult List()
         {
             try
             {
-                var cs = new CourseService(_factory);
-                var courses = cs.GetAllCourses();
+                var courses = _service.GetAllCourses();
                 return Ok(courses);
             }
             catch (ServiceException ex)
@@ -52,13 +69,17 @@ namespace Parbat.Core.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Update a course
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         [HttpPut]
         public ActionResult Update([FromBody] Course c)
         {
             try
             {
-                var cs = new CourseService(_factory);
-                cs.Update(c);
+                _service.Update(c);
                 return NoContent();
             }
             catch (ServiceException ex)
@@ -67,13 +88,17 @@ namespace Parbat.Core.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Create 
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult<Course> Create([FromBody] Course c)
         {
             try
             {
-                CourseService cs = new(_factory);
-                cs.Create(c);
+                _service.Create(c);
                 return Created("Get", c);
             }
             catch (ServiceException se)
@@ -83,13 +108,17 @@ namespace Parbat.Core.API.Controllers
 
         }
 
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {
             try
             {
-                CourseService cs = new CourseService(_factory);
-                cs.Delete(id);
+                _service.Delete(id);
                 return NoContent();
             }
             catch (ServiceException se)

@@ -4,6 +4,51 @@
         <name>Parbat.Core.API</name>
     </assembly>
     <members>
+        <member name="T:Parbat.Core.API.Controllers.CourseController">
+            <summary>
+            Course Controller class
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="f">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.List">
+            <summary>
+            List all courses
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.Update(Parbat.Core.DataObjects.Course)">
+            <summary>
+            Update a course
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.Create(Parbat.Core.DataObjects.Course)">
+            <summary>
+            Create 
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Parbat.Core.API.Global">
             <summary>
             Global constatns
