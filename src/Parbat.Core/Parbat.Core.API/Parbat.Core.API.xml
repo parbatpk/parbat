@@ -49,6 +49,51 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Parbat.Core.API.Controllers.CourseTypeController">
+            <summary>
+            CourseType controller class
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_factory"></param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.Get(System.Int64)">
+            <summary>
+            Get record by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.List">
+            <summary>
+            get all coursetypes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.Update(Parbat.Core.DataObjects.CourseType)">
+            <summary>
+            Update a coursetype
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.Create(Parbat.Core.DataObjects.CourseType)">
+            <summary>
+            Add new coursetype
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.Delete(System.Int64)">
+            <summary>
+            Delete a course type by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Parbat.Core.API.Global">
             <summary>
             Global constatns

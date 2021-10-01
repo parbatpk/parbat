@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Parbat.Core.BaseRepository
 {
@@ -14,6 +13,5 @@ namespace Parbat.Core.BaseRepository
         void Update(T entity);
 
         void Delete(T entity);
-
     }
 }

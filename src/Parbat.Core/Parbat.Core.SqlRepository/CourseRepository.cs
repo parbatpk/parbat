@@ -3,12 +3,7 @@ using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Common;
-using System.Data;
-using System.Text.Json;
 
 namespace Parbat.Core.DBRepository
 {
@@ -100,6 +95,5 @@ namespace Parbat.Core.DBRepository
             public const string Code = "@Code";
             public const string CourseTypeID = "@CourseTypeID";
         }
-
     }
 }
