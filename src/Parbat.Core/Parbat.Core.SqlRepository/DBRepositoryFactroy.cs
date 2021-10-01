@@ -6,6 +6,7 @@ namespace Parbat.Core.DBRepository
     {
         ICourseRepository _courseRepository;
         ICourseTypeRepository _courseTypeRepository;
+        IComponentRepository _componentRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -28,6 +29,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _courseTypeRepository;
+            }
+        }
+
+        public IComponentRepository ComponentRepository
+        {
+            get
+            {
+                if(_componentRepository == null)
+                {
+                    _componentRepository = new ComponentRepository();
+                }
+
+                return _componentRepository;
             }
         }
     }
