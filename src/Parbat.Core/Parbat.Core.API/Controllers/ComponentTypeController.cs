@@ -2,26 +2,29 @@
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// 
+    /// Componenet Type controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class ComponentController : Controller
+    public class ComponentTypeController : Controller
     {
-        private ComponentService _service;
+        private ComponentTypeService _service;
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="factory">IRepositoryFactory</param>
-        public ComponentController(IRepositoryFactory factory)
+        public ComponentTypeController(IRepositoryFactory factory)
         {
-
-            _service = new ComponentService(factory);
+            _service = new ComponentTypeService(factory);
         }
 
         /// <summary>
@@ -30,11 +33,11 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<Component> Get(long id)
+        public ActionResult<ComponentType> Get(long id)
         {
             try
             {
-                Component found = _service.FindByID(id);
+                ComponentType found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -53,8 +56,8 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var courses = _service.GetAll();
-                return Ok(courses);
+                var componenttype = _service.GetAll();
+                return Ok(componenttype);
             }
             catch (ServiceException ex)
             {
@@ -68,7 +71,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] Component c)
+        public ActionResult Update([FromBody] ComponentType c)
         {
             try
             {
@@ -87,7 +90,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<Component> Create([FromBody] Component c)
+        public ActionResult<ComponentType> Create([FromBody] ComponentType c)
         {
             try
             {

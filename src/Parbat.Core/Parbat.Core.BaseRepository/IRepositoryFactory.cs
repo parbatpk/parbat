@@ -7,5 +7,7 @@
         ICourseTypeRepository CourseTypeRepository { get; }
       
         IComponentRepository ComponentRepository { get; }
+
+        IComponentTypeRepository ComponentTypeRepository { get; }
     }
 }
