@@ -1,4 +1,5 @@
 ﻿using Parbat.Core.BaseRepository;
+using Parbat.Core.DataObjects;
 
 namespace Parbat.Core.DBRepository
 {
@@ -7,6 +8,7 @@ namespace Parbat.Core.DBRepository
         ICourseRepository _courseRepository;
         ICourseTypeRepository _courseTypeRepository;
         IComponentRepository _componentRepository;
+        IComponentTypeRepository _componentTypeRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -42,6 +44,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _componentRepository;
+            }
+        }
+
+        public IComponentTypeRepository ComponentTypeRepository
+        {
+            get
+            {
+                if (_componentTypeRepository == null)
+                {
+                    _componentTypeRepository = new ComponentTypeRepository();
+                }
+
+                return _componentTypeRepository;
             }
         }
     }
