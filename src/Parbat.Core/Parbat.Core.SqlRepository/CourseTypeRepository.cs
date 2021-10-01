@@ -18,12 +18,17 @@ namespace Parbat.Core.DBRepository
 
         public void Add(CourseType entity)
         {
-            throw new System.NotImplementedException();
+            DbCommand cmd = db.CreateSPCommand(Procds.Insert);
+            db.AddParameter(cmd, Params.Name, entity.Name);
+            
+            entity.CourseTypeID = Convert.ToInt64(db.ExecuteScalar(cmd)); 
         }
 
         public void Delete(CourseType entity)
         {
-            throw new System.NotImplementedException();
+            DbCommand cmd = db.CreateSPCommand(Procds.Delete);
+            db.AddParameter(cmd, Params.CourseTypeID, entity.CourseTypeID);
+            db.Execute(cmd);
         }
 
         public IEnumerable<CourseType> GetAll()
@@ -39,12 +44,20 @@ namespace Parbat.Core.DBRepository
 
         public CourseType GetById(long id)
         {
-            throw new System.NotImplementedException();
+            DbCommand cmd = db.CreateSPCommand(Procds.Find);
+            db.AddParameter(cmd, Params.CourseTypeID, id);
+            string result = Convert.ToString(db.ExecuteScalar(cmd));
+            CourseType found = DBHelper.Convert<CourseType>(result);
+
+            return found;
         }
 
         public void Update(CourseType entity)
         {
-            throw new System.NotImplementedException();
+            DbCommand cmd = db.CreateSPCommand(Procds.Update);
+            db.AddParameter(cmd, Params.CourseTypeID, entity.CourseTypeID);
+            db.AddParameter(cmd, Params.Name, entity.Name);
+            db.Execute(cmd);
         }
 
         private struct Procds
