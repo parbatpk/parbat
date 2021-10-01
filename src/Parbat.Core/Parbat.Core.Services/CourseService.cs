@@ -1,6 +1,5 @@
 ﻿using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
-using System;
 using System.Collections.Generic;
 
 namespace Parbat.Core.Services
@@ -9,9 +8,9 @@ namespace Parbat.Core.Services
     {
         protected IRepositoryFactory _factory;
 
-        public CourseService(IRepositoryFactory f)
+        public CourseService(IRepositoryFactory factory)
         {
-            _factory = f;
+            _factory = factory;
         }
 
         public IEnumerable<Course> GetAllCourses()
@@ -29,7 +28,6 @@ namespace Parbat.Core.Services
                 throw new ServiceException("Theory and/or Lab Creidt hours are not defined.");
 
             _factory.CourseRepository.Add(c);
-
         }
 
         public void Update(Course c)
@@ -37,18 +35,18 @@ namespace Parbat.Core.Services
             if (c.CourseID == null)
                 throw new ServiceException(Errors.NotExistsError);
 
-
             var found = _factory.CourseRepository.GetById(c.CourseID.Value);
+            
             if (found == null)
                 throw new ServiceException(Errors.NotExistsError);
 
             _factory.CourseRepository.Update(c);
-
         }
 
         public void Delete(long id)
         {
             var found = _factory.CourseRepository.GetById(id);
+            
             if (found == null)
                 throw new ServiceException(Errors.NotExistsError);
 

@@ -1,15 +1,11 @@
 ﻿using Parbat.Core.BaseRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Parbat.Core.DBRepository
 {
     public class DBRepositoryFactroy : IRepositoryFactory
     {
         ICourseRepository _courseRepository;
+        ICourseTypeRepository _courseTypeRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -19,6 +15,19 @@ namespace Parbat.Core.DBRepository
                     _courseRepository = new CourseRepository();
 
                 return _courseRepository;
+            }
+        }
+
+        public ICourseTypeRepository CourseTypeRepository
+        {
+            get
+            {
+                if(_courseTypeRepository == null)
+                {
+                    _courseTypeRepository = new CourseTypeRepository();
+                }
+
+                return _courseTypeRepository;
             }
         }
     }
