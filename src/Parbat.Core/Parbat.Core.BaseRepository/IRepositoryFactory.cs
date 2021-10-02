@@ -11,5 +11,7 @@
         IComponentTypeRepository ComponentTypeRepository { get; }
 
         ICurriculumRepository CurriculumRepository { get; }
+
+        IComponentCourseRepository ComponentCourseRepository { get; }
     }
 }
