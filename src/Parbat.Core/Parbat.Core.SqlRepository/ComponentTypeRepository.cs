@@ -20,7 +20,8 @@ namespace Parbat.Core.DBRepository
             DbCommand cmd = db.CreateSPCommand(Procds.Insert);
             db.AddParameter(cmd, Params.Name, entity.Name);
             db.AddParameter(cmd, Params.IsRequired, entity.IsRequired);
-            cmd.ExecuteNonQuery();
+
+            entity.ComponentTypeID = Convert.ToInt32(db.ExecuteScalar(cmd));
         }
 
         public void Delete(ComponentType entity)

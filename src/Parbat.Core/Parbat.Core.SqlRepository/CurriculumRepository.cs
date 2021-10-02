@@ -27,7 +27,7 @@ namespace Parbat.Core.DBRepository
             db.AddParameter(cmd, Params.IsLimitCreditHrs, entity.IsLimitCreditHrs);
             db.AddParameter(cmd, Params.CurriculumTypeID, entity.CurriculumTypeID);
 
-            db.Execute(cmd);
+            entity.CurriculumID = Convert.ToInt32(db.ExecuteScalar(cmd));
         }
 
         public void Delete(Curriculum entity)
