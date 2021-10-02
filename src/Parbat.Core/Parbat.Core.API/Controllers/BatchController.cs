@@ -10,21 +10,22 @@ using System.Threading.Tasks;
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Componenet Type controller
+    /// Batch controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class ComponentTypeController : Controller
+    public class BatchController : Controller
     {
-        private ComponentTypeService _service;
+        private BatchService _service;
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="factory">IRepositoryFactory</param>
-        public ComponentTypeController(IRepositoryFactory factory)
+        public BatchController(IRepositoryFactory factory)
         {
-            _service = new ComponentTypeService(factory);
+
+            _service = new BatchService(factory);
         }
 
         /// <summary>
@@ -33,11 +34,11 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<ComponentType> Get(long id)
+        public ActionResult<Batch> Get(long id)
         {
             try
             {
-                ComponentType found = _service.FindByID(id);
+                Batch found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -48,7 +49,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all componentType
+        /// List all courses
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -56,8 +57,8 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var componenttype = _service.GetAll();
-                return Ok(componenttype);
+                var batch = _service.GetAll();
+                return Ok(batch);
             }
             catch (ServiceException se)
             {
@@ -66,36 +67,36 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Update a componentType
+        /// Update a course
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="b"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] ComponentType c)
+        public ActionResult Update([FromBody] Batch b)
         {
             try
             {
-                _service.Update(c);
+                _service.Update(b);
                 return NoContent();
             }
-            catch (ServiceException se)
+            catch (ServiceException ex)
             {
-                return BadRequest(se.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         /// <summary>
         /// Create 
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="b"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<ComponentType> Create([FromBody] ComponentType c)
+        public ActionResult<Batch> Create([FromBody] Batch b)
         {
             try
             {
-                _service.Create(c);
-                return Created("Get", c);
+                _service.Create(b);
+                return Created("Get", b);
             }
             catch (ServiceException se)
             {

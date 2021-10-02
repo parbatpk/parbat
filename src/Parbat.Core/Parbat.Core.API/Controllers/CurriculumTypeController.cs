@@ -10,21 +10,22 @@ using System.Threading.Tasks;
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Componenet Type controller
+    /// CurriculumType
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class ComponentTypeController : Controller
+    public class CurriculumTypeController : Controller
     {
-        private ComponentTypeService _service;
+        private CurriculumTypeService _service;
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="factory">IRepositoryFactory</param>
-        public ComponentTypeController(IRepositoryFactory factory)
+        public CurriculumTypeController(IRepositoryFactory factory)
         {
-            _service = new ComponentTypeService(factory);
+
+            _service = new CurriculumTypeService(factory);
         }
 
         /// <summary>
@@ -33,22 +34,22 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<ComponentType> Get(long id)
+        public ActionResult<CurriculumType> Get(long id)
         {
             try
             {
-                ComponentType found = _service.FindByID(id);
+                CurriculumType found = _service.FindByID(id);
 
                 return Ok(found);
             }
-            catch (ServiceException se)
+            catch (ServiceException ex)
             {
-                return BadRequest(se.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         /// <summary>
-        /// List all componentType
+        /// List all curriculumType
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -56,22 +57,22 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var componenttype = _service.GetAll();
-                return Ok(componenttype);
+                var curriculumTypes = _service.GetAll();
+                return Ok(curriculumTypes);
             }
-            catch (ServiceException se)
+            catch (ServiceException ex)
             {
-                return BadRequest(se.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         /// <summary>
-        /// Update a componentType
+        /// Update curriculumType
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] ComponentType c)
+        public ActionResult Update([FromBody] CurriculumType c)
         {
             try
             {
@@ -90,7 +91,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<ComponentType> Create([FromBody] ComponentType c)
+        public ActionResult<CurriculumType> Create([FromBody] CurriculumType c)
         {
             try
             {

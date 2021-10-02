@@ -38,14 +38,14 @@ namespace Parbat.Core.API.Controllers
 
                 return Ok(found);
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
-        /// List all courses
+        /// List all component
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -56,14 +56,14 @@ namespace Parbat.Core.API.Controllers
                 var courses = _service.GetAll();
                 return Ok(courses);
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
-        /// Update a course
+        /// Update a component
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
@@ -75,9 +75,9 @@ namespace Parbat.Core.API.Controllers
                 _service.Update(c);
                 return NoContent();
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
