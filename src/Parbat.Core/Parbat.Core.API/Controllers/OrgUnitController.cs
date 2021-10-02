@@ -2,30 +2,26 @@
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Batch controller
+    /// orgunit controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class BatchController : Controller
+    public class OrgUnitController : Controller
     {
-        private BatchService _service;
+        private OrgUnitService _service;
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="factory">IRepositoryFactory</param>
-        public BatchController(IRepositoryFactory factory)
+        public OrgUnitController(IRepositoryFactory factory)
         {
 
-            _service = new BatchService(factory);
+            _service = new OrgUnitService(factory);
         }
 
         /// <summary>
@@ -34,11 +30,11 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<Batch> Get(long id)
+        public ActionResult<OrgUnit> Get(long id)
         {
             try
             {
-                Batch found = _service.FindByID(id);
+                OrgUnit found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -49,7 +45,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all batch
+        /// List all orgunit
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -57,8 +53,8 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var batch = _service.GetAll();
-                return Ok(batch);
+                var orgUnit = _service.GetAll();
+                return Ok(orgUnit);
             }
             catch (ServiceException se)
             {
@@ -67,16 +63,16 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Update a batch
+        /// Update a orgunit
         /// </summary>
-        /// <param name="b"></param>
+        /// <param name="o"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] Batch b)
+        public ActionResult Update([FromBody] OrgUnit o)
         {
             try
             {
-                _service.Update(b);
+                _service.Update(o);
                 return NoContent();
             }
             catch (ServiceException se)
@@ -88,15 +84,15 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Create 
         /// </summary>
-        /// <param name="b"></param>
+        /// <param name="o"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<Batch> Create([FromBody] Batch b)
+        public ActionResult<OrgUnit> Create([FromBody] OrgUnit o)
         {
             try
             {
-                _service.Create(b);
-                return Created("Get", b);
+                _service.Create(o);
+                return Created("Get", o);
             }
             catch (ServiceException se)
             {

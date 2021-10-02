@@ -90,24 +90,20 @@ namespace Parbat.Core.DBRepository
 
         public IEnumerable<Curriculum> GetOwnerUnit(long id)
         {
-            List<Curriculum> ownerUnit = new List<Curriculum>();
-
             DbCommand cmd = db.CreateSPCommand(Procds.GetOwnerUnit);
             db.AddParameter(cmd, Params.OwnerUnitID, id);
             var result = Convert.ToString(db.ExecuteScalar(cmd));
-            ownerUnit = DBHelper.Convert<List<Curriculum>>(result);
+            var ownerUnit = DBHelper.Convert<List<Curriculum>>(result);
 
             return ownerUnit;
         }
 
         public IEnumerable<Curriculum> GetCurriculumType(long id)
         {
-            List<Curriculum> ownerUnit = new List<Curriculum>();
-
             DbCommand cmd = db.CreateSPCommand(Procds.GetCurriculumType);
             db.AddParameter(cmd, Params.CurriculumTypeID, id);
             var result = Convert.ToString(db.ExecuteScalar(cmd));
-            ownerUnit = DBHelper.Convert<List<Curriculum>>(result);
+            var ownerUnit = DBHelper.Convert<List<Curriculum>>(result);
 
             return ownerUnit;
         }
