@@ -9,5 +9,7 @@
         IComponentRepository ComponentRepository { get; }
 
         IComponentTypeRepository ComponentTypeRepository { get; }
+
+        ICurriculumRepository CurriculumRepository { get; }
     }
 }
