@@ -49,7 +49,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all courses
+        /// List all curriculum
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -60,14 +60,14 @@ namespace Parbat.Core.API.Controllers
                 var curriculum = _service.GetAll();
                 return Ok(curriculum);
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
-        /// Update a course
+        /// Update a curriculum
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
@@ -79,9 +79,9 @@ namespace Parbat.Core.API.Controllers
                 _service.Update(c);
                 return NoContent();
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
@@ -137,7 +137,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Return all records
+        /// Return all curriculumTypes
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Return a DataTable</returns>

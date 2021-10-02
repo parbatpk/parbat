@@ -12,6 +12,7 @@ namespace Parbat.Core.DBRepository
         ICurriculumRepository _curriculumRepository;
         IComponentCourseRepository _componentCourseRepository;
         ICurriculumTypeRepository _curriculumTypeRepository;
+        IBatchRepository _batchRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -99,6 +100,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _curriculumTypeRepository;
+            }
+        }
+
+        public IBatchRepository BatchRepository
+        {
+            get
+            {
+                if(_batchRepository == null)
+                {
+                    _batchRepository = new BatchRepository();
+                }
+
+                return _batchRepository;
             }
         }
     }
