@@ -13,6 +13,8 @@ namespace Parbat.Core.DBRepository
         IComponentCourseRepository _componentCourseRepository;
         ICurriculumTypeRepository _curriculumTypeRepository;
         IBatchRepository _batchRepository;
+        IOrgUnitRepository _orgUnitRepository;
+        IOrgUnitTypeRepository _orgUnitTypeRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -113,6 +115,32 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _batchRepository;
+            }
+        }
+
+        public IOrgUnitRepository OrgUnitRepository
+        {
+            get
+            {
+                if(_orgUnitRepository == null)
+                {
+                    _orgUnitRepository = new OrgUnitRepository();
+                }
+
+                return _orgUnitRepository;
+            }
+        }
+
+        public IOrgUnitTypeRepository OrgUnitTypeRepository
+        {
+            get
+            {
+                if (_orgUnitTypeRepository == null)
+                {
+                    _orgUnitTypeRepository = new OrgUnitTypeRepository();
+                }
+
+                return _orgUnitTypeRepository;
             }
         }
     }

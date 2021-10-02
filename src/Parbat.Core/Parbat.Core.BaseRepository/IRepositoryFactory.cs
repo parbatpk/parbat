@@ -17,5 +17,9 @@
         ICurriculumTypeRepository CurriculumTypeRepository { get; }
 
         IBatchRepository BatchRepository { get; }
+
+        IOrgUnitRepository OrgUnitRepository { get; }
+
+        IOrgUnitTypeRepository OrgUnitTypeRepository { get; }
     }
 }
