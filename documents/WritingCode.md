@@ -1,5 +1,18 @@
 # Writing Code in *Parbat*
 
+## Steps
+1. Create a table (if required)
+2. Create a Data Transfor Object in **Parabat.DataObjects** ([Details](#writing-data-transfer-objects-dto))
+3. Create repository interface in Parbat.BaseRepository ([Details](#repository)
+4. Update Repository Factory in  Parbat.BaseRepository
+5. Implement repository (for the moment we are implementing in DBRepository) ([Detalis](#parbatcoredbrepository-or-other-type-of-repository))
+6. Update Factory implementation (for the moment DBRepositoryFactory in Parbat.Core.DBRepository)
+7. Implement fake repositories in Parbat.Core.FakeRepository (require for testing) 
+8. Create/update services in Parbat.Core.Services ([Details](#writing-services-parbatcoreservices))
+9. Create/update controller in Parbat.Core.API ([Details](#writing-controller-parbatcoreapi))
+
+
+
 ## Naming Convention
 - Class Names: Pascal Case
 - Public Property: Pascal Case
