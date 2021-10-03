@@ -1,10 +1,11 @@
-﻿using Parbat.Core.BaseRepository;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using System.Collections.Generic;
 
 namespace Parbat.Core.Services
 {
-    public class CourseService
+    public class CourseService : IService
     {
         protected IRepositoryFactory _factory;
 

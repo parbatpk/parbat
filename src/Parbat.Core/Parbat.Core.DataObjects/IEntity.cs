@@ -19,5 +19,10 @@ namespace Parbat.Core.DataObjects
                 p.SetValue(target, p.GetValue(source, null));
             }
         }
+
+        public static void Copy<T>(object source, object target)
+        {
+            Helper.Copy(typeof(T), source, target);
+        }
     }
 }

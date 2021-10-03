@@ -51,7 +51,7 @@
 
         public void Copy(IEntity entity)
         {
-            Helper.Copy(typeof(Component), this, entity);
+            Helper.Copy<Component>(this, entity);
         }
     }
 }

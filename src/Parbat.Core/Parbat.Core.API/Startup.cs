@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DBRepository;
+using Parbat.Core.Services;
 using Parbat.Data;
 using System;
 using System.IO;
@@ -38,7 +39,7 @@ namespace Parbat.Core.API
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IRepositoryFactory, DBRepositoryFactroy>();
+            InjectInstances(services);
 
             services.AddControllers()
                 .AddJsonOptions(options =>
@@ -83,6 +84,24 @@ namespace Parbat.Core.API
 
         }
 
+        private static void InjectInstances(IServiceCollection services)
+        {
+            // Repository Factor
+            services.AddTransient<IRepositoryFactory, DBRepositoryFactroy>();
+            //services.AddTransient<CourseService>();
+
+
+            // Inject Services: get all classes implementing IService interface
+            var assemb = typeof(CourseService).Assembly;
+            var iservices = assemb.GetTypes().
+                                Where(x => !x.IsAbstract && x.IsClass
+                                    && x.GetInterfaces().Contains(typeof(IService)));
+
+            foreach (var s in iservices)
+                services.Add(new ServiceDescriptor(s, s, ServiceLifetime.Transient));
+
+        }
+
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// </summary>
@@ -97,7 +116,8 @@ namespace Parbat.Core.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Parbat.Core.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/" + Global.API_VER + "/swagger.json",
+                    "Parbat.Core.API " + Global.API_VER));
             }
 
             app.UseHttpsRedirection();
