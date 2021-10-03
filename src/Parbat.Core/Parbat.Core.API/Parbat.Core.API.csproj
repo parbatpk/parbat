@@ -15,8 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Parbat.Core.BaseRepository\Parbat.Core.BaseRepository.csproj" />
     <ProjectReference Include="..\Parbat.Core.DataObjects\Parbat.Core.DataObjects.csproj" />
+    <ProjectReference Include="..\Parbat.Core.DBRepository\Parbat.Core.DBRepository.csproj" />
     <ProjectReference Include="..\Parbat.Core.Services\Parbat.Core.Services.csproj" />
-    <ProjectReference Include="..\Parbat.Core.SqlRepository\Parbat.Core.DBRepository.csproj" />
   </ItemGroup>
 
 </Project>
