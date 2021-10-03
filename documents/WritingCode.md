@@ -260,13 +260,15 @@ public IEnumerable\<Course\> GetAll()
 }
 ```
  
+
 ## Writing Services (Parbat.Core.Services)
 - Each Service is combination of functions consisting business logic
 - Each service should be in a separate file and file name should be the same as service name
 - Service name should be like **\<Entity OR Process\>Service** e.g. *CourseService*. It is not necessary to have separate service for each entity. A service may be called from different controllers as well.
-- Each service must store an Instance of protected **IRepositoryFactory** as a private class member. We must define a constructor which receives an instance of **IRepositoryFactory**  as a parameter and set it to class member.
+- Each service must implement **IService** interface. It is an empty interface and use for inject services. 
+**- Each service must store an Instance of protected **IRepositoryFactory** as a private class member. We must define a constructor which receives an instance of **IRepositoryFactory**  as a parameter and set it to class member.
 ```
-public class CourseService
+public class CourseService : IService
 {
     protected IRepositoryFactory _factory;
 
@@ -293,15 +295,14 @@ public void Create(Course c)
 }
 ```
 
-
 ## Writing Controller (Parbat.Core.API)
 - Create a controller class. 
 - Make sure you have changed the route to **Global.API_CONTROLLER**
 ```
 [Route(GlobalConstants.API_CONTROLLER)]
 ```
-- Constructor must receives an instance of **IRepositoryFactory**
-- We have to define all required services as class member and must initialize in constructor.
+- Constructor must receives an instance of **Respective Service** (ideally it should be \<ControllerName\>Service). 
+
 ```
 [Route(Global.API_CONTROLLER)]
 [ApiController]
@@ -314,10 +315,10 @@ public class CourseController : Controller
     /// Constructor 
     /// </summary>
     /// <param name="f">IRepositoryFactory</param>
-    public CourseController(IRepositoryFactory f)
+    public CourseController(CourseService service)
     {
 
-        _service = new CourseService(f);
+        _service = service;
     }
 }
 ```
