@@ -5,7 +5,7 @@ networks:
 
 services:
   parbatapp:
-    image: api
+    image: parbat
     build:
       context: .
       dockerfile: src/Parbat.Core/Parbat.Core.API/Dockerfile
