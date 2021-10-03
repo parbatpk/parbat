@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Parbat.Core.Services
 {
-    public class OrgUnitService : BaseService<OrgUnit>
+    public class OrgUnitService : IService
     {
         private readonly IRepositoryFactory _factory;
 

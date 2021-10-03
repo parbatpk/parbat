@@ -5,7 +5,7 @@ using Parbat.Core.DataObjects;
 
 namespace Parbat.Core.Services
 {
-    public class ComponentService : BaseService<Component>
+    public class ComponentService : IService
     {
         private readonly IRepositoryFactory _factory;
 

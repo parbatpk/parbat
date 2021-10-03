@@ -21,11 +21,11 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Constructor 
         /// </summary>
-        /// <param name="factory">IRepositoryFactory</param>
-        public CurriculumTypeController(IRepositoryFactory factory)
+        /// <param name="service">IRepositoryFactory</param>
+        public CurriculumTypeController(CurriculumTypeService service)
         {
 
-            _service = new CurriculumTypeService(factory);
+            _service = service;
         }
 
         /// <summary>

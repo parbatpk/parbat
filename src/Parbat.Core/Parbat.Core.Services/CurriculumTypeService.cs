@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Parbat.Core.Services
 {
-    public class CurriculumTypeService : BaseService<CurriculumType>
+    public class CurriculumTypeService : IService
     {
         private readonly IRepositoryFactory _factory;
 
@@ -26,7 +26,7 @@ namespace Parbat.Core.Services
         {
             var found = _factory.CurriculumTypeRepository.GetById(id);
 
-            if(found == null)
+            if (found == null)
             {
                 throw new ServiceException(Errors.NotExistsError);
             }
@@ -46,14 +46,14 @@ namespace Parbat.Core.Services
 
         public void Update(CurriculumType service)
         {
-           if(service.CurriculumTypeID == null)
-           {
+            if (service.CurriculumTypeID == null)
+            {
                 throw new ServiceException(Errors.NotExistsError);
-           }
+            }
 
             var found = _factory.CurriculumTypeRepository.GetById(service.CurriculumTypeID.Value);
 
-            if(found == null)
+            if (found == null)
             {
                 throw new ServiceException(Errors.NotExistsError);
             }

@@ -17,10 +17,10 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Constructor 
         /// </summary>
-        /// <param name="factory">IRepositoryFactory</param>
-        public OrgUnitTypeController(IRepositoryFactory factory)
+        /// <param name="service">IRepositoryFactory</param>
+        public OrgUnitTypeController(OrgUnitTypeService service)
         {
-            _service = new OrgUnitTypeService(factory);
+            _service = service;
         }
 
         /// <summary>

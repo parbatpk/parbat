@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Parbat.Core.Services
 {
-    public class BatchService : BaseService<Batch>
+    public class BatchService : IService
     {
         private readonly IRepositoryFactory _factory;
-        
+
         public BatchService(IRepositoryFactory factory)
         {
             _factory = factory;

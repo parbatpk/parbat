@@ -4,23 +4,12 @@
         <name>Parbat.Core.API</name>
     </assembly>
     <members>
-        <member name="T:Parbat.Core.API.Controllers.ComponentTypeController">
-            <summary>
-            Component Type
-            </summary>
-        </member>
-        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.#ctor(Parbat.Core.Services.ComponentService)">
-            <summary>
-            Construtor
-            </summary>
-            <param name="service">Component Service</param>
-        </member>
         <member name="T:Parbat.Core.API.Controllers.BatchController">
             <summary>
             Batch controller
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.BatchController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.BatchController.#ctor(Parbat.Core.Services.BatchService)">
             <summary>
             Constructor 
             </summary>
@@ -65,11 +54,11 @@
             
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.ComponentController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.ComponentController.#ctor(Parbat.Core.Services.ComponentService)">
             <summary>
             Constructor 
             </summary>
-            <param name="factory">IRepositoryFactory</param>
+            <param name="service">IRepositoryFactory</param>
         </member>
         <member name="M:Parbat.Core.API.Controllers.ComponentController.Get(System.Int64)">
             <summary>
@@ -110,11 +99,11 @@
             Component Course Controller
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.ComponentCourseController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.ComponentCourseController.#ctor(Parbat.Core.Services.ComponentCourseService)">
             <summary>
             Constructor 
             </summary>
-            <param name="factory">IRepositoryFactory</param>
+            <param name="service">IRepositoryFactory</param>
         </member>
         <member name="M:Parbat.Core.API.Controllers.ComponentCourseController.Get(System.Int64)">
             <summary>
@@ -155,11 +144,11 @@
             Componenet Type controller
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.#ctor(Parbat.Core.Services.ComponentTypeService)">
             <summary>
             Constructor 
             </summary>
-            <param name="factory">IRepositoryFactory</param>
+            <param name="service">IRepositoryFactory</param>
         </member>
         <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.Get(System.Int64)">
             <summary>
@@ -245,11 +234,11 @@
             CourseType controller class
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.#ctor(Parbat.Core.Services.CourseTypeService)">
             <summary>
             Constructor
             </summary>
-            <param name="_factory"></param>
+            <param name="service"></param>
         </member>
         <member name="M:Parbat.Core.API.Controllers.CourseTypeController.Get(System.Int64)">
             <summary>
@@ -290,11 +279,11 @@
             Curriculum controller
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.CurriculumController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.CurriculumController.#ctor(Parbat.Core.Services.CurriculumService)">
             <summary>
             Constructor 
             </summary>
-            <param name="factory">IRepositoryFactory</param>
+            <param name="service">IRepositoryFactory</param>
         </member>
         <member name="M:Parbat.Core.API.Controllers.CurriculumController.Get(System.Int64)">
             <summary>
@@ -349,11 +338,11 @@
             CurriculumType
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.#ctor(Parbat.Core.Services.CurriculumTypeService)">
             <summary>
             Constructor 
             </summary>
-            <param name="factory">IRepositoryFactory</param>
+            <param name="service">IRepositoryFactory</param>
         </member>
         <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.Get(System.Int64)">
             <summary>
@@ -394,11 +383,11 @@
             orgunit controller
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.OrgUnitController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitController.#ctor(Parbat.Core.Services.OrgUnitService)">
             <summary>
             Constructor 
             </summary>
-            <param name="factory">IRepositoryFactory</param>
+            <param name="service">IRepositoryFactory</param>
         </member>
         <member name="M:Parbat.Core.API.Controllers.OrgUnitController.Get(System.Int64)">
             <summary>
@@ -439,11 +428,11 @@
             orgunittype controller
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.OrgUnitTypeController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitTypeController.#ctor(Parbat.Core.Services.OrgUnitTypeService)">
             <summary>
             Constructor 
             </summary>
-            <param name="factory">IRepositoryFactory</param>
+            <param name="service">IRepositoryFactory</param>
         </member>
         <member name="M:Parbat.Core.API.Controllers.OrgUnitTypeController.Get(System.Int64)">
             <summary>

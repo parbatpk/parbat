@@ -17,10 +17,10 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="_factory"></param>
-        public CourseTypeController(IRepositoryFactory _factory)
+        /// <param name="service"></param>
+        public CourseTypeController(CourseTypeService service)
         {
-            _service = new CourseTypeService(_factory);
+            _service = service;
         }
 
 

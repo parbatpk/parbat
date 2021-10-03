@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace Parbat.Core.Services
 {
-    public class OrgUnitTypeService : BaseService<OrgUnitType>
+    public class OrgUnitTypeService : IService
     {
         private readonly IRepositoryFactory _factory;
-        
+
         public OrgUnitTypeService(IRepositoryFactory factory)
         {
             _factory = factory;

@@ -10,6 +10,7 @@ using Parbat.Core.Services;
 using Parbat.Data;
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace Parbat.Core.API
@@ -94,7 +95,7 @@ namespace Parbat.Core.API
             // Inject Services: get all classes implementing IService interface
             var assemb = typeof(CourseService).Assembly;
             var iservices = assemb.GetTypes().
-                                Where(x => !x.IsAbstract && x.IsClass
+                Where(x => !x.IsAbstract && x.IsClass
                                     && x.GetInterfaces().Contains(typeof(IService)));
 
             foreach (var s in iservices)

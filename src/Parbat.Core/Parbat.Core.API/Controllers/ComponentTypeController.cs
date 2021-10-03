@@ -21,10 +21,10 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Constructor 
         /// </summary>
-        /// <param name="factory">IRepositoryFactory</param>
-        public ComponentTypeController(IRepositoryFactory factory)
+        /// <param name="service">IRepositoryFactory</param>
+        public ComponentTypeController(ComponentTypeService service)
         {
-            _service = new ComponentTypeService(factory);
+            _service = service;
         }
 
         /// <summary>

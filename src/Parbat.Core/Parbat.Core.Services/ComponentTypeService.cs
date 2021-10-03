@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Parbat.Core.Services
 {
-    public class ComponentTypeService : BaseService<ComponentType>
+    public class ComponentTypeService : IService
     {
         private readonly IRepositoryFactory _factory;
 
