@@ -11,7 +11,7 @@ services:
     - DB_NAME=ParbatDB
     - DB_PASSWORD=MyPass@1234
     - DB_SERVER=db
-    - DB_USER=sa
+    - DB_USERNAME=sa
     - DB_TYPE=SQL
     - TRUSTED=False
     build:
