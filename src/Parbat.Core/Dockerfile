@@ -6,7 +6,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /src
+WORKDIR /src2
 COPY ["Parbat.Core.API/Parbat.Core.API.csproj", "Parbat.Core.API/"]
 COPY ["Parbat.Core.DataObjects/Parbat.Core.DataObjects.csproj", "Parbat.Core.DataObjects/"]
 COPY ["Parbat.Core.Services/Parbat.Core.Services.csproj", "Parbat.Core.Services/"]
@@ -15,7 +15,7 @@ COPY ["Parbat.Core.DBRepository/Parbat.Core.DBRepository.csproj", "Parbat.Core.D
 COPY ["Parbat.Data/Parbat.Data.csproj", "Parbat.Data/"]
 RUN dotnet restore "Parbat.Core.API/Parbat.Core.API.csproj"
 COPY . .
-WORKDIR "/src/Parbat.Core.API"
+WORKDIR "/src2/Parbat.Core.API"
 RUN dotnet build "Parbat.Core.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
