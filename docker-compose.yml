@@ -5,10 +5,10 @@ networks:
 
 services:
   parbatapp:
-    image: webapi
+    image: api
     build:
       context: .
-      dockerfile: src/Parbat.Core.Services/ParbatCore/Dockerfile
+      dockerfile: src/Parbat.Core/Parbat.Core.API/Dockerfile
     ports:
     - "8081:80"
     networks:
