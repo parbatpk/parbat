@@ -4,6 +4,17 @@
         <name>Parbat.Core.API</name>
     </assembly>
     <members>
+        <member name="T:Parbat.Core.API.Controllers.ComponentTypeController">
+            <summary>
+            Component Type
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.#ctor(Parbat.Core.Services.ComponentService)">
+            <summary>
+            Construtor
+            </summary>
+            <param name="service">Component Service</param>
+        </member>
         <member name="T:Parbat.Core.API.Controllers.CourseController">
             <summary>
             Course Controller class

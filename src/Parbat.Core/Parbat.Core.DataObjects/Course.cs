@@ -49,7 +49,6 @@ namespace Parbat.Core.DataObjects
             get { return this.CourseID.Value; }
         }
 
-
         public void Copy(IEntity entity)
         {
             Helper.Copy(typeof(Course), this, entity);
