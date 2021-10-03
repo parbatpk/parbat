@@ -9,11 +9,11 @@
             Course Controller class
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.CourseController.#ctor(Parbat.Core.BaseRepository.IRepositoryFactory)">
+        <member name="M:Parbat.Core.API.Controllers.CourseController.#ctor(Parbat.Core.Services.CourseService)">
             <summary>
-            Constructor 
+            Constructor
             </summary>
-            <param name="f">IRepositoryFactory</param>
+            <param name="service"></param>
         </member>
         <member name="M:Parbat.Core.API.Controllers.CourseController.Get(System.Int64)">
             <summary>

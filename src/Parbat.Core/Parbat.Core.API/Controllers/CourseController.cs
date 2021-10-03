@@ -21,13 +21,13 @@ namespace Parbat.Core.API.Controllers
         CourseService _service;
 
         /// <summary>
-        /// Constructor 
+        /// Constructor
         /// </summary>
-        /// <param name="f">IRepositoryFactory</param>
-        public CourseController(IRepositoryFactory f)
+        /// <param name="service"></param>
+        public CourseController(CourseService service)
         {
 
-            _service = new CourseService(f);
+            _service = service;
         }
 
         /// <summary>
