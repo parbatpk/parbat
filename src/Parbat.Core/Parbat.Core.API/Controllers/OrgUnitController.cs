@@ -6,23 +6,22 @@ using Parbat.Core.Services;
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Course Controller class
+    /// orgunit controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class CourseController : Controller
+    public class OrgUnitController : Controller
     {
-
-        CourseService _service;
+        private OrgUnitService _service;
 
         /// <summary>
-        /// Constructor
+        /// Constructor 
         /// </summary>
-        /// <param name="service"></param>
-        public CourseController(CourseService service)
+        /// <param name="factory">IRepositoryFactory</param>
+        public OrgUnitController(IRepositoryFactory factory)
         {
 
-            _service = service;
+            _service = new OrgUnitService(factory);
         }
 
         /// <summary>
@@ -31,23 +30,22 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<Course> Get(long id)
+        public ActionResult<OrgUnit> Get(long id)
         {
             try
             {
-
-                Course found = _service.FindByID(id);
+                OrgUnit found = _service.FindByID(id);
 
                 return Ok(found);
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
-        /// List all courses
+        /// List all orgunit
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -55,46 +53,46 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var courses = _service.GetAllCourses();
-                return Ok(courses);
+                var orgUnit = _service.GetAll();
+                return Ok(orgUnit);
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
-        /// Update a course
+        /// Update a orgunit
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="o"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] Course c)
+        public ActionResult Update([FromBody] OrgUnit o)
         {
             try
             {
-                _service.Update(c);
+                _service.Update(o);
                 return NoContent();
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
         /// Create 
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="o"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<Course> Create([FromBody] Course c)
+        public ActionResult<OrgUnit> Create([FromBody] OrgUnit o)
         {
             try
             {
-                _service.Create(c);
-                return Created("Get", c);
+                _service.Create(o);
+                return Created("Get", o);
             }
             catch (ServiceException se)
             {

@@ -2,27 +2,30 @@
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Course Controller class
+    /// CurriculumType
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class CourseController : Controller
+    public class CurriculumTypeController : Controller
     {
-
-        CourseService _service;
+        private CurriculumTypeService _service;
 
         /// <summary>
-        /// Constructor
+        /// Constructor 
         /// </summary>
-        /// <param name="service"></param>
-        public CourseController(CourseService service)
+        /// <param name="factory">IRepositoryFactory</param>
+        public CurriculumTypeController(IRepositoryFactory factory)
         {
 
-            _service = service;
+            _service = new CurriculumTypeService(factory);
         }
 
         /// <summary>
@@ -31,12 +34,11 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<Course> Get(long id)
+        public ActionResult<CurriculumType> Get(long id)
         {
             try
             {
-
-                Course found = _service.FindByID(id);
+                CurriculumType found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -47,7 +49,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all courses
+        /// List all curriculumType
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -55,8 +57,8 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var courses = _service.GetAllCourses();
-                return Ok(courses);
+                var curriculumTypes = _service.GetAll();
+                return Ok(curriculumTypes);
             }
             catch (ServiceException ex)
             {
@@ -65,21 +67,21 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Update a course
+        /// Update curriculumType
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] Course c)
+        public ActionResult Update([FromBody] CurriculumType c)
         {
             try
             {
                 _service.Update(c);
                 return NoContent();
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
@@ -89,7 +91,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<Course> Create([FromBody] Course c)
+        public ActionResult<CurriculumType> Create([FromBody] CurriculumType c)
         {
             try
             {

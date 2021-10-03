@@ -1,23 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
-
-namespace Parbat.Core.DataObjects.Models
+﻿namespace Parbat.Core.DataObjects
 {
-    public partial class Component : IEntity
+    public class Component : IEntity
     {
-        public long ComponentId { get; set; }
+        /// <summary>
+        /// Primary key
+        /// </summary>
+        public long? ComponentID { get; set; }
+        
+        /// <summary>
+        /// Short Name
+        /// </summary>
         public string ShortName { get; set; }
-        public string Name { get; set; }
-        public long CurriculumId { get; set; }
-        public int TotalCredit { get; set; }
-        public int TotalCourses { get; set; }
-        public bool IsLimitCourses { get; set; }
-        public bool IsLimitCreditHrs { get; set; }
-        public long ComponentTypeId { get; set; }
 
-        public long Key => this.ComponentId;
+        /// <summary>
+        /// Name
+        /// </summary>
+        public string Name { get; set; }
+        
+        /// <summary>
+        /// CurriculumID
+        /// </summary>
+        public int CurriculumID { get; set; }
+        
+        /// <summary>
+        /// TotalCredit 
+        /// </summary>
+        public int TotalCredit { get; set; }
+
+        /// <summary>
+        /// TotalCourses
+        /// </summary>
+        public int TotalCourses { get; set; }
+        
+        /// <summary>
+        /// IslimitCourses 
+        /// </summary>
+        public bool IsLimitCourses { get; set; }
+        
+        /// <summary>
+        /// IsLimitCreditHrs
+        /// </summary>
+        public bool IsLimitCreditHrs { get; set; }
+        
+        /// <summary>
+        /// Component type ID
+        /// </summary>
+        public int ComponentTypeID { get; set; }
+
+        public long Key => this.ComponentID.Value;
 
         public void Copy(IEntity entity)
         {

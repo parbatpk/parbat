@@ -1,16 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
-#nullable disable
-
-namespace Parbat.Core.DataObjects.Models
+namespace Parbat.Core.DataObjects
 {
     public class CurriculumType : IEntity
     {
-        public long CurriculumTypeId { get; set; }
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        public long? CurriculumTypeID { get; set; }
+
+        /// <summary>
+        /// Curriculum Name
+        /// </summary>
+        [Required]
         public string Name { get; set; }
 
-        public long Key => this.CurriculumTypeId;
+        /// <summary>
+        /// return the current instance curriculumTypeID
+        /// </summary>
+        public long Key => this.CurriculumTypeID.Value;
 
         public void Copy(IEntity entity)
         {

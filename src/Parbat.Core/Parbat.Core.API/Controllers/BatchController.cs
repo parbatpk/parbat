@@ -2,27 +2,30 @@
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Course Controller class
+    /// Batch controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class CourseController : Controller
+    public class BatchController : Controller
     {
-
-        CourseService _service;
+        private BatchService _service;
 
         /// <summary>
-        /// Constructor
+        /// Constructor 
         /// </summary>
-        /// <param name="service"></param>
-        public CourseController(CourseService service)
+        /// <param name="factory">IRepositoryFactory</param>
+        public BatchController(IRepositoryFactory factory)
         {
 
-            _service = service;
+            _service = new BatchService(factory);
         }
 
         /// <summary>
@@ -31,23 +34,22 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<Course> Get(long id)
+        public ActionResult<Batch> Get(long id)
         {
             try
             {
-
-                Course found = _service.FindByID(id);
+                Batch found = _service.FindByID(id);
 
                 return Ok(found);
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
-        /// List all courses
+        /// List all batch
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -55,46 +57,46 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var courses = _service.GetAllCourses();
-                return Ok(courses);
+                var batch = _service.GetAll();
+                return Ok(batch);
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
-        /// Update a course
+        /// Update a batch
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="b"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] Course c)
+        public ActionResult Update([FromBody] Batch b)
         {
             try
             {
-                _service.Update(c);
+                _service.Update(b);
                 return NoContent();
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
         /// Create 
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="b"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<Course> Create([FromBody] Course c)
+        public ActionResult<Batch> Create([FromBody] Batch b)
         {
             try
             {
-                _service.Create(c);
-                return Created("Get", c);
+                _service.Create(b);
+                return Created("Get", b);
             }
             catch (ServiceException se)
             {

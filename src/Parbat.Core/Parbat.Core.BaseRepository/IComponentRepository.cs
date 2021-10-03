@@ -2,8 +2,7 @@
 
 namespace Parbat.Core.BaseRepository
 {
-    public interface ICourseRepository : IGenericRepository<Course>
+    public interface IComponentRepository : IGenericRepository<Component>
     {
-
     }
 }

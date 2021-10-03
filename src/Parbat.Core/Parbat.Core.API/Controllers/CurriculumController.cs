@@ -2,27 +2,30 @@
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Course Controller class
+    /// Curriculum controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class CourseController : Controller
+    public class CurriculumController : Controller
     {
-
-        CourseService _service;
+        private CurriculumService _service;
 
         /// <summary>
-        /// Constructor
+        /// Constructor 
         /// </summary>
-        /// <param name="service"></param>
-        public CourseController(CourseService service)
+        /// <param name="factory">IRepositoryFactory</param>
+        public CurriculumController(IRepositoryFactory factory)
         {
 
-            _service = service;
+            _service = new CurriculumService(factory);
         }
 
         /// <summary>
@@ -31,12 +34,11 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<Course> Get(long id)
+        public ActionResult<Curriculum> Get(long id)
         {
             try
             {
-
-                Course found = _service.FindByID(id);
+                Curriculum found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -47,7 +49,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all courses
+        /// List all curriculum
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -55,31 +57,31 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var courses = _service.GetAllCourses();
-                return Ok(courses);
+                var curriculum = _service.GetAll();
+                return Ok(curriculum);
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
         /// <summary>
-        /// Update a course
+        /// Update a curriculum
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] Course c)
+        public ActionResult Update([FromBody] Curriculum c)
         {
             try
             {
                 _service.Update(c);
                 return NoContent();
             }
-            catch (ServiceException ex)
+            catch (ServiceException se)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(se.Message);
             }
         }
 
@@ -89,7 +91,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<Course> Create([FromBody] Course c)
+        public ActionResult<Curriculum> Create([FromBody] Curriculum c)
         {
             try
             {
@@ -120,6 +122,29 @@ namespace Parbat.Core.API.Controllers
             {
                 return BadRequest(se.Message);
             }
+        }
+
+        
+        /// <summary>
+        /// return the curriculum owners
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("OwnerUnit/{id}")]
+        public ActionResult GetOwnerUnit(long id)
+        {
+            return Ok(_service.GetOwnerUnit(id));
+        }
+
+        /// <summary>
+        /// Return all curriculumTypes
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Return a DataTable</returns>
+        [HttpGet("CurriculumType/{id}")]
+        public ActionResult GetCurriculumType(long id)
+        {
+            return Ok(_service.GetCurriculumType(id));
         }
     }
 }

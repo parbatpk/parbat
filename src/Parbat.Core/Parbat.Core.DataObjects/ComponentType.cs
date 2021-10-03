@@ -1,21 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
+using System.ComponentModel.DataAnnotations;
 
-namespace Parbat.Core.DataObjects.Models
+namespace Parbat.Core.DataObjects
 {
-    public partial class ComponentType : IEntity
+    public class ComponentType : IEntity
     {
-        public long ComponentTypeId { get; set; }
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        public long? ComponentTypeID { get; set; }
+
+        /// <summary>
+        /// Component Name
+        /// </summary>
+        [Required]
         public string Name { get; set; }
+        /// <summary>
+        /// Component IsRequired
+        /// </summary>
+        [Required]
         public bool IsRequired { get; set; }
 
-        public long Key => this.ComponentTypeId;
+        /// <summary>
+        /// get the current object ComponentTypeID
+        /// </summary>
+        public long Key => this.ComponentTypeID.Value;
 
         public void Copy(IEntity entity)
         {
-            Helper.Copy<ComponentType>(this, entity);
+            Helper.Copy(typeof(ComponentType), this, entity);
         }
     }
 }

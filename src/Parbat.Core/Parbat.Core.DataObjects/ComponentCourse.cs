@@ -1,17 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
-
-namespace Parbat.Core.DataObjects.Models
+﻿
+namespace Parbat.Core.DataObjects
 {
-    public partial class ComponentCourse: IEntity
+    public class ComponentCourse : IEntity
     {
-        public long ComponentCourseId { get; set; }
-        public long ComponentId { get; set; }
-        public long CourseId { get; set; }
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        public long? ComponentCourseID { get; set; }
 
-        public long Key => this.ComponentCourseId;
+        /// <summary>
+        /// ComponentCourse Name
+        /// </summary>
+        [Required]
+        public long ComponentID { get; set; }
+        /// <summary>
+        /// ComponentCourse ShortName
+        /// </summary>
+        [Required]
+        public long CourseID { get; set; }
+
 
         public void Copy(IEntity entity)
         {

@@ -1,13 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Parbat.Core.BaseRepository
+﻿namespace Parbat.Core.BaseRepository
 {
     public interface IRepositoryFactory
     {
         ICourseRepository CourseRepository { get; }
+
+        ICourseTypeRepository CourseTypeRepository { get; }
+      
+        IComponentRepository ComponentRepository { get; }
+
+        IComponentTypeRepository ComponentTypeRepository { get; }
+
+        ICurriculumRepository CurriculumRepository { get; }
+
+        IComponentCourseRepository ComponentCourseRepository { get; }
+
+        ICurriculumTypeRepository CurriculumTypeRepository { get; }
+
+        IBatchRepository BatchRepository { get; }
+
+        IOrgUnitRepository OrgUnitRepository { get; }
+
+        IOrgUnitTypeRepository OrgUnitTypeRepository { get; }
     }
 }
