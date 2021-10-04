@@ -21,10 +21,9 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Constructor 
         /// </summary>
-        /// <param name="factory">IRepositoryFactory</param>
+        /// <param name="service">IRepositoryFactory</param>
         public BatchController(BatchService service)
         {
-
             _service = service;
         }
 

@@ -20,7 +20,6 @@ namespace Parbat.Core.API.Controllers
         /// <param name="service">IRepositoryFactory</param>
         public OrgUnitController(OrgUnitService service)
         {
-
             _service = service;
         }
 

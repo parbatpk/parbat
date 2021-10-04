@@ -21,7 +21,6 @@ namespace Parbat.Core.API.Controllers
         /// <param name="service"></param>
         public CourseController(CourseService service)
         {
-
             _service = service;
         }
 
