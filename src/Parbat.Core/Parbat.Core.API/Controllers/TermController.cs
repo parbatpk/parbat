@@ -1,28 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
+
     /// <summary>
-    /// Curriculum controller
+    /// Term controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class CurriculumController : Controller
+    public class TermController : Controller
     {
-        private CurriculumService _service;
+        private TermService _service;
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="service">IRepositoryFactory</param>
-        public CurriculumController(CurriculumService service)
+        public TermController(TermService service)
         {
             _service = service;
         }
@@ -33,31 +29,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<Curriculum> Get(long id)
+        public ActionResult<Term> Get(long id)
         {
             try
             {
-                Curriculum found = _service.FindByID(id);
+                Term found = _service.FindByID(id);
 
                 return Ok(found);
-            }
-            catch (ServiceException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// List all curriculum
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
-        {
-            try
-            {
-                var curriculum = _service.GetAll();
-                return Ok(curriculum);
             }
             catch (ServiceException se)
             {
@@ -66,16 +44,34 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Update a curriculum
+        /// List all component
         /// </summary>
-        /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] Curriculum c)
+        [HttpGet]
+        public ActionResult List()
         {
             try
             {
-                _service.Update(c);
+                var terms = _service.GetAll();
+                return Ok(terms);
+            }
+            catch (ServiceException se)
+            {
+                return BadRequest(se.Message);
+            }
+        }
+
+        /// <summary>
+        /// Update a component
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public ActionResult Update([FromBody] Term t)
+        {
+            try
+            {
+                _service.Update(t);
                 return NoContent();
             }
             catch (ServiceException se)
@@ -87,15 +83,15 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Create 
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="t"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<Curriculum> Create([FromBody] Curriculum c)
+        public ActionResult<Term> Create([FromBody] Term t)
         {
             try
             {
-                _service.Create(c);
-                return Created("Get", c);
+                _service.Create(t);
+                return Created("Get", t);
             }
             catch (ServiceException se)
             {
@@ -123,27 +119,5 @@ namespace Parbat.Core.API.Controllers
             }
         }
 
-        
-        /// <summary>
-        /// return the curriculum owners
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet("OwnerUnit/{id}")]
-        public ActionResult GetOwnerUnit(long id)
-        {
-            return Ok(_service.GetOwnerUnit(id));
-        }
-
-        /// <summary>
-        /// Return all curriculumTypes
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Return a DataTable</returns>
-        [HttpGet("CurriculumType/{id}")]
-        public ActionResult GetCurriculumType(long id)
-        {
-            return Ok(_service.GetCurriculumType(id));
-        }
     }
 }

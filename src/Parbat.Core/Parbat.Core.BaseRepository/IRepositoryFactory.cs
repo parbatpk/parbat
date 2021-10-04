@@ -21,5 +21,9 @@
         IOrgUnitRepository OrgUnitRepository { get; }
 
         IOrgUnitTypeRepository OrgUnitTypeRepository { get; }
+
+        ITermRepository TermRepository { get; }
+
+        IStudentGroupRepository StudentGroupRepository { get; }
     }
 }
