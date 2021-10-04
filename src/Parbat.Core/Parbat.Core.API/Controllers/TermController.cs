@@ -44,7 +44,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all component
+        /// List all Term
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -62,7 +62,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Update a component
+        /// Update a Term
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
