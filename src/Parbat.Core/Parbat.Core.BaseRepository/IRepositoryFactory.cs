@@ -25,5 +25,7 @@
         ITermRepository TermRepository { get; }
 
         IStudentGroupRepository StudentGroupRepository { get; }
+
+        IStudentRepository StudentRepository { get; }
     }
 }

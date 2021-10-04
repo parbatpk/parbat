@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Student Groups
+    /// Student controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class StudentGroupController : Controller
+    public class StudentController : Controller
     {
-        private StudentGroupService _service;
+        private StudentService _service;
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="service">IRepositoryFactory</param>
-        public StudentGroupController(StudentGroupService service)
+        public StudentController(StudentService service)
         {
             _service = service;
         }
@@ -32,11 +32,11 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<StudentGroup> Get(long id)
+        public ActionResult<Student> Get(long id)
         {
             try
             {
-                StudentGroup found = _service.FindByID(id);
+                Student found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -47,7 +47,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all studentGroup
+        /// List all student
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -55,8 +55,8 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var studentGroups = _service.GetAll();
-                return Ok(studentGroups);
+                var students = _service.GetAll();
+                return Ok(students);
             }
             catch (ServiceException se)
             {
@@ -65,12 +65,12 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Update a studentGroup
+        /// Update a student
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] StudentGroup s)
+        public ActionResult Update([FromBody] Student s)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="s"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<StudentGroup> Create([FromBody] StudentGroup s)
+        public ActionResult<Student> Create([FromBody] Student s)
         {
             try
             {
