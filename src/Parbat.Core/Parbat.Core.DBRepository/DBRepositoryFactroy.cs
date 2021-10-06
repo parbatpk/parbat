@@ -19,6 +19,7 @@ namespace Parbat.Core.DBRepository
         IStudentGroupRepository _studentGroupRepository;
         IStudentRepository _studentRepository;
         IRegisterStatusRepository _registerStatusRepository;
+        IStudentStatusRepository _studentStatusRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -197,6 +198,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _registerStatusRepository;
+            }
+        }
+
+        public IStudentStatusRepository StudentStatusRepository
+        {
+            get
+            {
+                if (_studentStatusRepository == null)
+                {
+                    _studentStatusRepository = new StudentStatusRepository();
+                }
+
+                return _studentStatusRepository;
             }
         }
     }

@@ -29,5 +29,7 @@
         IStudentRepository StudentRepository { get; }
 
         IRegisterStatusRepository RegisterStatusRepository { get; }
+
+        IStudentStatusRepository StudentStatusRepository { get; }
     }
 }
