@@ -4,21 +4,20 @@ using Parbat.Core.Services;
 
 namespace Parbat.Core.API.Controllers
 {
-
     /// <summary>
-    /// Term controller
+    /// Register Status controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class TermController : Controller
+    public class RegisterStatusController : Controller
     {
-        private TermService _service;
+        private RegisterStatusService _service;
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="service">IRepositoryFactory</param>
-        public TermController(TermService service)
+        public RegisterStatusController(RegisterStatusService service)
         {
             _service = service;
         }
@@ -29,11 +28,11 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<Term> Get(long id)
+        public ActionResult<RegisterStatus> Get(long id)
         {
             try
             {
-                Term found = _service.FindByID(id);
+                RegisterStatus found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -44,7 +43,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all Term
+        /// List all RegisterStatus
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -52,8 +51,8 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var terms = _service.GetAll();
-                return Ok(terms);
+                var registerStatuses = _service.GetAll();
+                return Ok(registerStatuses);
             }
             catch (ServiceException se)
             {
@@ -64,14 +63,14 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Update a Term
         /// </summary>
-        /// <param name="t"></param>
+        /// <param name="r"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] Term t)
+        public ActionResult Update([FromBody] RegisterStatus r)
         {
             try
             {
-                _service.Update(t);
+                _service.Update(r);
                 return NoContent();
             }
             catch (ServiceException se)
@@ -83,15 +82,15 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Create 
         /// </summary>
-        /// <param name="t"></param>
+        /// <param name="r"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<Term> Create([FromBody] Term t)
+        public ActionResult<RegisterStatus> Create([FromBody] RegisterStatus r)
         {
             try
             {
-                _service.Create(t);
-                return Created("Get", t);
+                _service.Create(r);
+                return Created("Get", r);
             }
             catch (ServiceException se)
             {
