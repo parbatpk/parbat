@@ -24,7 +24,6 @@ namespace Parbat.Core.API.Controllers
         /// <param name="service">IRepositoryFactory</param>
         public CurriculumTypeController(CurriculumTypeService service)
         {
-
             _service = service;
         }
 

@@ -15,6 +15,11 @@ namespace Parbat.Core.DBRepository
         IBatchRepository _batchRepository;
         IOrgUnitRepository _orgUnitRepository;
         IOrgUnitTypeRepository _orgUnitTypeRepository;
+        ITermRepository _termRepository;
+        IStudentGroupRepository _studentGroupRepository;
+        IStudentRepository _studentRepository;
+        IRegisterStatusRepository _registerStatusRepository;
+        IStudentStatusRepository _studentStatusRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -141,6 +146,71 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _orgUnitTypeRepository;
+            }
+        }
+
+        public ITermRepository TermRepository
+        {
+            get
+            {
+                if(_termRepository == null)
+                {
+                    _termRepository = new TermRepository();
+                }
+
+                return _termRepository;
+            }
+        }
+
+        public IStudentGroupRepository StudentGroupRepository
+        {
+            get
+            {
+                if (_studentGroupRepository == null)
+                {
+                    _studentGroupRepository = new StudentGroupRepository();
+                }
+
+                return _studentGroupRepository;
+            }
+        }
+
+        public IStudentRepository StudentRepository
+        {
+            get
+            {
+                if(_studentRepository == null)
+                {
+                    _studentRepository = new StudentRepository();
+                }
+
+                return _studentRepository;
+            }
+        }
+
+        public IRegisterStatusRepository RegisterStatusRepository
+        {
+            get
+            {
+                if (_registerStatusRepository == null)
+                {
+                    _registerStatusRepository = new RegisterStatusRepository();
+                }
+
+                return _registerStatusRepository;
+            }
+        }
+
+        public IStudentStatusRepository StudentStatusRepository
+        {
+            get
+            {
+                if (_studentStatusRepository == null)
+                {
+                    _studentStatusRepository = new StudentStatusRepository();
+                }
+
+                return _studentStatusRepository;
             }
         }
     }
