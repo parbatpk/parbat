@@ -102,7 +102,6 @@ namespace ParbatCore.Models
                 }
             }
         }
-        
         /// <summary>
         /// Find Course Name
         /// </summary>
@@ -128,7 +127,6 @@ namespace ParbatCore.Models
                 }
             }
         }
-       
         /// <summary>
         /// Find Course ID
         /// </summary>
