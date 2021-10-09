@@ -1,0 +1,547 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Parbat.Core.API</name>
+    </assembly>
+    <members>
+        <member name="T:Parbat.Core.API.Controllers.BatchController">
+            <summary>
+            Batch controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.BatchController.#ctor(Parbat.Core.Services.BatchService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="factory">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.BatchController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.BatchController.List">
+            <summary>
+            List all batch
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.BatchController.Update(Parbat.Core.DataObjects.Batch)">
+            <summary>
+            Update a batch
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.BatchController.Create(Parbat.Core.DataObjects.Batch)">
+            <summary>
+            Create 
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.BatchController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.ComponentController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentController.#ctor(Parbat.Core.Services.ComponentService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentController.List">
+            <summary>
+            List all component
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentController.Update(Parbat.Core.DataObjects.Component)">
+            <summary>
+            Update a component
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentController.Create(Parbat.Core.DataObjects.Component)">
+            <summary>
+            Create 
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.ComponentCourseController">
+            <summary>
+            Component Course Controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentCourseController.#ctor(Parbat.Core.Services.ComponentCourseService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentCourseController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentCourseController.List">
+            <summary>
+            List all componentcourses
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentCourseController.Update(Parbat.Core.DataObjects.ComponentCourse)">
+            <summary>
+            Update a componentcourse
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentCourseController.Create(Parbat.Core.DataObjects.ComponentCourse)">
+            <summary>
+            Create 
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentCourseController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.ComponentTypeController">
+            <summary>
+            Componenet Type controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.#ctor(Parbat.Core.Services.ComponentTypeService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.List">
+            <summary>
+            List all componentType
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.Update(Parbat.Core.DataObjects.ComponentType)">
+            <summary>
+            Update a componentType
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.Create(Parbat.Core.DataObjects.ComponentType)">
+            <summary>
+            Create 
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ComponentTypeController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.CourseController">
+            <summary>
+            Course Controller class
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.#ctor(Parbat.Core.Services.CourseService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.List">
+            <summary>
+            List all courses
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.Update(Parbat.Core.DataObjects.Course)">
+            <summary>
+            Update a course
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.Create(Parbat.Core.DataObjects.Course)">
+            <summary>
+            Create 
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.CourseTypeController">
+            <summary>
+            CourseType controller class
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.#ctor(Parbat.Core.Services.CourseTypeService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.Get(System.Int64)">
+            <summary>
+            Get record by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.List">
+            <summary>
+            get all coursetypes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.Update(Parbat.Core.DataObjects.CourseType)">
+            <summary>
+            Update a coursetype
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.Create(Parbat.Core.DataObjects.CourseType)">
+            <summary>
+            Add new coursetype
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseTypeController.Delete(System.Int64)">
+            <summary>
+            Delete a course type by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.CurriculumController">
+            <summary>
+            Curriculum controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumController.#ctor(Parbat.Core.Services.CurriculumService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumController.List">
+            <summary>
+            List all curriculum
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumController.Update(Parbat.Core.DataObjects.Curriculum)">
+            <summary>
+            Update a curriculum
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumController.Create(Parbat.Core.DataObjects.Curriculum)">
+            <summary>
+            Create 
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumController.GetOwnerUnit(System.Int64)">
+            <summary>
+            return the curriculum owners
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumController.GetCurriculumType(System.Int64)">
+            <summary>
+            Return all curriculumTypes
+            </summary>
+            <param name="id"></param>
+            <returns>Return a DataTable</returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.CurriculumTypeController">
+            <summary>
+            CurriculumType
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.#ctor(Parbat.Core.Services.CurriculumTypeService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.List">
+            <summary>
+            List all curriculumType
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.Update(Parbat.Core.DataObjects.CurriculumType)">
+            <summary>
+            Update curriculumType
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.Create(Parbat.Core.DataObjects.CurriculumType)">
+            <summary>
+            Create 
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.OrgUnitController">
+            <summary>
+            orgunit controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitController.#ctor(Parbat.Core.Services.OrgUnitService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitController.List">
+            <summary>
+            List all orgunit
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitController.Update(Parbat.Core.DataObjects.OrgUnit)">
+            <summary>
+            Update a orgunit
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitController.Create(Parbat.Core.DataObjects.OrgUnit)">
+            <summary>
+            Create 
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.OrgUnitTypeController">
+            <summary>
+            orgunittype controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitTypeController.#ctor(Parbat.Core.Services.OrgUnitTypeService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitTypeController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitTypeController.List">
+            <summary>
+            List all unittype
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitTypeController.Update(Parbat.Core.DataObjects.OrgUnitType)">
+            <summary>
+            Update a unittype
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitTypeController.Create(Parbat.Core.DataObjects.OrgUnitType)">
+            <summary>
+            Create 
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitTypeController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Global">
+            <summary>
+            Global constatns
+            </summary>
+        </member>
+        <member name="F:Parbat.Core.API.Global.API_VER">
+            <summary>
+            Route Constant variable
+             API Version
+            </summary>
+        </member>
+        <member name="F:Parbat.Core.API.Global.API_CONTROLLER">
+            <summary>
+            Default Route prefix
+            </summary>
+        </member>
+        <member name="T:Parbat.Core.API.MaintainCorsExtension">
+            <summary>
+            To handle CORS issue in case of exception
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.MaintainCorsExtension.MaintainCorsHeadersOnError(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Method to be called in Startup 
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Program">
+            <summary>
+            Main Program
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Program.Main(System.String[])">
+            <summary>
+            Main method
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Parbat.Core.API.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            startup building
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Startup">
+            <summary>
+            Startup class
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Startup constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Parbat.Core.API.Startup.Configuration">
+            <summary>
+            /Configuration property
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Parbat.Core.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>

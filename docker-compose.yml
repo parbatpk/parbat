@@ -5,10 +5,18 @@ networks:
 
 services:
   parbatapp:
-    image: webapi
+    image: parbat
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - DB_NAME=ParbatDB
+    - DB_PASSWORD=MyPass@1234
+    - DB_SERVER=db
+    - DB_USERNAME=sa
+    - DB_TYPE=SQL
+    - TRUSTED=False
     build:
-      context: .
-      dockerfile: src/Parbat.Core.Services/ParbatCore/Dockerfile
+      context: ./src/Parbat.Core/
+      dockerfile: Dockerfile
     ports:
     - "8081:80"
     networks:
