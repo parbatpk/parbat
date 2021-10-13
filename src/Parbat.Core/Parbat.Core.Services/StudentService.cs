@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Parbat.Core.Services
 {
-    public class StudentService
+    public class StudentService : IService
     {
         private readonly IRepositoryFactory _factory;
 
