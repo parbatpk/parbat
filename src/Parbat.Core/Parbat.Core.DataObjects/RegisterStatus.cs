@@ -7,11 +7,11 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary key of RegSatus
         /// </summary>
-        public long? RegisterStatusID;
+        public long? RegisterStatusID { get; set; }
         /// <summary>
         /// ShortName of RegStatus
         /// </summary>
-        public string ShortName;
+        public string ShortName { get; set; }
 
         /// <summary>
         /// return the current instance RegisterStatusID

@@ -7,28 +7,28 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary kery 
         /// </summary>
-        public long ?TermID;
+        public long ?TermID { get; set; }
         /// <summary>
         /// term name
         /// </summary>
-        public string Name;
+        public string Name { get; set; }
         /// <summary>
         /// Nick name for example Maaz Khan == MK
         /// </summary>
-        public string ShortName;
+        public string ShortName { get; set; }
         /// <summary>
         /// Term is active status
         /// </summary>
-        public bool IsActive;
+        public bool IsActive { get; set; }
         /// <summary>
         /// Start date of the term
         /// </summary>
-        public DateTime StartDate;
+        public DateTime StartDate { get; set; }
 
         /// <summary>
         /// end date of the term
         /// </summary>
-        public DateTime EndDate;
+        public DateTime EndDate { get; set; }
 
         public long Key => this.TermID.Value;
 

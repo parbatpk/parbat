@@ -15,7 +15,7 @@ GO
 CREATE PROCEDURE dbo.spGetAllCurriculum
 
 AS
-	SELECT * from Curriculum
+	SELECT * from Curriculum FOR JSON Auto;
 GO
 
 -- =============================================

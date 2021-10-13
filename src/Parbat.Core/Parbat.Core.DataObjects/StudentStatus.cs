@@ -6,12 +6,12 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// This is the primary key in the StudentStatus Table
         /// </summary>
-        public long? StudentStatusID;
+        public long? StudentStatusID { get; set; }
 
         /// <summary>
         /// Name Attribute in the StudentStatus Table
         /// </summary>
-        public string Name;
+        public string Name { get; set; }
 
         /// <summary>
         /// return the current instance StudentStatusID

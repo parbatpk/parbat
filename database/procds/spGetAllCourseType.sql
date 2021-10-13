@@ -14,6 +14,6 @@ GO
 
 CREATE PROCEDURE dbo.spGetAllCourseType
 AS
-	SELECT * from  dbo.CourseType 
+	SELECT * from  dbo.CourseType FOR JSON Auto;
 GO
 

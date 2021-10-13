@@ -15,7 +15,7 @@ GO
 CREATE PROCEDURE dbo.spGetAllStudentGroup
 
 AS
-	SELECT * from StudentGroup
+	SELECT * from StudentGroup FOR JSON Auto;
 GO
 
 -- =============================================

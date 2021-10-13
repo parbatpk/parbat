@@ -8,32 +8,31 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary key in Batch Table
         /// </summary>
-        public long? BatchID;
+        public long? BatchID { get; set; }
 
         /// <summary>
         /// Short name of the Batch
         /// </summary>
-        public string ShortName;
+        public string ShortName { get; set; }
 
         /// <summary>
         /// Name of the batch
         /// </summary>
-        public string Name;
+        public string Name { get; set; }
 
         /// <summary>
         /// Year of the admission
         /// </summary>
-        public int AdmissionYear;
+        public int AdmissionYear { get; set; }
 
         /// <summary>
         /// Passing year
         /// </summary>
-        public int GraduationYear;
-
+        public int GraduationYear { get; set; }
         /// <summary>
         /// Forign key in the BatchTable
         /// </summary>
-        public long OrgUnitID;
+        public long OrgUnitID { get; set; }
 
         /// <summary>
         /// Forign key in the BatchTable

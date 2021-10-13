@@ -14,7 +14,7 @@ GO
 
 CREATE PROCEDURE dbo.spGetAllBatch
 AS
-	SELECT * from Batch
+	SELECT * from Batch FOR JSON Auto;
 GO
 
 -- =============================================

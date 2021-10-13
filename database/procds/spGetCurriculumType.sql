@@ -16,6 +16,7 @@ CREATE PROCEDURE dbo.spGetCurriculumType
 	@CurriculumTypeID bigint
 AS
 	SELECT * from Curriculum where CurriculumTypeID=@CurriculumTypeID
+	FOR JSON Auto;
 GO
 
 -- =============================================

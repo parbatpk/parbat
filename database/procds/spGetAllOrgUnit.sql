@@ -16,7 +16,7 @@ CREATE PROCEDURE dbo.spGetAllOrgUnit
 
 AS
 	SELECT * 
-	from OrgUnit
+	from OrgUnit FOR JSON Auto;
 GO
 
 -- =============================================

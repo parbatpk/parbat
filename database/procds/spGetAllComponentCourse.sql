@@ -15,7 +15,7 @@ GO
 CREATE PROCEDURE dbo.spGetAllComponentCourse
 
 AS
-	SELECT * from ComponentCourse
+	SELECT * from ComponentCourse FOR JSON Auto;
 GO
 
 -- =============================================

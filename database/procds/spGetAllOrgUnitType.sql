@@ -14,11 +14,11 @@ GO
 
 CREATE PROCEDURE dbo.spGetAllOrgUnitType	
 AS
-	SELECT *From OrgUnitType
+	SELECT *From OrgUnitType FOR JSON Auto;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spGetAllOrgUnitType 
-GO
+--EXECUTE dbo.spGetAllOrgUnitType 
+--GO
