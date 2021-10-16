@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Parbat.Core.DataObjects
 {
@@ -7,29 +8,39 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary kery 
         /// </summary>
-        public long ?TermID;
+        public long ?TermID { get; set; }
+
         /// <summary>
         /// term name
         /// </summary>
-        public string Name;
-        /// <summary>
-        /// Nick name for example Maaz Khan == MK
-        /// </summary>
-        public string ShortName;
-        /// <summary>
-        /// Term is active status
-        /// </summary>
-        public bool IsActive;
-        /// <summary>
-        /// Start date of the term
-        /// </summary>
-        public DateTime StartDate;
+        [Required]
+        public string Name { get; set; }
 
         /// <summary>
-        /// end date of the term
+        /// Short Name
         /// </summary>
-        public DateTime EndDate;
+        [Required]
+        public string ShortName { get; set; }
 
+        /// <summary>
+        /// is active
+        /// </summary>
+        [Required]
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Start date 
+        /// </summary>
+        public DateTime StartDate { get; set; }
+
+        /// <summary>
+        /// end date
+        /// </summary>
+        public DateTime EndDate { get; set; }
+
+        /// <summary>
+        /// get the current instance TermID
+        /// </summary>
         public long Key => this.TermID.Value;
 
         public void Copy(IEntity entity)

@@ -5,18 +5,18 @@ namespace Parbat.Core.DataObjects
     public class CourseType : IEntity
     {
         /// <summary>
-        /// Primary key of the table courseType
+        /// Primary key 
         /// </summary>
         public long? CourseTypeID { get; set; }
 
         /// <summary>
-        /// CourseType Name is mandatory field in the table courseType
+        ///  Name
         /// </summary>
         [Required]
         public string Name { get; set; }
 
         /// <summary>
-        /// get the coursetypeID of the current object/instance
+        /// get the the current object/instance CourseTypeID
         /// </summary>
         public long Key => this.CourseTypeID.Value;
 

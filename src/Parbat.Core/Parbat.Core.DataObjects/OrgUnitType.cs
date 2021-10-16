@@ -5,23 +5,23 @@ namespace Parbat.Core.DataObjects
     public class OrgUnitType : IEntity
     {
         /// <summary>
-        /// This is the primary key
+        /// Primary key
         /// </summary>
         public long? OrgUnitTypeID;
 
         /// <summary>
-        /// ShortName  of OrgUnitType
+        /// ShortName
         /// </summary>
         [Required]
         public string ShortName;
         /// <summary>
-        /// FullName of OrgUnitType
+        /// FullName 
         /// </summary>
         [Required]
         public string Name;
 
         /// <summary>
-        /// return the current instance OrgUnitType
+        /// get the current instance OrgUnitType
         /// </summary>
         public long Key => this.OrgUnitTypeID.Value;
 

@@ -1,20 +1,22 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
+
 namespace Parbat.Core.DataObjects
 {
     public class StudentStatus : IEntity
     {
         /// <summary>
-        /// This is the primary key in the StudentStatus Table
+        ///primary key 
         /// </summary>
         public long? StudentStatusID;
 
         /// <summary>
-        /// Name Attribute in the StudentStatus Table
+        /// Name
         /// </summary>
+       [Required]
         public string Name;
 
         /// <summary>
-        /// return the current instance StudentStatusID
+        /// get the current instance StudentStatusID
         /// </summary>
         public long Key => this.StudentStatusID.Value;
 

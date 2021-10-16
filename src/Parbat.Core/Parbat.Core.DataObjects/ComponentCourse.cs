@@ -1,5 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Parbat.Core.DataObjects
 {
@@ -11,16 +10,20 @@ namespace Parbat.Core.DataObjects
         public long? ComponentCourseID { get; set; }
 
         /// <summary>
-        /// ComponentCourse Name
+        /// Forign key
         /// </summary>
         [Required]
         public long ComponentID { get; set; }
+
         /// <summary>
-        /// ComponentCourse ShortName
+        /// Forign Key
         /// </summary>
         [Required]
         public long CourseID { get; set; }
 
+        /// <summary>
+        /// get the current instance ComponetCourseID
+        /// </summary>
         public long Key => this.ComponentCourseID.Value;
 
         public void Copy(IEntity entity)

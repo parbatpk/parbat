@@ -1,14 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Parbat.Core.DataObjects.Models
+namespace Parbat.Core.DataObjects
 {
-    public class Class : IEntity
+    public class Semester : IEntity
     {
         /// <summary>
-        /// Primary key
+        /// Primary Key
         /// </summary>
-        [Required]
-        public long ClassID { get; set; }
+        public long SemesterID { get; set; }
         
         /// <summary>
         /// ShortName
@@ -23,19 +22,25 @@ namespace Parbat.Core.DataObjects.Models
         public string Name { get; set; }
         
         /// <summary>
-        /// Capacity
+        /// Forign Key
         /// </summary>
         [Required]
-        public int Capacity { get; set; }
+        public long StudentGroupID { get; set; }
 
         /// <summary>
-        /// get the current instance ClassID
+        /// ForignKey
         /// </summary>
-        public long Key => this.ClassID;
+        [Required]
+        public long TermID { get; set; }
+
+        /// <summary>
+        /// get the current instance SemesterID
+        /// </summary>
+        public long Key => this.SemesterID;
 
         public void Copy(IEntity entity)
         {
-            Helper.Copy(typeof(Class), this, entity);
+            Helper.Copy(typeof(Semester), this, entity);
         }
     }
 }

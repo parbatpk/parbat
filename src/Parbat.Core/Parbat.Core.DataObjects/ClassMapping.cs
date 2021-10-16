@@ -1,17 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Parbat.Core.DataObjects.Models
 {
     public partial class ClassMapping : IEntity
     {
-        public long ClassMappingId { get; set; }
-        public long OfferingId { get; set; }
-        public long ClassId { get; set; }
+        /// <summary>
+        /// Primary key
+        /// </summary>
+        public long ClassMappingID { get; set; }
 
-        public long Key => this.ClassMappingId;
+        /// <summary>
+        /// Forign Key
+        /// </summary>
+        [Required]
+        public long OfferingID { get; set; }
+        
+        /// <summary>
+        /// Forign Key
+        /// </summary>
+        [Required]
+        public long ClassID { get; set; }
+
+        /// <summary>
+        /// get the current instance ClassMappingID 
+        /// </summary>
+        public long Key => this.ClassMappingID;
 
         public void Copy(IEntity entity)
         {

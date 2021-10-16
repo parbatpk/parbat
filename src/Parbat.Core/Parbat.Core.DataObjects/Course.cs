@@ -14,11 +14,13 @@ namespace Parbat.Core.DataObjects
         /// </summary>
         [Required]
         public string Name { get; set; }
+         
         /// <summary>
         /// Course ShortName
         /// </summary>
         [Required]
         public string ShortName { get; set; }
+        
         /// <summary>
         /// Course OwnerID
         /// </summary>
@@ -27,28 +29,32 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Course TheoryCredit
         /// </summary>
+        
         [Required]
         public int TheoryCredit { get; set; }
         /// <summary>
         /// Course LabCredit
         /// </summary>
+        
         [Required]
         public int LabCredit { get; set; }
+        
         /// <summary>
         /// Course Code
         /// </summary>
         public string Code { get; set; }
+       
         /// <summary>
         /// Course CourseTypeID
         /// </summary>
         [Required]
         public long CourseTypeID { get; set; }
 
-        public long Key
-        {
-            get { return this.CourseID.Value; }
-        }
-
+        /// <summary>
+        /// get the current instance CourseID
+        /// </summary>
+        public long Key => this.CourseID.Value;
+        
         public void Copy(IEntity entity)
         {
             Helper.Copy(typeof(Course), this, entity);

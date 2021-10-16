@@ -5,24 +5,30 @@ namespace Parbat.Core.DataObjects
     public class StudentGroup : IEntity
     {
         /// <summary>
-        /// Primary key of StudenGroup Table
+        /// Primary key
         /// </summary>
         public long? StudentGroupID { get; set; }
+        
         /// <summary>
-        /// ShortName of StudentGroup
+        /// ShortName 
         /// </summary>
         [Required]
         public string ShortName { get; set; }
+        
         /// <summary>
-        /// Name of StudentGroup
+        /// Name
         /// </summary>
         [Required]
         public string Name { get; set; }
+        
         /// <summary>
-        /// Is StudentGroup Active or Not
+        /// IsActive 
         /// </summary>
         public bool IsActive { get; set; }
 
+        /// <summary>
+        /// get the current instance StudentGroupID
+        /// </summary>
         public long Key => this.StudentGroupID.Value;
 
         public void Copy(IEntity entity)
