@@ -219,6 +219,17 @@ namespace Parbat.Data
             public const string Delete = "spDeleteBatch";
             public const string Find = "spFindBatch";
             public const string GetAll = "spGetAllBatch";
+
+            public struct Params
+            {
+                public const string BatchID = "@BatchID";
+                public const string ShortName = "@ShortName";
+                public const string Name = "@Name";
+                public const string AdmissionYear = "@AdmissionYear";
+                public const string GraduationYear = "@GraduationYear";
+                public const string OrgUnitID = "@OrgUnitID";
+                public const string CurriculumID = "@CurriculumID";
+            }
         }
 
     }

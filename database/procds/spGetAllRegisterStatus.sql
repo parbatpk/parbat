@@ -14,7 +14,7 @@ GO
 
 CREATE PROCEDURE dbo.spGetAllRegisterStatus
 AS
-	SELECT * FROM RegisterStatus
+	SELECT * FROM RegisterStatus FOR JSON Auto;
 GO
 
 -- =============================================

@@ -16,7 +16,7 @@ namespace Parbat.Core.DataObjects
         public string ShortName;
 
         /// <summary>
-        /// get the current instance RegisterStatusID
+        /// return the current instance RegisterStatusID
         /// </summary>
         public long Key => this.RegisterStatusID.Value;
 

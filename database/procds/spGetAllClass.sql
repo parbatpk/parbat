@@ -15,7 +15,7 @@ GO
 CREATE PROCEDURE dbo.spGetAllClass
 
 AS
-	SELECT * from Class
+	SELECT * from Class FOR JSON Auto;
 GO
 
 -- =============================================

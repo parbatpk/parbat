@@ -7,18 +7,20 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spGETAllComponentType' 
+     AND SPECIFIC_NAME = N'spDeleteBatch' 
 )
-   DROP PROCEDURE dbo.spGETAllComponentType
+   DROP PROCEDURE dbo.spDeleteBatch
 GO
 
-CREATE PROCEDURE dbo.spGETAllComponentType
+CREATE PROCEDURE dbo.spDeleteBatch
+	@BatchID bigint
 AS
-	SELECT * from ComponentType FOR JSON Auto;
+	Delete from Batch
+	where BatchID = @BatchID
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spGETALLComponentType 1, 2
+--EXECUTE dbo.spDeleteBatch 1
 --GO

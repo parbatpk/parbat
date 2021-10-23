@@ -14,7 +14,7 @@ GO
 
 CREATE PROCEDURE dbo.spGetAllTerm
 AS
-	SELECT * from Term
+	SELECT * from Term FOR JSON Auto;
 GO
 
 -- =============================================

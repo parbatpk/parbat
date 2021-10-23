@@ -23,18 +23,18 @@ namespace Parbat.Core.DataObjects
         public string ShortName { get; set; }
 
         /// <summary>
-        /// is active
+        /// Term is active status
         /// </summary>
         [Required]
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// Start date 
+        /// Start date of the term
         /// </summary>
         public DateTime StartDate { get; set; }
 
         /// <summary>
-        /// end date
+        /// end date of the term
         /// </summary>
         public DateTime EndDate { get; set; }
 

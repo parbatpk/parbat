@@ -7,18 +7,18 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spGETAllComponentType' 
+     AND SPECIFIC_NAME = N'spGetAllBatch' 
 )
-   DROP PROCEDURE dbo.spGETAllComponentType
+   DROP PROCEDURE dbo.spGetAllBatch
 GO
 
-CREATE PROCEDURE dbo.spGETAllComponentType
+CREATE PROCEDURE dbo.spGetAllBatch
 AS
-	SELECT * from ComponentType FOR JSON Auto;
+	SELECT * from Batch FOR JSON Auto;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spGETALLComponentType 1, 2
+--EXECUTE dbo.spGetAllBatch 
 --GO

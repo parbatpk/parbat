@@ -5,24 +5,23 @@ namespace Parbat.Core.DataObjects
     public class StudentGroup : IEntity
     {
         /// <summary>
-        /// Primary key
+        /// Primary key of StudenGroup Table
         /// </summary>
         public long? StudentGroupID { get; set; }
-        
         /// <summary>
-        /// ShortName 
+        /// ShortName of StudentGroup
         /// </summary>
         [Required]
         public string ShortName { get; set; }
         
         /// <summary>
-        /// Name
+        /// Name of StudentGroup
         /// </summary>
         [Required]
         public string Name { get; set; }
         
         /// <summary>
-        /// IsActive 
+        /// Is StudentGroup Active or Not
         /// </summary>
         public bool IsActive { get; set; }
 

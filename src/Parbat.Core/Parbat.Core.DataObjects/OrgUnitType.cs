@@ -7,18 +7,18 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary key
         /// </summary>
-        public long? OrgUnitTypeID;
+        public long? OrgUnitTypeID {get; set;}
 
         /// <summary>
         /// ShortName
         /// </summary>
         [Required]
-        public string ShortName;
+        public string ShortName { get; set; }
         /// <summary>
         /// FullName 
         /// </summary>
         [Required]
-        public string Name;
+        public string Name { get; set; }
 
         /// <summary>
         /// get the current instance OrgUnitType

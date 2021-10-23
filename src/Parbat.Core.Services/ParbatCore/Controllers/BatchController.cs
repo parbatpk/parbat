@@ -105,9 +105,6 @@ namespace ParbatCore.Controllers
             {
                 return NotFound("Result Not Found!");
             }
-
         }
-
-
     }
 }

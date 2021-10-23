@@ -5,18 +5,17 @@ namespace Parbat.Core.DataObjects
     public class StudentStatus : IEntity
     {
         /// <summary>
-        ///primary key 
+        /// This is the primary key in the StudentStatus Table
         /// </summary>
-        public long? StudentStatusID;
+        public long? StudentStatusID { get; set; }
 
         /// <summary>
-        /// Name
+        /// Name Attribute in the StudentStatus Table
         /// </summary>
-       [Required]
-        public string Name;
+        public string Name { get; set; }
 
         /// <summary>
-        /// get the current instance StudentStatusID
+        /// return the current instance StudentStatusID
         /// </summary>
         public long Key => this.StudentStatusID.Value;
 
