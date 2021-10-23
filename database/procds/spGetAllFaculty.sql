@@ -14,7 +14,7 @@ GO
 
 CREATE PROCEDURE dbo.spGetAllFaculty
 AS
-	SELECT	* FROM Faculty
+	SELECT	* FROM Faculty FOR JSON Auto;
 GO
 
 -- =============================================

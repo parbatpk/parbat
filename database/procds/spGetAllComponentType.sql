@@ -14,7 +14,7 @@ GO
 
 CREATE PROCEDURE dbo.spGETAllComponentType
 AS
-	SELECT * from ComponentType
+	SELECT * from ComponentType FOR JSON Auto;
 GO
 
 -- =============================================

@@ -16,6 +16,7 @@ CREATE PROCEDURE dbo.spGetOwnerUnit
 	@OwnerUnitID bigint
 AS
 	SELECT * from Curriculum where OwnerUnitID =@OwnerUnitID
+	FOR JSON Auto;
 GO
 
 -- =============================================
