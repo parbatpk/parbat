@@ -1,4 +1,5 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
+
 namespace Parbat.Core.DataObjects
 {
     public class StudentStatus : IEntity

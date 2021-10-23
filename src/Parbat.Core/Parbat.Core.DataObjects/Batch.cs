@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Parbat.Core.DataObjects
 {
     public class Batch : IEntity
     {
         /// <summary>
-        /// Primary key in Batch Table
+        /// Primary key
         /// </summary>
         public long? BatchID { get; set; }
 
         /// <summary>
-        /// Short name of the Batch
+        /// Short name 
         /// </summary>
+        [Required]
         public string ShortName { get; set; }
 
         /// <summary>
-        /// Name of the batch
+        /// Name 
         /// </summary>
+        [Required]
         public string Name { get; set; }
 
         /// <summary>
@@ -29,16 +30,21 @@ namespace Parbat.Core.DataObjects
         /// Passing year
         /// </summary>
         public int GraduationYear { get; set; }
+
         /// <summary>
-        /// Forign key in the BatchTable
+        /// Forign key 
         /// </summary>
+        [Required]
         public long OrgUnitID { get; set; }
 
         /// <summary>
-        /// Forign key in the BatchTable
+        /// Forign key
         /// </summary>
-        public long CurriculumID;
+        public long CurriculumID { get; set; }
 
+        /// <summary>
+        /// get the current instance BatchID 
+        /// </summary>
         public long Key => this.BatchID.Value;
 
         public void Copy(IEntity entity)

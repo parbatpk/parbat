@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Parbat.Core.DataObjects
 {
@@ -13,12 +10,13 @@ namespace Parbat.Core.DataObjects
         public long? ComponentTypeID { get; set; }
 
         /// <summary>
-        /// Component Name
+        ///  Name
         /// </summary>
         [Required]
         public string Name { get; set; }
+
         /// <summary>
-        /// Component IsRequired
+        /// IsRequired
         /// </summary>
         [Required]
         public bool IsRequired { get; set; }

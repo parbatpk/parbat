@@ -16,7 +16,7 @@ namespace Parbat.Core.DataObjects
         public string Name { get; set; }
 
         /// <summary>
-        /// return the current instance curriculumTypeID
+        /// get the current instance curriculumTypeID
         /// </summary>
         public long Key => this.CurriculumTypeID.Value;
 

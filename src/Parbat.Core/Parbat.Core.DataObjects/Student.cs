@@ -1,28 +1,39 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
+
 namespace Parbat.Core.DataObjects
 {
     public class Student : IEntity
     {
         /// <summary>
-        /// This is the Primary key of the Sdt table
+        /// Primary Key
         /// </summary>
         public long? StudentID { get; set; }
 
         /// <summary>
-        /// Std Identity
+        /// Identity
         /// </summary>
         public string Identifier { get; set; }
 
         /// <summary>
-        /// First Name of the student
+        /// First Name 
         /// </summary>
+        [Required]
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Last Name of the student
+        /// Last Name 
         /// </summary>
+        [Required]
         public string LastName { get; set; }
 
+        /// <summary>
+        /// Forign Key Student GroupID
+        /// </summary>
+        public string StudetGroupID { get; set; }
+
+        /// <summary>
+        /// get the current instance StudentID
+        /// </summary>
         public long Key => this.StudentID.Value;
 
         public void Copy(IEntity entity)

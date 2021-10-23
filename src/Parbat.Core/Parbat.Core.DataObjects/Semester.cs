@@ -2,37 +2,45 @@
 
 namespace Parbat.Core.DataObjects
 {
-    public class StudentGroup : IEntity
+    public class Semester : IEntity
     {
         /// <summary>
-        /// Primary key of StudenGroup Table
+        /// Primary Key
         /// </summary>
-        public long? StudentGroupID { get; set; }
+        public long SemesterID { get; set; }
+        
         /// <summary>
-        /// ShortName of StudentGroup
+        /// ShortName
         /// </summary>
         [Required]
         public string ShortName { get; set; }
         
         /// <summary>
-        /// Name of StudentGroup
+        /// Name
         /// </summary>
         [Required]
         public string Name { get; set; }
         
         /// <summary>
-        /// Is StudentGroup Active or Not
+        /// Forign Key
         /// </summary>
-        public bool IsActive { get; set; }
+        [Required]
+        public long StudentGroupID { get; set; }
 
         /// <summary>
-        /// get the current instance StudentGroupID
+        /// ForignKey
         /// </summary>
-        public long Key => this.StudentGroupID.Value;
+        [Required]
+        public long TermID { get; set; }
+
+        /// <summary>
+        /// get the current instance SemesterID
+        /// </summary>
+        public long Key => this.SemesterID;
 
         public void Copy(IEntity entity)
         {
-            Helper.Copy(typeof(StudentGroup), this, entity);
+            Helper.Copy(typeof(Semester), this, entity);
         }
     }
 }

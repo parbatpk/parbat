@@ -1,17 +1,19 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Parbat.Core.DataObjects
 {
     public class RegisterStatus : IEntity
     {
         /// <summary>
-        /// Primary key of RegSatus
+        /// Primary key
         /// </summary>
-        public long? RegisterStatusID { get; set; }
+        public long? RegisterStatusID;
+       
         /// <summary>
-        /// ShortName of RegStatus
+        /// ShortName
         /// </summary>
-        public string ShortName { get; set; }
+        [Required]
+        public string ShortName;
 
         /// <summary>
         /// return the current instance RegisterStatusID
