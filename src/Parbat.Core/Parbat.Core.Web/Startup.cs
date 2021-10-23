@@ -18,13 +18,13 @@ namespace Parbat.Core.Web
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            string uri = HttpBase.GetUrl("/CourseType/");
-            CourseType c = new CourseType()
-            {
-                CourseTypeID=7,
-              Name= "programmming33"
-            };
-            HttpHelper.Delete(uri,7);
+
+            //CourseType c = new CourseType()
+            //{
+            //    CourseTypeID = 7,
+            //    Name = "programmming133"
+            //};
+            //HttpHelper.Delete(ServiceURL.CourseType.List, 7);
         }
 
         public IConfiguration Configuration { get; }
