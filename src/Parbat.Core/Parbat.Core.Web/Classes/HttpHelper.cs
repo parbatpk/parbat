@@ -18,49 +18,44 @@ namespace Parbat.Core.Web.Classes
     {
         public static T Get<T>(string url)
         {
+            url = HttpBase.GetUrl(url);
             using (var client = new HttpClient())
             {
                 var request = HttpBase.CreateGetMessage(url);
                 var response = client.Send(request);
 
                 Task<string> content = response.Content.ReadAsStringAsync();
-                
+
                 var data = JsonConvert.DeserializeObject<T>(content.Result);
-                
+
                 return data;
             }
         }
         public static string Get(string url)
         {
+            url = HttpBase.GetUrl(url);
             using (var client = new HttpClient())
             {
                 var request = HttpBase.CreateGetMessage(url);
                 var response = client.Send(request);
-
                 string content = response.Content.ReadAsStringAsync().Result;
-                
-                //var data = JsonConvert.DeserializeObject<T>(content.Result);
-                
+
+
                 return content;
             }
         }
-        public static T Post<T>(string url,object o)
+        public static T Post<T>(string url, object o)
         {
+            url = HttpBase.GetUrl(url);
             using (var client = new HttpClient())
             {
                 {
                     var rawdata = JsonSerializer.Serialize<object>(o);
-                    //var inputData = new StringContent(rawdata, Encoding.Default, "application/json");
-                    //HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Post, url)
-                    //{
-                    //    Content = inputData
-                    //};
-                    var msg = HttpBase.CreatePostMessage(url,rawdata);
+                    var msg = HttpBase.CreatePostMessage(url, rawdata);
                     var response = client.Send(msg);
-
                     string content = response.Content.ReadAsStringAsync().Result;
-
                     var data = JsonConvert.DeserializeObject<T>(content);
+
                     return data;
                 }
             }
@@ -68,21 +63,15 @@ namespace Parbat.Core.Web.Classes
         }
         public static string Post(string url, object o)
         {
+            url = HttpBase.GetUrl(url);
             using (var client = new HttpClient())
             {
                 {
                     var rawdata = JsonSerializer.Serialize<object>(o);
-                    //var inputData = new StringContent(rawdata, Encoding.Default, "application/json");
-                    //HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Post, url)
-                    //{
-                    //    Content = inputData
-                    //};
                     var msg = HttpBase.CreatePostMessage(url, rawdata);
                     var response = client.Send(msg);
-
                     string content = response.Content.ReadAsStringAsync().Result;
 
-                    //var data = JsonConvert.DeserializeObject<T>(content);
                     return content;
                 }
             }
@@ -90,48 +79,38 @@ namespace Parbat.Core.Web.Classes
         }
         public static T Put<T>(string url, object o)
         {
+            url = HttpBase.GetUrl(url);
             using (var client = new HttpClient())
             {
                 {
                     var rawdata = JsonSerializer.Serialize<object>(o);
-                    //var inputData = new StringContent(rawdata, Encoding.Default, "application/json");
-                    //HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Put, url)
-                    //{
-                    //    Content = inputData
-                    //};
                     var msg = HttpBase.CreatePutMessage(url, rawdata);
                     var response = client.Send(msg);
-
-                    string content = response.Content.ReadAsStringAsync().Result;
-
+                    string content = response.Content.ReadAsStringAsync().Result
                     var data = JsonConvert.DeserializeObject<T>(content);
+
                     return data;
                 }
             }
         }
         public static string Put(string url, object o)
         {
+            url = HttpBase.GetUrl(url);
             using (var client = new HttpClient())
             {
                 {
                     var rawdata = JsonSerializer.Serialize<object>(o);
-                    //var inputData = new StringContent(rawdata, Encoding.Default, "application/json");
-                    //HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Put, url)
-                    //{
-                    //    Content = inputData
-                    //};
                     var msg = HttpBase.CreatePutMessage(url, rawdata);
                     var response = client.Send(msg);
-
                     string content = response.Content.ReadAsStringAsync().Result;
 
-                    //var data = JsonConvert.DeserializeObject<T>(content);
                     return content;
                 }
             }
         }
-        public static string Delete(string url,int id)
+        public static string Delete(string url, int id)
         {
+            url = HttpBase.GetUrl(url);
             using (var client = new HttpClient())
             {
                 url += id;
@@ -141,6 +120,7 @@ namespace Parbat.Core.Web.Classes
         }
         public static string Delete(string url)
         {
+            url = HttpBase.GetUrl(url);
             using (var client = new HttpClient())
             {
                 var request = HttpBase.CreateDeleteMessage(url);
@@ -155,13 +135,13 @@ namespace Parbat.Core.Web.Classes
         }
         public static HttpResponseMessage send(HttpRequestMessage request)
         {
-           
+
             using (var client = new HttpClient())
             {
                 var response = client.Send(request);
                 return response;
             }
-           
+
         }
     }
 }
