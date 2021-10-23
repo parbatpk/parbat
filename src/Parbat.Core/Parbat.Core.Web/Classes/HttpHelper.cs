@@ -19,127 +19,102 @@ namespace Parbat.Core.Web.Classes
         public static T Get<T>(string url)
         {
             url = HttpBase.GetUrl(url);
-            using (var client = new HttpClient())
-            {
-                var request = HttpBase.CreateGetMessage(url);
-                var response = client.Send(request);
+            var request = HttpBase.CreateGetMessage(url);
+            var response = Send(request);
+            Task<string> content = response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<T>(content.Result);
 
-                Task<string> content = response.Content.ReadAsStringAsync();
+            return data;
 
-                var data = JsonConvert.DeserializeObject<T>(content.Result);
-
-                return data;
-            }
         }
         public static string Get(string url)
         {
             url = HttpBase.GetUrl(url);
-            using (var client = new HttpClient())
-            {
-                var request = HttpBase.CreateGetMessage(url);
-                var response = client.Send(request);
-                string content = response.Content.ReadAsStringAsync().Result;
+            var request = HttpBase.CreateGetMessage(url);
+            var response = Send(request);
+            string content = response.Content.ReadAsStringAsync().Result;
 
+            return content;
 
-                return content;
-            }
         }
         public static T Post<T>(string url, object o)
         {
             url = HttpBase.GetUrl(url);
-            using (var client = new HttpClient())
-            {
-                {
-                    var rawdata = JsonSerializer.Serialize<object>(o);
-                    var msg = HttpBase.CreatePostMessage(url, rawdata);
-                    var response = client.Send(msg);
-                    string content = response.Content.ReadAsStringAsync().Result;
-                    var data = JsonConvert.DeserializeObject<T>(content);
 
-                    return data;
-                }
-            }
+            var rawdata = JsonSerializer.Serialize<object>(o);
+            var msg = HttpBase.CreatePostMessage(url, rawdata);
+            var response = Send(msg);
+            string content = response.Content.ReadAsStringAsync().Result;
+            var data = JsonConvert.DeserializeObject<T>(content);
+
+            return data;
 
         }
         public static string Post(string url, object o)
         {
             url = HttpBase.GetUrl(url);
-            using (var client = new HttpClient())
-            {
-                {
-                    var rawdata = JsonSerializer.Serialize<object>(o);
-                    var msg = HttpBase.CreatePostMessage(url, rawdata);
-                    var response = client.Send(msg);
-                    string content = response.Content.ReadAsStringAsync().Result;
 
-                    return content;
-                }
-            }
+            var rawdata = JsonSerializer.Serialize<object>(o);
+            var msg = HttpBase.CreatePostMessage(url, rawdata);
+            var response = Send(msg);
+            string content = response.Content.ReadAsStringAsync().Result;
 
+            return content;
         }
         public static T Put<T>(string url, object o)
         {
             url = HttpBase.GetUrl(url);
-            using (var client = new HttpClient())
-            {
-                {
-                    var rawdata = JsonSerializer.Serialize<object>(o);
-                    var msg = HttpBase.CreatePutMessage(url, rawdata);
-                    var response = client.Send(msg);
-                    string content = response.Content.ReadAsStringAsync().Result
-                    var data = JsonConvert.DeserializeObject<T>(content);
+            var rawdata = JsonSerializer.Serialize<object>(o);
+            var msg = HttpBase.CreatePutMessage(url, rawdata);
+            var response = Send(msg);
+            string content = response.Content.ReadAsStringAsync().Result;
+            var data = JsonConvert.DeserializeObject<T>(content);
 
-                    return data;
-                }
-            }
+            return data;
         }
         public static string Put(string url, object o)
         {
             url = HttpBase.GetUrl(url);
-            using (var client = new HttpClient())
-            {
-                {
-                    var rawdata = JsonSerializer.Serialize<object>(o);
-                    var msg = HttpBase.CreatePutMessage(url, rawdata);
-                    var response = client.Send(msg);
-                    string content = response.Content.ReadAsStringAsync().Result;
+            var rawdata = JsonSerializer.Serialize<object>(o);
+            var msg = HttpBase.CreatePutMessage(url, rawdata);
+            var response = Send(msg);
+            string content = response.Content.ReadAsStringAsync().Result;
 
-                    return content;
-                }
-            }
+            return content;
+
         }
         public static string Delete(string url, int id)
         {
-            url = HttpBase.GetUrl(url);
-            using (var client = new HttpClient())
-            {
-                url += id;
-                string result = Delete(url);
-                return result;
-            }
+            url += id;
+
+            return Delete(url);
         }
         public static string Delete(string url)
         {
             url = HttpBase.GetUrl(url);
-            using (var client = new HttpClient())
-            {
-                var request = HttpBase.CreateDeleteMessage(url);
-                var response = client.Send(request);
+            var request = HttpBase.CreateDeleteMessage(url);
+            var response = Send(request);
+            string content = response.Content.ReadAsStringAsync().Result;
 
-                string content = response.Content.ReadAsStringAsync().Result;
+            return content;
 
-                //var data = JsonConvert.DeserializeObject<T>(content.Result);
-
-                return content;
-            }
         }
-        public static HttpResponseMessage send(HttpRequestMessage request)
+
+        public static HttpResponseMessage Send(HttpRequestMessage request)
         {
 
             using (var client = new HttpClient())
             {
                 var response = client.Send(request);
-                return response;
+
+                if (response.StatusCode == HttpStatusCode.OK ||
+                    response.StatusCode == HttpStatusCode.Created ||
+                    response.StatusCode == HttpStatusCode.Accepted)
+                {
+                    return response;
+                }
+
+                throw new Exception(response.Content.ReadAsStringAsync().Result);
             }
 
         }

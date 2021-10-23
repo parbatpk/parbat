@@ -7,5 +7,9 @@ namespace Parbat.Core.Web.Classes
 {
     public class ServiceURL
     {
+        public struct CourseType
+        {
+            public const string List = "/CourseType/";
+        }
     }
 }
