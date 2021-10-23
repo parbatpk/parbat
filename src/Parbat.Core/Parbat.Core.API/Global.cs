@@ -10,11 +10,11 @@ namespace Parbat.Core.API
         /// Route Constant variable
         ///  API Version
         /// </summary>
-        public const string API_VER = "v1.1";
+        public const string API_VER = "v2.0";
 
         /// <summary>
         /// Default Route prefix
         /// </summary>
-        public const string API_CONTROLLER = "api/v1.1/[controller]";
+        public const string API_CONTROLLER = "api/v2.0/[controller]";
     }
 }
