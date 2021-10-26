@@ -4,6 +4,8 @@
     {
         ICourseRepository CourseRepository { get; }
 
+        IClassRepository ClassRepository { get; }
+
         ICourseTypeRepository CourseTypeRepository { get; }
       
         IComponentRepository ComponentRepository { get; }

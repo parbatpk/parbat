@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Parbat.Core.DataObjects
+namespace Parbat.Core.DataObjects.Models
 {
-    public class Class : IEntity
+    public partial class Class 
     {
+        
         public long ClassId { get; set; }
         public string ShortName { get; set; }
         public string Name { get; set; }
