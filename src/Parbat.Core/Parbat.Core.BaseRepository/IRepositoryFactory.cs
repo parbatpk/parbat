@@ -33,5 +33,7 @@
         IStudentStatusRepository StudentStatusRepository { get; }
 
         IClassRepository ClassRepository { get; }
+
+        IModuleAssessmentRepository ModuleAssessment { get; }
     }
 }
