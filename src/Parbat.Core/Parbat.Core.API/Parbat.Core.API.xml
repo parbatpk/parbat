@@ -378,6 +378,51 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Parbat.Core.API.Controllers.ModuleAssessmentController">
+            <summary>
+            ModuleAssessment controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.#ctor(Parbat.Core.Services.ModuleAssessmentService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.List">
+            <summary>
+            List all ModuleAssessment
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.Update(Parbat.Core.DataObjects.ModuleAssessment)">
+            <summary>
+            Update a ModuleAssessment
+            </summary>
+            <param name="moduleAssessment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.Create(Parbat.Core.DataObjects.ModuleAssessment)">
+            <summary>
+            Create 
+            </summary>
+            <param name="moduleAssessment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Parbat.Core.API.Controllers.OrgUnitController">
             <summary>
             orgunit controller
