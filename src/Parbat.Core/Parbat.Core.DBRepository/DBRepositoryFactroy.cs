@@ -21,7 +21,7 @@ namespace Parbat.Core.DBRepository
         IRegisterStatusRepository _registerStatusRepository;
         IStudentStatusRepository _studentStatusRepository;
         IClassRepository _classRepository;
-
+        IAssessmentCategoryRepository _assessmentCategoryRepository;
         public ICourseRepository CourseRepository
         {
             get
@@ -225,6 +225,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _classRepository;
+            }
+        }
+
+        public IAssessmentCategoryRepository AssessmentCategoryRepository 
+        {
+            get
+            {
+                if (_assessmentCategoryRepository == null)
+                {
+                    _assessmentCategoryRepository = new AssessmentCategoryRepository();
+                }
+
+                return _assessmentCategoryRepository;
             }
         }
     }
