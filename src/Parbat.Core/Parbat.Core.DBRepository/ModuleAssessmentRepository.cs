@@ -9,7 +9,7 @@ namespace Parbat.Core.DBRepository
 {
     public class ModuleAssessmentRepository : IModuleAssessmentRepository
     {
-        private IDatabase db;
+        readonly IDatabase db;
 
         public void Add(ModuleAssessment entity)
         {
