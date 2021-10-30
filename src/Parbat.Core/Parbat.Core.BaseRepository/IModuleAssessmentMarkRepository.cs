@@ -2,7 +2,7 @@
 
 namespace Parbat.Core.BaseRepository
 {
-    public interface IModuleAssessmentMarkRepository : IGenericRepository<ModuleAssessment>
+    public interface IModuleAssessmentMarkRepository : IGenericRepository<ModuleAssessmentMark>
     {
     }
 }
