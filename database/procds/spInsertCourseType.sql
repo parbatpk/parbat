@@ -16,5 +16,6 @@ CREATE PROCEDURE dbo.spInsertCourseType
 	@Name nvarchar(50)
 AS
 	INSERT into dbo.CourseType([Name]) values(@Name);
+	Select SCOPE_IDENTITY()
 GO
 
