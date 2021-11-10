@@ -7,22 +7,21 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindBatch' 
+     AND SPECIFIC_NAME = N'spFindComponent' 
 )
-   DROP PROCEDURE dbo.spFindBatch
+   DROP PROCEDURE dbo.spFindComponent
 GO
 
-CREATE PROCEDURE dbo.spFindBatch
-	@BatchID bigint
+CREATE PROCEDURE dbo.spFindComponent
+	@ComponentID bigint
 AS
 	SELECT Top 1 * 
-	from Batch
-	where BatchID = @BatchID
+	from Component
+	where ComponentID = @ComponentID
 	For json Auto, Without_Array_Wrapper;
 GO
-
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spFindBatch 1
+--EXECUTE dbo.spFindComponent 1, 2
 --GO

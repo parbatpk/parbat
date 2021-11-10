@@ -52,7 +52,7 @@ namespace Parbat.Core.DBRepository
         public Component GetById(long id)
         {
             DbCommand cmd = db.CreateSPCommand(Procds.Find);
-            db.AddParameter(cmd, Params.ComponentTypeID, id);
+            db.AddParameter(cmd, Params.ComponentID, id);
             string result = Convert.ToString(db.ExecuteScalar(cmd));
             Component found = DBHelper.Convert<Component>(result);
 
