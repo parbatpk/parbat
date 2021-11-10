@@ -15,11 +15,12 @@ GO
 CREATE PROCEDURE dbo.spFindStudentStatus
 	@StudentStatusID bigint
 AS
-	SELECT [Name] from StudentStatus where StudentStatusID = @StudentStatusID
+	Select top 1*from StudentStatus where StudentStatusID = @StudentStatusID
+	For json Auto, Without_Array_Wrapper;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spFindStudentStatus 5
-GO
+--EXECUTE dbo.spFindStudentStatus 5
+--GO

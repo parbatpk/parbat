@@ -34,7 +34,7 @@ namespace Parbat.Core.DBRepository
         public void Delete(Component entity)
         {
             DbCommand cmd = db.CreateSPCommand(Procds.Delete);
-            db.AddParameter(cmd, Params.ComponentTypeID, entity.ComponentID);
+            db.AddParameter(cmd, Params.ComponentID, entity.ComponentID);
             db.Execute(cmd);
         }
 
