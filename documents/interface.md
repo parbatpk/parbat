@@ -40,3 +40,9 @@
 - [GET] /Semester/\{TermID\}: List all semester for the given Term ID
 - [GET] /OrgUnit/{OrgUnitID}/Course: List all courses defined for the given or parent OrgUnitID
 
+  ### Term:Interface Flow
+    - On main screen we show all the terms. 
+
+    - After clicking on each term we show the offering page; on which there are number of courses listed. These courses are being offered in the term.
+
+    - Upon clicking add or remove, we add or remove the courses objects offered in each offering.
