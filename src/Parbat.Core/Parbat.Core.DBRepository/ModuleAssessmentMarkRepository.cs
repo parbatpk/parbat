@@ -12,6 +12,11 @@ namespace Parbat.Core.DBRepository
 
         private readonly IDatabase db;
 
+        public ModuleAssessmentMarkRepository()
+        {
+            db = Database.Instance;
+        }
+
         public void Add(ModuleAssessmentMark entity)
         {
             DbCommand cmd = db.CreateSPCommand(Procds.Insert);
