@@ -25,7 +25,7 @@ namespace Parbat.Core.DBRepository
             db.AddParameter(cmd, Params.StartDate, entity.StartDate);
             db.AddParameter(cmd, Params.EndDate, entity.EndDate);
 
-            entity.TermID = Convert.ToInt64(cmd.ExecuteScalar());
+            entity.TermID = Convert.ToInt64(db.ExecuteScalar(cmd));
         }
 
         public void Delete(Term entity)
@@ -58,7 +58,7 @@ namespace Parbat.Core.DBRepository
 
         public void Update(Term entity)
         {
-            DbCommand cmd = db.CreateSPCommand(Procds.Insert);
+            DbCommand cmd = db.CreateSPCommand(Procds.Update);
             db.AddParameter(cmd, Params.TermID, entity.TermID);
             db.AddParameter(cmd, Params.Name, entity.Name);
             db.AddParameter(cmd, Params.ShortName, entity.ShortName);

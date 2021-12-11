@@ -58,7 +58,7 @@ namespace Parbat.Core.Services
                 throw new ServiceException(Errors.NotExistsError);
             }
 
-            _factory.CurriculumTypeRepository.Update(found);
+            _factory.CurriculumTypeRepository.Update(service);
         }
     }
 }

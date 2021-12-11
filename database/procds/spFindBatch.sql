@@ -24,5 +24,5 @@ GO
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spFindBatch 1
-GO
+--EXECUTE dbo.spFindBatch 1
+--GO

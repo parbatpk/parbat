@@ -7,22 +7,21 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindStudent' 
+     AND SPECIFIC_NAME = N'spFindAssessmentCategory' 
 )
-   DROP PROCEDURE dbo.spFindStudent
+   DROP PROCEDURE dbo.spFindAssessmentCategory
 GO
 
-CREATE PROCEDURE dbo.spFindStudent
-	@StudentID bigint 
+CREATE PROCEDURE dbo.spFindAssessmentCategory
+	@AssessmentCategoryID bigint
 AS
-	Select top 1*
-	from Student 
-	where StudentID = @StudentID
+	SELECT * FROM AssessmentCategory
+	WHERE AssessmentCategoryID = @AssessmentCategoryID
 	For json Auto, Without_Array_Wrapper;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spFindStudent 1
+--EXECUTE dbo.spFindAssessmentCategory 1
 --GO

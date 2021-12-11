@@ -1,23 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using Parbat.Core.DataObjects;
 
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Register Status controller
+    /// AssessmentCategory controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class RegisterStatusController : Controller
+    public class AssessmentCategoryController : Controller
     {
-        RegisterStatusService _service;
+        private AssessmentCategoryService _service;
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="service">IRepositoryFactory</param>
-        public RegisterStatusController(RegisterStatusService service)
+        public AssessmentCategoryController(AssessmentCategoryService service)
         {
             _service = service;
         }
@@ -28,11 +28,11 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<RegisterStatus> Get(long id)
+        public ActionResult<AssessmentCategory> Get(long id)
         {
             try
             {
-                RegisterStatus found = _service.FindByID(id);
+                AssessmentCategory found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -43,7 +43,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all RegisterStatus
+        /// List all AssessmentCategory
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -51,8 +51,8 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var registerStatuses = _service.GetAll();
-                return Ok(registerStatuses);
+                var assessmentCategories = _service.GetAll();
+                return Ok(assessmentCategories);
             }
             catch (ServiceException se)
             {
@@ -61,16 +61,16 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Update a Term
+        /// Update a AssessmentCategory
         /// </summary>
-        /// <param name="r"></param>
+        /// <param name="assessmentCategory"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] RegisterStatus r)
+        public ActionResult Update([FromBody] AssessmentCategory assessmentCategory)
         {
             try
             {
-                _service.Update(r);
+                _service.Update(assessmentCategory);
                 return NoContent();
             }
             catch (ServiceException se)
@@ -82,20 +82,21 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Create 
         /// </summary>
-        /// <param name="r"></param>
+        /// <param name="assessmentCategory"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<RegisterStatus> Create([FromBody] RegisterStatus r)
+        public ActionResult<Batch> Create([FromBody] AssessmentCategory assessmentCategory)
         {
             try
             {
-                _service.Create(r);
-                return Created("Get", r);
+                _service.Create(assessmentCategory);
+                return Created("Get", assessmentCategory);
             }
             catch (ServiceException se)
             {
                 return BadRequest(se.Message);
             }
+
         }
 
         /// <summary>

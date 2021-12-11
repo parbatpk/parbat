@@ -34,7 +34,7 @@ namespace Parbat.Core.DBRepository
         public void Delete(Component entity)
         {
             DbCommand cmd = db.CreateSPCommand(Procds.Delete);
-            db.AddParameter(cmd, Params.ComponentTypeID, entity.ComponentID);
+            db.AddParameter(cmd, Params.ComponentID, entity.ComponentID);
             db.Execute(cmd);
         }
 
@@ -52,7 +52,7 @@ namespace Parbat.Core.DBRepository
         public Component GetById(long id)
         {
             DbCommand cmd = db.CreateSPCommand(Procds.Find);
-            db.AddParameter(cmd, Params.ComponentTypeID, id);
+            db.AddParameter(cmd, Params.ComponentID, id);
             string result = Convert.ToString(db.ExecuteScalar(cmd));
             Component found = DBHelper.Convert<Component>(result);
 

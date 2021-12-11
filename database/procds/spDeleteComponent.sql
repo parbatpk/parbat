@@ -7,22 +7,19 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spFindStudent' 
+     AND SPECIFIC_NAME = N'spDeleteComponent' 
 )
-   DROP PROCEDURE dbo.spFindStudent
+   DROP PROCEDURE dbo.spDeleteComponent
 GO
 
-CREATE PROCEDURE dbo.spFindStudent
-	@StudentID bigint 
+CREATE PROCEDURE dbo.spDeleteComponent
+	@ComponentID bigint
 AS
-	Select top 1*
-	from Student 
-	where StudentID = @StudentID
-	For json Auto, Without_Array_Wrapper;
+	Delete from Component
+	where ComponentID = @ComponentID
 GO
-
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
---EXECUTE dbo.spFindStudent 1
+--EXECUTE dbo.spDeleteComponent 1, 2
 --GO

@@ -16,6 +16,7 @@ CREATE PROCEDURE dbo.spInsertStudentStatus
 	@Name nvarchar(50)
 AS
 	INSERT into StudentStatus([Name]) values(@Name)
+	Select SCOPE_IDENTITY()
 GO
 
 -- =============================================

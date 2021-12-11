@@ -1,23 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
-    /// Register Status controller
+    /// ModuleAssessmentMark controller
     /// </summary>
     [Route(Global.API_CONTROLLER)]
     [ApiController]
-    public class RegisterStatusController : Controller
+    public class ModuleAssessmentMarkController : Controller
     {
-        RegisterStatusService _service;
+        private ModuleAssessmentMarkService _service;
 
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="service">IRepositoryFactory</param>
-        public RegisterStatusController(RegisterStatusService service)
+        public ModuleAssessmentMarkController(ModuleAssessmentMarkService service)
         {
             _service = service;
         }
@@ -28,11 +32,11 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<RegisterStatus> Get(long id)
+        public ActionResult<ModuleAssessmentMark> Get(long id)
         {
             try
             {
-                RegisterStatus found = _service.FindByID(id);
+                ModuleAssessmentMark found = _service.FindByID(id);
 
                 return Ok(found);
             }
@@ -43,7 +47,7 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// List all RegisterStatus
+        /// List all ModuleAssessmentMark
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -51,8 +55,8 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var registerStatuses = _service.GetAll();
-                return Ok(registerStatuses);
+                var moduleAssessmentMarks = _service.GetAll();
+                return Ok(moduleAssessmentMarks);
             }
             catch (ServiceException se)
             {
@@ -61,16 +65,16 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Update a Term
+        /// Update a moduleAssessmentMarks
         /// </summary>
-        /// <param name="r"></param>
+        /// <param name="moduleAssessmentMark"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult Update([FromBody] RegisterStatus r)
+        public ActionResult Update([FromBody] ModuleAssessmentMark moduleAssessmentMark)
         {
             try
             {
-                _service.Update(r);
+                _service.Update(moduleAssessmentMark);
                 return NoContent();
             }
             catch (ServiceException se)
@@ -82,20 +86,21 @@ namespace Parbat.Core.API.Controllers
         /// <summary>
         /// Create 
         /// </summary>
-        /// <param name="r"></param>
+        /// <param name="moduleAssessmentMark"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<RegisterStatus> Create([FromBody] RegisterStatus r)
+        public ActionResult<ModuleAssessmentMark> Create([FromBody] ModuleAssessmentMark moduleAssessmentMark)
         {
             try
             {
-                _service.Create(r);
-                return Created("Get", r);
+                _service.Create(moduleAssessmentMark);
+                return Created("Get", moduleAssessmentMark);
             }
             catch (ServiceException se)
             {
                 return BadRequest(se.Message);
             }
+
         }
 
         /// <summary>
