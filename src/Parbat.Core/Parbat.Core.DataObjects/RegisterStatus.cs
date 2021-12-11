@@ -7,33 +7,22 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary key
         /// </summary>
-        public long? RegisterStatusID;
-       
+        public long? RegisterStatusID { get; set; }
+
         /// <summary>
         /// ShortName
         /// </summary>
         [Required]
-        public string ShortName;
+        public string ShortName { get; set; }
 
         /// <summary>
         /// return the current instance RegisterStatusID
         /// </summary>
-        //public long Key => this.RegisterStatusID.Value;
-        public long Key {
-            get {
-                if (this.RegisterStatusID.Value > 0) 
-                {
-                    return this.RegisterStatusID.Value; 
-                }
-                else
-                {
-                    return -1;
-                }
-            }
-        }
+        public long Key => this.RegisterStatusID.Value;
+
         public void Copy(IEntity entity)
         {
-            Helper.Copy(typeof(RegisterStatus), this, entity);
+            Helper.Copy<RegisterStatus>(this, entity);
         }
     }
 }
