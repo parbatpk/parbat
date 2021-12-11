@@ -25,7 +25,7 @@ namespace Parbat.Core.DBRepository
             db.AddParameter(cmd, Params.ParentUnitID, entity.ParentUnitID);
             db.AddParameter(cmd, Params.IsAllowAdmission, entity.IsAllowAdmission);
 
-            entity.OrgUnitID = Convert.ToInt64(cmd.ExecuteScalar());
+            entity.OrgUnitID = Convert.ToInt64(db.ExecuteScalar(cmd));
         }
 
         public void Delete(OrgUnit entity)
@@ -68,7 +68,7 @@ namespace Parbat.Core.DBRepository
 
         public void Update(OrgUnit entity)
         {
-            DbCommand cmd = db.CreateSPCommand(Procds.Insert);
+            DbCommand cmd = db.CreateSPCommand(Procds.Update);
             db.AddParameter(cmd, Params.OrgUnitID, entity.OrgUnitID);
             db.AddParameter(cmd, Params.Name, entity.Name);
             db.AddParameter(cmd, Params.OrgUnitTypeID, entity.OrgUnitTypeID);
