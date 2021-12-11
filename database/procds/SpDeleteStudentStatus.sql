@@ -7,12 +7,12 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'spDeleteStudent' 
+     AND SPECIFIC_NAME = N'spDeleteStudentStatus' 
 )
-   DROP PROCEDURE dbo.spDeleteStudent
+   DROP PROCEDURE dbo.spDeleteStudentStatus
 GO
 
-CREATE PROCEDURE dbo.spDeleteStudent
+CREATE PROCEDURE dbo.spDeleteStudentStatus
 	@StudentStatusID bigint 
 AS
 	DELETE from StudentStatus where StudentStatusID = @StudentStatusID
@@ -21,5 +21,5 @@ GO
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spDeleteStudent 6
-GO
+--EXECUTE dbo.spDeleteStudent 6
+--GO

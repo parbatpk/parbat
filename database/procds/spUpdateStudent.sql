@@ -18,14 +18,14 @@ CREATE PROCEDURE dbo.spUpdateStudent
 	@FirstName nvarchar(50),
 	@LastName nvarchar(50)
 AS
-	UPDATE Student SET Identifier = @Identifier, [Name] = @FirstName, LastName = @LastName
+	UPDATE Student SET Identifier = @Identifier, FirstName = @FirstName, LastName = @LastName
 	where StudentID = @StudentID
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spUpdateStudent 3,'17b-50-cs','Ahsan','Khan' 
-GO
+--EXECUTE dbo.spUpdateStudent 3,'17b-50-cs','Ahsan','Khan' 
+--GO
 
 

@@ -4,6 +4,51 @@
         <name>Parbat.Core.API</name>
     </assembly>
     <members>
+        <member name="T:Parbat.Core.API.Controllers.AssessmentCategoryController">
+            <summary>
+            AssessmentCategory controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.AssessmentCategoryController.#ctor(Parbat.Core.Services.AssessmentCategoryService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.AssessmentCategoryController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.AssessmentCategoryController.List">
+            <summary>
+            List all AssessmentCategory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.AssessmentCategoryController.Update(Parbat.Core.DataObjects.AssessmentCategory)">
+            <summary>
+            Update a AssessmentCategory
+            </summary>
+            <param name="assessmentCategory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.AssessmentCategoryController.Create(Parbat.Core.DataObjects.AssessmentCategory)">
+            <summary>
+            Create 
+            </summary>
+            <param name="assessmentCategory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.AssessmentCategoryController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Parbat.Core.API.Controllers.BatchController">
             <summary>
             Batch controller
@@ -372,6 +417,96 @@
             <returns></returns>
         </member>
         <member name="M:Parbat.Core.API.Controllers.CurriculumTypeController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.ModuleAssessmentController">
+            <summary>
+            ModuleAssessment controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.#ctor(Parbat.Core.Services.ModuleAssessmentService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.List">
+            <summary>
+            List all ModuleAssessment
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.Update(Parbat.Core.DataObjects.ModuleAssessment)">
+            <summary>
+            Update a ModuleAssessment
+            </summary>
+            <param name="moduleAssessment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.Create(Parbat.Core.DataObjects.ModuleAssessment)">
+            <summary>
+            Create 
+            </summary>
+            <param name="moduleAssessment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.ModuleAssessmentMarkController">
+            <summary>
+            ModuleAssessmentMark controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentMarkController.#ctor(Parbat.Core.Services.ModuleAssessmentMarkService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentMarkController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentMarkController.List">
+            <summary>
+            List all ModuleAssessmentMark
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentMarkController.Update(Parbat.Core.DataObjects.ModuleAssessmentMark)">
+            <summary>
+            Update a moduleAssessmentMarks
+            </summary>
+            <param name="moduleAssessmentMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentMarkController.Create(Parbat.Core.DataObjects.ModuleAssessmentMark)">
+            <summary>
+            Create 
+            </summary>
+            <param name="moduleAssessmentMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentMarkController.Delete(System.Int64)">
             <summary>
             Delete
             </summary>

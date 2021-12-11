@@ -23,6 +23,7 @@ AS
 	Insert into Term 
 	(ShortName,[Name],StartDate,EndDate,IsActive) 
 	values (@ShortName,@Name,@StartDate,@EndDate,@IsActive)
+	Select SCOPE_IDENTITY()
 GO
 
 -- =============================================

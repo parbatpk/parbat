@@ -53,7 +53,7 @@ namespace Parbat.Core.DBRepository
 
         public void Update(CurriculumType entity)
         {
-            DbCommand cmd = db.CreateSPCommand(Procds.Insert);
+            DbCommand cmd = db.CreateSPCommand(Procds.Update);
             db.AddParameter(cmd, Params.CurriculumTypeID, entity.CurriculumTypeID);
             db.AddParameter(cmd, Params.Name, entity.Name);
             db.Execute(cmd);
