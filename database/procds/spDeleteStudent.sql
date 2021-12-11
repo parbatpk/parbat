@@ -21,5 +21,5 @@ GO
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spDeleteStudent 3
-GO
+--EXECUTE dbo.spDeleteStudent 3
+--GO
