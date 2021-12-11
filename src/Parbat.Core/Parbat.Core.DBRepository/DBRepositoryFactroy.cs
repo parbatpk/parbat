@@ -242,8 +242,6 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _moduleAssessmentRepository;
-            }
-        }
 
         public IModuleAssessmentMarkRepository ModuleAssessmentMark
         {
@@ -255,8 +253,6 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _moduleAssessmentMarkRepository;
-            }
-        }
 
         public IAssessmentCategoryRepository AssessmentCategoryRepository 
         {
