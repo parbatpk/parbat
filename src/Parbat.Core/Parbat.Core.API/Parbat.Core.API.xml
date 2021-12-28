@@ -94,6 +94,51 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Parbat.Core.API.Controllers.ClassMappingController">
+            <summary>
+            Class Mapping controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.#ctor(Parbat.Core.Services.ClassMappingService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.List">
+            <summary>
+            List all ClassMapping
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Update(Parbat.Core.DataObjects.Models.ClassMapping)">
+            <summary>
+            Update a ClassMapping
+            </summary>
+            <param name="cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Create(Parbat.Core.DataObjects.Models.ClassMapping)">
+            <summary>
+            Create 
+            </summary>
+            <param name="cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Parbat.Core.API.Controllers.ComponentController">
             <summary>
             

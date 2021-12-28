@@ -21,6 +21,7 @@ namespace Parbat.Core.DBRepository
         IRegisterStatusRepository _registerStatusRepository;
         IStudentStatusRepository _studentStatusRepository;
         IClassRepository _classRepository;
+        IClassMappingRepository _classMappingRepository;
         IModuleAssessmentRepository _moduleAssessmentRepository;
         IModuleAssessmentMarkRepository _moduleAssessmentMarkRepository;
         IAssessmentCategoryRepository _assessmentCategoryRepository;
@@ -268,8 +269,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _assessmentCategoryRepository;
+            }
+        }
 
+        public IClassMappingRepository ClassMappingRepository
+        {
+            get
+            {
+                if (_classMappingRepository == null)
+                {
+                    _classMappingRepository = new ClassMappingRepository();
+                }
 
+                return _classMappingRepository;
             }
         }
     }
