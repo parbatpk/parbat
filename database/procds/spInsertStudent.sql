@@ -17,7 +17,8 @@ CREATE PROCEDURE dbo.spInsertStudent
 	@FirstName nvarchar(50),
 	@LastName nvarchar(50)
 AS
-	Insert into Student (Identifier, [Name], LastName) values(@Identifier, @FirstName, @LastName)
+	Insert into Student (Identifier, FirstName, LastName) values(@Identifier, @FirstName, @LastName)
+	Select SCOPE_IDENTITY()
 GO
 
 -- =============================================

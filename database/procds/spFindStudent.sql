@@ -15,11 +15,14 @@ GO
 CREATE PROCEDURE dbo.spFindStudent
 	@StudentID bigint 
 AS
-	SELECT Identifier, [Name], lastName from Student where StudentID = @StudentID
+	Select top 1*
+	from Student 
+	where StudentID = @StudentID
+	For json Auto, Without_Array_Wrapper;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spFindStudent 1
-GO
+--EXECUTE dbo.spFindStudent 1
+--GO

@@ -23,7 +23,7 @@ namespace Parbat.Core.DBRepository
             db.AddParameter(cmd, Params.FirstName, entity.FirstName);
             db.AddParameter(cmd, Params.LastName, entity.LastName);
 
-            entity.StudentID = Convert.ToInt64(cmd.ExecuteScalar());
+            entity.StudentID = Convert.ToInt64(db.ExecuteScalar(cmd));
         }
 
         public void Delete(Student entity)
@@ -56,7 +56,7 @@ namespace Parbat.Core.DBRepository
 
         public void Update(Student entity)
         {
-            DbCommand cmd = db.CreateSPCommand(Procds.Insert);
+            DbCommand cmd = db.CreateSPCommand(Procds.Update);
             db.AddParameter(cmd, Params.StudentID, entity.StudentID);
             db.AddParameter(cmd, Params.Identifier, entity.Identifier);
             db.AddParameter(cmd, Params.FirstName, entity.FirstName);

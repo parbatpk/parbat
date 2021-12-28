@@ -50,7 +50,7 @@ namespace Parbat.Core.Services
                 throw new ServiceException(Errors.NotExistsError);
             }
 
-            var found = _factory.CourseRepository.GetById(service.ComponentID.Value);
+            var found = _factory.ComponentRepository.GetById(service.ComponentID.Value);
 
             if (found == null)
             {

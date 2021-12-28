@@ -11,7 +11,7 @@ namespace Parbat.Core.API.Controllers
     [ApiController]
     public class RegisterStatusController : Controller
     {
-        private RegisterStatusService _service;
+        RegisterStatusService _service;
 
         /// <summary>
         /// Constructor 

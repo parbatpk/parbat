@@ -21,6 +21,9 @@ namespace Parbat.Core.DBRepository
         IRegisterStatusRepository _registerStatusRepository;
         IStudentStatusRepository _studentStatusRepository;
         IClassRepository _classRepository;
+        IModuleAssessmentRepository _moduleAssessmentRepository;
+        IModuleAssessmentMarkRepository _moduleAssessmentMarkRepository;
+        IAssessmentCategoryRepository _assessmentCategoryRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -37,7 +40,7 @@ namespace Parbat.Core.DBRepository
         {
             get
             {
-                if(_courseTypeRepository == null)
+                if (_courseTypeRepository == null)
                 {
                     _courseTypeRepository = new CourseTypeRepository();
                 }
@@ -50,7 +53,7 @@ namespace Parbat.Core.DBRepository
         {
             get
             {
-                if(_componentRepository == null)
+                if (_componentRepository == null)
                 {
                     _componentRepository = new ComponentRepository();
                 }
@@ -76,9 +79,9 @@ namespace Parbat.Core.DBRepository
         {
             get
             {
-                if(_curriculumRepository == null)
+                if (_curriculumRepository == null)
                 {
-                    _curriculumRepository = new CurriculumRepository(); 
+                    _curriculumRepository = new CurriculumRepository();
                 }
 
                 return _curriculumRepository;
@@ -102,7 +105,7 @@ namespace Parbat.Core.DBRepository
         {
             get
             {
-                if(_curriculumTypeRepository == null)
+                if (_curriculumTypeRepository == null)
                 {
                     _curriculumTypeRepository = new CurriculumTypeRepository();
                 }
@@ -115,7 +118,7 @@ namespace Parbat.Core.DBRepository
         {
             get
             {
-                if(_batchRepository == null)
+                if (_batchRepository == null)
                 {
                     _batchRepository = new BatchRepository();
                 }
@@ -128,7 +131,7 @@ namespace Parbat.Core.DBRepository
         {
             get
             {
-                if(_orgUnitRepository == null)
+                if (_orgUnitRepository == null)
                 {
                     _orgUnitRepository = new OrgUnitRepository();
                 }
@@ -154,7 +157,7 @@ namespace Parbat.Core.DBRepository
         {
             get
             {
-                if(_termRepository == null)
+                if (_termRepository == null)
                 {
                     _termRepository = new TermRepository();
                 }
@@ -180,7 +183,7 @@ namespace Parbat.Core.DBRepository
         {
             get
             {
-                if(_studentRepository == null)
+                if (_studentRepository == null)
                 {
                     _studentRepository = new StudentRepository();
                 }
@@ -225,6 +228,48 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _classRepository;
+            }
+        }
+
+
+        public IModuleAssessmentRepository ModuleAssessment
+        {
+            get
+            {
+                if (_moduleAssessmentRepository == null)
+                {
+                    _moduleAssessmentRepository = new ModuleAssessmentRepository();
+                }
+
+                return _moduleAssessmentRepository;
+            }
+        }
+
+        public IModuleAssessmentMarkRepository ModuleAssessmentMark
+        {
+            get
+            {
+                if (_moduleAssessmentMarkRepository == null)
+                {
+                    _moduleAssessmentMarkRepository = new ModuleAssessmentMarkRepository();
+                }
+
+                return _moduleAssessmentMarkRepository;
+            }
+        }
+
+        public IAssessmentCategoryRepository AssessmentCategoryRepository 
+        {
+            get
+            {
+                if (_assessmentCategoryRepository == null)
+                {
+                    _assessmentCategoryRepository = new AssessmentCategoryRepository();
+                }
+
+                return _assessmentCategoryRepository;
+
+
             }
         }
     }

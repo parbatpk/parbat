@@ -21,7 +21,7 @@ namespace Parbat.Core.DBRepository
             DbCommand cmd = db.CreateSPCommand(Procds.Insert);
             db.AddParameter(cmd, Params.ShortName, entity.ShortName);
 
-            entity.RegisterStatusID = Convert.ToInt64(cmd.ExecuteScalar());
+            entity.RegisterStatusID = Convert.ToInt64(db.ExecuteScalar(cmd));
         }
 
         public void Delete(RegisterStatus entity)
