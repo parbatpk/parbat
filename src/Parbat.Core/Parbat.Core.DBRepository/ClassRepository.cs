@@ -13,6 +13,7 @@ namespace Parbat.Core.DBRepository
 
         public ClassRepository()
         {
+
             db = Database.Instance;
         }
 
