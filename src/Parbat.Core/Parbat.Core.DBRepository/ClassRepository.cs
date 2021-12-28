@@ -1,11 +1,12 @@
 ﻿using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects.Models;
 using Parbat.Data;
+using System;
 using System.Collections.Generic;
+using System.Data.Common;
 
 namespace Parbat.Core.DBRepository
 {
-    //internee needs to implement core functionality of this class
     internal class ClassRepository : IClassRepository
     {
         IDatabase db;
@@ -17,27 +18,70 @@ namespace Parbat.Core.DBRepository
 
         public void Add(Class entity)
         {
-            throw new System.NotImplementedException();
+            DbCommand cmd = db.CreateSPCommand(Procds.Insert);
+            db.AddParameter(cmd, Params.Name, entity.Name);
+            db.AddParameter(cmd, Params.ShortName, entity.ShortName);
+            db.AddParameter(cmd, Params.Capacity, entity.Capacity);
+
+            entity.ClassID = Convert.ToInt64(db.ExecuteScalar(cmd));
+
         }
 
         public void Delete(Class entity)
         {
-            throw new System.NotImplementedException();
+            DbCommand cmd = db.CreateSPCommand(Procds.Delete);
+            db.AddParameter(cmd, Params.ClassID, entity.ClassID);
+            db.Execute(cmd);
+
         }
 
         public IEnumerable<Class> GetAll()
         {
-            throw new System.NotImplementedException();
+            List<Class> classes = new();
+
+            DbCommand cmd = db.CreateSPCommand(Procds.GetAll);
+            var result = Convert.ToString(db.ExecuteScalar(cmd));
+            classes = DBHelper.Convert<List<Class>>(result);
+
+            return classes;
         }
 
         public Class GetById(long id)
         {
-            throw new System.NotImplementedException();
+            DbCommand cmd = db.CreateSPCommand(Procds.Find);
+            db.AddParameter(cmd, Params.ClassID, id);
+            string result = Convert.ToString(db.ExecuteScalar(cmd));
+            Class found = DBHelper.Convert<Class>(result);
+
+            return found;
         }
 
         public void Update(Class entity)
         {
-            throw new System.NotImplementedException();
+            DbCommand cmd = db.CreateSPCommand(Procds.Update);
+            db.AddParameter(cmd, Params.ClassID, entity.ClassID);
+            db.AddParameter(cmd, Params.ShortName, entity.ShortName);
+            db.AddParameter(cmd, Params.Name, entity.Name);
+            db.AddParameter(cmd, Params.Capacity, entity.Capacity);
+          
+            db.Execute(cmd);
+        }
+
+        private struct Procds
+        {
+            public const string Insert = "spInsertClass";
+            public const string Update = "spUpdateClass";
+            public const string Delete = "spDeleteClass";
+            public const string Find = "spFindClass";
+            public const string GetAll = "spGetAllClass";
+        }
+
+        private struct Params
+        {
+            public const string ClassID = "@ClassID";
+            public const string ShortName = "@ShortName";
+            public const string Name = "@Name";
+            public const string Capacity = "@Capacity";
         }
     }
 }
