@@ -47,5 +47,7 @@
         IFacultyRepository FacultyRepository { get; }
 
         IOfferingRepository OfferingRepository { get; }
+
+        IRegistrationRepository RegistrationRepository { get; }
     }
 }

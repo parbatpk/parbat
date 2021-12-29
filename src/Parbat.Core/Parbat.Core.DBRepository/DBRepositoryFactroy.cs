@@ -28,6 +28,8 @@ namespace Parbat.Core.DBRepository
         IAssessmentCategoryRepository _assessmentCategoryRepository;
         IFacultyRepository _facultyRepository;
         IOfferingRepository _offeringRepository;
+        IRegistrationRepository _registrationRepository;
+
         public ICourseRepository CourseRepository
         {
             get
@@ -323,6 +325,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _offeringRepository;
+            }
+        }
+
+        public IRegistrationRepository RegistrationRepository
+        {
+            get
+            {
+                if(_registrationRepository == null)
+                {
+                    _registrationRepository = new RegistrationRepository();
+                }
+
+                return _registrationRepository;
             }
         }
     }
