@@ -25,6 +25,7 @@ namespace Parbat.Core.DBRepository
         IModuleAssessmentRepository _moduleAssessmentRepository;
         IModuleAssessmentMarkRepository _moduleAssessmentMarkRepository;
         IAssessmentCategoryRepository _assessmentCategoryRepository;
+        IFacultyRepository _facultyRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -282,6 +283,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _classMappingRepository;
+            }
+        }
+
+        public IFacultyRepository FacultyRepository
+        {
+            get
+            {
+                if(_facultyRepository == null)
+                {
+                    _facultyRepository = new FacultyRepository();
+                }
+
+                return _facultyRepository;
             }
         }
     }

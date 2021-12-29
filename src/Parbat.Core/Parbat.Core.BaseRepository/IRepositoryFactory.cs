@@ -42,5 +42,6 @@
 
         IAssessmentCategoryRepository AssessmentCategoryRepository { get; }
 
+        IFacultyRepository FacultyRepository { get; }
     }
 }
