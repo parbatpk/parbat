@@ -43,5 +43,7 @@
         IModuleAssessmentMarkRepository ModuleAssessmentMark { get; }
 
         IAssessmentCategoryRepository AssessmentCategoryRepository { get; }
+
+        IFacultyRepository FacultyRepository { get; }
     }
 }
