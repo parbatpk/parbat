@@ -872,6 +872,51 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Parbat.Core.API.Controllers.RegistrationController">
+            <summary>
+            Registration controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.RegistrationController.#ctor(Parbat.Core.Services.RegistrationService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.RegistrationController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.RegistrationController.List">
+            <summary>
+            List all registrations
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.RegistrationController.Update(Parbat.Core.DataObjects.Registration)">
+            <summary>
+            Update a Registration
+            </summary>
+            <param name="r"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.RegistrationController.Create(Parbat.Core.DataObjects.Registration)">
+            <summary>
+            Create 
+            </summary>
+            <param name="r"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.RegistrationController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Parbat.Core.API.Controllers.StudentController">
             <summary>
             Student controller
