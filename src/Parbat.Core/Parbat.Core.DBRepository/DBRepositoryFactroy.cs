@@ -27,7 +27,7 @@ namespace Parbat.Core.DBRepository
         IModuleAssessmentMarkRepository _moduleAssessmentMarkRepository;
         IAssessmentCategoryRepository _assessmentCategoryRepository;
         IFacultyRepository _facultyRepository;
-
+        IOfferingRepository _offeringRepository;
         public ICourseRepository CourseRepository
         {
             get
@@ -310,6 +310,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _classModuleRepository;
+            }
+        }
+
+        public IOfferingRepository OfferingRepository
+        {
+            get
+            {
+                if(_offeringRepository == null)
+                {
+                    _offeringRepository = new OfferingRepository();
+                }
+
+                return _offeringRepository;
             }
         }
     }

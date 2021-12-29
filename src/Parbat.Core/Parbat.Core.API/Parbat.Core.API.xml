@@ -112,6 +112,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Parbat.Core.API.Controllers.ClassController.List">
             <summary>
             Get All Classes
             </summary>
@@ -133,52 +134,6 @@
         <member name="M:Parbat.Core.API.Controllers.ClassController.Delete(System.Int64)">
             <summary>
             Delete the Class
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Parbat.Core.API.Controllers.ClassMappingController">
-            <summary>
-            Class Mapping controller
-            </summary>
-        </member>
-        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.#ctor(Parbat.Core.Services.ClassMappingService)">
-            <summary>
-            Constructor 
-            </summary>
-            <param name="service">IRepositoryFactory</param>
-        </member>
-        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Get(System.Int64)">
-            <summary>
-            Get a record
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.List">
-
-            <summary>
-            Get All Classes
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Parbat.Core.API.Controllers.ClassController.Update(Parbat.Core.DataObjects.Models.Class)">
-            <summary>
-            Update the specific object 
-            </summary>
-            <param name="c"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Parbat.Core.API.Controllers.ClassController.Create(Parbat.Core.DataObjects.Models.Class)">
-            <summary>
-            Create the new Class
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Parbat.Core.API.Controllers.ClassController.Delete(System.Int64)">
-            <summary>
-            Delete the Class
-            Delete
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -210,6 +165,24 @@
         <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Update(Parbat.Core.DataObjects.Models.ClassMapping)">
             <summary>
             Update a ClassMapping
+            </summary>
+            <param name="cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Create(Parbat.Core.DataObjects.Models.ClassMapping)">
+            <summary>
+            Create 
+            </summary>
+            <param name="cm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Parbat.Core.API.Controllers.ClassModuleController">
             <summary>
             Class Module controller
@@ -241,7 +214,6 @@
             <param name="cm"></param>
             <returns></returns>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Create(Parbat.Core.DataObjects.Models.ClassMapping)">
         <member name="M:Parbat.Core.API.Controllers.ClassModuleController.Create(Parbat.Core.DataObjects.Models.ClassModule)">
             <summary>
             Create 
@@ -249,7 +221,6 @@
             <param name="cm"></param>
             <returns></returns>
         </member>
-        <member name="M:Parbat.Core.API.Controllers.ClassMappingController.Delete(System.Int64)">
         <member name="M:Parbat.Core.API.Controllers.ClassModuleController.Delete(System.Int64)">
             <summary>
             Delete
@@ -715,6 +686,51 @@
             <returns></returns>
         </member>
         <member name="M:Parbat.Core.API.Controllers.ModuleAssessmentMarkController.Delete(System.Int64)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Controllers.OfferingController">
+            <summary>
+            Batch controller
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OfferingController.#ctor(Parbat.Core.Services.OfferingService)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="service">IRepositoryFactory</param>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OfferingController.Get(System.Int64)">
+            <summary>
+            Get a record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OfferingController.List">
+            <summary>
+            List all Offering
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OfferingController.Update(Parbat.Core.DataObjects.Offering)">
+            <summary>
+            Update a offering
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OfferingController.Create(Parbat.Core.DataObjects.Offering)">
+            <summary>
+            Create 
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.OfferingController.Delete(System.Int64)">
             <summary>
             Delete
             </summary>
