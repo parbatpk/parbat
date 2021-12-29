@@ -36,6 +36,8 @@
 
         IClassMappingRepository ClassMappingRepository { get; }
 
+        IClassModuleRepository ClassModuleRepository { get; }
+
         IModuleAssessmentRepository ModuleAssessment { get; }
 
         IModuleAssessmentMarkRepository ModuleAssessmentMark { get; }
