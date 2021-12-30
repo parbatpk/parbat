@@ -30,6 +30,7 @@ namespace Parbat.Core.DBRepository
         IOfferingRepository _offeringRepository;
         IRegistrationRepository _registrationRepository;
         ISemesterRepository _semesterRepository;
+        IStudentProgramRepository _studentProgramRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -352,6 +353,19 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _semesterRepository;
+            }
+        }
+
+        public IStudentProgramRepository StudentProgramRepository
+        {
+            get
+            {
+                if(_studentProgramRepository == null)
+                {
+                    _studentProgramRepository = new StudentProgramRepository();
+                }
+
+                return _studentProgramRepository;
             }
         }
     }

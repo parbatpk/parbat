@@ -51,5 +51,7 @@
         IRegistrationRepository RegistrationRepository { get; }
 
         ISemesterRepository SemesterRepository { get; }
+
+        IStudentProgramRepository StudentProgramRepository { get; }
     }
 }
