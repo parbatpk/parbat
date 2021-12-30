@@ -10,6 +10,12 @@ namespace Parbat.Core.DBRepository
     public class AssessmentCategoryRepository : IAssessmentCategoryRepository
     {
         private readonly IDatabase db;
+
+        public AssessmentCategoryRepository()
+        {
+            db = Database.Instance;
+        }
+
         public void Add(AssessmentCategory entity)
         {
             DbCommand cmd = db.CreateSPCommand(Procds.Insert);
