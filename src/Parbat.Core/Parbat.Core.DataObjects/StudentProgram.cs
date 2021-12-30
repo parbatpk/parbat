@@ -8,7 +8,7 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary key
         /// </summary>
-        public long StudentProgramID { get; set; }
+        public long? StudentProgramID { get; set; }
 
         /// <summary>
         /// Forign Key
@@ -55,7 +55,7 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// get the current instance StudentProgramID
         /// </summary>
-        public long Key => throw new NotImplementedException();
+        public long Key => this.StudentProgramID.Value;
 
         public void Copy(IEntity entity)
         {
