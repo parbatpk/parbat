@@ -49,5 +49,7 @@
         IOfferingRepository OfferingRepository { get; }
 
         IRegistrationRepository RegistrationRepository { get; }
+
+        ISemesterRepository SemesterRepository { get; }
     }
 }
