@@ -8,7 +8,7 @@ namespace Parbat.Core.DataObjects.Models
         /// Primary key
         /// </summary>
         [Required]
-        public long ClassID { get; set; }
+        public long? ClassID { get; set; }
         
         /// <summary>
         /// ShortName
@@ -31,7 +31,7 @@ namespace Parbat.Core.DataObjects.Models
         /// <summary>
         /// get the current instance ClassID
         /// </summary>
-        public long Key => this.ClassID;
+        public long Key => this.ClassID.Value;
 
         public void Copy(IEntity entity)
         {

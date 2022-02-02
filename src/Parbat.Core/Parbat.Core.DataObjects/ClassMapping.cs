@@ -7,7 +7,7 @@ namespace Parbat.Core.DataObjects.Models
         /// <summary>
         /// Primary key
         /// </summary>
-        public long ClassMappingID { get; set; }
+        public long? ClassMappingID { get; set; }
 
         /// <summary>
         /// Forign Key
@@ -24,7 +24,7 @@ namespace Parbat.Core.DataObjects.Models
         /// <summary>
         /// get the current instance ClassMappingID 
         /// </summary>
-        public long Key => this.ClassMappingID;
+        public long Key => this.ClassMappingID.Value;
 
         public void Copy(IEntity entity)
         {

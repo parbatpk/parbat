@@ -7,7 +7,7 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary Key
         /// </summary>
-        public long SemesterID { get; set; }
+        public long? SemesterID { get; set; }
         
         /// <summary>
         /// ShortName
@@ -36,7 +36,7 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// get the current instance SemesterID
         /// </summary>
-        public long Key => this.SemesterID;
+        public long Key => this.SemesterID.Value;
 
         public void Copy(IEntity entity)
         {

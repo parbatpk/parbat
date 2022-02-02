@@ -34,6 +34,9 @@
 
         IClassRepository ClassRepository { get; }
 
+        IClassMappingRepository ClassMappingRepository { get; }
+
+        IClassModuleRepository ClassModuleRepository { get; }
 
         IModuleAssessmentRepository ModuleAssessment { get; }
 
@@ -41,5 +44,14 @@
 
         IAssessmentCategoryRepository AssessmentCategoryRepository { get; }
 
+        IFacultyRepository FacultyRepository { get; }
+
+        IOfferingRepository OfferingRepository { get; }
+
+        IRegistrationRepository RegistrationRepository { get; }
+
+        ISemesterRepository SemesterRepository { get; }
+
+        IStudentProgramRepository StudentProgramRepository { get; }
     }
 }
