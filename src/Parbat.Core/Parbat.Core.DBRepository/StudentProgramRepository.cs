@@ -61,7 +61,7 @@ namespace Parbat.Core.DBRepository
 
         public void Update(StudentProgram entity)
         {
-            DbCommand cmd = db.CreateSPCommand(Procds.Insert);
+            DbCommand cmd = db.CreateSPCommand(Procds.Update);
             db.AddParameter(cmd, Params.StudentProgramID, entity.StudentProgramID);
             db.AddParameter(cmd, Params.StudentID, entity.StudentID);
             db.AddParameter(cmd, Params.BatchID, entity.BatchID);
