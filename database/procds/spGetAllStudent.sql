@@ -14,11 +14,11 @@ GO
 
 CREATE PROCEDURE dbo.spGetAllStudent
 AS
-	SELECT *from Student FOR JSON Auto;
+	Select * from Student for json auto;
 GO
 
 -- =============================================
 -- Example to execute the stored procedure
 -- =============================================
-EXECUTE dbo.spGetAllStudent 
-GO
+--EXECUTE dbo.spGetAllStudent 
+--GO

@@ -15,10 +15,11 @@ GO
 CREATE PROCEDURE dbo.spUpdateStudent
 	@StudentID bigint, 
 	@Identifier nvarchar(50),
-	@FirstName nvarchar(50),
-	@LastName nvarchar(50)
+	@Name nvarchar(50),
+	@LastName nvarchar(50),
+	@StudentGroupID bigint
 AS
-	UPDATE Student SET Identifier = @Identifier, FirstName = @FirstName, LastName = @LastName
+	UPDATE Student SET Identifier = @Identifier, [Name] = @Name, LastName = @LastName, StudetGroupID = @StudentGroupID
 	where StudentID = @StudentID
 GO
 
