@@ -15,10 +15,10 @@ namespace Parbat.Core.DataObjects
         public string Identifier { get; set; }
 
         /// <summary>
-        /// First Name 
+        /// Name 
         /// </summary>
         [Required]
-        public string FirstName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Last Name 

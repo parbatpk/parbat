@@ -14,11 +14,12 @@ GO
 
 CREATE PROCEDURE dbo.spInsertStudent
 	@Identifier nvarchar(50), 
-	@FirstName nvarchar(50),
-	@LastName nvarchar(50)
+	@Name nvarchar(50),
+	@LastName nvarchar(50),
+	@StudentGroupID bigint
 AS
-	Insert into Student (Identifier, FirstName, LastName) values(@Identifier, @FirstName, @LastName)
-	Select SCOPE_IDENTITY()
+	Insert into Student (Identifier, [Name], LastName, StudetGroupID) values(@Identifier, @Name, @LastName, @StudentGroupID)
+	Select SCOPE_IDENTITY()ss
 GO
 
 -- =============================================

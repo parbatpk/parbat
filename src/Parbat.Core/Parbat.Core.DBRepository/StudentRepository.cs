@@ -20,9 +20,9 @@ namespace Parbat.Core.DBRepository
         {
             DbCommand cmd = db.CreateSPCommand(Procds.Insert);
             db.AddParameter(cmd, Params.Identifier, entity.Identifier);
-            db.AddParameter(cmd, Params.FirstName, entity.FirstName);
+            db.AddParameter(cmd, Params.Name, entity.Name);
             db.AddParameter(cmd, Params.LastName, entity.LastName);
-
+            db.AddParameter(cmd, Params.StudentGroupID, entity.StudetGroupID);
             entity.StudentID = Convert.ToInt64(db.ExecuteScalar(cmd));
         }
 
@@ -59,8 +59,9 @@ namespace Parbat.Core.DBRepository
             DbCommand cmd = db.CreateSPCommand(Procds.Update);
             db.AddParameter(cmd, Params.StudentID, entity.StudentID);
             db.AddParameter(cmd, Params.Identifier, entity.Identifier);
-            db.AddParameter(cmd, Params.FirstName, entity.FirstName);
+            db.AddParameter(cmd, Params.Name, entity.Name);
             db.AddParameter(cmd, Params.LastName, entity.LastName);
+            db.AddParameter(cmd, Params.StudentGroupID, entity.StudetGroupID);
             db.Execute(cmd);
         }
 
@@ -77,9 +78,9 @@ namespace Parbat.Core.DBRepository
         {
             public const string StudentID = "@StudentID";
             public const string Identifier = "@Identifier";
-            public const string FirstName = "@FirstName";
+            public const string Name = "@Name";
             public const string LastName = "@LastName";
-            
+            public const string StudentGroupID = "@StudentGroupID";
         }
     }
 }
