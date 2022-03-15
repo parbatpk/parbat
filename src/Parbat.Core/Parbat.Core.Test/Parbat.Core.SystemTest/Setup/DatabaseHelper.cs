@@ -9,7 +9,7 @@ namespace Parbat.Core.SystemTest
         {
             IDatabase instance = Database.Instance;
             DbCommand cmd = instance.CreateCommand(query);
-
+   
             return cmd;
         }
     }

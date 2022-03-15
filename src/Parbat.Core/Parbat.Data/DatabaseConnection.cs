@@ -104,7 +104,9 @@ namespace Parbat.Data
         public DbCommand CreateCommand(string query, DbTransaction trans = null)
         {
             DbCommand cmd = Factory.CreateCommand();
+            DbConnection con = CreateConnection();
             cmd.CommandText = query;
+            cmd.Connection = con;
 
             if (trans != null)
                 cmd.Transaction = trans;

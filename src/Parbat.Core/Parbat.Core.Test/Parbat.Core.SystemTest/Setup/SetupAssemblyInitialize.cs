@@ -4,11 +4,8 @@ using Microsoft.SqlServer.Management.Common;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Parbat.Data;
-using System.Diagnostics;
 using System;
-using System.Threading;
 using System.IO;
-
 
 namespace Parbat.Core.SystemTest
 {
@@ -33,7 +30,7 @@ namespace Parbat.Core.SystemTest
 
             // in order to allow the above process to close peacefully 
             // so we can get access to script file 
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
 
             // read db creation script
             string createDb = File.OpenText("CreateDB.sql").ReadToEnd();
@@ -52,6 +49,25 @@ namespace Parbat.Core.SystemTest
             server.ConnectionContext.ExecuteNonQuery(combinedSPs);
         }
 
+        static void ConfigureEnviornmentVaraiables()
+        {
+            System.Collections.IDictionary dictionary =
+                Environment.GetEnvironmentVariables();
+
+            var dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
+            var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+            var dbUser = Environment.GetEnvironmentVariable("DB_USERNAME");
+            var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+            bool dbTrusted = Environment.GetEnvironmentVariable("TRUSTED").ToLower() == "true";
+            DatabaseType dbType = (DatabaseType)Enum.Parse(typeof(DatabaseType),
+                Environment.GetEnvironmentVariable("DB_TYPE"));
+
+            Parbat.Data.Database.Instance.SetConnectionString(dbType, dbServer,
+                dbName, dbUser, dbPassword, dbTrusted);
+        }
+
+
+
         /// <summary>
         /// Run the code to setup test database and all SPs
         /// </summary>
@@ -67,9 +83,23 @@ namespace Parbat.Core.SystemTest
             BaseUrl = Configuration["BaseUrl"];
 
             CreateTestDatabase();
+            ConfigureEnviornmentVaraiables();
 
-            Parbat.Data.Database.Instance.SetConnectionString(DatabaseType.SQL, ConnectionString);
+            ///IMPORTANT
+            ///You can use these constant for testing/Debugging
+            ///When it will pass this, WEP API Env variable won't able access
+            ///Always Null
 
+            //DatabaseType dbType = Parbat.Data.DatabaseType.SQL;
+            //string dbServer = "MAAZKHAN\\SQLEXPRESS";
+            //string dbName = "ParbatTestDB";
+            //string dbUser = "sa";
+            //string dbPassword = "1234";
+            //bool dbTrusted = true;
+
+            //Parbat.Data.Database.Instance.SetConnectionString(dbType, dbServer,
+            //    dbName, dbUser, dbPassword, dbTrusted);
+            //Parbat.Data.Database.Instance.SetConnectionString(DatabaseType.SQL, ConnectionString);
         }
 
         /// <summary>

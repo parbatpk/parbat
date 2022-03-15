@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Parbat.Core.SystemTest": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DB_USER": "sa",
+        "DB_NAME": "ParbatDB",
+        "DB_PASSWORD": "1234",
+        "DB_SERVER": "MAAZKHAN\\SQLEXPRESS",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_TYPE": "SQL",
+        "TRUSTED": "true"
+      }
+    }
+  }
+}
