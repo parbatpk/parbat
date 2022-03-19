@@ -6,9 +6,13 @@ USER root
 
 copy ./database /
 copy ./database/procds/*.sql /sps/
-RUN cat /sps/*.sql >combine_sps.sql
+#RUN rm combine_sps.sql
+#RUN cat /sps/*.sql >combine_sps.sql
 copy ./database/scripts/CreateDB.sql /setup.sql
-copy ./database/scripts/combine_sps.sql /
+copy ./database/procds/*.sql /
+RUN cat /*.sql > /combine_sps.sql
+#copy ./database/scripts/combine_sps.sql /
+
 
 ENTRYPOINT ["/bin/bash","entrypoint.sh"]
 CMD ["/opt/mssql/bin/sqlservr"]
