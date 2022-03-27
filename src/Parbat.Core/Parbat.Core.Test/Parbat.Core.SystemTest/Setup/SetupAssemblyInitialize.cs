@@ -51,8 +51,16 @@ namespace Parbat.Core.SystemTest
 
         static void ConfigureEnviornmentVaraiables()
         {
-            System.Collections.IDictionary dictionary =
-                Environment.GetEnvironmentVariables();
+            //System.Collections.IDictionary dictionary =
+            //    Environment.GetEnvironmentVariables();
+
+            Environment.SetEnvironmentVariable("DB_SERVER", "MAAZKHAN\\SQLEXPRESS");
+            Environment.SetEnvironmentVariable("DB_NAME", "ParbatDB");
+            Environment.SetEnvironmentVariable("DB_USERNAME", "sa");
+            Environment.SetEnvironmentVariable("DB_PASSWORD", "1234");
+            Environment.SetEnvironmentVariable("TRUSTED", "true");
+            Environment.SetEnvironmentVariable("DB_TYPE","SQL");
+
 
             var dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
             var dbName = Environment.GetEnvironmentVariable("DB_NAME");
@@ -82,24 +90,9 @@ namespace Parbat.Core.SystemTest
             SetupConnectionString = Configuration["ConnectionStrings:setup"];
             BaseUrl = Configuration["BaseUrl"];
 
-            CreateTestDatabase();
+            //CreateTestDatabase();
             ConfigureEnviornmentVaraiables();
-
-            ///IMPORTANT
-            ///You can use these constant for testing/Debugging
-            ///When it will pass this, WEP API Env variable won't able access
-            ///Always Null
-
-            //DatabaseType dbType = Parbat.Data.DatabaseType.SQL;
-            //string dbServer = "MAAZKHAN\\SQLEXPRESS";
-            //string dbName = "ParbatTestDB";
-            //string dbUser = "sa";
-            //string dbPassword = "1234";
-            //bool dbTrusted = true;
-
-            //Parbat.Data.Database.Instance.SetConnectionString(dbType, dbServer,
-            //    dbName, dbUser, dbPassword, dbTrusted);
-            //Parbat.Data.Database.Instance.SetConnectionString(DatabaseType.SQL, ConnectionString);
+            Parbat.Data.Database.Instance.SetConnectionString(DatabaseType.SQL, ConnectionString);           
         }
 
         /// <summary>
