@@ -51,27 +51,12 @@ namespace Parbat.Core.SystemTest
 
         static void ConfigureEnviornmentVaraiables()
         {
-            //System.Collections.IDictionary dictionary =
-            //    Environment.GetEnvironmentVariables();
-
             Environment.SetEnvironmentVariable("DB_SERVER", "MAAZKHAN\\SQLEXPRESS");
             Environment.SetEnvironmentVariable("DB_NAME", "ParbatDB");
             Environment.SetEnvironmentVariable("DB_USERNAME", "sa");
             Environment.SetEnvironmentVariable("DB_PASSWORD", "1234");
             Environment.SetEnvironmentVariable("TRUSTED", "true");
             Environment.SetEnvironmentVariable("DB_TYPE","SQL");
-
-
-            var dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
-            var dbName = Environment.GetEnvironmentVariable("DB_NAME");
-            var dbUser = Environment.GetEnvironmentVariable("DB_USERNAME");
-            var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
-            bool dbTrusted = Environment.GetEnvironmentVariable("TRUSTED").ToLower() == "true";
-            DatabaseType dbType = (DatabaseType)Enum.Parse(typeof(DatabaseType),
-                Environment.GetEnvironmentVariable("DB_TYPE"));
-
-            Parbat.Data.Database.Instance.SetConnectionString(dbType, dbServer,
-                dbName, dbUser, dbPassword, dbTrusted);
         }
 
 
@@ -90,7 +75,7 @@ namespace Parbat.Core.SystemTest
             SetupConnectionString = Configuration["ConnectionStrings:setup"];
             BaseUrl = Configuration["BaseUrl"];
 
-            //CreateTestDatabase();
+            CreateTestDatabase();
             ConfigureEnviornmentVaraiables();
             Parbat.Data.Database.Instance.SetConnectionString(DatabaseType.SQL, ConnectionString);           
         }
