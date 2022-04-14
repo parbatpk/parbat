@@ -1,0 +1,46 @@
+name: .NET
+
+on:
+  push:
+    branches: [ feature-systemtest-update ]
+  pull_request:
+    branches: [ feature-systemtest-update ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+#     - uses: actions/checkout@v3
+#     - name: Setup .NET
+#       uses: actions/setup-dotnet@v2
+#       with:
+#         dotnet-version: 5.0.x
+#     - name: Restore dependencies
+#       run: dotnet restore
+#     - name: Build
+#       run: dotnet build --no-restore
+#     - name: Test
+#       run: dotnet test --no-build --verbosity normal
+    - name: Set context to Okteto Cloud
+      uses: okteto/context@latest
+      with:
+        token: vFmd9zhw644Cc9BSeMJCxt1NFfkdRaEuKME7lQgG61NqzlPE
+
+    - name: Deploy your preview environment
+      uses: okteto/deploy-preview@latest
+      env:
+        GITHUB_TOKEN: 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
+      with:
+        name: staging-${{ github.event.number }}-OKTETO_USERNAME
+        scope: personal
+        timeout: 15m
+
+
+    - uses: nev7n/wait_for_response@v1
+      with:
+        url: https://api-staging-${{ github.event.number }}-okteto_username.cloud.okteto.net
+        responseCode: 200
+        timeout: 4000
+
