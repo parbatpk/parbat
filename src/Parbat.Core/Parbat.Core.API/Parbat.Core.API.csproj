@@ -22,5 +22,4 @@
     <ProjectReference Include="..\Parbat.Core.DBRepository\Parbat.Core.DBRepository.csproj" />
     <ProjectReference Include="..\Parbat.Core.Services\Parbat.Core.Services.csproj" />
   </ItemGroup>
-
 </Project>
