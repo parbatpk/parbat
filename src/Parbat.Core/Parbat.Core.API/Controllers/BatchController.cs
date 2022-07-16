@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using NSwag.Annotations;
+
 namespace Parbat.Core.API.Controllers
 {
     /// <summary>
@@ -28,11 +30,13 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
-        /// Get a record
+        /// Get a batch record
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [SwaggerOperation("AddPet")]
+        [OpenApiOperation("GetBatch","get batch by id")]
         public ActionResult<Batch> Get(long id)
         {
             try

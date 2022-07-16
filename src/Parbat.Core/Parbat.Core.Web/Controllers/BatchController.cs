@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-using Parbat.Core.DataObjects;
+using Parbat.Core.API.Client;
 
 namespace Parbat.Core.Web.Controllers
 {
@@ -10,8 +10,14 @@ namespace Parbat.Core.Web.Controllers
         // GET: BatchController
         public ActionResult Index()
         {
+
             Batch b = new Batch();
-            b.BatchID = 1;
+            ParbatClient c = new("",new HttpClient());
+            
+            
+            
+            
+            
             return View("View", b);
         }
 
