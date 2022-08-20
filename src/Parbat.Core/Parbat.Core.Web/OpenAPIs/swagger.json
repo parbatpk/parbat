@@ -21,6 +21,7 @@
           "AssessmentCategory"
         ],
         "summary": "Get a record",
+        "operationId": "AssessmentFindById",
         "parameters": [
           {
             "name": "id",
@@ -62,6 +63,7 @@
           "AssessmentCategory"
         ],
         "summary": "Delete",
+        "operationId": "AssessmentCategoryDelete",
         "parameters": [
           {
             "name": "id",
@@ -88,6 +90,7 @@
           "AssessmentCategory"
         ],
         "summary": "List all AssessmentCategory",
+        "operationId": "AssessmentCategoryGetAll",
         "responses": {
           "200": {
             "description": "Success"
@@ -99,6 +102,7 @@
           "AssessmentCategory"
         ],
         "summary": "Update a AssessmentCategory",
+        "operationId": "AssessmentCategoryUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -124,7 +128,9 @@
             "description": "Success"
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/AssessmentCategory/AssessmentCategoryCreate": {
       "post": {
         "tags": [
           "AssessmentCategory"
@@ -179,7 +185,8 @@
         "tags": [
           "Batch"
         ],
-        "summary": "Get a record",
+        "summary": "Get a batch record",
+        "operationId": "BatchFindById",
         "parameters": [
           {
             "name": "id",
@@ -221,6 +228,7 @@
           "Batch"
         ],
         "summary": "Delete",
+        "operationId": "BatchDelete",
         "parameters": [
           {
             "name": "id",
@@ -247,6 +255,7 @@
           "Batch"
         ],
         "summary": "List all batch",
+        "operationId": "BatchGetAll",
         "responses": {
           "200": {
             "description": "Success"
@@ -258,6 +267,7 @@
           "Batch"
         ],
         "summary": "Update a batch",
+        "operationId": "BatchUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -289,6 +299,7 @@
           "Batch"
         ],
         "summary": "Create",
+        "operationId": "BatchCreate",
         "requestBody": {
           "description": "",
           "content": {
