@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
+﻿using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.API.Client;
 
 namespace Parbat.Core.Web.Controllers
@@ -8,17 +6,12 @@ namespace Parbat.Core.Web.Controllers
     public class BatchController : Controller
     {
         // GET: BatchController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-
-            Batch b = new Batch();
+            //Batch b = new Batch();
             ParbatClient c = new("",new HttpClient());
-            
-            
-            
-            
-            
-            return View("View", b);
+
+            return View("View");
         }
 
         // GET: BatchController/Details/5
