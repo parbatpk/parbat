@@ -34,9 +34,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
-        [SwaggerOperation("AddPet")]
-        [OpenApiOperation("GetBatch","get batch by id")]
+        [HttpGet("{id}", Name = "BatchFindById")]
         public ActionResult<Batch> Get(long id)
         {
             try
@@ -55,7 +53,7 @@ namespace Parbat.Core.API.Controllers
         /// List all batch
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "BatchGetAll")]
         public ActionResult List()
         {
             try
@@ -74,7 +72,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "BatchUpdate")]
         public ActionResult Update([FromBody] Batch b)
         {
             try
@@ -93,7 +91,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "BatchCreate")]
         public ActionResult<Batch> Create([FromBody] Batch b)
         {
             try
@@ -113,7 +111,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "BatchDelete")]
         public ActionResult Delete(long id)
         {
             try
