@@ -27,7 +27,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}", Name = "AssessmentFindById")]
+        [HttpGet("{id}", Name = "AssessmentGetById")]
         public ActionResult<AssessmentCategory> Get(long id)
         {
             try
@@ -46,7 +46,7 @@ namespace Parbat.Core.API.Controllers
         /// List all AssessmentCategory
         /// </summary>
         /// <returns></returns>
-        [HttpGet(Name = "AssessmentCategoryGetAll")]
+        [HttpGet(Name = "AssessmentCategoryList")]
         public ActionResult List()
         {
             try
@@ -104,7 +104,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}", Name = "AssessmentCategoryDelete")]
+        [HttpDelete("{id}", Name = "AssessmentCategoryDeleteById")]
         public ActionResult Delete(long id)
         {
             try

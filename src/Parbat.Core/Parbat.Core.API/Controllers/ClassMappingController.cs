@@ -27,7 +27,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "ClassMappingGetById")]
         public ActionResult<ClassMapping> Get(long id)
         {
             try
@@ -46,7 +46,7 @@ namespace Parbat.Core.API.Controllers
         /// List all ClassMapping
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "ClassMappingList")]
         public ActionResult List()
         {
             try
@@ -65,7 +65,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="cm"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "ClassMappingUpdate")]
         public ActionResult Update([FromBody] ClassMapping cm)
         {
             try
@@ -84,7 +84,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="cm"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "ClassMappingCreate")]
         public ActionResult<ClassMapping> Create([FromBody] ClassMapping cm)
         {
             try
@@ -104,7 +104,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "ClassMappingDeleteById")]
         public ActionResult Delete(long id)
         {
             try

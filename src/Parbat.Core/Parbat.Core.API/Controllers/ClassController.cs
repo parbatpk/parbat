@@ -27,7 +27,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "ClassGetById")]
         public ActionResult<Class> Get(long id)
         {
             try
@@ -46,7 +46,7 @@ namespace Parbat.Core.API.Controllers
         /// Get All Classes
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "ClassList")]
         public ActionResult List()
         {
             try
@@ -66,7 +66,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "ClassUpdate")]
         public ActionResult Update([FromBody] Class c)
         {
             try
@@ -85,7 +85,7 @@ namespace Parbat.Core.API.Controllers
         /// Create the new Class
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "ClassCreate")]
         public ActionResult<Class> Create([FromBody] Class c)
         {
             try
@@ -105,7 +105,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "ClassDeleteById")]
         public ActionResult Delete(long id)
         {
             try

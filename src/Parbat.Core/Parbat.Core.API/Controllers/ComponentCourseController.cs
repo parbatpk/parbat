@@ -32,7 +32,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "ComponentCourseGetById")]
         public ActionResult<ComponentCourse> Get(long id)
         {
             try
@@ -51,7 +51,7 @@ namespace Parbat.Core.API.Controllers
         /// List all componentcourses
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "ComponentCourseList")]
         public ActionResult List()
         {
             try
@@ -70,7 +70,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "ComponentCourseUpdate")]
         public ActionResult Update([FromBody] ComponentCourse c)
         {
             try
@@ -89,7 +89,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "ComponentCourseCreate")]
         public ActionResult<ComponentCourse> Create([FromBody] ComponentCourse c)
         {
             try
@@ -109,7 +109,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "ComponentCouseDeleteById")]
         public ActionResult Delete(long id)
         {
             try

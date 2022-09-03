@@ -32,7 +32,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}", Name = "BatchFindById")]
+        [HttpGet("{id}", Name = "BatchGetById")]
         public ActionResult<Batch> Get(long id)
         {
             try
@@ -51,7 +51,7 @@ namespace Parbat.Core.API.Controllers
         /// List all batch
         /// </summary>
         /// <returns></returns>
-        [HttpGet(Name = "BatchGetAll")]
+        [HttpGet(Name = "BatchList")]
         public ActionResult List()
         {
             try
@@ -109,7 +109,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}", Name = "BatchDelete")]
+        [HttpDelete("{id}", Name = "BatchDeleteById")]
         public ActionResult Delete(long id)
         {
             try

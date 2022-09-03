@@ -32,7 +32,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "ComponentTypeGetById")]
         public ActionResult<ComponentType> Get(long id)
         {
             try
@@ -51,7 +51,7 @@ namespace Parbat.Core.API.Controllers
         /// List all componentType
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "ComponentTypeList")]
         public ActionResult List()
         {
             try
@@ -70,7 +70,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "ComponentTypeUpdate")]
         public ActionResult Update([FromBody] ComponentType c)
         {
             try
@@ -89,7 +89,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "ComponentTypeCreate")]
         public ActionResult<ComponentType> Create([FromBody] ComponentType c)
         {
             try
@@ -109,7 +109,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "ComponentTypeDeleteById")]
         public ActionResult Delete(long id)
         {
             try

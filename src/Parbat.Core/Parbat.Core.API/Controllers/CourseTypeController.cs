@@ -29,7 +29,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "CourseTypeGetById")]
         public ActionResult<CourseType> Get(long id)
         {
             try
@@ -48,7 +48,7 @@ namespace Parbat.Core.API.Controllers
         /// get all coursetypes
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "CourseTypeList")]
         public ActionResult List()
         {
             try
@@ -68,7 +68,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "CourseTypeUpdate")]
         public ActionResult Update([FromBody] CourseType c)
         {
             try
@@ -88,7 +88,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "CourseTypeCreate")]
         public ActionResult<Course> Create([FromBody] CourseType c)
         {
             try
@@ -107,7 +107,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "CourseTypeDeleteById")]
         public ActionResult Delete(long id)
         {
             try
