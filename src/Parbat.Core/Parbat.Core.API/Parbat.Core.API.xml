@@ -62,7 +62,7 @@
         </member>
         <member name="M:Parbat.Core.API.Controllers.BatchController.Get(System.Int64)">
             <summary>
-            Get a record
+            Get a batch record
             </summary>
             <param name="id"></param>
             <returns></returns>
