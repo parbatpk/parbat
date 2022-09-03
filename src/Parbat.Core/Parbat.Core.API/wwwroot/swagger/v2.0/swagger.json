@@ -346,7 +346,6 @@
           "Class"
         ],
         "summary": "Get Class by ID",
-        "operationId": "GetClassById",
         "parameters": [
           {
             "name": "id",

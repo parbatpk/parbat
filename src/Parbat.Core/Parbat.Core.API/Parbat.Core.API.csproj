@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>e06128e9-6d14-4e98-bcd2-f670b453aab6</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
@@ -13,8 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
-    <PackageReference Include="NSwag.Annotations" Version="13.16.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,4 +22,11 @@
     <ProjectReference Include="..\Parbat.Core.DBRepository\Parbat.Core.DBRepository.csproj" />
     <ProjectReference Include="..\Parbat.Core.Services\Parbat.Core.Services.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot/swagger/v2.0" />
+  </ItemGroup>
+  
+  <Target AfterTargets="Build" Name="PostBuild">
+    <Exec Command="dotnet swagger tofile --output  ../Parbat.Core.Web/OpenAPIs/swagger.json $(OutputPath)$(AssemblyName).dll v2.0" WorkingDirectory="$(ProjectDir)" />
+  </Target>
 </Project>
