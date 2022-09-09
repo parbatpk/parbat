@@ -27,7 +27,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "ModuleAssessmentGetById")]
         public ActionResult<ModuleAssessment> Get(long id)
         {
             try
@@ -46,7 +46,7 @@ namespace Parbat.Core.API.Controllers
         /// List all ModuleAssessment
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "ModuleAssessmentList")]
         public ActionResult List()
         {
             try
@@ -65,7 +65,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="moduleAssessment"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "ModuleAssessmentUpdate")]
         public ActionResult Update([FromBody] ModuleAssessment moduleAssessment)
         {
             try
@@ -84,7 +84,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="moduleAssessment"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "ModuleAssessmentCreate")]
         public ActionResult<ModuleAssessment> Create([FromBody] ModuleAssessment moduleAssessment)
         {
             try
@@ -104,7 +104,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "ModuleAssessmentDeleteById")]
         public ActionResult Delete(long id)
         {
             try

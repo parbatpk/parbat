@@ -27,7 +27,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "OfferingGetById")]
         public ActionResult<Offering> Get(long id)
         {
             try
@@ -46,7 +46,7 @@ namespace Parbat.Core.API.Controllers
         /// List all Offering
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "OfferingList")]
         public ActionResult List()
         {
             try
@@ -65,7 +65,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "OfferingUpdate")]
         public ActionResult Update([FromBody] Offering o)
         {
             try
@@ -84,7 +84,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "OfferingCreate")]
         public ActionResult<Offering> Create([FromBody] Offering o)
         {
             try
@@ -104,7 +104,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "OfferingDeleteById")]
         public ActionResult Delete(long id)
         {
             try

@@ -28,7 +28,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "OrgUnitTypeGetById")]
         public ActionResult<OrgUnitType> Get(long id)
         {
             try
@@ -47,7 +47,7 @@ namespace Parbat.Core.API.Controllers
         /// List all unittype
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "OrgUnitTypeList")]
         public ActionResult List()
         {
             try
@@ -67,7 +67,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "OrgUnitTypeUpdate")]
         public ActionResult Update([FromBody] OrgUnitType o)
         {
             try
@@ -87,7 +87,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "OrgUnitTypeCreate")]
         public ActionResult<OrgUnitType> Create([FromBody] OrgUnitType o)
         {
             try
@@ -107,7 +107,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "OrgUnitTypeDeleteById")]
         public ActionResult Delete(long id)
         {
             try

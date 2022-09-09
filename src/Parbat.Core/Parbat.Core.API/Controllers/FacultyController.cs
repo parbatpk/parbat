@@ -27,7 +27,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "FacultyGetById")]
         public ActionResult<Faculty> Get(long id)
         {
             try
@@ -46,7 +46,7 @@ namespace Parbat.Core.API.Controllers
         /// List all Faculty
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "FacultyList")]
         public ActionResult List()
         {
             try
@@ -65,7 +65,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="f"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut(Name = "FacultyUpdate")]
         public ActionResult Update([FromBody] Faculty f)
         {
             try
@@ -84,7 +84,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="f"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "FacultyCreate")]
         public ActionResult<Faculty> Create([FromBody] Faculty f)
         {
             try
@@ -104,7 +104,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "FacultyDeleteById")]
         public ActionResult Delete(long id)
         {
             try
