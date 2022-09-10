@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -52,11 +48,12 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "ComponentCourseList")]
-        public ActionResult List()
+        public ActionResult<List<ComponentCourse>> List()
         {
             try
             {
                 var componentCourses = _service.GetAll();
+
                 return Ok(componentCourses);
             }
             catch (ServiceException se)
@@ -71,11 +68,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPut(Name = "ComponentCourseUpdate")]
-        public ActionResult Update([FromBody] ComponentCourse c)
+        public ActionResult<ComponentCourse> Update([FromBody] ComponentCourse c)
         {
             try
             {
                 _service.Update(c);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -95,13 +93,13 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 _service.Create(c);
+
                 return Created("Get", c);
             }
             catch (ServiceException se)
             {
                 return BadRequest(se.Message);
             }
-
         }
 
         /// <summary>
@@ -110,11 +108,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "ComponentCouseDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

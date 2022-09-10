@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Parbat.Core.API.Controllers
 {
@@ -52,11 +50,12 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "ComponentTypeList")]
-        public ActionResult List()
+        public ActionResult<List<ComponentType>> List()
         {
             try
             {
                 var componenttype = _service.GetAll();
+
                 return Ok(componenttype);
             }
             catch (ServiceException se)

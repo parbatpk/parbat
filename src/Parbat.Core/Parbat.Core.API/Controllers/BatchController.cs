@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -52,11 +48,12 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "BatchList")]
-        public ActionResult List()
+        public ActionResult<List<Batch>> List()
         {
             try
             {
                 var batch = _service.GetAll();
+
                 return Ok(batch);
             }
             catch (ServiceException se)
@@ -71,11 +68,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="b"></param>
         /// <returns></returns>
         [HttpPut(Name = "BatchUpdate")]
-        public ActionResult Update([FromBody] Batch b)
+        public ActionResult<Batch> Update([FromBody] Batch b)
         {
             try
             {
                 _service.Update(b);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -95,6 +93,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 _service.Create(b);
+
                 return Created("Get", b);
             }
             catch (ServiceException se)
@@ -110,11 +109,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "BatchDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -12,7 +12,6 @@ namespace Parbat.Core.API.Controllers
     [ApiController]
     public class CourseController : Controller
     {
-
         CourseService _service;
 
         /// <summary>
@@ -34,7 +33,6 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-
                 Course found = _service.FindByID(id);
 
                 return Ok(found);
@@ -50,11 +48,12 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "CourseList")]
-        public ActionResult List()
+        public ActionResult<List<Course>> List()
         {
             try
             {
                 var courses = _service.GetAllCourses();
+
                 return Ok(courses);
             }
             catch (ServiceException ex)
@@ -69,11 +68,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPut(Name = "CourseUpdate")]
-        public ActionResult Update([FromBody] Course c)
+        public ActionResult<Course> Update([FromBody] Course c)
         {
             try
             {
                 _service.Update(c);
+
                 return NoContent();
             }
             catch (ServiceException ex)
@@ -93,6 +93,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 _service.Create(c);
+
                 return Created("Get", c);
             }
             catch (ServiceException se)
@@ -108,11 +109,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "CourseDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

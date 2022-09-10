@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.Services;
 using Parbat.Core.DataObjects;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -47,11 +48,12 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "AssessmentCategoryList")]
-        public ActionResult List()
+        public ActionResult<List<AssessmentCategory>> List()
         {
             try
             {
                 var assessmentCategories = _service.GetAll();
+
                 return Ok(assessmentCategories);
             }
             catch (ServiceException se)
@@ -66,11 +68,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="assessmentCategory"></param>
         /// <returns></returns>
         [HttpPut(Name = "AssessmentCategoryUpdate")]
-        public ActionResult Update([FromBody] AssessmentCategory assessmentCategory)
+        public ActionResult<AssessmentCategory> Update([FromBody] AssessmentCategory assessmentCategory)
         {
             try
             {
                 _service.Update(assessmentCategory);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -85,11 +88,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="assessmentCategory"></param>
         /// <returns></returns>
         [HttpPost("AssessmentCategoryCreate")]
-        public ActionResult<Batch> Create([FromBody] AssessmentCategory assessmentCategory)
+        public ActionResult<AssessmentCategory> Create([FromBody] AssessmentCategory assessmentCategory)
         {
             try
             {
                 _service.Create(assessmentCategory);
+
                 return Created("Get", assessmentCategory);
             }
             catch (ServiceException se)
@@ -105,11 +109,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "AssessmentCategoryDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

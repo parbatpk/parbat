@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects.Models;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -47,13 +48,13 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "ClassList")]
-        public ActionResult List()
+        public ActionResult<List<Class>> List()
         {
             try
             {
-                var batch = _service.GetAll();
+                var classes = _service.GetAll();
 
-                return Ok(batch);
+                return Ok(classes);
             }
             catch(ServiceException se)
             {
@@ -67,7 +68,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPut(Name = "ClassUpdate")]
-        public ActionResult Update([FromBody] Class c)
+        public ActionResult<Class> Update([FromBody] Class c)
         {
             try
             {
@@ -106,7 +107,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "ClassDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {

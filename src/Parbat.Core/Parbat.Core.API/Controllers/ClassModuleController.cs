@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects.Models;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -47,11 +48,12 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "ClassModuleList")]
-        public ActionResult List()
+        public ActionResult<List<ClassModule>> List()
         {
             try
             {
                 var classModule = _service.GetAll();
+
                 return Ok(classModule);
             }
             catch (ServiceException se)
@@ -66,11 +68,12 @@ namespace Parbat.Core.API.Controllers
         /// <param name="cm"></param>
         /// <returns></returns>
         [HttpPut(Name = "ClassModuleUpdate")]
-        public ActionResult Update([FromBody] ClassModule cm)
+        public ActionResult<ClassModule> Update([FromBody] ClassModule cm)
         {
             try
             {
                 _service.Update(cm);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -90,6 +93,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 _service.Create(cm);
+
                 return Created("Get", cm);
             }
             catch (ServiceException se)
@@ -104,7 +108,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "ClassModuleDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {
