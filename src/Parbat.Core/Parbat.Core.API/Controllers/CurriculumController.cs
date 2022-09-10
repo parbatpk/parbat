@@ -52,7 +52,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "CurriculumList")]
-        public ActionResult List()
+        public ActionResult<List<Curriculum>> List()
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPut(Name = "CurriculumUpdate")]
-        public ActionResult Update([FromBody] Curriculum c)
+        public ActionResult<Curriculum> Update([FromBody] Curriculum c)
         {
             try
             {
@@ -110,7 +110,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "CurriculumDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {
@@ -130,7 +130,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("OwnerUnit/{id}", Name = "CurriculumGetOwnerUnitById")]
-        public ActionResult GetOwnerUnit(long id)
+        public ActionResult<List<Curriculum>> GetOwnerUnit(long id)
         {
             return Ok(_service.GetOwnerUnit(id));
         }
@@ -141,7 +141,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns>Return a DataTable</returns>
         [HttpGet("CurriculumType/{id}")]
-        public ActionResult GetCurriculumType(long id)
+        public ActionResult<List<Curriculum>> GetCurriculumType(long id)
         {
             return Ok(_service.GetCurriculumType(id));
         }

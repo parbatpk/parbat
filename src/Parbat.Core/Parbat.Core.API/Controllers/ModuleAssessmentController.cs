@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -47,7 +48,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "ModuleAssessmentList")]
-        public ActionResult List()
+        public ActionResult<List<ModuleAssessment>> List()
         {
             try
             {
@@ -66,7 +67,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="moduleAssessment"></param>
         /// <returns></returns>
         [HttpPut(Name = "ModuleAssessmentUpdate")]
-        public ActionResult Update([FromBody] ModuleAssessment moduleAssessment)
+        public ActionResult<ModuleAssessment> Update([FromBody] ModuleAssessment moduleAssessment)
         {
             try
             {
@@ -105,7 +106,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "ModuleAssessmentDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {

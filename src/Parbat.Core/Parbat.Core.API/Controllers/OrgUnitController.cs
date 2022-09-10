@@ -2,6 +2,7 @@
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -48,7 +49,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "OrgUnitList")]
-        public ActionResult List()
+        public ActionResult<List<OrgUnit>> List()
         {
             try
             {
@@ -67,7 +68,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="o"></param>
         /// <returns></returns>
         [HttpPut(Name = "OrgUnitUpdate")]
-        public ActionResult Update([FromBody] OrgUnit o)
+        public ActionResult<OrgUnit> Update([FromBody] OrgUnit o)
         {
             try
             {
@@ -106,7 +107,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "OrgUnitDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {

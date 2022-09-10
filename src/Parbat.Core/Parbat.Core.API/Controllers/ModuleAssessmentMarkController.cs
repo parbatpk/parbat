@@ -51,7 +51,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "ModuleAssessmentMarkList")]
-        public ActionResult List()
+        public ActionResult<List<ModuleAssessmentMark>> List()
         {
             try
             {
@@ -70,7 +70,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="moduleAssessmentMark"></param>
         /// <returns></returns>
         [HttpPut(Name = "ModuleAssessmentMarkUpdate")]
-        public ActionResult Update([FromBody] ModuleAssessmentMark moduleAssessmentMark)
+        public ActionResult<ModuleAssessmentMark> Update([FromBody] ModuleAssessmentMark moduleAssessmentMark)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "ModuleAssessmentMarkDeleteById")]
-        public ActionResult Delete(long id)
+        public ActionResult<long> Delete(long id)
         {
             try
             {
