@@ -2,6 +2,7 @@
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -28,7 +29,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "OrgUnitTypeGetById")]
         public ActionResult<OrgUnitType> Get(long id)
         {
             try
@@ -47,8 +48,8 @@ namespace Parbat.Core.API.Controllers
         /// List all unittype
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "OrgUnitTypeList")]
+        public ActionResult<List<OrgUnitType>> List()
         {
             try
             {
@@ -67,8 +68,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] OrgUnitType o)
+        [HttpPut(Name = "OrgUnitTypeUpdate")]
+        public ActionResult<OrgUnitType> Update([FromBody] OrgUnitType o)
         {
             try
             {
@@ -87,7 +88,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "OrgUnitTypeCreate")]
         public ActionResult<OrgUnitType> Create([FromBody] OrgUnitType o)
         {
             try
@@ -107,8 +108,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "OrgUnitTypeDeleteById")]
+        public ActionResult<long> Delete(long id)
         {
             try
             {
@@ -122,3 +123,4 @@ namespace Parbat.Core.API.Controllers
         }
     }
 }
+

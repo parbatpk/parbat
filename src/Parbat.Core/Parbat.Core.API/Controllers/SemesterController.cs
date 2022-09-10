@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -27,7 +28,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}",Name = "SemesterGetById")]
         public ActionResult<Semester> Get(long id)
         {
             try
@@ -46,8 +47,8 @@ namespace Parbat.Core.API.Controllers
         /// List all Semester
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "SemesterList")]
+        public ActionResult<List<Semester>> List()
         {
             try
             {
@@ -65,8 +66,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] Semester s)
+        [HttpPut(Name = "SemesterUpdate")]
+        public ActionResult<Semester> Update([FromBody] Semester s)
         {
             try
             {
@@ -84,7 +85,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "SemesterCreate")]
         public ActionResult<Semester> Create([FromBody] Semester s)
         {
             try
@@ -104,8 +105,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "SemesterDeleteById")]
+        public ActionResult<long> Delete(long id)
         {
             try
             {

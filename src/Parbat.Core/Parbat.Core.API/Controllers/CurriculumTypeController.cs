@@ -32,7 +32,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "CurriculumTypeGetById")]
         public ActionResult<CurriculumType> Get(long id)
         {
             try
@@ -51,8 +51,8 @@ namespace Parbat.Core.API.Controllers
         /// List all curriculumType
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "CurriculumTypeList")]
+        public ActionResult<List<CurriculumType>> List()
         {
             try
             {
@@ -70,8 +70,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] CurriculumType c)
+        [HttpPut(Name = "CurriculumTypeUpdate")]
+        public ActionResult<CurriculumType> Update([FromBody] CurriculumType c)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "CurriculumTypeCreate")]
         public ActionResult<CurriculumType> Create([FromBody] CurriculumType c)
         {
             try
@@ -109,8 +109,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "CurriculumTypeDeleteById")]
+        public ActionResult<long> Delete(long id)
         {
             try
             {

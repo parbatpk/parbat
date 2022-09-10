@@ -31,7 +31,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}",Name ="StudentGetById")]
+
         public ActionResult<Student> Get(long id)
         {
             try
@@ -50,8 +51,8 @@ namespace Parbat.Core.API.Controllers
         /// List all student
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "StudentList")]
+        public ActionResult<List<Student>> List()
         {
             try
             {
@@ -69,8 +70,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] Student s)
+        [HttpPut(Name = "StudentUpdate")]
+        public ActionResult<Student> Update([FromBody] Student s)
         {
             try
             {
@@ -88,7 +89,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "StudentCreate")]
         public ActionResult<Student> Create([FromBody] Student s)
         {
             try
@@ -108,8 +109,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "StudentDeleteById")]
+        public ActionResult<long> Delete(long id)
         {
             try
             {
