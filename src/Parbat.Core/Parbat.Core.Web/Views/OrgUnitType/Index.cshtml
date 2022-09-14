@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Parbat.Core.API.Client.OrgUnitType>
+
+@{
+    ViewData["Title"] = "OrgUnitType";
+}
+
+<h1>OrgUnitType</h1>
+
+<div id="ModalPlaceHolder"></div>
+
+<p>
+    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+            data-target="#createDepartment" data-url="@Url.Action("Create", "Department")">
+        Create
+    </button>
+</p>
+
+<table class="table" id="deptList">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrgUnitTypeID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.DepartmentName)*@
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"@*
+                            data-target="#editItem" data-url="@Url.Action("Edit", "Department", new { id = item.DepartmentId })"*@>
+                        Edit
+                    </button> |
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"@*
+                            data-target="#deleteItem" data-url="@Url.Action("Delete", "Department",new { id = item.DepartmentId})"*@>
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@*<script>
+    $(document).ready(function () {
+        $('#deptList').DataTable();
+    });
+</script>*@
