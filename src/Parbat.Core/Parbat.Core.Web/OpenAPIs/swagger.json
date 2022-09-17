@@ -21,7 +21,7 @@
           "AssessmentCategory"
         ],
         "summary": "Get a record",
-        "operationId": "AssessmentFindById",
+        "operationId": "AssessmentGetById",
         "parameters": [
           {
             "name": "id",
@@ -62,7 +62,7 @@
           "AssessmentCategory"
         ],
         "summary": "Delete",
-        "operationId": "AssessmentCategoryDelete",
+        "operationId": "AssessmentCategoryDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -77,7 +77,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -88,10 +108,36 @@
           "AssessmentCategory"
         ],
         "summary": "List all AssessmentCategory",
-        "operationId": "AssessmentCategoryGetAll",
+        "operationId": "AssessmentCategoryList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssessmentCategory"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssessmentCategory"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssessmentCategory"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -123,7 +169,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              }
+            }
           }
         }
       }
@@ -160,17 +223,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Batch"
+                  "$ref": "#/components/schemas/AssessmentCategory"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Batch"
+                  "$ref": "#/components/schemas/AssessmentCategory"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Batch"
+                  "$ref": "#/components/schemas/AssessmentCategory"
                 }
               }
             }
@@ -184,7 +247,7 @@
           "Batch"
         ],
         "summary": "Get a batch record",
-        "operationId": "BatchFindById",
+        "operationId": "BatchGetById",
         "parameters": [
           {
             "name": "id",
@@ -225,7 +288,7 @@
           "Batch"
         ],
         "summary": "Delete",
-        "operationId": "BatchDelete",
+        "operationId": "BatchDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -240,7 +303,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -251,10 +334,36 @@
           "Batch"
         ],
         "summary": "List all batch",
-        "operationId": "BatchGetAll",
+        "operationId": "BatchList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Batch"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Batch"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Batch"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -286,7 +395,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              }
+            }
           }
         }
       },
@@ -346,7 +472,7 @@
           "Class"
         ],
         "summary": "Get Class by ID",
-        "operationId": "GetClassById",
+        "operationId": "ClassGetById",
         "parameters": [
           {
             "name": "id",
@@ -387,6 +513,7 @@
           "Class"
         ],
         "summary": "Delete the Class",
+        "operationId": "ClassDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -401,7 +528,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -412,9 +559,36 @@
           "Class"
         ],
         "summary": "Get All Classes",
+        "operationId": "ClassList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Class"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Class"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Class"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -423,6 +597,7 @@
           "Class"
         ],
         "summary": "Update the specific object",
+        "operationId": "ClassUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -445,7 +620,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
           }
         }
       },
@@ -454,6 +646,7 @@
           "Class"
         ],
         "summary": "Create the new Class",
+        "operationId": "ClassCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -503,6 +696,7 @@
           "ClassMapping"
         ],
         "summary": "Get a record",
+        "operationId": "ClassMappingGetById",
         "parameters": [
           {
             "name": "id",
@@ -543,6 +737,7 @@
           "ClassMapping"
         ],
         "summary": "Delete",
+        "operationId": "ClassMappingDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -557,7 +752,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -568,9 +783,36 @@
           "ClassMapping"
         ],
         "summary": "List all ClassMapping",
+        "operationId": "ClassMappingList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassMapping"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassMapping"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassMapping"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -579,6 +821,7 @@
           "ClassMapping"
         ],
         "summary": "Update a ClassMapping",
+        "operationId": "ClassMappingUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -601,7 +844,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              }
+            }
           }
         }
       },
@@ -610,6 +870,7 @@
           "ClassMapping"
         ],
         "summary": "Create",
+        "operationId": "ClassMappingCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -660,6 +921,7 @@
           "ClassModule"
         ],
         "summary": "Get a record",
+        "operationId": "ClassModuleGetById",
         "parameters": [
           {
             "name": "id",
@@ -700,6 +962,7 @@
           "ClassModule"
         ],
         "summary": "Delete",
+        "operationId": "ClassModuleDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -714,7 +977,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -725,9 +1008,36 @@
           "ClassModule"
         ],
         "summary": "List all ClassModule",
+        "operationId": "ClassModuleList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassModule"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassModule"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassModule"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -736,6 +1046,7 @@
           "ClassModule"
         ],
         "summary": "Update a ClassModule",
+        "operationId": "ClassModuleUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -758,7 +1069,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              }
+            }
           }
         }
       },
@@ -767,6 +1095,7 @@
           "ClassModule"
         ],
         "summary": "Create",
+        "operationId": "ClassModuleCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -817,6 +1146,7 @@
           "Component"
         ],
         "summary": "Get a record",
+        "operationId": "ComponentGetById",
         "parameters": [
           {
             "name": "id",
@@ -857,6 +1187,7 @@
           "Component"
         ],
         "summary": "Delete",
+        "operationId": "ComponentDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -871,7 +1202,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -882,9 +1233,36 @@
           "Component"
         ],
         "summary": "List all component",
+        "operationId": "ComponentList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Component"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Component"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Component"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -893,6 +1271,7 @@
           "Component"
         ],
         "summary": "Update a component",
+        "operationId": "ComponentUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -915,7 +1294,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              }
+            }
           }
         }
       },
@@ -924,6 +1320,7 @@
           "Component"
         ],
         "summary": "Create",
+        "operationId": "ComponentCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -974,6 +1371,7 @@
           "ComponentCourse"
         ],
         "summary": "Get a record",
+        "operationId": "ComponentCourseGetById",
         "parameters": [
           {
             "name": "id",
@@ -1014,6 +1412,7 @@
           "ComponentCourse"
         ],
         "summary": "Delete",
+        "operationId": "ComponentCouseDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -1028,7 +1427,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -1039,9 +1458,36 @@
           "ComponentCourse"
         ],
         "summary": "List all componentcourses",
+        "operationId": "ComponentCourseList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentCourse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentCourse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentCourse"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1050,6 +1496,7 @@
           "ComponentCourse"
         ],
         "summary": "Update a componentcourse",
+        "operationId": "ComponentCourseUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1072,7 +1519,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              }
+            }
           }
         }
       },
@@ -1081,6 +1545,7 @@
           "ComponentCourse"
         ],
         "summary": "Create",
+        "operationId": "ComponentCourseCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1131,6 +1596,7 @@
           "ComponentType"
         ],
         "summary": "Get a record",
+        "operationId": "ComponentTypeGetById",
         "parameters": [
           {
             "name": "id",
@@ -1171,6 +1637,7 @@
           "ComponentType"
         ],
         "summary": "Delete",
+        "operationId": "ComponentTypeDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -1184,8 +1651,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Success"
+          "204": {
+            "description": "No Content"
           }
         }
       }
@@ -1196,9 +1663,36 @@
           "ComponentType"
         ],
         "summary": "List all componentType",
+        "operationId": "ComponentTypeList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentType"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1207,6 +1701,7 @@
           "ComponentType"
         ],
         "summary": "Update a componentType",
+        "operationId": "ComponentTypeUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1238,6 +1733,7 @@
           "ComponentType"
         ],
         "summary": "Create",
+        "operationId": "ComponentTypeCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1259,8 +1755,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1288,6 +1784,7 @@
           "Course"
         ],
         "summary": "Get a record",
+        "operationId": "CourseGetById",
         "parameters": [
           {
             "name": "id",
@@ -1328,6 +1825,7 @@
           "Course"
         ],
         "summary": "Delete",
+        "operationId": "CourseDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -1342,7 +1840,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -1353,9 +1871,36 @@
           "Course"
         ],
         "summary": "List all courses",
+        "operationId": "CourseList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1364,6 +1909,7 @@
           "Course"
         ],
         "summary": "Update a course",
+        "operationId": "CourseUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1386,7 +1932,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            }
           }
         }
       },
@@ -1395,6 +1958,7 @@
           "Course"
         ],
         "summary": "Create",
+        "operationId": "CourseCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1445,6 +2009,7 @@
           "CourseType"
         ],
         "summary": "Get record by id",
+        "operationId": "CourseTypeGetById",
         "parameters": [
           {
             "name": "id",
@@ -1485,6 +2050,7 @@
           "CourseType"
         ],
         "summary": "Delete a course type by id",
+        "operationId": "CourseTypeDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -1499,7 +2065,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -1510,9 +2096,27 @@
           "CourseType"
         ],
         "summary": "get all coursetypes",
+        "operationId": "CourseTypeList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseType"
+                }
+              }
+            }
           }
         }
       },
@@ -1521,6 +2125,7 @@
           "CourseType"
         ],
         "summary": "Update a coursetype",
+        "operationId": "CourseTypeUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1543,7 +2148,33 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseType"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1552,6 +2183,7 @@
           "CourseType"
         ],
         "summary": "Add new coursetype",
+        "operationId": "CourseTypeCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1602,6 +2234,7 @@
           "Curriculum"
         ],
         "summary": "Get a record",
+        "operationId": "CurriculumGetById",
         "parameters": [
           {
             "name": "id",
@@ -1642,6 +2275,7 @@
           "Curriculum"
         ],
         "summary": "Delete",
+        "operationId": "CurriculumDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -1656,7 +2290,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -1667,9 +2321,36 @@
           "Curriculum"
         ],
         "summary": "List all curriculum",
+        "operationId": "CurriculumList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1678,6 +2359,7 @@
           "Curriculum"
         ],
         "summary": "Update a curriculum",
+        "operationId": "CurriculumUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1700,7 +2382,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              }
+            }
           }
         }
       },
@@ -1709,6 +2408,7 @@
           "Curriculum"
         ],
         "summary": "Create",
+        "operationId": "CurriculumCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1759,6 +2459,7 @@
           "Curriculum"
         ],
         "summary": "return the curriculum owners",
+        "operationId": "CurriculumGetOwnerUnitById",
         "parameters": [
           {
             "name": "id",
@@ -1773,7 +2474,33 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1798,7 +2525,33 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1809,6 +2562,7 @@
           "CurriculumType"
         ],
         "summary": "Get a record",
+        "operationId": "CurriculumTypeGetById",
         "parameters": [
           {
             "name": "id",
@@ -1849,6 +2603,7 @@
           "CurriculumType"
         ],
         "summary": "Delete",
+        "operationId": "CurriculumTypeDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -1863,7 +2618,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -1874,9 +2649,36 @@
           "CurriculumType"
         ],
         "summary": "List all curriculumType",
+        "operationId": "CurriculumTypeList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CurriculumType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CurriculumType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CurriculumType"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1885,6 +2687,7 @@
           "CurriculumType"
         ],
         "summary": "Update curriculumType",
+        "operationId": "CurriculumTypeUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1907,7 +2710,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              }
+            }
           }
         }
       },
@@ -1916,6 +2736,7 @@
           "CurriculumType"
         ],
         "summary": "Create",
+        "operationId": "CurriculumTypeCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -1966,6 +2787,7 @@
           "Faculty"
         ],
         "summary": "Get a record",
+        "operationId": "FacultyGetById",
         "parameters": [
           {
             "name": "id",
@@ -2006,6 +2828,7 @@
           "Faculty"
         ],
         "summary": "Delete",
+        "operationId": "FacultyDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -2020,7 +2843,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -2031,9 +2874,36 @@
           "Faculty"
         ],
         "summary": "List all Faculty",
+        "operationId": "FacultyList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Faculty"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Faculty"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Faculty"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -2042,6 +2912,7 @@
           "Faculty"
         ],
         "summary": "Update a Faculty",
+        "operationId": "FacultyUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2064,7 +2935,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              }
+            }
           }
         }
       },
@@ -2073,6 +2961,7 @@
           "Faculty"
         ],
         "summary": "Create",
+        "operationId": "FacultyCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2123,6 +3012,7 @@
           "ModuleAssessment"
         ],
         "summary": "Get a record",
+        "operationId": "ModuleAssessmentGetById",
         "parameters": [
           {
             "name": "id",
@@ -2163,6 +3053,7 @@
           "ModuleAssessment"
         ],
         "summary": "Delete",
+        "operationId": "ModuleAssessmentDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -2177,7 +3068,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -2188,9 +3099,36 @@
           "ModuleAssessment"
         ],
         "summary": "List all ModuleAssessment",
+        "operationId": "ModuleAssessmentList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessment"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessment"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessment"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -2199,6 +3137,7 @@
           "ModuleAssessment"
         ],
         "summary": "Update a ModuleAssessment",
+        "operationId": "ModuleAssessmentUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2221,7 +3160,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              }
+            }
           }
         }
       },
@@ -2230,6 +3186,7 @@
           "ModuleAssessment"
         ],
         "summary": "Create",
+        "operationId": "ModuleAssessmentCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2280,6 +3237,7 @@
           "ModuleAssessmentMark"
         ],
         "summary": "Get a record",
+        "operationId": "ModuleAssessmentMarkGetById",
         "parameters": [
           {
             "name": "id",
@@ -2320,6 +3278,7 @@
           "ModuleAssessmentMark"
         ],
         "summary": "Delete",
+        "operationId": "ModuleAssessmentMarkDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -2334,7 +3293,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -2345,9 +3324,36 @@
           "ModuleAssessmentMark"
         ],
         "summary": "List all ModuleAssessmentMark",
+        "operationId": "ModuleAssessmentMarkList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessmentMark"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessmentMark"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessmentMark"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -2356,6 +3362,7 @@
           "ModuleAssessmentMark"
         ],
         "summary": "Update a moduleAssessmentMarks",
+        "operationId": "ModuleAssessmentMarkUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2378,7 +3385,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              }
+            }
           }
         }
       },
@@ -2387,6 +3411,7 @@
           "ModuleAssessmentMark"
         ],
         "summary": "Create",
+        "operationId": "ModuleAssessmentMarkCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2437,6 +3462,7 @@
           "Offering"
         ],
         "summary": "Get a record",
+        "operationId": "OfferingGetById",
         "parameters": [
           {
             "name": "id",
@@ -2477,6 +3503,7 @@
           "Offering"
         ],
         "summary": "Delete",
+        "operationId": "OfferingDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -2491,7 +3518,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -2502,9 +3549,36 @@
           "Offering"
         ],
         "summary": "List all Offering",
+        "operationId": "OfferingList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Offering"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Offering"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Offering"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -2513,6 +3587,7 @@
           "Offering"
         ],
         "summary": "Update a offering",
+        "operationId": "OfferingUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2535,7 +3610,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              }
+            }
           }
         }
       },
@@ -2544,6 +3636,7 @@
           "Offering"
         ],
         "summary": "Create",
+        "operationId": "OfferingCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2594,6 +3687,7 @@
           "OrgUnit"
         ],
         "summary": "Get a record",
+        "operationId": "OrgUnitGetById",
         "parameters": [
           {
             "name": "id",
@@ -2634,6 +3728,7 @@
           "OrgUnit"
         ],
         "summary": "Delete",
+        "operationId": "OrgUnitDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -2648,7 +3743,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -2659,9 +3774,36 @@
           "OrgUnit"
         ],
         "summary": "List all orgunit",
+        "operationId": "OrgUnitList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -2670,6 +3812,7 @@
           "OrgUnit"
         ],
         "summary": "Update a orgunit",
+        "operationId": "OrgUnitUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2692,7 +3835,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              }
+            }
           }
         }
       },
@@ -2701,6 +3861,7 @@
           "OrgUnit"
         ],
         "summary": "Create",
+        "operationId": "OrgUnitCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2751,6 +3912,7 @@
           "OrgUnitType"
         ],
         "summary": "Get a record",
+        "operationId": "OrgUnitTypeGetById",
         "parameters": [
           {
             "name": "id",
@@ -2791,6 +3953,7 @@
           "OrgUnitType"
         ],
         "summary": "Delete",
+        "operationId": "OrgUnitTypeDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -2805,7 +3968,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -2816,9 +3999,36 @@
           "OrgUnitType"
         ],
         "summary": "List all unittype",
+        "operationId": "OrgUnitTypeList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnitType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnitType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnitType"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -2827,6 +4037,7 @@
           "OrgUnitType"
         ],
         "summary": "Update a unittype",
+        "operationId": "OrgUnitTypeUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2849,7 +4060,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              }
+            }
           }
         }
       },
@@ -2858,6 +4086,7 @@
           "OrgUnitType"
         ],
         "summary": "Create",
+        "operationId": "OrgUnitTypeCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -2908,6 +4137,7 @@
           "RegisterStatus"
         ],
         "summary": "Get a record",
+        "operationId": "RegisterStatusGetById",
         "parameters": [
           {
             "name": "id",
@@ -2948,6 +4178,7 @@
           "RegisterStatus"
         ],
         "summary": "Delete",
+        "operationId": "RegisterStatusDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -2962,7 +4193,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -2973,9 +4224,36 @@
           "RegisterStatus"
         ],
         "summary": "List all RegisterStatus",
+        "operationId": "RegisterStatusList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegisterStatus"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegisterStatus"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegisterStatus"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -2984,6 +4262,7 @@
           "RegisterStatus"
         ],
         "summary": "Update a Term",
+        "operationId": "RegisterStatusUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3006,7 +4285,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              }
+            }
           }
         }
       },
@@ -3015,6 +4311,7 @@
           "RegisterStatus"
         ],
         "summary": "Create",
+        "operationId": "RegisterStatusCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3065,6 +4362,7 @@
           "Registration"
         ],
         "summary": "Get a record",
+        "operationId": "RegistrationGetById",
         "parameters": [
           {
             "name": "id",
@@ -3105,6 +4403,7 @@
           "Registration"
         ],
         "summary": "Delete",
+        "operationId": "RegistrationDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -3119,7 +4418,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -3130,9 +4449,36 @@
           "Registration"
         ],
         "summary": "List all registrations",
+        "operationId": "RegistrationList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Registration"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Registration"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Registration"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -3141,6 +4487,7 @@
           "Registration"
         ],
         "summary": "Update a Registration",
+        "operationId": "RegistrationUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3163,7 +4510,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              }
+            }
           }
         }
       },
@@ -3172,6 +4536,7 @@
           "Registration"
         ],
         "summary": "Create",
+        "operationId": "RegistrationCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3222,6 +4587,7 @@
           "Semester"
         ],
         "summary": "Get a record",
+        "operationId": "SemesterGetById",
         "parameters": [
           {
             "name": "id",
@@ -3262,6 +4628,7 @@
           "Semester"
         ],
         "summary": "Delete",
+        "operationId": "SemesterDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -3276,7 +4643,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -3287,9 +4674,36 @@
           "Semester"
         ],
         "summary": "List all Semester",
+        "operationId": "SemesterList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Semester"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Semester"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Semester"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -3298,6 +4712,7 @@
           "Semester"
         ],
         "summary": "Update a Semester",
+        "operationId": "SemesterUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3320,7 +4735,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              }
+            }
           }
         }
       },
@@ -3329,6 +4761,7 @@
           "Semester"
         ],
         "summary": "Create",
+        "operationId": "SemesterCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3379,6 +4812,7 @@
           "Student"
         ],
         "summary": "Get a record",
+        "operationId": "StudentGetById",
         "parameters": [
           {
             "name": "id",
@@ -3419,6 +4853,7 @@
           "Student"
         ],
         "summary": "Delete",
+        "operationId": "StudentDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -3433,7 +4868,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -3444,9 +4899,36 @@
           "Student"
         ],
         "summary": "List all student",
+        "operationId": "StudentList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -3455,6 +4937,7 @@
           "Student"
         ],
         "summary": "Update a student",
+        "operationId": "StudentUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3477,7 +4960,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
           }
         }
       },
@@ -3486,6 +4986,7 @@
           "Student"
         ],
         "summary": "Create",
+        "operationId": "StudentCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3536,6 +5037,7 @@
           "StudentGroup"
         ],
         "summary": "Get a record",
+        "operationId": "StudenGroupGetById",
         "parameters": [
           {
             "name": "id",
@@ -3576,6 +5078,7 @@
           "StudentGroup"
         ],
         "summary": "Delete",
+        "operationId": "StudenGroupDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -3590,7 +5093,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -3601,9 +5124,36 @@
           "StudentGroup"
         ],
         "summary": "List all studentGroup",
+        "operationId": "StudenGroupList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentGroup"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentGroup"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentGroup"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -3612,6 +5162,7 @@
           "StudentGroup"
         ],
         "summary": "Update a studentGroup",
+        "operationId": "StudenGroupUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3634,7 +5185,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              }
+            }
           }
         }
       },
@@ -3643,6 +5211,7 @@
           "StudentGroup"
         ],
         "summary": "Create",
+        "operationId": "StudenGroupCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3693,6 +5262,7 @@
           "StudentProgram"
         ],
         "summary": "Get a record",
+        "operationId": "StudentProgramGetById",
         "parameters": [
           {
             "name": "id",
@@ -3733,6 +5303,7 @@
           "StudentProgram"
         ],
         "summary": "Delete",
+        "operationId": "StudentProgramDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -3747,7 +5318,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -3758,9 +5349,36 @@
           "StudentProgram"
         ],
         "summary": "List all StudentProgram",
+        "operationId": "StudentProgramList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentProgram"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentProgram"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentProgram"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -3769,6 +5387,7 @@
           "StudentProgram"
         ],
         "summary": "Update a StudentProgram",
+        "operationId": "StudentProgramUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3791,7 +5410,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              }
+            }
           }
         }
       },
@@ -3800,6 +5436,7 @@
           "StudentProgram"
         ],
         "summary": "Create",
+        "operationId": "StudentProgramCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3850,6 +5487,7 @@
           "StudentStatus"
         ],
         "summary": "Get a record",
+        "operationId": "StudentStatusGetById",
         "parameters": [
           {
             "name": "id",
@@ -3890,6 +5528,7 @@
           "StudentStatus"
         ],
         "summary": "Delete",
+        "operationId": "StudentStatusDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -3904,7 +5543,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -3915,9 +5574,36 @@
           "StudentStatus"
         ],
         "summary": "List all studentStatus",
+        "operationId": "StudentStatusList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentStatus"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentStatus"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentStatus"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -3926,6 +5612,7 @@
           "StudentStatus"
         ],
         "summary": "Update a studentStatus",
+        "operationId": "StudentStatusUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -3948,7 +5635,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              }
+            }
           }
         }
       },
@@ -3957,6 +5661,7 @@
           "StudentStatus"
         ],
         "summary": "Create",
+        "operationId": "StudentStatusCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -4007,6 +5712,7 @@
           "Term"
         ],
         "summary": "Get a record",
+        "operationId": "TermGetById",
         "parameters": [
           {
             "name": "id",
@@ -4047,6 +5753,7 @@
           "Term"
         ],
         "summary": "Delete",
+        "operationId": "TermDeleteById",
         "parameters": [
           {
             "name": "id",
@@ -4061,7 +5768,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
           }
         }
       }
@@ -4072,9 +5799,36 @@
           "Term"
         ],
         "summary": "List all Term",
+        "operationId": "TermList",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Term"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Term"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Term"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -4083,6 +5837,7 @@
           "Term"
         ],
         "summary": "Update a Term",
+        "operationId": "TermUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -4105,7 +5860,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              }
+            }
           }
         }
       },
@@ -4114,6 +5886,7 @@
           "Term"
         ],
         "summary": "Create",
+        "operationId": "TermCreate",
         "requestBody": {
           "description": "",
           "content": {
