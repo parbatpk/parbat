@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
 using System;
@@ -75,6 +76,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 _service.Update(c);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -89,11 +91,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPost(Name = "ComponentTypeCreate")]
+        [ProducesResponseType(typeof(ComponentType),StatusCodes.Status201Created)]
         public ActionResult<ComponentType> Create([FromBody] ComponentType c)
         {
             try
             {
                 _service.Create(c);
+
                 return Created("Get", c);
             }
             catch (ServiceException se)
@@ -109,11 +113,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "ComponentTypeDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)
