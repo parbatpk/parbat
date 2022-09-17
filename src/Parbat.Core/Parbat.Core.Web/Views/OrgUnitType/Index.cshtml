@@ -9,11 +9,10 @@
 <div id="ModalPlaceHolder"></div>
 
 <p>
-@*    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
             data-target="#createOrgUnitType" data-url="@Url.Action("Create", "OrgUnitType")">
         Create
-    </button>*@
-    <a href="@Url.Action("Create", "OrgUnitType")"> Create</a>
+    </button>
 </p>
 
 <table class="table" id="deptList">
@@ -40,12 +39,13 @@
                     @Html.DisplayFor(modelItem => item.ShortName)
                 </td>
                 <td>
-                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"@*
-                            data-target="#editItem" data-url="@Url.Action("Edit", "Department", new { id = item.DepartmentId })"*@>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#editItem" data-url="@Url.Action("Edit", "OrgUnitType", new { id = item.OrgUnitTypeID })">
                         Edit
-                    </button> |
-                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"@*
-                            data-target="#deleteItem" data-url="@Url.Action("Delete", "Department",new { id = item.DepartmentId})"*@>
+                    </button>
+                    |
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#deleteItem" data-url="@Url.Action("Delete", "OrgUnitType",new { id = item.OrgUnitTypeID})">
                         Delete
                     </button>
                 </td>

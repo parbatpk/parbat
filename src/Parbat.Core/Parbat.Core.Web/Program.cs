@@ -1,5 +1,8 @@
-var builder = WebApplication.CreateBuilder(args);
+using Parbat.Core.API.Client;
+using Parbat.Core.Web.Models;
 
+var builder = WebApplication.CreateBuilder(args);
+ViewHelper.BASE_URL = "https://localhost:44393";
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

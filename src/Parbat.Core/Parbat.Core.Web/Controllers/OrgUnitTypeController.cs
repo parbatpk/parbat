@@ -12,45 +12,51 @@ namespace Parbat.Core.Web.Controllers
 {
     public class OrgUnitTypeController : Controller
     {
-        // GET: HomeController1
-        public ActionResult Index()
-        {/*
-            var c = new ParbatClient();*/
-            /*            var all = await c.OrgUnitTypeListAsync();*/
-            ParbatClient c = new("https://localhost:44393", new HttpClient());
-            /*ParbatClient cc= new HttpClient();*/
-            /*            var myList =(IEnumerable<OrgUnitType>)c.OrgUnitTypeListAsync();*/
-            /*            var o = new ICollection<OrgUnitType>(myList);*/
-            
-            var l =  c.OrgUnitTypeListAsync().Result;
+        // GET: OrgUnitType
+        public async Task<ActionResult> Index()
+        {
+            try
+            {
+                ParbatClient pC = new(ViewHelper.BASE_URL, new HttpClient());
+                var listOfData = await pC.OrgUnitTypeListAsync();
 
-            return View(l);
+                return View(listOfData);
+            }
+            catch(Exception e) 
+            {
+                return NoContent();
+            }
         }
 
-        // GET: HomeController1/Details/5
+        // GET: OrgUnitType/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: HomeController1/Create
-        /*public ActionResult Create()
-        {
-            return View();
-        }*/
+        // GET: OrgUnitType/Create
+
         public ActionResult Create()
         {
             return PartialView(ViewHelper.CREATE_PARTIAL);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(OrgUnitType o)
+        public async Task<ActionResult> Create(OrgUnitType o)
         {
             if (ModelState.IsValid)
             {
-                ParbatClient c = new("https://localhost:44393", new HttpClient());
-                c.OrgUnitTypeCreateAsync(o);
-                return NoContent();
+                try
+                {
+                    ParbatClient pC = new(ViewHelper.BASE_URL, new HttpClient());
+                    o.OrgUnitTypeID = 0;
+                    var cc = await pC.OrgUnitTypeCreateAsync(o);
+                    return NoContent();
+                }
+                catch(Exception e) 
+                {
+                    return NoContent();
+                }
             }
             else
             {
@@ -58,61 +64,96 @@ namespace Parbat.Core.Web.Controllers
             }
         }
 
-        // POST: HomeController1/Create
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        // GET: OrgUnitType/Edit/5
+        public async Task<ActionResult> Edit(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
+                ParbatClient pC = new(ViewHelper.BASE_URL, new HttpClient());
+                var found = await pC.OrgUnitTypeGetByIdAsync(id);
 
-        // GET: HomeController1/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
+                if (found != null)
+                    return PartialView(ViewHelper.EDIT_PARTIAL, found);
+                else
+                    return BadRequest();
+            }
+            catch(Exception e)
+            {
+                return NoContent();
+            }
+
         }
 
-        // POST: HomeController1/Edit/5
+        // POST: DepartmentController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(OrgUnitType o)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    ParbatClient pC = new(ViewHelper.BASE_URL, new HttpClient());
+                    pC.OrgUnitTypeUpdateAsync(o);
+                    return NoContent();
+                }
+                catch(Exception e)
+                {
+                    return NoContent();
+                }
+            }
+            else
+            {
+                return PartialView(ViewHelper.EDIT_PARTIAL, o);
+            }
+        }
+
+        // GET: OrgUnitType/Delete/5 
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                ParbatClient pC = new(ViewHelper.BASE_URL, new HttpClient());
+                var found = await pC.OrgUnitTypeGetByIdAsync(id);
+
+                if (found != null)
+                {
+                    return PartialView(ViewHelper.DELETE_PARTIAL, found);
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            catch
+            catch(Exception e)
             {
-                return View();
+                return NoContent();
             }
         }
 
-        // GET: HomeController1/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: HomeController1/Delete/5
+        // POST: DepartmentController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(OrgUnitType o)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    ParbatClient c = new(ViewHelper.BASE_URL, new HttpClient());
+                    await c.OrgUnitTypeDeleteByIdAsync((long)o.OrgUnitTypeID);
+                    return NoContent();
+                }
+                catch(ApiException e)
+                {
+                    return NoContent();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return PartialView(ViewHelper.DELETE_PARTIAL, o);
             }
+
         }
     }
 }
