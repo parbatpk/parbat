@@ -4,21 +4,26 @@ using NuGet.Protocol;
 using Parbat.Core.API.Client;
 using System.Collections;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
+using System.Text.Json;
+using Parbat.Core.Web.Models;
 
 namespace Parbat.Core.Web.Controllers
 {
     public class OrgUnitTypeController : Controller
     {
         // GET: HomeController1
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {/*
             var c = new ParbatClient();*/
             /*            var all = await c.OrgUnitTypeListAsync();*/
-            ParbatClient c = new("", new HttpClient());
+            ParbatClient c = new("https://localhost:44393", new HttpClient());
             /*ParbatClient cc= new HttpClient();*/
             /*            var myList =(IEnumerable<OrgUnitType>)c.OrgUnitTypeListAsync();*/
             /*            var o = new ICollection<OrgUnitType>(myList);*/
-            var l = await c.OrgUnitTypeListAsync();
+            
+            var l =  c.OrgUnitTypeListAsync().Result;
+
             return View(l);
         }
 
@@ -29,13 +34,32 @@ namespace Parbat.Core.Web.Controllers
         }
 
         // GET: HomeController1/Create
-        public ActionResult Create()
+        /*public ActionResult Create()
         {
             return View();
+        }*/
+        public ActionResult Create()
+        {
+            return PartialView(ViewHelper.CREATE_PARTIAL);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(OrgUnitType o)
+        {
+            if (ModelState.IsValid)
+            {
+                ParbatClient c = new("https://localhost:44393", new HttpClient());
+                c.OrgUnitTypeCreateAsync(o);
+                return NoContent();
+            }
+            else
+            {
+                return PartialView(ViewHelper.CREATE_PARTIAL, o);
+            }
         }
 
         // POST: HomeController1/Create
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
@@ -47,7 +71,7 @@ namespace Parbat.Core.Web.Controllers
             {
                 return View();
             }
-        }
+        }*/
 
         // GET: HomeController1/Edit/5
         public ActionResult Edit(int id)

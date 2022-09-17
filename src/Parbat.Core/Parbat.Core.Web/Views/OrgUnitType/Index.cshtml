@@ -9,17 +9,21 @@
 <div id="ModalPlaceHolder"></div>
 
 <p>
-    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
-            data-target="#createDepartment" data-url="@Url.Action("Create", "Department")">
+@*    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+            data-target="#createOrgUnitType" data-url="@Url.Action("Create", "OrgUnitType")">
         Create
-    </button>
+    </button>*@
+    <a href="@Url.Action("Create", "OrgUnitType")"> Create</a>
 </p>
 
 <table class="table" id="deptList">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.OrgUnitTypeID)
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortName)
             </th>
             <th></th>
         </tr>
@@ -30,7 +34,10 @@
             <tr>
 
                 <td>
-                    @*@Html.DisplayFor(modelItem => item.DepartmentName)*@
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortName)
                 </td>
                 <td>
                     <button type="button" class="btn btn-link" data-toggle="ajax-modal"@*
@@ -48,8 +55,8 @@
 </table>
 
 
-@*<script>
+<script>
     $(document).ready(function () {
         $('#deptList').DataTable();
     });
-</script>*@
+</script>
