@@ -31,63 +31,121 @@ namespace Parbat.Core.Web.Controllers
         // GET: ComponentType/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView(ViewHelper.CREATE_PARTIAL);
         }
 
         // POST: ComponentType/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(ComponentType componentType)
         {
-            try
+            if(ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    ParbatClient client = new(ViewHelper.BASE_URL, new HttpClient());
+                    componentType.ComponentTypeID = -1;
+                    var data = await client.ComponentTypeCreateAsync(componentType);
+
+                    return NoContent();
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex);
+                }
             }
-            catch
+            else
             {
-                return View();
-            }
+                return PartialView(ViewHelper.CREATE_PARTIAL);
+            }     
         }
 
         // GET: ComponentType/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            try
+            {
+                ParbatClient client = new(ViewHelper.BASE_URL ,new HttpClient());
+                var data = await client.ComponentTypeGetByIdAsync(id);
+                
+                if(data is not null)
+                {
+                    return PartialView(ViewHelper.EDIT_PARTIAL, data);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         // POST: ComponentType/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(ComponentType componentType)
         {
-            try
+            if(ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    ParbatClient client = new(ViewHelper.BASE_URL, new HttpClient());
+                    await client.ComponentTypeUpdateAsync(componentType);
+
+                    return NoContent();
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex);
+                }
             }
-            catch
+            else
             {
-                return View();
+                return PartialView(ViewHelper.EDIT_PARTIAL);
             }
         }
 
         // GET: ComponentType/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            try
+            {
+                ParbatClient client = new(ViewHelper.BASE_URL, new HttpClient());
+                var data = await client.ComponentTypeGetByIdAsync(id);
+
+                if(data is not null)
+                {
+                    return PartialView(ViewHelper.DELETE_PARTIAL, data);
+                }
+                else
+                {
+                    return BadRequest("Not Found");
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         // POST: ComponentType/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(ComponentType componentType)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                ParbatClient client = new(ViewHelper.BASE_URL, new HttpClient());
+                await client.ComponentTypeDeleteByIdAsync((long)componentType.ComponentTypeID);
+
+                return NoContent();
             }
             catch
             {
-                return View();
+                return BadRequest("Sorry, Cannot Delete");
             }
         }
     }

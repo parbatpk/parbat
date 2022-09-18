@@ -1,0 +1,53 @@
+﻿@model Parbat.Core.API.Client.ComponentType
+<!-- Modal -->
+<div class="modal fade" id="editComponentType" tabindex="-1" role="dialog" aria-labelledby="editComponentType" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form asp-action="Edit">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editComponentType">Edit Component</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal Body -->
+                    <div class="row">
+                        <div class="col-lg">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input asp-for="ComponentTypeID" class="form-control" type="hidden" />
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IsRequired" class="control-label"></label>
+                                <select name="IsRequired" aasp-for="IsRequired" class="control-label">
+                                    <option value="false">False</option>
+                                    <option value="true">True</option>
+                                </select>
+                                <span asp-validation-for="IsRequired" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" data-save="modal">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+  @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
