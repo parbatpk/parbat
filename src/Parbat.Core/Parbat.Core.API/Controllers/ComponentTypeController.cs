@@ -104,7 +104,6 @@ namespace Parbat.Core.API.Controllers
             {
                 return BadRequest(se.Message);
             }
-
         }
 
         /// <summary>
