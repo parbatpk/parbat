@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects.Models;
 using Parbat.Core.Services;
 using System.Collections.Generic;
@@ -88,6 +89,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="cm"></param>
         /// <returns></returns>
         [HttpPost(Name = "ClassModuleCreate")]
+        [ProducesResponseType(typeof(ClassModule), StatusCodes.Status201Created)]
         public ActionResult<ClassModule> Create([FromBody] ClassModule cm)
         {
             try
@@ -108,11 +110,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "ClassModuleDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

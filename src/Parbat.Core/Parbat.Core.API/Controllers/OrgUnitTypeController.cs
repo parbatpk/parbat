@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
@@ -89,11 +90,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="o"></param>
         /// <returns></returns>
         [HttpPost(Name = "OrgUnitTypeCreate")]
+        [ProducesResponseType(typeof(OrgUnitType), StatusCodes.Status201Created)]
         public ActionResult<OrgUnitType> Create([FromBody] OrgUnitType o)
         {
             try
             {
                 _service.Create(o);
+
                 return Created("Get", o);
             }
             catch (ServiceException se)
@@ -109,11 +112,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "OrgUnitTypeDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

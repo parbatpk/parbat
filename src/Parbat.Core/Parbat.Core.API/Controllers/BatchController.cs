@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
 using System.Collections.Generic;
@@ -88,6 +89,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="b"></param>
         /// <returns></returns>
         [HttpPost(Name = "BatchCreate")]
+        [ProducesResponseType(typeof(Batch), StatusCodes.Status201Created)]
         public ActionResult<Batch> Create([FromBody] Batch b)
         {
             try
@@ -109,6 +111,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "BatchDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
             try

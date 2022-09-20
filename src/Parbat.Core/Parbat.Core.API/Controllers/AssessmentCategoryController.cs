@@ -2,6 +2,7 @@
 using Parbat.Core.Services;
 using Parbat.Core.DataObjects;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -88,6 +89,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="assessmentCategory"></param>
         /// <returns></returns>
         [HttpPost("AssessmentCategoryCreate")]
+        [ProducesResponseType(typeof(AssessmentCategory), StatusCodes.Status201Created)]
         public ActionResult<AssessmentCategory> Create([FromBody] AssessmentCategory assessmentCategory)
         {
             try
@@ -109,6 +111,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "AssessmentCategoryDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
             try

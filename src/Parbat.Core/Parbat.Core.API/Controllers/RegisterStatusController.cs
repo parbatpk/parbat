@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 var registerStatuses = _service.GetAll();
+
                 return Ok(registerStatuses);
             }
             catch (ServiceException se)
@@ -72,6 +74,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 _service.Update(r);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -86,11 +89,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="r"></param>
         /// <returns></returns>
         [HttpPost(Name = "RegisterStatusCreate")]
+        [ProducesResponseType(typeof(RegisterStatus), StatusCodes.Status201Created)]
         public ActionResult<RegisterStatus> Create([FromBody] RegisterStatus r)
         {
             try
             {
                 _service.Create(r);
+
                 return Created("Get", r);
             }
             catch (ServiceException se)
@@ -105,11 +110,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "RegisterStatusDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 var semesters = _service.GetAll();
+
                 return Ok(semesters);
             }
             catch (ServiceException se)
@@ -72,6 +74,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 _service.Update(s);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -86,11 +89,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="s"></param>
         /// <returns></returns>
         [HttpPost(Name = "SemesterCreate")]
+        [ProducesResponseType(typeof(Semester), StatusCodes.Status201Created)]
         public ActionResult<Semester> Create([FromBody] Semester s)
         {
             try
             {
                 _service.Create(s);
+
                 return Created("Get", s);
             }
             catch (ServiceException se)
@@ -106,11 +111,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "SemesterDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

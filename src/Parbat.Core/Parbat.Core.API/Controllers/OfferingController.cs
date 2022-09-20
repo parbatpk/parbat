@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 var offering = _service.GetAll();
+
                 return Ok(offering);
             }
             catch (ServiceException se)
@@ -72,6 +74,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 _service.Update(o);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -86,18 +89,19 @@ namespace Parbat.Core.API.Controllers
         /// <param name="o"></param>
         /// <returns></returns>
         [HttpPost(Name = "OfferingCreate")]
+        [ProducesResponseType(typeof(Offering), StatusCodes.Status201Created)]
         public ActionResult<Offering> Create([FromBody] Offering o)
         {
             try
             {
                 _service.Create(o);
+
                 return Created("Get", o);
             }
             catch (ServiceException se)
             {
                 return BadRequest(se.Message);
             }
-
         }
 
         /// <summary>
@@ -106,11 +110,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "OfferingDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)
