@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -57,6 +54,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 var curriculumTypes = _service.GetAll();
+
                 return Ok(curriculumTypes);
             }
             catch (ServiceException ex)
@@ -76,6 +74,7 @@ namespace Parbat.Core.API.Controllers
             try
             {
                 _service.Update(c);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -90,11 +89,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPost(Name = "CurriculumTypeCreate")]
+        [ProducesResponseType(typeof(CurriculumType), StatusCodes.Status201Created)]
         public ActionResult<CurriculumType> Create([FromBody] CurriculumType c)
         {
             try
             {
                 _service.Create(c);
+
                 return Created("Get", c);
             }
             catch (ServiceException se)
@@ -110,11 +111,13 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "CurriculumTypeDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)
