@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "CourseTypeList")]
-        public ActionResult<CourseType> List()
+        public ActionResult<List<CourseType>> List()
         {
             try
             {
@@ -89,7 +90,8 @@ namespace Parbat.Core.API.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPost(Name = "CourseTypeCreate")]
-        public ActionResult<Course> Create([FromBody] CourseType c)
+        [ProducesResponseType(typeof(CourseType), StatusCodes.Status201Created)]
+        public ActionResult<CourseType> Create([FromBody] CourseType c)
         {
             try
             {
@@ -108,6 +110,7 @@ namespace Parbat.Core.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "CourseTypeDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
             try
