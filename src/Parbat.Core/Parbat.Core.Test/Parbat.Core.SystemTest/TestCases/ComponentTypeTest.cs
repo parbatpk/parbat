@@ -4,26 +4,24 @@ using Parbat.Core.SystemTest.Base;
 namespace Parbat.Core.SystemTest.TestCases
 {
     [TestClass]
-    public class ComponentTypeTest
+    public class ComponentTypeTest : BaseTest
     {
-
         [TestMethod]
         public void ComponentType_Create()
         {
             //arrange
-            BaseTest test = new BaseTest();
-
-            ComponentType componentType = new ComponentType
+            ComponentType obj = new ComponentType
             {
-                ComponentTypeID = -1,
+                ComponentTypeID = 0,
                 Name = "TestingCompoenet",
                 IsRequired = true,
             };
 
             //act
-            test.client.ComponentTypeCreateAsync(componentType).Wait();
+            var response = this.client.ComponentTypeCreateAsync(obj).Result;
 
             //assert
+            Assert.AreNotEqual(notExpected: obj.ComponentTypeID, actual: response.ComponentTypeID);
             Assert.IsTrue(true);
         }
 
@@ -31,20 +29,19 @@ namespace Parbat.Core.SystemTest.TestCases
         public void ComponentType_Update()
         {
             //arrange
-            BaseTest test = new BaseTest();
-
-            ComponentType componentType = new ComponentType
+            ComponentType obj = new ComponentType
             {
-                ComponentTypeID = -1,
+                ComponentTypeID = 0,
                 Name = "TestingCompoenetUpdate",
                 IsRequired = false,
             };
 
             //act
-            var response = test.client.ComponentTypeCreateAsync(componentType).Result;
-            test.client.ComponentTypeUpdateAsync(response).Wait();
+            var response = this.client.ComponentTypeCreateAsync(obj).Result;
+            this.client.ComponentTypeUpdateAsync(response).Wait();
 
             //assert
+            Assert.AreNotEqual(notExpected: obj.ComponentTypeID, actual: response.ComponentTypeID);
             Assert.IsTrue(true);
         }
 
@@ -52,11 +49,8 @@ namespace Parbat.Core.SystemTest.TestCases
         [TestMethod]
         public void ComponentType_Find()
         {
-            //arrange
-            BaseTest test = new BaseTest();
-
             //act
-            test.client.ComponentTypeGetByIdAsync(-1).Wait();
+            this.client.ComponentTypeGetByIdAsync(-1).Wait();
 
             //assert
             Assert.IsTrue(true);
@@ -67,18 +61,27 @@ namespace Parbat.Core.SystemTest.TestCases
         public void ComponentType_Delete()
         {
             //arrange
-            BaseTest test = new BaseTest();
-
-            ComponentType componentType = new ComponentType
+            ComponentType obj = new ComponentType
             {
-                ComponentTypeID = -1,
+                ComponentTypeID = 0,
                 Name = "TestingCompoenetUpdate",
                 IsRequired = false,
             };
 
             //act
-            var response = test.client.ComponentTypeCreateAsync(componentType).Result;
-            test.client.ComponentTypeDeleteByIdAsync(response.Key).Wait();
+            var response = this.client.ComponentTypeCreateAsync(obj).Result;
+            this.client.ComponentTypeDeleteByIdAsync(response.Key).Wait();
+
+            //assert
+            Assert.AreNotEqual(notExpected: obj.ComponentTypeID, actual: response.ComponentTypeID);
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
+        public void ComponentType_GetAll()
+        {
+            //act
+            this.client.ComponentTypeListAsync();
 
             //assert
             Assert.IsTrue(true);

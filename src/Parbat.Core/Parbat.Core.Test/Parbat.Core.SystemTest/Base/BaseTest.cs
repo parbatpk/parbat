@@ -4,8 +4,8 @@ namespace Parbat.Core.SystemTest.Base
 {
     public class BaseTest 
     {
-        public readonly ParbatClient client;
-        private protected string? _baseUrl;
+        private protected ParbatClient client;
+        private string? _baseUrl;
 
         public BaseTest() 
         {
@@ -20,7 +20,7 @@ namespace Parbat.Core.SystemTest.Base
 
             if(string.IsNullOrEmpty(this._baseUrl))
             {
-                throw new HttpRequestException("Please provide base URL");
+                throw new HttpRequestException("Please provide base URL in 'config.json'. Variable name should be 'BaseUrl'");
             }
         }
     }
