@@ -65,6 +65,25 @@ namespace Parbat.Core.API.Controllers
         }
 
         /// <summary>
+        /// List all orgunit
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet(Name = "OrgUnitListbyParentUnitId")]
+        public ActionResult<List<OrgUnit>> ListbyParentUnitId(long id)
+        {
+            try
+            {
+                var orgUnit = _service.GetAllbyParentUnitId(id);
+
+                return Ok(orgUnit);
+            }
+            catch (ServiceException se)
+            {
+                return BadRequest(se.Message);
+            }
+        }
+
+        /// <summary>
         /// Update a orgunit
         /// </summary>
         /// <param name="o"></param>

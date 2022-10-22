@@ -56,6 +56,18 @@ namespace Parbat.Core.DBRepository
             return batches;
         }
 
+        public IEnumerable<OrgUnit> GetAllbyParentUnitId(long id)
+        {
+            List<OrgUnit> batches = new();
+
+            DbCommand cmd = db.CreateSPCommand(Procds.GetAllbyParentUnitId);
+            db.AddParameter(cmd, Params.ParentUnitID,id);
+            var result = Convert.ToString(db.ExecuteScalar(cmd));
+            batches = DBHelper.Convert<List<OrgUnit>>(result);
+
+            return batches;
+        }
+
         public OrgUnit GetById(long id)
         {
             DbCommand cmd = db.CreateSPCommand(Procds.Find);
@@ -86,6 +98,7 @@ namespace Parbat.Core.DBRepository
             public const string Delete = "spDeleteOrgUnit";
             public const string Find = "spFindOrgUnit";
             public const string GetAll = "spGetAllOrgUnit";
+            public const string GetAllbyParentUnitId = "spGetAllOrgUnitbyParentUnitID";
 
             //non Core
             public const string FindParent = "spFindParentOrgUnit";

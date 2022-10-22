@@ -761,6 +761,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Parbat.Core.API.Controllers.OrgUnitController.ListbyParentUnitId(System.Int64)">
+            <summary>
+            List all orgunit
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Parbat.Core.API.Controllers.OrgUnitController.Update(Parbat.Core.DataObjects.OrgUnit)">
             <summary>
             Update a orgunit

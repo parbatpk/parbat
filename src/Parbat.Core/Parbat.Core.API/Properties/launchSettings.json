@@ -17,7 +17,7 @@
         "DB_USER": "sa",
         "DB_NAME": "ParbatDB",
         "DB_PASSWORD": "1234",
-        "DB_SERVER": "DESKTOP-F6VMO4B\\SQLEXPRESS",
+        "DB_SERVER": "DESKTOP-QUUA0TE\\SQLEXPRESS",
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DB_TYPE": "SQL",
         "TRUSTED": "true"

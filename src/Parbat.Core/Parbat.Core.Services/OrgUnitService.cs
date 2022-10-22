@@ -43,6 +43,11 @@ namespace Parbat.Core.Services
             return _factory.OrgUnitRepository.GetAll();
         }
 
+        public IEnumerable<OrgUnit> GetAllbyParentUnitId(long id)
+        {
+            return _factory.OrgUnitRepository.GetAllbyParentUnitId(id);
+        }
+
         public void Update(OrgUnit service)
         {
             if (service.OrgUnitID == null)
