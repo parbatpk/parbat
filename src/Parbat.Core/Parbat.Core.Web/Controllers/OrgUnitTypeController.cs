@@ -1,11 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol;
+﻿using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.API.Client;
-using System.Collections;
-using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using System.Text.Json;
 using Parbat.Core.Web.Models;
 
 namespace Parbat.Core.Web.Controllers
