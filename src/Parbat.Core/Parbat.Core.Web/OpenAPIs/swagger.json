@@ -15,7 +15,7 @@
     "version": "v2.0"
   },
   "paths": {
-    "/api/v2.0/AssessmentCategory/{id}": {
+    "/api/v2.0/AssessmentCategory/Get/{id}": {
       "get": {
         "tags": [
           "AssessmentCategory"
@@ -56,53 +56,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "AssessmentCategory"
-        ],
-        "summary": "Delete",
-        "operationId": "AssessmentCategoryDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/AssessmentCategory": {
+    "/api/v2.0/AssessmentCategory/List": {
       "get": {
         "tags": [
           "AssessmentCategory"
@@ -140,7 +96,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/AssessmentCategory/Update": {
       "put": {
         "tags": [
           "AssessmentCategory"
@@ -191,7 +149,7 @@
         }
       }
     },
-    "/api/v2.0/AssessmentCategory/AssessmentCategoryCreate": {
+    "/api/v2.0/AssessmentCategory/Create/AssessmentCategoryCreate": {
       "post": {
         "tags": [
           "AssessmentCategory"
@@ -218,8 +176,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -241,7 +199,33 @@
         }
       }
     },
-    "/api/v2.0/Batch/{id}": {
+    "/api/v2.0/AssessmentCategory/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "AssessmentCategory"
+        ],
+        "summary": "Delete",
+        "operationId": "AssessmentCategoryDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Batch/Get/{id}": {
       "get": {
         "tags": [
           "Batch"
@@ -282,53 +266,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Batch"
-        ],
-        "summary": "Delete",
-        "operationId": "BatchDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Batch": {
+    "/api/v2.0/Batch/List": {
       "get": {
         "tags": [
           "Batch"
@@ -366,7 +306,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Batch/Update": {
       "put": {
         "tags": [
           "Batch"
@@ -415,7 +357,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Batch/Create": {
       "post": {
         "tags": [
           "Batch"
@@ -443,8 +387,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -466,7 +410,33 @@
         }
       }
     },
-    "/api/v2.0/Class/{id}": {
+    "/api/v2.0/Batch/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Batch"
+        ],
+        "summary": "Delete",
+        "operationId": "BatchDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Class/Get/{id}": {
       "get": {
         "tags": [
           "Class"
@@ -507,53 +477,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Class"
-        ],
-        "summary": "Delete the Class",
-        "operationId": "ClassDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Class": {
+    "/api/v2.0/Class/List": {
       "get": {
         "tags": [
           "Class"
@@ -591,7 +517,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Class/Update": {
       "put": {
         "tags": [
           "Class"
@@ -640,7 +568,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Class/Create": {
       "post": {
         "tags": [
           "Class"
@@ -667,8 +597,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -690,7 +620,33 @@
         }
       }
     },
-    "/api/v2.0/ClassMapping/{id}": {
+    "/api/v2.0/Class/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Class"
+        ],
+        "summary": "Delete the Class",
+        "operationId": "ClassDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassMapping/Get/{id}": {
       "get": {
         "tags": [
           "ClassMapping"
@@ -731,53 +687,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "ClassMapping"
-        ],
-        "summary": "Delete",
-        "operationId": "ClassMappingDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/ClassMapping": {
+    "/api/v2.0/ClassMapping/List": {
       "get": {
         "tags": [
           "ClassMapping"
@@ -815,7 +727,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ClassMapping/Update": {
       "put": {
         "tags": [
           "ClassMapping"
@@ -864,7 +778,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ClassMapping/Create": {
       "post": {
         "tags": [
           "ClassMapping"
@@ -892,8 +808,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -915,7 +831,33 @@
         }
       }
     },
-    "/api/v2.0/ClassModule/{id}": {
+    "/api/v2.0/ClassMapping/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ClassMapping"
+        ],
+        "summary": "Delete",
+        "operationId": "ClassMappingDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassModule/Get/{id}": {
       "get": {
         "tags": [
           "ClassModule"
@@ -956,53 +898,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "ClassModule"
-        ],
-        "summary": "Delete",
-        "operationId": "ClassModuleDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/ClassModule": {
+    "/api/v2.0/ClassModule/List": {
       "get": {
         "tags": [
           "ClassModule"
@@ -1040,7 +938,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ClassModule/Update": {
       "put": {
         "tags": [
           "ClassModule"
@@ -1089,7 +989,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ClassModule/Create": {
       "post": {
         "tags": [
           "ClassModule"
@@ -1117,8 +1019,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1140,7 +1042,33 @@
         }
       }
     },
-    "/api/v2.0/Component/{id}": {
+    "/api/v2.0/ClassModule/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ClassModule"
+        ],
+        "summary": "Delete",
+        "operationId": "ClassModuleDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Component/Get/{id}": {
       "get": {
         "tags": [
           "Component"
@@ -1181,53 +1109,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Component"
-        ],
-        "summary": "Delete",
-        "operationId": "ComponentDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Component": {
+    "/api/v2.0/Component/List": {
       "get": {
         "tags": [
           "Component"
@@ -1265,7 +1149,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Component/Update": {
       "put": {
         "tags": [
           "Component"
@@ -1314,7 +1200,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Component/Create": {
       "post": {
         "tags": [
           "Component"
@@ -1342,8 +1230,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1365,7 +1253,33 @@
         }
       }
     },
-    "/api/v2.0/ComponentCourse/{id}": {
+    "/api/v2.0/Component/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Component"
+        ],
+        "summary": "Delete",
+        "operationId": "ComponentDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentCourse/Get/{id}": {
       "get": {
         "tags": [
           "ComponentCourse"
@@ -1406,53 +1320,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "ComponentCourse"
-        ],
-        "summary": "Delete",
-        "operationId": "ComponentCouseDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/ComponentCourse": {
+    "/api/v2.0/ComponentCourse/List": {
       "get": {
         "tags": [
           "ComponentCourse"
@@ -1490,7 +1360,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ComponentCourse/Update": {
       "put": {
         "tags": [
           "ComponentCourse"
@@ -1539,7 +1411,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ComponentCourse/Create": {
       "post": {
         "tags": [
           "ComponentCourse"
@@ -1567,8 +1441,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1590,7 +1464,33 @@
         }
       }
     },
-    "/api/v2.0/ComponentType/{id}": {
+    "/api/v2.0/ComponentCourse/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ComponentCourse"
+        ],
+        "summary": "Delete",
+        "operationId": "ComponentCouseDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentType/Get/{id}": {
       "get": {
         "tags": [
           "ComponentType"
@@ -1631,33 +1531,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "ComponentType"
-        ],
-        "summary": "Delete",
-        "operationId": "ComponentTypeDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        }
       }
     },
-    "/api/v2.0/ComponentType": {
+    "/api/v2.0/ComponentType/List": {
       "get": {
         "tags": [
           "ComponentType"
@@ -1695,7 +1571,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ComponentType/Update": {
       "put": {
         "tags": [
           "ComponentType"
@@ -1727,7 +1605,9 @@
             "description": "Success"
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ComponentType/Create": {
       "post": {
         "tags": [
           "ComponentType"
@@ -1778,7 +1658,33 @@
         }
       }
     },
-    "/api/v2.0/Course/{id}": {
+    "/api/v2.0/ComponentType/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ComponentType"
+        ],
+        "summary": "Delete",
+        "operationId": "ComponentTypeDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/Get/{id}": {
       "get": {
         "tags": [
           "Course"
@@ -1819,53 +1725,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Course"
-        ],
-        "summary": "Delete",
-        "operationId": "CourseDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Course": {
+    "/api/v2.0/Course/List": {
       "get": {
         "tags": [
           "Course"
@@ -1903,7 +1765,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Course/Update": {
       "put": {
         "tags": [
           "Course"
@@ -1952,7 +1816,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Course/Create": {
       "post": {
         "tags": [
           "Course"
@@ -1980,8 +1846,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2003,7 +1869,125 @@
         }
       }
     },
-    "/api/v2.0/CourseType/{id}": {
+    "/api/v2.0/Course/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "Delete",
+        "operationId": "CourseDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/ListOrgUnit": {
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "ListOrgUnit",
+        "operationId": "CourseListOrgUnit",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/ListCourseOrgUnit/{id}": {
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "ListCourseOrgUnit",
+        "operationId": "CourseListCourseOrgUnitById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CourseType/Get/{id}": {
       "get": {
         "tags": [
           "CourseType"
@@ -2044,33 +2028,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "CourseType"
-        ],
-        "summary": "Delete a course type by id",
-        "operationId": "CourseTypeDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        }
       }
     },
-    "/api/v2.0/CourseType": {
+    "/api/v2.0/CourseType/List": {
       "get": {
         "tags": [
           "CourseType"
@@ -2108,7 +2068,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/CourseType/Update": {
       "put": {
         "tags": [
           "CourseType"
@@ -2166,7 +2128,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/CourseType/Create": {
       "post": {
         "tags": [
           "CourseType"
@@ -2217,7 +2181,33 @@
         }
       }
     },
-    "/api/v2.0/Curriculum/{id}": {
+    "/api/v2.0/CourseType/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "CourseType"
+        ],
+        "summary": "Delete a course type by id",
+        "operationId": "CourseTypeDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Curriculum/Get/{id}": {
       "get": {
         "tags": [
           "Curriculum"
@@ -2258,53 +2248,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Curriculum"
-        ],
-        "summary": "Delete",
-        "operationId": "CurriculumDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Curriculum": {
+    "/api/v2.0/Curriculum/List": {
       "get": {
         "tags": [
           "Curriculum"
@@ -2342,7 +2288,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Curriculum/Update": {
       "put": {
         "tags": [
           "Curriculum"
@@ -2391,7 +2339,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Curriculum/Create": {
       "post": {
         "tags": [
           "Curriculum"
@@ -2419,8 +2369,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2442,7 +2392,33 @@
         }
       }
     },
-    "/api/v2.0/Curriculum/OwnerUnit/{id}": {
+    "/api/v2.0/Curriculum/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Curriculum"
+        ],
+        "summary": "Delete",
+        "operationId": "CurriculumDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Curriculum/GetOwnerUnit/OwnerUnit/{id}": {
       "get": {
         "tags": [
           "Curriculum"
@@ -2494,7 +2470,7 @@
         }
       }
     },
-    "/api/v2.0/Curriculum/CurriculumType/{id}": {
+    "/api/v2.0/Curriculum/GetCurriculumType/CurriculumType/{id}": {
       "get": {
         "tags": [
           "Curriculum"
@@ -2545,7 +2521,7 @@
         }
       }
     },
-    "/api/v2.0/CurriculumType/{id}": {
+    "/api/v2.0/CurriculumType/Get/{id}": {
       "get": {
         "tags": [
           "CurriculumType"
@@ -2586,33 +2562,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "CurriculumType"
-        ],
-        "summary": "Delete",
-        "operationId": "CurriculumTypeDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        }
       }
     },
-    "/api/v2.0/CurriculumType": {
+    "/api/v2.0/CurriculumType/List": {
       "get": {
         "tags": [
           "CurriculumType"
@@ -2650,7 +2602,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/CurriculumType/Update": {
       "put": {
         "tags": [
           "CurriculumType"
@@ -2699,7 +2653,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/CurriculumType/Create": {
       "post": {
         "tags": [
           "CurriculumType"
@@ -2750,7 +2706,33 @@
         }
       }
     },
-    "/api/v2.0/Faculty/{id}": {
+    "/api/v2.0/CurriculumType/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "CurriculumType"
+        ],
+        "summary": "Delete",
+        "operationId": "CurriculumTypeDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Faculty/Get/{id}": {
       "get": {
         "tags": [
           "Faculty"
@@ -2791,53 +2773,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Faculty"
-        ],
-        "summary": "Delete",
-        "operationId": "FacultyDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Faculty": {
+    "/api/v2.0/Faculty/List": {
       "get": {
         "tags": [
           "Faculty"
@@ -2875,7 +2813,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Faculty/Update": {
       "put": {
         "tags": [
           "Faculty"
@@ -2924,7 +2864,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Faculty/Create": {
       "post": {
         "tags": [
           "Faculty"
@@ -2952,8 +2894,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2975,7 +2917,33 @@
         }
       }
     },
-    "/api/v2.0/ModuleAssessment/{id}": {
+    "/api/v2.0/Faculty/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Faculty"
+        ],
+        "summary": "Delete",
+        "operationId": "FacultyDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessment/Get/{id}": {
       "get": {
         "tags": [
           "ModuleAssessment"
@@ -3016,53 +2984,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "ModuleAssessment"
-        ],
-        "summary": "Delete",
-        "operationId": "ModuleAssessmentDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/ModuleAssessment": {
+    "/api/v2.0/ModuleAssessment/List": {
       "get": {
         "tags": [
           "ModuleAssessment"
@@ -3100,7 +3024,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ModuleAssessment/Update": {
       "put": {
         "tags": [
           "ModuleAssessment"
@@ -3149,7 +3075,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ModuleAssessment/Create": {
       "post": {
         "tags": [
           "ModuleAssessment"
@@ -3177,8 +3105,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3200,7 +3128,33 @@
         }
       }
     },
-    "/api/v2.0/ModuleAssessmentMark/{id}": {
+    "/api/v2.0/ModuleAssessment/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ModuleAssessment"
+        ],
+        "summary": "Delete",
+        "operationId": "ModuleAssessmentDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessmentMark/Get/{id}": {
       "get": {
         "tags": [
           "ModuleAssessmentMark"
@@ -3241,53 +3195,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "ModuleAssessmentMark"
-        ],
-        "summary": "Delete",
-        "operationId": "ModuleAssessmentMarkDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/ModuleAssessmentMark": {
+    "/api/v2.0/ModuleAssessmentMark/List": {
       "get": {
         "tags": [
           "ModuleAssessmentMark"
@@ -3325,7 +3235,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ModuleAssessmentMark/Update": {
       "put": {
         "tags": [
           "ModuleAssessmentMark"
@@ -3374,7 +3286,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/ModuleAssessmentMark/Create": {
       "post": {
         "tags": [
           "ModuleAssessmentMark"
@@ -3402,8 +3316,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3425,7 +3339,33 @@
         }
       }
     },
-    "/api/v2.0/Offering/{id}": {
+    "/api/v2.0/ModuleAssessmentMark/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ModuleAssessmentMark"
+        ],
+        "summary": "Delete",
+        "operationId": "ModuleAssessmentMarkDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Offering/Get/{id}": {
       "get": {
         "tags": [
           "Offering"
@@ -3466,53 +3406,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Offering"
-        ],
-        "summary": "Delete",
-        "operationId": "OfferingDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Offering": {
+    "/api/v2.0/Offering/List": {
       "get": {
         "tags": [
           "Offering"
@@ -3550,7 +3446,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Offering/Update": {
       "put": {
         "tags": [
           "Offering"
@@ -3599,7 +3497,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Offering/Create": {
       "post": {
         "tags": [
           "Offering"
@@ -3627,8 +3527,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3650,7 +3550,33 @@
         }
       }
     },
-    "/api/v2.0/OrgUnit/{id}": {
+    "/api/v2.0/Offering/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Offering"
+        ],
+        "summary": "Delete",
+        "operationId": "OfferingDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnit/Get/{id}": {
       "get": {
         "tags": [
           "OrgUnit"
@@ -3691,53 +3617,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "OrgUnit"
-        ],
-        "summary": "Delete",
-        "operationId": "OrgUnitDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/OrgUnit": {
+    "/api/v2.0/OrgUnit/List": {
       "get": {
         "tags": [
           "OrgUnit"
@@ -3775,7 +3657,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/OrgUnit/Update": {
       "put": {
         "tags": [
           "OrgUnit"
@@ -3824,7 +3708,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/OrgUnit/Create": {
       "post": {
         "tags": [
           "OrgUnit"
@@ -3852,8 +3738,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3875,7 +3761,33 @@
         }
       }
     },
-    "/api/v2.0/OrgUnitType/{id}": {
+    "/api/v2.0/OrgUnit/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "OrgUnit"
+        ],
+        "summary": "Delete",
+        "operationId": "OrgUnitDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnitType/Get/{id}": {
       "get": {
         "tags": [
           "OrgUnitType"
@@ -3916,53 +3828,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "OrgUnitType"
-        ],
-        "summary": "Delete",
-        "operationId": "OrgUnitTypeDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/OrgUnitType": {
+    "/api/v2.0/OrgUnitType/List": {
       "get": {
         "tags": [
           "OrgUnitType"
@@ -4000,7 +3868,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/OrgUnitType/Update": {
       "put": {
         "tags": [
           "OrgUnitType"
@@ -4049,7 +3919,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/OrgUnitType/Create": {
       "post": {
         "tags": [
           "OrgUnitType"
@@ -4077,8 +3949,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4100,7 +3972,33 @@
         }
       }
     },
-    "/api/v2.0/RegisterStatus/{id}": {
+    "/api/v2.0/OrgUnitType/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "OrgUnitType"
+        ],
+        "summary": "Delete",
+        "operationId": "OrgUnitTypeDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/RegisterStatus/Get/{id}": {
       "get": {
         "tags": [
           "RegisterStatus"
@@ -4141,53 +4039,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "RegisterStatus"
-        ],
-        "summary": "Delete",
-        "operationId": "RegisterStatusDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/RegisterStatus": {
+    "/api/v2.0/RegisterStatus/List": {
       "get": {
         "tags": [
           "RegisterStatus"
@@ -4225,7 +4079,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/RegisterStatus/Update": {
       "put": {
         "tags": [
           "RegisterStatus"
@@ -4274,7 +4130,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/RegisterStatus/Create": {
       "post": {
         "tags": [
           "RegisterStatus"
@@ -4302,8 +4160,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4325,7 +4183,33 @@
         }
       }
     },
-    "/api/v2.0/Registration/{id}": {
+    "/api/v2.0/RegisterStatus/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "RegisterStatus"
+        ],
+        "summary": "Delete",
+        "operationId": "RegisterStatusDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Registration/Get/{id}": {
       "get": {
         "tags": [
           "Registration"
@@ -4366,53 +4250,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Registration"
-        ],
-        "summary": "Delete",
-        "operationId": "RegistrationDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Registration": {
+    "/api/v2.0/Registration/List": {
       "get": {
         "tags": [
           "Registration"
@@ -4450,7 +4290,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Registration/Update": {
       "put": {
         "tags": [
           "Registration"
@@ -4499,7 +4341,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Registration/Create": {
       "post": {
         "tags": [
           "Registration"
@@ -4527,8 +4371,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4550,7 +4394,33 @@
         }
       }
     },
-    "/api/v2.0/Semester/{id}": {
+    "/api/v2.0/Registration/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "Delete",
+        "operationId": "RegistrationDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Semester/Get/{id}": {
       "get": {
         "tags": [
           "Semester"
@@ -4591,53 +4461,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Semester"
-        ],
-        "summary": "Delete",
-        "operationId": "SemesterDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Semester": {
+    "/api/v2.0/Semester/List": {
       "get": {
         "tags": [
           "Semester"
@@ -4675,7 +4501,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Semester/Update": {
       "put": {
         "tags": [
           "Semester"
@@ -4724,7 +4552,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Semester/Create": {
       "post": {
         "tags": [
           "Semester"
@@ -4752,8 +4582,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4775,7 +4605,33 @@
         }
       }
     },
-    "/api/v2.0/Student/{id}": {
+    "/api/v2.0/Semester/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Semester"
+        ],
+        "summary": "Delete",
+        "operationId": "SemesterDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Student/Get/{id}": {
       "get": {
         "tags": [
           "Student"
@@ -4816,53 +4672,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Student"
-        ],
-        "summary": "Delete",
-        "operationId": "StudentDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Student": {
+    "/api/v2.0/Student/List": {
       "get": {
         "tags": [
           "Student"
@@ -4900,7 +4712,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Student/Update": {
       "put": {
         "tags": [
           "Student"
@@ -4949,7 +4763,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Student/Create": {
       "post": {
         "tags": [
           "Student"
@@ -4977,8 +4793,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5000,7 +4816,33 @@
         }
       }
     },
-    "/api/v2.0/StudentGroup/{id}": {
+    "/api/v2.0/Student/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Delete",
+        "operationId": "StudentDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentGroup/Get/{id}": {
       "get": {
         "tags": [
           "StudentGroup"
@@ -5041,53 +4883,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "StudentGroup"
-        ],
-        "summary": "Delete",
-        "operationId": "StudenGroupDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/StudentGroup": {
+    "/api/v2.0/StudentGroup/List": {
       "get": {
         "tags": [
           "StudentGroup"
@@ -5125,7 +4923,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/StudentGroup/Update": {
       "put": {
         "tags": [
           "StudentGroup"
@@ -5174,7 +4974,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/StudentGroup/Create": {
       "post": {
         "tags": [
           "StudentGroup"
@@ -5202,8 +5004,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5225,7 +5027,33 @@
         }
       }
     },
-    "/api/v2.0/StudentProgram/{id}": {
+    "/api/v2.0/StudentGroup/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "StudentGroup"
+        ],
+        "summary": "Delete",
+        "operationId": "StudenGroupDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentProgram/Get/{id}": {
       "get": {
         "tags": [
           "StudentProgram"
@@ -5266,53 +5094,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "StudentProgram"
-        ],
-        "summary": "Delete",
-        "operationId": "StudentProgramDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/StudentProgram": {
+    "/api/v2.0/StudentProgram/List": {
       "get": {
         "tags": [
           "StudentProgram"
@@ -5350,7 +5134,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/StudentProgram/Update": {
       "put": {
         "tags": [
           "StudentProgram"
@@ -5399,7 +5185,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/StudentProgram/Create": {
       "post": {
         "tags": [
           "StudentProgram"
@@ -5427,8 +5215,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5450,7 +5238,33 @@
         }
       }
     },
-    "/api/v2.0/StudentStatus/{id}": {
+    "/api/v2.0/StudentProgram/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "StudentProgram"
+        ],
+        "summary": "Delete",
+        "operationId": "StudentProgramDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentStatus/Get/{id}": {
       "get": {
         "tags": [
           "StudentStatus"
@@ -5491,53 +5305,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "StudentStatus"
-        ],
-        "summary": "Delete",
-        "operationId": "StudentStatusDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/StudentStatus": {
+    "/api/v2.0/StudentStatus/List": {
       "get": {
         "tags": [
           "StudentStatus"
@@ -5575,7 +5345,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/StudentStatus/Update": {
       "put": {
         "tags": [
           "StudentStatus"
@@ -5624,7 +5396,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/StudentStatus/Create": {
       "post": {
         "tags": [
           "StudentStatus"
@@ -5652,8 +5426,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5675,7 +5449,33 @@
         }
       }
     },
-    "/api/v2.0/Term/{id}": {
+    "/api/v2.0/StudentStatus/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "StudentStatus"
+        ],
+        "summary": "Delete",
+        "operationId": "StudentStatusDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Term/Get/{id}": {
       "get": {
         "tags": [
           "Term"
@@ -5716,53 +5516,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Term"
-        ],
-        "summary": "Delete",
-        "operationId": "TermDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/v2.0/Term": {
+    "/api/v2.0/Term/List": {
       "get": {
         "tags": [
           "Term"
@@ -5800,7 +5556,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Term/Update": {
       "put": {
         "tags": [
           "Term"
@@ -5849,7 +5607,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2.0/Term/Create": {
       "post": {
         "tags": [
           "Term"
@@ -5877,8 +5637,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5896,6 +5656,32 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Term/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Term"
+        ],
+        "summary": "Delete",
+        "operationId": "TermDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
           }
         }
       }
