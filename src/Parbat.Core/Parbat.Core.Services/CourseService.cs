@@ -1,11 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Parbat.Core.BaseRepository;
+﻿using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using System.Collections.Generic;
 
 namespace Parbat.Core.Services
 {
-    public class CourseService : IService
+    public class CourseService
     {
         protected IRepositoryFactory _factory;
 
@@ -55,6 +54,16 @@ namespace Parbat.Core.Services
             {
                 CourseID = id
             });
+        }
+
+        public IEnumerable<OrgUnit> GetAllOrgUnitContainsCourse()
+        {
+            return _factory.CourseRepository.GetAllOrgUnitContainsCourse();
+        }
+
+        public IEnumerable<Course> GetAllCourseSpecificOrgUnit(long ownerId)
+        {
+            return _factory.CourseRepository.GetAllCourseSpecificOrgUnit(ownerId);
         }
     }
 }

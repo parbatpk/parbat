@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Parbat.Core.Services
 {
-    public class ComponentCourseService : IService
+    public class ComponentCourseService
     {
         private readonly IRepositoryFactory _factory;
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Parbat.Core.Services
 {
-    public class CurriculumTypeService : IService
+    public class CurriculumTypeService
     {
         private readonly IRepositoryFactory _factory;
 
