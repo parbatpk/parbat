@@ -1,0 +1,60 @@
+﻿@model Parbat.Core.API.Client.Course
+<!-- Modal -->
+<div class="modal fade" id="deleteCourse" tabindex="-1" role="dialog" aria-labelledby="deleteCourse" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form asp-action="Delete">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteCourse">Delete Course</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input asp-for="CourseID" type="hidden" />
+                    <input asp-for="CourseID" type="hidden" />
+                    <!-- Modal Body -->
+                    <h4>Are you really want to delete this?</h4>
+                    <dl class="row">
+                        <dt class="col-lg-4">
+                            @Html.DisplayNameFor(model => model.Code)
+                        </dt>
+                        <dd class="col-lg-8">
+                            @Html.DisplayFor(model => model.Code)
+                        </dd>
+                        <dt class="col-lg-4">
+                            @Html.DisplayNameFor(model => model.ShortName)
+                        </dt>
+                        <dd class="col-lg-8">
+                            @Html.DisplayFor(model => model.ShortName)
+                        </dd>
+                        <dt class="col-lg-4">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd class="col-lg-8">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt class="col-lg-4">
+                            @Html.DisplayNameFor(model => model.TheoryCredit)
+                        </dt>
+                        <dd class="col-lg-8">
+                            @Html.DisplayFor(model => model.TheoryCredit)
+                        </dd>
+                        <dt class="col-lg-4">
+                            @Html.DisplayNameFor(model => model.LabCredit)
+                        </dt>
+                        <dd class="col-lg-8">
+                            @Html.DisplayFor(model => model.LabCredit)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger" data-save="modal">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
