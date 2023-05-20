@@ -408,6 +408,19 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.ListOrgUnit">
+            <summary>
+                ListOrgUnit
+            </summary>
+            <returns>List of Org which contains atleast one course otherwise null</returns>
+        </member>
+        <member name="M:Parbat.Core.API.Controllers.CourseController.ListCourseOrgUnit(System.Int64)">
+            <summary>
+                ListCourseOrgUnit
+            </summary>
+            <param name="id"></param>
+            <returns>Course of Specific OrgUnit</returns>
+        </member>
         <member name="T:Parbat.Core.API.Controllers.CourseTypeController">
             <summary>
             CourseType controller class
@@ -1203,16 +1216,50 @@
             Default Route prefix
             </summary>
         </member>
-        <member name="T:Parbat.Core.API.MaintainCorsExtension">
+        <member name="T:Parbat.Core.API.Infratructure.AppDomainTypeFinder">
             <summary>
-            To handle CORS issue in case of exception
+            A class that load the compulsory assembly to inject <c>ParbatServices</c>
             </summary>
         </member>
-        <member name="M:Parbat.Core.API.MaintainCorsExtension.MaintainCorsHeadersOnError(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:Parbat.Core.API.Infratructure.AppDomainTypeFinder.#ctor(System.Reflection.Assembly)">
             <summary>
-            Method to be called in Startup 
+            Initialize compulsory Assembly.
+            </summary>
+            <param name="assembly"></param>
+        </member>
+        <member name="M:Parbat.Core.API.Infratructure.AppDomainTypeFinder.GetServices">
+            <summary>
+            Provide all classes with in a assembly.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Parbat.Core.API.Infratructure.AppDomainTypeFinder.App">
+            <summary>The app domain to look for types in.</summary>
+        </member>
+        <member name="P:Parbat.Core.API.Infratructure.AppDomainTypeFinder.AssemblyCompulsoryToLoad">
+            <summary> </summary>
+        </member>
+        <member name="T:Parbat.Core.API.Infratructure.Extensions.ApplicationBuilderExtensions">
+            <summary>
+            Represents extension of <c>IApplicationBuilder</c>
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Infratructure.Extensions.ApplicationBuilderExtensions.MaintainCorsHeadersOnError(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            To handle CORS issue in case of exception.
             </summary>
             <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Parbat.Core.API.Infratructure.ITypeFinder">
+            <summary>
+            Provide all <c>Parbat</c> serevices.
+            </summary>
+        </member>
+        <member name="M:Parbat.Core.API.Infratructure.ITypeFinder.GetServices">
+            <summary>
+            Provide all classes with in a assembly.
+            </summary>
             <returns></returns>
         </member>
         <member name="T:Parbat.Core.API.Program">
