@@ -54,9 +54,9 @@ namespace Parbat.Core.API.Controllers
         {
             try
             {
-                var batch = _service.GetAll();
+                var orgUnitType = _service.GetAll();
 
-                return Ok(batch);
+                return Ok(orgUnitType);
             }
             catch (ServiceException se)
             {
