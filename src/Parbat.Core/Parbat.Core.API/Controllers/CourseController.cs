@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
@@ -123,6 +124,45 @@ namespace Parbat.Core.API.Controllers
             catch (ServiceException se)
             {
                 return BadRequest(se.Message);
+            }
+        }
+
+        /// <summary>
+        ///     ListOrgUnit
+        /// </summary>
+        /// <returns>List of Org which contains atleast one course otherwise null</returns>
+        [HttpGet(Name = "CourseListOrgUnit")]
+        public ActionResult<List<OrgUnit>> ListOrgUnit()
+        {
+            try
+            {
+                var orgUnitContainCourse = _service.GetAllOrgUnitContainsCourse();
+
+                return Ok(orgUnitContainCourse);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        ///     ListCourseOrgUnit
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Course of Specific OrgUnit</returns>
+        [HttpGet("{id}", Name = "CourseListCourseOrgUnitById")]
+        public ActionResult<List<Course>> ListCourseOrgUnit(long id)
+        {
+            try
+            {
+                var orgUnitContainCourse = _service.GetAllCourseSpecificOrgUnit(id);
+
+                return Ok(orgUnitContainCourse);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }
