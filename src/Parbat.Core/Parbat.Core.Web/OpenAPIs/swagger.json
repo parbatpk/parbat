@@ -4848,7 +4848,7 @@
           "StudentGroup"
         ],
         "summary": "Get a record",
-        "operationId": "StudenGroupGetById",
+        "operationId": "StudentGroupGetById",
         "parameters": [
           {
             "name": "id",
@@ -4891,7 +4891,7 @@
           "StudentGroup"
         ],
         "summary": "List all studentGroup",
-        "operationId": "StudenGroupList",
+        "operationId": "StudentGroupList",
         "responses": {
           "200": {
             "description": "Success",
@@ -4931,7 +4931,7 @@
           "StudentGroup"
         ],
         "summary": "Update a studentGroup",
-        "operationId": "StudenGroupUpdate",
+        "operationId": "StudentGroupUpdate",
         "requestBody": {
           "description": "",
           "content": {
@@ -4982,7 +4982,7 @@
           "StudentGroup"
         ],
         "summary": "Create",
-        "operationId": "StudenGroupCreate",
+        "operationId": "StudentGroupCreate",
         "requestBody": {
           "description": "",
           "content": {
@@ -5033,7 +5033,7 @@
           "StudentGroup"
         ],
         "summary": "Delete",
-        "operationId": "StudenGroupDeleteById",
+        "operationId": "StudentGroupDeleteById",
         "parameters": [
           {
             "name": "id",
