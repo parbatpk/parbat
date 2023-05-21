@@ -29,7 +29,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}",Name ="StudenGroupGetById")]
+        [HttpGet("{id}",Name ="StudentGroupGetById")]
         public ActionResult<StudentGroup> Get(long id)
         {
             try
@@ -48,7 +48,7 @@ namespace Parbat.Core.API.Controllers
         /// List all studentGroup
         /// </summary>
         /// <returns></returns>
-        [HttpGet(Name = "StudenGroupList")]
+        [HttpGet(Name = "StudentGroupList")]
         public ActionResult<List<StudentGroup>> List()
         {
             try
@@ -68,7 +68,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        [HttpPut(Name = "StudenGroupUpdate")]
+        [HttpPut(Name = "StudentGroupUpdate")]
         public ActionResult<StudentGroup> Update([FromBody] StudentGroup s)
         {
             try
@@ -88,7 +88,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        [HttpPost(Name = "StudenGroupCreate")]
+        [HttpPost(Name = "StudentGroupCreate")]
         [ProducesResponseType(typeof(StudentGroup), StatusCodes.Status201Created)]
         public ActionResult<StudentGroup> Create([FromBody] StudentGroup s)
         {
@@ -110,7 +110,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}", Name = "StudenGroupDeleteById")]
+        [HttpDelete("{id}", Name = "StudentGroupDeleteById")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<long> Delete(long id)
         {
