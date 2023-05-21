@@ -1,0 +1,6614 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Parbat.Core.API",
+    "description": "An open source ERP for Universities",
+    "contact": {
+      "name": "Dr. Muhammad Qasim Pasta",
+      "url": "https://twitter.com/mqpasta",
+      "email": "qasim.pasta@ieee.org"
+    },
+    "license": {
+      "name": "The MIT License (MIT)",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    },
+    "version": "v2.0"
+  },
+  "paths": {
+    "/api/v2.0/AssessmentCategory/Get/{id}": {
+      "get": {
+        "tags": [
+          "AssessmentCategory"
+        ],
+        "summary": "Get a record",
+        "operationId": "AssessmentGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/AssessmentCategory/List": {
+      "get": {
+        "tags": [
+          "AssessmentCategory"
+        ],
+        "summary": "List all AssessmentCategory",
+        "operationId": "AssessmentCategoryList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssessmentCategory"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssessmentCategory"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssessmentCategory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/AssessmentCategory/Update": {
+      "put": {
+        "tags": [
+          "AssessmentCategory"
+        ],
+        "summary": "Update a AssessmentCategory",
+        "operationId": "AssessmentCategoryUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessmentCategory"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessmentCategory"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessmentCategory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/AssessmentCategory/Create/AssessmentCategoryCreate": {
+      "post": {
+        "tags": [
+          "AssessmentCategory"
+        ],
+        "summary": "Create",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessmentCategory"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessmentCategory"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessmentCategory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentCategory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/AssessmentCategory/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "AssessmentCategory"
+        ],
+        "summary": "Delete",
+        "operationId": "AssessmentCategoryDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Batch/Get/{id}": {
+      "get": {
+        "tags": [
+          "Batch"
+        ],
+        "summary": "Get a batch record",
+        "operationId": "BatchGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Batch/List": {
+      "get": {
+        "tags": [
+          "Batch"
+        ],
+        "summary": "List all batch",
+        "operationId": "BatchList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Batch"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Batch"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Batch"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Batch/Update": {
+      "put": {
+        "tags": [
+          "Batch"
+        ],
+        "summary": "Update a batch",
+        "operationId": "BatchUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Batch"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Batch"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Batch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Batch/Create": {
+      "post": {
+        "tags": [
+          "Batch"
+        ],
+        "summary": "Create",
+        "operationId": "BatchCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Batch"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Batch"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Batch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Batch"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Batch/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Batch"
+        ],
+        "summary": "Delete",
+        "operationId": "BatchDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Class/Get/{id}": {
+      "get": {
+        "tags": [
+          "Class"
+        ],
+        "summary": "Get Class by ID",
+        "operationId": "ClassGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Class/List": {
+      "get": {
+        "tags": [
+          "Class"
+        ],
+        "summary": "Get All Classes",
+        "operationId": "ClassList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Class"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Class"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Class"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Class/Update": {
+      "put": {
+        "tags": [
+          "Class"
+        ],
+        "summary": "Update the specific object",
+        "operationId": "ClassUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Class"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Class"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Class"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Class/Create": {
+      "post": {
+        "tags": [
+          "Class"
+        ],
+        "summary": "Create the new Class",
+        "operationId": "ClassCreate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Class"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Class"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Class"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Class/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Class"
+        ],
+        "summary": "Delete the Class",
+        "operationId": "ClassDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassMapping/Get/{id}": {
+      "get": {
+        "tags": [
+          "ClassMapping"
+        ],
+        "summary": "Get a record",
+        "operationId": "ClassMappingGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassMapping/List": {
+      "get": {
+        "tags": [
+          "ClassMapping"
+        ],
+        "summary": "List all ClassMapping",
+        "operationId": "ClassMappingList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassMapping"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassMapping"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassMapping"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassMapping/Update": {
+      "put": {
+        "tags": [
+          "ClassMapping"
+        ],
+        "summary": "Update a ClassMapping",
+        "operationId": "ClassMappingUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassMapping"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassMapping"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassMapping"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassMapping/Create": {
+      "post": {
+        "tags": [
+          "ClassMapping"
+        ],
+        "summary": "Create",
+        "operationId": "ClassMappingCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassMapping"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassMapping"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassMapping"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassMapping"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassMapping/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ClassMapping"
+        ],
+        "summary": "Delete",
+        "operationId": "ClassMappingDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassModule/Get/{id}": {
+      "get": {
+        "tags": [
+          "ClassModule"
+        ],
+        "summary": "Get a record",
+        "operationId": "ClassModuleGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassModule/List": {
+      "get": {
+        "tags": [
+          "ClassModule"
+        ],
+        "summary": "List all ClassModule",
+        "operationId": "ClassModuleList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassModule"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassModule"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClassModule"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassModule/Update": {
+      "put": {
+        "tags": [
+          "ClassModule"
+        ],
+        "summary": "Update a ClassModule",
+        "operationId": "ClassModuleUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassModule"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassModule"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassModule"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassModule/Create": {
+      "post": {
+        "tags": [
+          "ClassModule"
+        ],
+        "summary": "Create",
+        "operationId": "ClassModuleCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassModule"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassModule"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClassModule"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassModule"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ClassModule/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ClassModule"
+        ],
+        "summary": "Delete",
+        "operationId": "ClassModuleDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Component/Get/{id}": {
+      "get": {
+        "tags": [
+          "Component"
+        ],
+        "summary": "Get a record",
+        "operationId": "ComponentGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Component/List": {
+      "get": {
+        "tags": [
+          "Component"
+        ],
+        "summary": "List all component",
+        "operationId": "ComponentList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Component"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Component"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Component"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Component/Update": {
+      "put": {
+        "tags": [
+          "Component"
+        ],
+        "summary": "Update a component",
+        "operationId": "ComponentUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Component"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Component"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Component"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Component/Create": {
+      "post": {
+        "tags": [
+          "Component"
+        ],
+        "summary": "Create",
+        "operationId": "ComponentCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Component"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Component"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Component"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Component"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Component/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Component"
+        ],
+        "summary": "Delete",
+        "operationId": "ComponentDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentCourse/Get/{id}": {
+      "get": {
+        "tags": [
+          "ComponentCourse"
+        ],
+        "summary": "Get a record",
+        "operationId": "ComponentCourseGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentCourse/List": {
+      "get": {
+        "tags": [
+          "ComponentCourse"
+        ],
+        "summary": "List all componentcourses",
+        "operationId": "ComponentCourseList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentCourse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentCourse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentCourse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentCourse/Update": {
+      "put": {
+        "tags": [
+          "ComponentCourse"
+        ],
+        "summary": "Update a componentcourse",
+        "operationId": "ComponentCourseUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentCourse"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentCourse"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentCourse"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentCourse/Create": {
+      "post": {
+        "tags": [
+          "ComponentCourse"
+        ],
+        "summary": "Create",
+        "operationId": "ComponentCourseCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentCourse"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentCourse"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentCourse"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentCourse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentCourse/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ComponentCourse"
+        ],
+        "summary": "Delete",
+        "operationId": "ComponentCouseDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentType/Get/{id}": {
+      "get": {
+        "tags": [
+          "ComponentType"
+        ],
+        "summary": "Get a record",
+        "operationId": "ComponentTypeGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentType/List": {
+      "get": {
+        "tags": [
+          "ComponentType"
+        ],
+        "summary": "List all componentType",
+        "operationId": "ComponentTypeList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentType/Update": {
+      "put": {
+        "tags": [
+          "ComponentType"
+        ],
+        "summary": "Update a componentType",
+        "operationId": "ComponentTypeUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentType"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentType"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentType/Create": {
+      "post": {
+        "tags": [
+          "ComponentType"
+        ],
+        "summary": "Create",
+        "operationId": "ComponentTypeCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentType"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentType"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ComponentType/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ComponentType"
+        ],
+        "summary": "Delete",
+        "operationId": "ComponentTypeDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/Get/{id}": {
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "Get a record",
+        "operationId": "CourseGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/List": {
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "List all courses",
+        "operationId": "CourseList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/Update": {
+      "put": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "Update a course",
+        "operationId": "CourseUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Course"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Course"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Course"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/Create": {
+      "post": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "Create",
+        "operationId": "CourseCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Course"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Course"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Course"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "Delete",
+        "operationId": "CourseDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/ListOrgUnit": {
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "ListOrgUnit",
+        "operationId": "CourseListOrgUnit",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Course/ListCourseOrgUnit/{id}": {
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "ListCourseOrgUnit",
+        "operationId": "CourseListCourseOrgUnitById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CourseType/Get/{id}": {
+      "get": {
+        "tags": [
+          "CourseType"
+        ],
+        "summary": "Get record by id",
+        "operationId": "CourseTypeGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CourseType/List": {
+      "get": {
+        "tags": [
+          "CourseType"
+        ],
+        "summary": "get all coursetypes",
+        "operationId": "CourseTypeList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CourseType/Update": {
+      "put": {
+        "tags": [
+          "CourseType"
+        ],
+        "summary": "Update a coursetype",
+        "operationId": "CourseTypeUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseType"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseType"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CourseType/Create": {
+      "post": {
+        "tags": [
+          "CourseType"
+        ],
+        "summary": "Add new coursetype",
+        "operationId": "CourseTypeCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseType"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseType"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CourseType/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "CourseType"
+        ],
+        "summary": "Delete a course type by id",
+        "operationId": "CourseTypeDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Curriculum/Get/{id}": {
+      "get": {
+        "tags": [
+          "Curriculum"
+        ],
+        "summary": "Get a record",
+        "operationId": "CurriculumGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Curriculum/List": {
+      "get": {
+        "tags": [
+          "Curriculum"
+        ],
+        "summary": "List all curriculum",
+        "operationId": "CurriculumList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Curriculum/Update": {
+      "put": {
+        "tags": [
+          "Curriculum"
+        ],
+        "summary": "Update a curriculum",
+        "operationId": "CurriculumUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curriculum"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curriculum"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curriculum"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Curriculum/Create": {
+      "post": {
+        "tags": [
+          "Curriculum"
+        ],
+        "summary": "Create",
+        "operationId": "CurriculumCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curriculum"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curriculum"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curriculum"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Curriculum"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Curriculum/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Curriculum"
+        ],
+        "summary": "Delete",
+        "operationId": "CurriculumDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Curriculum/GetOwnerUnit/OwnerUnit/{id}": {
+      "get": {
+        "tags": [
+          "Curriculum"
+        ],
+        "summary": "return the curriculum owners",
+        "operationId": "CurriculumGetOwnerUnitById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Curriculum/GetCurriculumType/CurriculumType/{id}": {
+      "get": {
+        "tags": [
+          "Curriculum"
+        ],
+        "summary": "Return all curriculumTypes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curriculum"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CurriculumType/Get/{id}": {
+      "get": {
+        "tags": [
+          "CurriculumType"
+        ],
+        "summary": "Get a record",
+        "operationId": "CurriculumTypeGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CurriculumType/List": {
+      "get": {
+        "tags": [
+          "CurriculumType"
+        ],
+        "summary": "List all curriculumType",
+        "operationId": "CurriculumTypeList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CurriculumType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CurriculumType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CurriculumType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CurriculumType/Update": {
+      "put": {
+        "tags": [
+          "CurriculumType"
+        ],
+        "summary": "Update curriculumType",
+        "operationId": "CurriculumTypeUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurriculumType"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurriculumType"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurriculumType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CurriculumType/Create": {
+      "post": {
+        "tags": [
+          "CurriculumType"
+        ],
+        "summary": "Create",
+        "operationId": "CurriculumTypeCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurriculumType"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurriculumType"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurriculumType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurriculumType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/CurriculumType/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "CurriculumType"
+        ],
+        "summary": "Delete",
+        "operationId": "CurriculumTypeDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Faculty/Get/{id}": {
+      "get": {
+        "tags": [
+          "Faculty"
+        ],
+        "summary": "Get a record",
+        "operationId": "FacultyGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Faculty/List": {
+      "get": {
+        "tags": [
+          "Faculty"
+        ],
+        "summary": "List all Faculty",
+        "operationId": "FacultyList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Faculty"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Faculty"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Faculty"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Faculty/Update": {
+      "put": {
+        "tags": [
+          "Faculty"
+        ],
+        "summary": "Update a Faculty",
+        "operationId": "FacultyUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Faculty"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Faculty"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Faculty"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Faculty/Create": {
+      "post": {
+        "tags": [
+          "Faculty"
+        ],
+        "summary": "Create",
+        "operationId": "FacultyCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Faculty"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Faculty"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Faculty"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Faculty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Faculty/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Faculty"
+        ],
+        "summary": "Delete",
+        "operationId": "FacultyDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessment/Get/{id}": {
+      "get": {
+        "tags": [
+          "ModuleAssessment"
+        ],
+        "summary": "Get a record",
+        "operationId": "ModuleAssessmentGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessment/List": {
+      "get": {
+        "tags": [
+          "ModuleAssessment"
+        ],
+        "summary": "List all ModuleAssessment",
+        "operationId": "ModuleAssessmentList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessment"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessment"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessment/Update": {
+      "put": {
+        "tags": [
+          "ModuleAssessment"
+        ],
+        "summary": "Update a ModuleAssessment",
+        "operationId": "ModuleAssessmentUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessment"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessment"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessment"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessment/Create": {
+      "post": {
+        "tags": [
+          "ModuleAssessment"
+        ],
+        "summary": "Create",
+        "operationId": "ModuleAssessmentCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessment"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessment"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessment"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessment/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ModuleAssessment"
+        ],
+        "summary": "Delete",
+        "operationId": "ModuleAssessmentDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessmentMark/Get/{id}": {
+      "get": {
+        "tags": [
+          "ModuleAssessmentMark"
+        ],
+        "summary": "Get a record",
+        "operationId": "ModuleAssessmentMarkGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessmentMark/List": {
+      "get": {
+        "tags": [
+          "ModuleAssessmentMark"
+        ],
+        "summary": "List all ModuleAssessmentMark",
+        "operationId": "ModuleAssessmentMarkList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessmentMark"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessmentMark"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModuleAssessmentMark"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessmentMark/Update": {
+      "put": {
+        "tags": [
+          "ModuleAssessmentMark"
+        ],
+        "summary": "Update a moduleAssessmentMarks",
+        "operationId": "ModuleAssessmentMarkUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessmentMark"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessmentMark"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessmentMark"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessmentMark/Create": {
+      "post": {
+        "tags": [
+          "ModuleAssessmentMark"
+        ],
+        "summary": "Create",
+        "operationId": "ModuleAssessmentMarkCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessmentMark"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessmentMark"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleAssessmentMark"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleAssessmentMark"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/ModuleAssessmentMark/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "ModuleAssessmentMark"
+        ],
+        "summary": "Delete",
+        "operationId": "ModuleAssessmentMarkDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Offering/Get/{id}": {
+      "get": {
+        "tags": [
+          "Offering"
+        ],
+        "summary": "Get a record",
+        "operationId": "OfferingGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Offering/List": {
+      "get": {
+        "tags": [
+          "Offering"
+        ],
+        "summary": "List all Offering",
+        "operationId": "OfferingList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Offering"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Offering"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Offering"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Offering/Update": {
+      "put": {
+        "tags": [
+          "Offering"
+        ],
+        "summary": "Update a offering",
+        "operationId": "OfferingUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Offering"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Offering"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Offering"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Offering/Create": {
+      "post": {
+        "tags": [
+          "Offering"
+        ],
+        "summary": "Create",
+        "operationId": "OfferingCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Offering"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Offering"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Offering"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offering"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Offering/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Offering"
+        ],
+        "summary": "Delete",
+        "operationId": "OfferingDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnit/Get/{id}": {
+      "get": {
+        "tags": [
+          "OrgUnit"
+        ],
+        "summary": "Get a record",
+        "operationId": "OrgUnitGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnit/List": {
+      "get": {
+        "tags": [
+          "OrgUnit"
+        ],
+        "summary": "List all orgunit",
+        "operationId": "OrgUnitList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnit"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnit/Update": {
+      "put": {
+        "tags": [
+          "OrgUnit"
+        ],
+        "summary": "Update a orgunit",
+        "operationId": "OrgUnitUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnit"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnit"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnit/Create": {
+      "post": {
+        "tags": [
+          "OrgUnit"
+        ],
+        "summary": "Create",
+        "operationId": "OrgUnitCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnit"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnit"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnit/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "OrgUnit"
+        ],
+        "summary": "Delete",
+        "operationId": "OrgUnitDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnitType/Get/{id}": {
+      "get": {
+        "tags": [
+          "OrgUnitType"
+        ],
+        "summary": "Get a record",
+        "operationId": "OrgUnitTypeGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnitType/List": {
+      "get": {
+        "tags": [
+          "OrgUnitType"
+        ],
+        "summary": "List all unittype",
+        "operationId": "OrgUnitTypeList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnitType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnitType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrgUnitType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnitType/Update": {
+      "put": {
+        "tags": [
+          "OrgUnitType"
+        ],
+        "summary": "Update a unittype",
+        "operationId": "OrgUnitTypeUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnitType"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnitType"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnitType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnitType/Create": {
+      "post": {
+        "tags": [
+          "OrgUnitType"
+        ],
+        "summary": "Create",
+        "operationId": "OrgUnitTypeCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnitType"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnitType"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrgUnitType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgUnitType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/OrgUnitType/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "OrgUnitType"
+        ],
+        "summary": "Delete",
+        "operationId": "OrgUnitTypeDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/RegisterStatus/Get/{id}": {
+      "get": {
+        "tags": [
+          "RegisterStatus"
+        ],
+        "summary": "Get a record",
+        "operationId": "RegisterStatusGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/RegisterStatus/List": {
+      "get": {
+        "tags": [
+          "RegisterStatus"
+        ],
+        "summary": "List all RegisterStatus",
+        "operationId": "RegisterStatusList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegisterStatus"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegisterStatus"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegisterStatus"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/RegisterStatus/Update": {
+      "put": {
+        "tags": [
+          "RegisterStatus"
+        ],
+        "summary": "Update a Term",
+        "operationId": "RegisterStatusUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/RegisterStatus/Create": {
+      "post": {
+        "tags": [
+          "RegisterStatus"
+        ],
+        "summary": "Create",
+        "operationId": "RegisterStatusCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/RegisterStatus/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "RegisterStatus"
+        ],
+        "summary": "Delete",
+        "operationId": "RegisterStatusDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Registration/Get/{id}": {
+      "get": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "Get a record",
+        "operationId": "RegistrationGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Registration/List": {
+      "get": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "List all registrations",
+        "operationId": "RegistrationList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Registration"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Registration"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Registration"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Registration/Update": {
+      "put": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "Update a Registration",
+        "operationId": "RegistrationUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Registration"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Registration"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Registration"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Registration/Create": {
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "Create",
+        "operationId": "RegistrationCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Registration"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Registration"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Registration"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Registration"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Registration/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "Delete",
+        "operationId": "RegistrationDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Semester/Get/{id}": {
+      "get": {
+        "tags": [
+          "Semester"
+        ],
+        "summary": "Get a record",
+        "operationId": "SemesterGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Semester/List": {
+      "get": {
+        "tags": [
+          "Semester"
+        ],
+        "summary": "List all Semester",
+        "operationId": "SemesterList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Semester"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Semester"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Semester"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Semester/Update": {
+      "put": {
+        "tags": [
+          "Semester"
+        ],
+        "summary": "Update a Semester",
+        "operationId": "SemesterUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Semester"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Semester"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Semester"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Semester/Create": {
+      "post": {
+        "tags": [
+          "Semester"
+        ],
+        "summary": "Create",
+        "operationId": "SemesterCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Semester"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Semester"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Semester"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Semester"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Semester/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Semester"
+        ],
+        "summary": "Delete",
+        "operationId": "SemesterDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Student/Get/{id}": {
+      "get": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Get a record",
+        "operationId": "StudentGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Student/List": {
+      "get": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "List all student",
+        "operationId": "StudentList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Student/Update": {
+      "put": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Update a student",
+        "operationId": "StudentUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Student/Create": {
+      "post": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Create",
+        "operationId": "StudentCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Student/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Delete",
+        "operationId": "StudentDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentGroup/Get/{id}": {
+      "get": {
+        "tags": [
+          "StudentGroup"
+        ],
+        "summary": "Get a record",
+        "operationId": "StudentGroupGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentGroup/List": {
+      "get": {
+        "tags": [
+          "StudentGroup"
+        ],
+        "summary": "List all studentGroup",
+        "operationId": "StudentGroupList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentGroup"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentGroup"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentGroup"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentGroup/Update": {
+      "put": {
+        "tags": [
+          "StudentGroup"
+        ],
+        "summary": "Update a studentGroup",
+        "operationId": "StudentGroupUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentGroup"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentGroup"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentGroup"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentGroup/Create": {
+      "post": {
+        "tags": [
+          "StudentGroup"
+        ],
+        "summary": "Create",
+        "operationId": "StudentGroupCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentGroup"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentGroup"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentGroup"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentGroup"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentGroup/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "StudentGroup"
+        ],
+        "summary": "Delete",
+        "operationId": "StudentGroupDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentProgram/Get/{id}": {
+      "get": {
+        "tags": [
+          "StudentProgram"
+        ],
+        "summary": "Get a record",
+        "operationId": "StudentProgramGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentProgram/List": {
+      "get": {
+        "tags": [
+          "StudentProgram"
+        ],
+        "summary": "List all StudentProgram",
+        "operationId": "StudentProgramList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentProgram"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentProgram"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentProgram"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentProgram/Update": {
+      "put": {
+        "tags": [
+          "StudentProgram"
+        ],
+        "summary": "Update a StudentProgram",
+        "operationId": "StudentProgramUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentProgram"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentProgram"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentProgram"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentProgram/Create": {
+      "post": {
+        "tags": [
+          "StudentProgram"
+        ],
+        "summary": "Create",
+        "operationId": "StudentProgramCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentProgram"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentProgram"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentProgram"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentProgram"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentProgram/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "StudentProgram"
+        ],
+        "summary": "Delete",
+        "operationId": "StudentProgramDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentStatus/Get/{id}": {
+      "get": {
+        "tags": [
+          "StudentStatus"
+        ],
+        "summary": "Get a record",
+        "operationId": "StudentStatusGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentStatus/List": {
+      "get": {
+        "tags": [
+          "StudentStatus"
+        ],
+        "summary": "List all studentStatus",
+        "operationId": "StudentStatusList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentStatus"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentStatus"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentStatus"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentStatus/Update": {
+      "put": {
+        "tags": [
+          "StudentStatus"
+        ],
+        "summary": "Update a studentStatus",
+        "operationId": "StudentStatusUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentStatus/Create": {
+      "post": {
+        "tags": [
+          "StudentStatus"
+        ],
+        "summary": "Create",
+        "operationId": "StudentStatusCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/StudentStatus/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "StudentStatus"
+        ],
+        "summary": "Delete",
+        "operationId": "StudentStatusDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v2.0/Term/Get/{id}": {
+      "get": {
+        "tags": [
+          "Term"
+        ],
+        "summary": "Get a record",
+        "operationId": "TermGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Term/List": {
+      "get": {
+        "tags": [
+          "Term"
+        ],
+        "summary": "List all Term",
+        "operationId": "TermList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Term"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Term"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Term"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Term/Update": {
+      "put": {
+        "tags": [
+          "Term"
+        ],
+        "summary": "Update a Term",
+        "operationId": "TermUpdate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Term"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Term"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Term"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Term/Create": {
+      "post": {
+        "tags": [
+          "Term"
+        ],
+        "summary": "Create",
+        "operationId": "TermCreate",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Term"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Term"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Term"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Term"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2.0/Term/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Term"
+        ],
+        "summary": "Delete",
+        "operationId": "TermDeleteById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AssessmentCategory": {
+        "required": [
+          "ClassModuleID",
+          "Name",
+          "Weight"
+        ],
+        "type": "object",
+        "properties": {
+          "AssessmentCategoryID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Weight": {
+            "type": "number",
+            "format": "double"
+          },
+          "ClassModuleID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Batch": {
+        "required": [
+          "Name",
+          "OrgUnitID",
+          "ShortName"
+        ],
+        "type": "object",
+        "properties": {
+          "BatchID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "AdmissionYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "GraduationYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "OrgUnitID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "CurriculumID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Class": {
+        "required": [
+          "Capacity",
+          "ClassID",
+          "Name",
+          "ShortName"
+        ],
+        "type": "object",
+        "properties": {
+          "ClassID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Capacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClassMapping": {
+        "required": [
+          "ClassID",
+          "OfferingID"
+        ],
+        "type": "object",
+        "properties": {
+          "ClassMappingID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "OfferingID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ClassID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClassModule": {
+        "required": [
+          "ClassID",
+          "FacultyID",
+          "LabCredit",
+          "ShortName",
+          "TheoryCredit"
+        ],
+        "type": "object",
+        "properties": {
+          "ClassModuleID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ClassID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "FacultyID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "TheoryCredit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "LabCredit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Component": {
+        "required": [
+          "ComponentTypeID",
+          "CurriculumID",
+          "IsLimitCourses",
+          "IsLimitCreditHrs",
+          "Name",
+          "ShortName",
+          "TotalCourses",
+          "TotalCredit"
+        ],
+        "type": "object",
+        "properties": {
+          "ComponentID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "CurriculumID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TotalCredit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TotalCourses": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "IsLimitCourses": {
+            "type": "boolean"
+          },
+          "IsLimitCreditHrs": {
+            "type": "boolean"
+          },
+          "ComponentTypeID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ComponentCourse": {
+        "required": [
+          "ComponentID",
+          "CourseID"
+        ],
+        "type": "object",
+        "properties": {
+          "ComponentCourseID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ComponentID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "CourseID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ComponentType": {
+        "required": [
+          "IsRequired",
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "ComponentTypeID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "IsRequired": {
+            "type": "boolean"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Course": {
+        "required": [
+          "CourseTypeID",
+          "LabCredit",
+          "Name",
+          "OwnerID",
+          "ShortName",
+          "TheoryCredit"
+        ],
+        "type": "object",
+        "properties": {
+          "CourseID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "OwnerID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TheoryCredit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "LabCredit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "CourseTypeID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CourseType": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "CourseTypeID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Curriculum": {
+        "required": [
+          "CurriculumTypeID",
+          "IsLimitCourses",
+          "IsLimitCreditHrs",
+          "Name",
+          "OwnerUnitID",
+          "ShortName",
+          "TotalCourses",
+          "TotalCreditHrs"
+        ],
+        "type": "object",
+        "properties": {
+          "CurriculumID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "OwnerUnitID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TotalCourses": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TotalCreditHrs": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "IsLimitCourses": {
+            "type": "boolean"
+          },
+          "IsLimitCreditHrs": {
+            "type": "boolean"
+          },
+          "CurriculumTypeID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CurriculumType": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "CurriculumTypeID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Faculty": {
+        "required": [
+          "FirstName"
+        ],
+        "type": "object",
+        "properties": {
+          "FacultyID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "FirstName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ModuleAssessment": {
+        "required": [
+          "AssessmentCategoryID",
+          "Name",
+          "Weight"
+        ],
+        "type": "object",
+        "properties": {
+          "ModuleAssessmentID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Weight": {
+            "type": "number",
+            "format": "double"
+          },
+          "AssessmentCategoryID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ModuleAssessmentMark": {
+        "required": [
+          "ModuleAssessmentID",
+          "ObtainMark",
+          "RegistrationID"
+        ],
+        "type": "object",
+        "properties": {
+          "ModuleAssessmentMarkID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ObtainMark": {
+            "type": "number",
+            "format": "double"
+          },
+          "RegistrationID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ModuleAssessmentID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Offering": {
+        "required": [
+          "CousreID",
+          "OrgUnitID",
+          "TermID"
+        ],
+        "type": "object",
+        "properties": {
+          "OfferingID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "CousreID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TermID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "OrgUnitID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "SemesterID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrgUnit": {
+        "required": [
+          "IsAllowAdmission",
+          "Name",
+          "OrgUnitTypeID",
+          "ShortName"
+        ],
+        "type": "object",
+        "properties": {
+          "OrgUnitID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "OrgUnitTypeID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ParentUnitID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "IsAllowAdmission": {
+            "type": "boolean"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrgUnitType": {
+        "required": [
+          "Name",
+          "ShortName"
+        ],
+        "type": "object",
+        "properties": {
+          "OrgUnitTypeID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterStatus": {
+        "type": "object",
+        "properties": {
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Registration": {
+        "required": [
+          "ClassID",
+          "RegisterDate",
+          "RegisterStatusID",
+          "StudentProgramID"
+        ],
+        "type": "object",
+        "properties": {
+          "RegistrationID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "RegisterDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "StudentProgramID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ClassID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "RegisterStatusID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Semester": {
+        "required": [
+          "Name",
+          "ShortName",
+          "StudentGroupID",
+          "TermID"
+        ],
+        "type": "object",
+        "properties": {
+          "SemesterID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "StudentGroupID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TermID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Student": {
+        "required": [
+          "LastName",
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "StudentID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Identifier": {
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "LastName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "StudetGroupID": {
+            "type": "string",
+            "nullable": true
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudentGroup": {
+        "required": [
+          "Name",
+          "ShortName"
+        ],
+        "type": "object",
+        "properties": {
+          "StudentGroupID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "IsActive": {
+            "type": "boolean"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudentProgram": {
+        "required": [
+          "StudentID",
+          "StudentStatusID"
+        ],
+        "type": "object",
+        "properties": {
+          "StudentProgramID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "StudentID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "BatchID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "EndDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "StudentStatusID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "OverrideCurriculumID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "MinorCurriculumID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "StudentGroupID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudentStatus": {
+        "type": "object",
+        "properties": {
+          "StudentStatusID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Term": {
+        "required": [
+          "IsActive",
+          "Name",
+          "ShortName"
+        ],
+        "type": "object",
+        "properties": {
+          "TermID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ShortName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "IsActive": {
+            "type": "boolean"
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "EndDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Key": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

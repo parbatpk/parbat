@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -28,7 +30,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "OrgUnitTypeGetById")]
         public ActionResult<OrgUnitType> Get(long id)
         {
             try
@@ -47,14 +49,14 @@ namespace Parbat.Core.API.Controllers
         /// List all unittype
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "OrgUnitTypeList")]
+        public ActionResult<List<OrgUnitType>> List()
         {
             try
             {
-                var batch = _service.GetAll();
+                var orgUnitType = _service.GetAll();
 
-                return Ok(batch);
+                return Ok(orgUnitType);
             }
             catch (ServiceException se)
             {
@@ -67,8 +69,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] OrgUnitType o)
+        [HttpPut(Name = "OrgUnitTypeUpdate")]
+        public ActionResult<OrgUnitType> Update([FromBody] OrgUnitType o)
         {
             try
             {
@@ -87,12 +89,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "OrgUnitTypeCreate")]
+        [ProducesResponseType(typeof(OrgUnitType), StatusCodes.Status201Created)]
         public ActionResult<OrgUnitType> Create([FromBody] OrgUnitType o)
         {
             try
             {
                 _service.Create(o);
+
                 return Created("Get", o);
             }
             catch (ServiceException se)
@@ -107,12 +111,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "OrgUnitTypeDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -122,3 +128,4 @@ namespace Parbat.Core.API.Controllers
         }
     }
 }
+

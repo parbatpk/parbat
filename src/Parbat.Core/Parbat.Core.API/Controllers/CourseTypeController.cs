@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -29,7 +30,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "CourseTypeGetById")]
         public ActionResult<CourseType> Get(long id)
         {
             try
@@ -48,8 +49,8 @@ namespace Parbat.Core.API.Controllers
         /// get all coursetypes
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "CourseTypeList")]
+        public ActionResult<List<CourseType>> List()
         {
             try
             {
@@ -68,8 +69,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] CourseType c)
+        [HttpPut(Name = "CourseTypeUpdate")]
+        public ActionResult<List<CourseType>> Update([FromBody] CourseType c)
         {
             try
             {
@@ -88,8 +89,9 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPost]
-        public ActionResult<Course> Create([FromBody] CourseType c)
+        [HttpPost(Name = "CourseTypeCreate")]
+        [ProducesResponseType(typeof(CourseType), StatusCodes.Status201Created)]
+        public ActionResult<CourseType> Create([FromBody] CourseType c)
         {
             try
             {
@@ -107,12 +109,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "CourseTypeDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

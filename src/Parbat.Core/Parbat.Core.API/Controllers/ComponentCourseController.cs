@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -32,7 +29,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "ComponentCourseGetById")]
         public ActionResult<ComponentCourse> Get(long id)
         {
             try
@@ -51,12 +48,13 @@ namespace Parbat.Core.API.Controllers
         /// List all componentcourses
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "ComponentCourseList")]
+        public ActionResult<List<ComponentCourse>> List()
         {
             try
             {
                 var componentCourses = _service.GetAll();
+
                 return Ok(componentCourses);
             }
             catch (ServiceException se)
@@ -70,12 +68,13 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] ComponentCourse c)
+        [HttpPut(Name = "ComponentCourseUpdate")]
+        public ActionResult<ComponentCourse> Update([FromBody] ComponentCourse c)
         {
             try
             {
                 _service.Update(c);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -89,19 +88,20 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "ComponentCourseCreate")]
+        [ProducesResponseType(typeof(ComponentCourse), StatusCodes.Status201Created)]
         public ActionResult<ComponentCourse> Create([FromBody] ComponentCourse c)
         {
             try
             {
                 _service.Create(c);
+
                 return Created("Get", c);
             }
             catch (ServiceException se)
             {
                 return BadRequest(se.Message);
             }
-
         }
 
         /// <summary>
@@ -109,12 +109,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "ComponentCouseDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

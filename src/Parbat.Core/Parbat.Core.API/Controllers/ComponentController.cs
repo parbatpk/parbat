@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
+using System.Collections.Generic;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -28,7 +29,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "ComponentGetById")]
         public ActionResult<Component> Get(long id)
         {
             try
@@ -47,12 +48,13 @@ namespace Parbat.Core.API.Controllers
         /// List all component
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "ComponentList")]
+        public ActionResult<List<Component>> List()
         {
             try
             {
                 var courses = _service.GetAll();
+
                 return Ok(courses);
             }
             catch (ServiceException se)
@@ -66,12 +68,13 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] Component c)
+        [HttpPut(Name = "ComponentUpdate")]
+        public ActionResult<Component> Update([FromBody] Component c)
         {
             try
             {
                 _service.Update(c);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -85,19 +88,20 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "ComponentCreate")]
+        [ProducesResponseType(typeof(Component), StatusCodes.Status201Created)]
         public ActionResult<Component> Create([FromBody] Component c)
         {
             try
             {
                 _service.Create(c);
+
                 return Created("Get", c);
             }
             catch (ServiceException se)
             {
                 return BadRequest(se.Message);
             }
-
         }
 
         /// <summary>
@@ -105,12 +109,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "ComponentDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

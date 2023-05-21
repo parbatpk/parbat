@@ -21,9 +21,16 @@ namespace Parbat.Core.DBRepository
         IRegisterStatusRepository _registerStatusRepository;
         IStudentStatusRepository _studentStatusRepository;
         IClassRepository _classRepository;
+        IClassMappingRepository _classMappingRepository;
+        IClassModuleRepository _classModuleRepository;
         IModuleAssessmentRepository _moduleAssessmentRepository;
         IModuleAssessmentMarkRepository _moduleAssessmentMarkRepository;
         IAssessmentCategoryRepository _assessmentCategoryRepository;
+        IFacultyRepository _facultyRepository;
+        IOfferingRepository _offeringRepository;
+        IRegistrationRepository _registrationRepository;
+        ISemesterRepository _semesterRepository;
+        IStudentProgramRepository _studentProgramRepository;
 
         public ICourseRepository CourseRepository
         {
@@ -268,8 +275,97 @@ namespace Parbat.Core.DBRepository
                 }
 
                 return _assessmentCategoryRepository;
+            }
+        }
 
+        public IClassMappingRepository ClassMappingRepository
+        {
+            get
+            {
+                if (_classMappingRepository == null)
+                {
+                    _classMappingRepository = new ClassMappingRepository();
+                }
 
+                return _classMappingRepository;
+            }
+        }
+
+        public IFacultyRepository FacultyRepository
+        {
+            get
+            {
+                if(_facultyRepository == null)
+                {
+                    _facultyRepository = new FacultyRepository();
+                }
+
+                return _facultyRepository;
+             }
+         }
+         
+        public IClassModuleRepository ClassModuleRepository
+        {
+            get
+            {
+                if(_classModuleRepository == null)
+                {
+                    _classModuleRepository = new ClassModuleRepository();
+                }
+
+                return _classModuleRepository;
+            }
+        }
+
+        public IOfferingRepository OfferingRepository
+        {
+            get
+            {
+                if(_offeringRepository == null)
+                {
+                    _offeringRepository = new OfferingRepository();
+                }
+
+                return _offeringRepository;
+            }
+        }
+
+        public IRegistrationRepository RegistrationRepository
+        {
+            get
+            {
+                if(_registrationRepository == null)
+                {
+                    _registrationRepository = new RegistrationRepository();
+                }
+
+                return _registrationRepository;
+            }
+        }
+
+        public ISemesterRepository SemesterRepository
+        {
+            get
+            {
+                if(_semesterRepository == null)
+                {
+                    _semesterRepository = new SemesterRepository();
+                }
+
+                return _semesterRepository;
+            }
+        }
+
+        public IStudentProgramRepository StudentProgramRepository
+        {
+            get
+            {
+                if(_studentProgramRepository == null)
+                {
+                    _studentProgramRepository = new StudentProgramRepository();
+                }
+
+                return _studentProgramRepository;
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary key of the Table
         /// </summary>
-        public long FacultyID { get; set; }
+        public long? FacultyID { get; set; }
 
         /// <summary>
         /// First Name
@@ -23,7 +23,7 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// get the current instance FacultyID 
         /// </summary>
-        public long Key => this.FacultyID;
+        public long Key => this.FacultyID.Value;
 
         public void Copy(IEntity entity)
         {

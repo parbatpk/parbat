@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.Services;
 using Parbat.Core.DataObjects;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -27,7 +29,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "AssessmentGetById")]
         public ActionResult<AssessmentCategory> Get(long id)
         {
             try
@@ -46,12 +48,13 @@ namespace Parbat.Core.API.Controllers
         /// List all AssessmentCategory
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "AssessmentCategoryList")]
+        public ActionResult<List<AssessmentCategory>> List()
         {
             try
             {
                 var assessmentCategories = _service.GetAll();
+
                 return Ok(assessmentCategories);
             }
             catch (ServiceException se)
@@ -65,12 +68,13 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="assessmentCategory"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] AssessmentCategory assessmentCategory)
+        [HttpPut(Name = "AssessmentCategoryUpdate")]
+        public ActionResult<AssessmentCategory> Update([FromBody] AssessmentCategory assessmentCategory)
         {
             try
             {
                 _service.Update(assessmentCategory);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -84,12 +88,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="assessmentCategory"></param>
         /// <returns></returns>
-        [HttpPost]
-        public ActionResult<Batch> Create([FromBody] AssessmentCategory assessmentCategory)
+        [HttpPost("AssessmentCategoryCreate")]
+        [ProducesResponseType(typeof(AssessmentCategory), StatusCodes.Status201Created)]
+        public ActionResult<AssessmentCategory> Create([FromBody] AssessmentCategory assessmentCategory)
         {
             try
             {
                 _service.Create(assessmentCategory);
+
                 return Created("Get", assessmentCategory);
             }
             catch (ServiceException se)
@@ -104,12 +110,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "AssessmentCategoryDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

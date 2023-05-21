@@ -4,7 +4,7 @@ namespace Parbat.Core.DataObjects.Models
 {
     public partial class ClassModule : IEntity
     {
-        public long ClassModuleID { get; set; }
+        public long? ClassModuleID { get; set; }
         
         /// <summary>
         /// Primary key of Class 
@@ -39,7 +39,7 @@ namespace Parbat.Core.DataObjects.Models
         /// <summary>
         /// get the current instanc ClassModuleID
         /// </summary>
-        public long Key => this.ClassModuleID;
+        public long Key => this.ClassModuleID.Value;
 
         public void Copy(IEntity entity)
         {

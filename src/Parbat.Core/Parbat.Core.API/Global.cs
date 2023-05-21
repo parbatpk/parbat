@@ -15,6 +15,6 @@ namespace Parbat.Core.API
         /// <summary>
         /// Default Route prefix
         /// </summary>
-        public const string API_CONTROLLER = "api/v2.0/[controller]";
+        public const string API_CONTROLLER = "api/v2.0/[controller]/[action]";
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
 using System;
@@ -31,7 +32,8 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}",Name ="StudentGetById")]
+
         public ActionResult<Student> Get(long id)
         {
             try
@@ -50,12 +52,13 @@ namespace Parbat.Core.API.Controllers
         /// List all student
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "StudentList")]
+        public ActionResult<List<Student>> List()
         {
             try
             {
                 var students = _service.GetAll();
+
                 return Ok(students);
             }
             catch (ServiceException se)
@@ -69,12 +72,13 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] Student s)
+        [HttpPut(Name = "StudentUpdate")]
+        public ActionResult<Student> Update([FromBody] Student s)
         {
             try
             {
                 _service.Update(s);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -88,12 +92,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "StudentCreate")]
+        [ProducesResponseType(typeof(Student), StatusCodes.Status201Created)]
         public ActionResult<Student> Create([FromBody] Student s)
         {
             try
             {
                 _service.Create(s);
+
                 return Created("Get", s);
             }
             catch (ServiceException se)
@@ -108,12 +114,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "StudentDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

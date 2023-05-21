@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Parbat.Core.BaseRepository;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Parbat.Core.DataObjects;
 using Parbat.Core.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Parbat.Core.API.Controllers
 {
@@ -32,7 +29,7 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "CurriculumTypeGetById")]
         public ActionResult<CurriculumType> Get(long id)
         {
             try
@@ -51,12 +48,13 @@ namespace Parbat.Core.API.Controllers
         /// List all curriculumType
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public ActionResult List()
+        [HttpGet(Name = "CurriculumTypeList")]
+        public ActionResult<List<CurriculumType>> List()
         {
             try
             {
                 var curriculumTypes = _service.GetAll();
+
                 return Ok(curriculumTypes);
             }
             catch (ServiceException ex)
@@ -70,12 +68,13 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPut]
-        public ActionResult Update([FromBody] CurriculumType c)
+        [HttpPut(Name = "CurriculumTypeUpdate")]
+        public ActionResult<CurriculumType> Update([FromBody] CurriculumType c)
         {
             try
             {
                 _service.Update(c);
+
                 return NoContent();
             }
             catch (ServiceException se)
@@ -89,12 +88,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost(Name = "CurriculumTypeCreate")]
+        [ProducesResponseType(typeof(CurriculumType), StatusCodes.Status201Created)]
         public ActionResult<CurriculumType> Create([FromBody] CurriculumType c)
         {
             try
             {
                 _service.Create(c);
+
                 return Created("Get", c);
             }
             catch (ServiceException se)
@@ -109,12 +110,14 @@ namespace Parbat.Core.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        [HttpDelete("{id}", Name = "CurriculumTypeDeleteById")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<long> Delete(long id)
         {
             try
             {
                 _service.Delete(id);
+
                 return NoContent();
             }
             catch (ServiceException se)

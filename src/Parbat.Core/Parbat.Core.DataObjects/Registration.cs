@@ -8,7 +8,7 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// Primary Key
         /// </summary>
-        public long RegistrationID { get; set; }
+        public long? RegistrationID { get; set; }
         
         /// <summary>
         /// Registeration Date
@@ -37,7 +37,7 @@ namespace Parbat.Core.DataObjects
         /// <summary>
         /// get the current instance RegistrationID
         /// </summary>
-        public long Key => this.RegistrationID;
+        public long Key => this.RegistrationID.Value;
 
         public void Copy(IEntity entity)
         {

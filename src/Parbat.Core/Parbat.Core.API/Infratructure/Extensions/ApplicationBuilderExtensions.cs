@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
 
-namespace Parbat.Core.API
+namespace Parbat.Core.API.Infratructure.Extensions
 {
     /// <summary>
-    /// To handle CORS issue in case of exception
+    /// Represents extension of <c>IApplicationBuilder</c>
     /// </summary>
-    public static class MaintainCorsExtension
+    public static class ApplicationBuilderExtensions
     {
         /// <summary>
-        /// Method to be called in Startup 
+        /// To handle CORS issue in case of exception.
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>

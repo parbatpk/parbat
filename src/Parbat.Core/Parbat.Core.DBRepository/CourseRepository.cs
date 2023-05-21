@@ -4,6 +4,10 @@ using Parbat.Core.DataObjects;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Text.Json;
+using System.Runtime.Serialization.Json;
+using System.IO;
+using System.Text;
 
 namespace Parbat.Core.DBRepository
 {
@@ -73,8 +77,48 @@ namespace Parbat.Core.DBRepository
             db.Execute(cmd);
         }
 
+        public IEnumerable<OrgUnit> GetAllOrgUnitContainsCourse()
+        {
+            List<OrgUnit> orgUnit = new();
+
+            DbCommand cmd = db.CreateSPCommand(Procds.GetAllOrgUnitContainsCourse);
+            string result = Convert.ToString(db.ExecuteScalar(cmd));
+
+            using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(result)))
+            {
+                DataContractJsonSerializer deserializer =
+                    new DataContractJsonSerializer(typeof(List<OrgUnit>));
+                orgUnit = (List<OrgUnit>)deserializer.ReadObject(ms);
+            }
+
+
+            return orgUnit;
+        }
+
+        public IEnumerable<Course> GetAllCourseSpecificOrgUnit(long ownerId)
+        {
+            List<Course> courses = new();
+
+            DbCommand cmd = db.CreateSPCommand(Procds.GetAllCourseSpecificOrgUnit);
+            db.AddParameter(cmd, Params.OwnerID, ownerId);
+
+            string result = Convert.ToString(db.ExecuteScalar(cmd));
+            courses = DBHelper.Convert<List<Course>>(result);
+
+            //using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(result)))
+            //{
+            //    DataContractJsonSerializer deserializer =
+            //        new DataContractJsonSerializer(typeof(List<Course>));
+            //    courses = (List<Course>)deserializer.ReadObject(ms);
+            //}
+
+
+            return courses;
+        }
+
         private struct Procds
         {
+            //Courses core sps
             public const string Insert = "spInsertCourse";
             public const string Update = "spUpdateCourse";
             public const string Delete = "spDeleteCourse";
@@ -82,6 +126,10 @@ namespace Parbat.Core.DBRepository
             public const string GetAll = "spGetAllCourse";
             public const string GetCourseName = "spGetCourseName";
             public const string FindCourseID = "spFindCourseIDComponentCourse";
+
+            //Courses related sps
+            public const string GetAllOrgUnitContainsCourse = "spGetAllOrgUnitContainsCourse";
+            public const string GetAllCourseSpecificOrgUnit = "spGetAllCourseSpecificOrgUnit";
         }
 
         private struct Params

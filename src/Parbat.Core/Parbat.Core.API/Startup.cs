@@ -4,14 +4,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Parbat.Core.API.Infratructure.Extensions;
 using Parbat.Core.BaseRepository;
 using Parbat.Core.DBRepository;
 using Parbat.Core.Services;
 using Parbat.Data;
 using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
+using Parbat.Core.API.Infratructure;
 
 namespace Parbat.Core.API
 {
@@ -83,24 +84,19 @@ namespace Parbat.Core.API
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-
-
         }
 
         private static void InjectInstances(IServiceCollection services)
         {
             // Repository Factor
             services.AddTransient<IRepositoryFactory, DBRepositoryFactroy>();
-            //services.AddTransient<CourseService>();
 
+            // Inject Parbat Services
+            var assembly        = typeof(CourseService).Assembly;
+            var typeFinder      = new AppDomainTypeFinder(assembly);
+            var parbatServices  = typeFinder.GetServices();
 
-            // Inject Services: get all classes implementing IService interface
-            var assemb = typeof(CourseService).Assembly;
-            var iservices = assemb.GetTypes().
-                Where(x => !x.IsAbstract && x.IsClass
-                                    && x.GetInterfaces().Contains(typeof(IService)));
-
-            foreach (var s in iservices)
+            foreach (var s in parbatServices)
                 services.Add(new ServiceDescriptor(s, s, ServiceLifetime.Transient));
 
         }
@@ -151,5 +147,6 @@ namespace Parbat.Core.API
             Database.Instance.SetConnectionString(dbType, dbServer,
                 dbName, dbUser, dbPassword, dbTrusted);
         }
+
     }
 }

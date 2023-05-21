@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Parbat.Core.API.Client.CourseType>
+
+@{
+    ViewData["Title"] = "Course Type";
+}
+
+<h1>Course Type</h1>
+
+<div id="ModalPlaceHolder"></div>
+
+<p>
+    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+            data-target="#createCourseType" data-url="@Url.Action("Create", "CourseType")">
+        Create
+    </button>
+</p>
+
+<table class="table" id="deptList">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model is not null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#editItem" data-url="@Url.Action("Edit", "CourseType", new { id = item.CourseTypeID })">
+                        Edit
+                    </button>
+                    |
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#deleteItem" data-url="@Url.Action("Delete", "CourseType",new { id = item.CourseTypeID})">
+                        Delete
+                    </button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+<script>
+    $(document).ready(function () {
+        $('#deptList').DataTable();
+    });
+</script>

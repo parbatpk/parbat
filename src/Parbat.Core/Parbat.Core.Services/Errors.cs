@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Parbat.Core.Services
+﻿namespace Parbat.Core.Services
 {
-    
-    
-    public class Errors
+    internal class Errors
     {
         public const string UpdateError = "Unable to update record due to unknown error.";
         public const string NotExistsError = "Record does not exist.";
